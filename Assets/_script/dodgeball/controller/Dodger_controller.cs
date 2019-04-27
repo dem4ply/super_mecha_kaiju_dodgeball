@@ -11,6 +11,24 @@ namespace chibi.controller.npc
 		public chibi.rol_sheet.Rol_sheet rol;
 		public SMKD.weapon.gun.Dodger_gun gun;
 
+		public override Vector3 desire_direction
+		{
+			get {
+				return base.desire_direction;
+			}
+
+			set {
+				if ( value.magnitude < 0.2 )
+					_desire_direction = transform.forward;
+				else
+					_desire_direction = value;
+
+				var direction = transform.position + _desire_direction;
+				gun.transform.LookAt( direction );
+				//base.desire_direction = value;
+			}
+		}
+
 		#region funciones de controller
 		public override void action( string name, string e )
 		{
