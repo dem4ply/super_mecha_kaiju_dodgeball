@@ -20,7 +20,7 @@ public class attack_test : StateMachineBehaviour {
 	override public void OnStateExit(
 		Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		animator.SetBool( attack_parameter_name, false );
+		//animator.SetBool( attack_parameter_name, false );
 	}
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
