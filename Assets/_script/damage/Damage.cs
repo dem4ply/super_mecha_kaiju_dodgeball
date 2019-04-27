@@ -46,5 +46,12 @@ namespace damage
 						"[Damage] el '{0}' damage no tiene un behavior",
 						helper.game_object.name.full( gameObject ) ) );
 		}
+
+		public override void reset()
+		{
+			base.reset();
+			_taken_by.Clear();
+			owner = null;
+		}
 	}
 }

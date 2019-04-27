@@ -25,6 +25,8 @@ namespace chibi.radar
 			masks_hits = new Dictionary<LayerMask, List<Radar_hit>>();
 			hits = new List< Radar_hit >();
 			this.filter = radar.filter;
+			if ( this.filter == null )
+				this.filter = x => true;
 		}
 
 		public Radar(

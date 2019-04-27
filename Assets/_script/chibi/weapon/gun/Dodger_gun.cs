@@ -22,7 +22,9 @@ namespace SMKD.weapon.gun
 				+ transform.position;
 			bullet.transform.position = bullet_position;
 			bullet.desire_direction = direction_shot;
-			return bullet;
+			var result = bullet;
+			bullet = null;
+			return result;
 		}
 	}
 }

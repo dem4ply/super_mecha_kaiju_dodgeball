@@ -32,5 +32,9 @@ namespace chibi {
 		public void extert_init_cache() {
 			_init_cache();
 		}
+
+		public virtual void reset()
+		{
+		}
 	}
 }
