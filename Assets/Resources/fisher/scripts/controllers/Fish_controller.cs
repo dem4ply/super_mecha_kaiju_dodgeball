@@ -9,6 +9,7 @@ namespace fisher.controller
 	{
 		public chibi.radar.Radar_box radar;
 		public chibi.rol_sheet.Rol_sheet rol;
+
 		public override void action( string name, string e )
 		{
 			base.action( name, e );

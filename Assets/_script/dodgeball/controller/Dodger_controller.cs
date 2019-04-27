@@ -9,14 +9,32 @@ namespace chibi.controller.npc
 	public class Dodger_controller : Controller_npc
 	{
 		public chibi.rol_sheet.Rol_sheet rol;
+		public SMKD.weapon.gun.Dodger_gun gun;
 
 		#region funciones de controller
+		public override void action( string name, string e )
+		{
+			base.action( name, e );
+			switch ( name )
+			{
+				case chibi.joystick.actions.fire_1:
+					switch ( e )
+					{
+						case chibi.joystick.events.down:
+							shot();
+							break;
+					}
+					break;
+			}
+		}
 		#endregion
 
 		#region controlles de torreta
 		public List< Controller_bullet > shot()
 		{
-			throw new System.NotImplementedException();
+			var bullet = gun.shot();
+			return new List<Controller_bullet>() { bullet };
+			//throw new System.NotImplementedException();
 		}
 		#endregion
 
