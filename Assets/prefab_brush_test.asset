@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 2d5751a2c961df945a34295ccf5e576d, type: 3}
+  m_Name: prefab_brush_test
+  m_EditorClassIdentifier: 
+  m_Cells:
+  - m_Tile: {fileID: 0}
+    m_Matrix:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Pivot: {x: 0, y: 0, z: 0}
+  m_Prefabs:
+  - {fileID: 2093606252433493762, guid: b6149c3506142fc47910253850b14ca7, type: 3}
+  - {fileID: 13460420556461774, guid: 334951318f1da7d43b7b3921173018e4, type: 3}
+  - {fileID: 5130891306158714682, guid: 08c5ea6ac68a4ec418551e675164db00, type: 3}
+  - {fileID: 2093606252433493762, guid: 0506e61afa312ff4ca946396c2d1aea8, type: 3}
+  - {fileID: 2093606252433493762, guid: 455f37772a647584db194c478aa267ce, type: 3}
+  - {fileID: 2093606252433493762, guid: 5ef476c29c8ffe743b366337e1b8acdb, type: 3}
+  - {fileID: 2093606252433493762, guid: eefe6776cbf363e4caedd82e2b5e78fc, type: 3}
+  - {fileID: 2093606252433493762, guid: b457cecd122a12340af25db07f2f60f8, type: 3}
+  m_PerlinScale: 0.5
+  m_Z: 0
