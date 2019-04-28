@@ -16,6 +16,15 @@ namespace chibi.controller.npc
 		public chibi.radar.Radar_box catch_radar;
 		public chibi.radar.Radar_box dodge_radar;
 
+		public float dodge_time = 1f;
+		protected float dodge_delta = 0f;
+
+		public GameObject damage_reciver;
+		public bool is_dodging = false;
+		public bool has_the_ball = false;
+
+		public Collider ball_collision;
+
 		public override Vector3 desire_direction
 		{
 			get {
@@ -62,44 +71,76 @@ namespace chibi.controller.npc
 
 		public List< Controller_bullet > shot()
 		{
-			var bullet = gun.shot();
-			return new List<Controller_bullet>() { bullet };
-			//throw new System.NotImplementedException();
+			if ( has_the_ball )
+			{
+				var bullet = gun.shot();
+				has_the_ball = false;
+				return new List<Controller_bullet>() { bullet };
+			}
+			return null;
 		}
 
 		public void dodge()
 		{
-			catch_radar.ping();
-			if ( catch_radar.hits.Count > 0 )
+			if ( !is_dodging )
 			{
-				Debug.LogError( "fasdjlfkasjdflkj" );
-				grab_ball( catch_radar.hits[ 0 ].transform );
-				return;
-			}
+				catch_radar.ping();
+				foreach ( var hit in catch_radar.hits )
+				{
+					if ( hit.transform.GetComponent<Controller_bullet>() )
+					{
+						grab_ball( hit.transform );
+						return;
+					}
+				}
 
-			dodge_radar.ping();
-			if ( dodge_radar.hits.Count > 0 )
-			{
-				Debug.LogError( "fasdjlfkasjdflkj" );
-				dodge_ball( catch_radar.hits[0].transform );
-				return;
+				dodge_radar.ping();
+				foreach ( var hit in dodge_radar.hits )
+				{
+					if ( hit.transform.GetComponent<Controller_bullet>() )
+					{
+						dodge_ball( hit.transform );
+						return;
+					}
+				}
 			}
-			//throw new System.NotImplementedException();
 		}
 
 		public virtual void grab_ball( Transform transform_ball )
 		{
-			var d = transform_ball.GetComponent<damage.Damage>();
+			var d = transform_ball.GetComponentInChildren<damage.Damage>();
 			var bullet_controller = transform_ball.GetComponent<
 				chibi.controller.weapon.gun.bullet.Controller_bullet>();
-			d.reset();
 			bullet_controller.desire_direction = Vector3.zero;
 			gun.bullet = bullet_controller;
 			transform_ball.position = ball_position.position;
+			has_the_ball = true;
+			d.reset();
 		}
 
 		public virtual void dodge_ball( Transform transform_ball )
 		{
+			is_dodging = true;
+			damage_reciver.SetActive( false );
+			var col1 = GetComponent<BoxCollider>();
+			ball_collision = transform_ball.GetComponent<SphereCollider>();
+			Physics.IgnoreCollision( col1, ball_collision, true );
+		}
+
+		public void Update()
+		{
+			if ( is_dodging )
+			{
+				dodge_delta += Time.deltaTime;
+				if ( dodge_delta > dodge_time )
+				{
+					dodge_delta = 0f;
+					damage_reciver.SetActive( true );
+					var col1 = GetComponent<BoxCollider>();
+					Physics.IgnoreCollision( col1, ball_collision, false  );
+					is_dodging = false;
+				}
+			}
 		}
 
 		protected override void _init_cache()
