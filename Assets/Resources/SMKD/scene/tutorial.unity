@@ -810,7 +810,7 @@ MonoBehaviour:
   actuator_controller: {fileID: 0}
   pasive_motor: 0
   dodgers:
-  - {fileID: 593742673}
+  - {fileID: 870339848}
 --- !u!4 &648041593
 Transform:
   m_ObjectHideFlags: 0
@@ -825,6 +825,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &773137356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2516308796786498730, guid: b4704030ba5622b4f8a91b67d6adb425,
+    type: 3}
+  m_PrefabInstance: {fileID: 903954905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &773137357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773137356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c6eca1b9c3ed84a8b1f9f86092a3de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  motor: {fileID: 0}
+  actuator_controller: {fileID: 0}
+  pasive_motor: 1
+--- !u!54 &773137360
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773137356}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!4 &809431789 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2315376189187604147, guid: 4f23678ef2e72b740b10b95df0fc8550,
@@ -925,12 +963,78 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &870339848 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2315376189187604150, guid: 4f23678ef2e72b740b10b95df0fc8550,
+    type: 3}
+  m_PrefabInstance: {fileID: 1531250502}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad928fca96caab4a9ef6f601d98ea6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &895083098 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2315376189187604147, guid: 4f23678ef2e72b740b10b95df0fc8550,
     type: 3}
   m_PrefabInstance: {fileID: 1083480960}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &903954905
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2516308796786498730, guid: b4704030ba5622b4f8a91b67d6adb425,
+        type: 3}
+      propertyPath: m_Name
+      value: receive_damage cube (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352074780350701141, guid: b4704030ba5622b4f8a91b67d6adb425,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352074780350701141, guid: b4704030ba5622b4f8a91b67d6adb425,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352074780350701141, guid: b4704030ba5622b4f8a91b67d6adb425,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352074780350701141, guid: b4704030ba5622b4f8a91b67d6adb425,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352074780350701141, guid: b4704030ba5622b4f8a91b67d6adb425,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352074780350701141, guid: b4704030ba5622b4f8a91b67d6adb425,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594224411450449072, guid: b4704030ba5622b4f8a91b67d6adb425,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594224411450449072, guid: b4704030ba5622b4f8a91b67d6adb425,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b4704030ba5622b4f8a91b67d6adb425, type: 3}
 --- !u!1001 &940239874
 PrefabInstance:
   m_ObjectHideFlags: 0

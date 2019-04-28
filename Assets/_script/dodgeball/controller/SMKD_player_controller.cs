@@ -17,7 +17,6 @@ namespace chibi.controller
 			}
 
 			set {
-				Debug.Log( value );
 				if ( value.magnitude < 0.2 )
 					_desire_direction = transform.forward;
 				else
