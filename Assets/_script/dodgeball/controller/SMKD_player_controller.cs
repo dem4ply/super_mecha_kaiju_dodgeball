@@ -17,10 +17,14 @@ namespace chibi.controller
 			}
 
 			set {
+				Debug.Log( value );
 				if ( value.magnitude < 0.2 )
 					_desire_direction = transform.forward;
 				else
 					_desire_direction = value;
+
+				foreach ( var dodger in dodgers )
+					dodger.desire_direction = _desire_direction;
 			}
 		}
 
@@ -61,14 +65,18 @@ namespace chibi.controller
 		}
 		#endregion
 
-		public List< Controller_bullet > shot()
+		public void shot()
 		{
-			throw new System.NotImplementedException();
+			foreach ( var dodger in dodgers )
+			{
+				dodger.shot();
+			}
 		}
 
 		public void dodge()
 		{
-			throw new System.NotImplementedException();
+			foreach ( var dodger in dodgers )
+				dodger.dodge();
 		}
 
 		protected override void load_motors()

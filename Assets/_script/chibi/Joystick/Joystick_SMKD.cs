@@ -75,7 +75,7 @@ namespace chibi.joystick
 			string horizontal_string = build_input_string( "horizontal" );
 			var vertial = Input.GetAxisRaw( vertical_string );
 			var horizontal = Input.GetAxisRaw( horizontal_string );
-			var axis = new Vector3( horizontal, 0, vertial );
+			axis_esdf = new Vector3( horizontal, 0, vertial );
 			is_pass_deadzone_esdf_axis = helper.joystick.pass_dead_zone(
 				axis_esdf.magnitude, dead_zone_esdf_axis );
 		}

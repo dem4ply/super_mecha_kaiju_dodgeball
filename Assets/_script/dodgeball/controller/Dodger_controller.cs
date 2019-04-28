@@ -38,7 +38,7 @@ namespace chibi.controller.npc
 					_desire_direction = value;
 
 				var direction = transform.position + _desire_direction;
-				gun.transform.LookAt( direction );
+				gun.transform.LookAt( ( gun.transform.position + _desire_direction ) );
 				//base.desire_direction = value;
 			}
 		}

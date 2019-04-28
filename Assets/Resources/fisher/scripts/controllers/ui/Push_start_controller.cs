@@ -16,7 +16,7 @@ namespace fisher.controller
 					switch ( e )
 					{
 						case "down":
-							SceneManager.LoadScene( "Resources/fisher/scene/game_mode_1" );
+							SceneManager.LoadScene( "Resources/SMKD/scene/game_mode_1" );
 							break;
 					}
 					break;
