@@ -17,6 +17,7 @@ namespace fisher.controller
 		public chibi.controller.npc.Dodger_controller dodget_tutortial;
 		public Controller_bullet bullet;
 
+		public GameObject current;
 		public GameObject tuto_1;
 		public GameObject tuto_2;
 		public GameObject tuto_3;
@@ -26,9 +27,12 @@ namespace fisher.controller
 			base.action( name, e );
 			if ( e == chibi.joystick.events.down )
 			{
-				push_start_panel.SetActive( false );
-				dodget_tutortial.grab_ball( bullet.transform );
-				dodget_tutortial.shot();
+				if ( current == push_start_panel )
+				{
+					dodget_tutortial.grab_ball( bullet.transform );
+					dodget_tutortial.shot();
+				}
+				current.SetActive( false );
 			}
 		}
 

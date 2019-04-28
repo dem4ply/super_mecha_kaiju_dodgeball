@@ -11,6 +11,7 @@ namespace chibi.controller
 		bool time_is_pause = false;
 		public fisher.controller.Push_start_controller controller;
 		public string action_string;
+		public GameObject tuto;
 
 		private void OnTriggerEnter( Collider other )
 		{
@@ -20,11 +21,8 @@ namespace chibi.controller
 			{
 				Time.timeScale = 0f;
 				time_is_pause = true;
+				tuto.SetActive( true );
 			}
-		}
-
-		private void OnCollisionEnter( Collision collision )
-		{
 		}
 
 		private void Update()
