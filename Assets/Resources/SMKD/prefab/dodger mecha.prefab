@@ -277,14 +277,14 @@ MonoBehaviour:
   gun: {fileID: 2315376188159137300}
   ball_position: {fileID: 2315376187391767949}
   catch_radar:
-    size: {x: 1, y: 1, z: 1}
+    size: {x: 1, y: 5, z: 1}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     masks:
     - serializedVersion: 2
       m_Bits: 1
     origin: {fileID: 2315376189187604147}
   dodge_radar:
-    size: {x: 3, y: 3, z: 3}
+    size: {x: 3, y: 35, z: 3}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     masks:
     - serializedVersion: 2

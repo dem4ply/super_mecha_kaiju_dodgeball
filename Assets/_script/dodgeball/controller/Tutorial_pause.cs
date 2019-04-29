@@ -13,6 +13,8 @@ namespace chibi.controller
 		public string action_string;
 		public GameObject tuto;
 
+		public string axis_string;
+
 		private void OnTriggerEnter( Collider other )
 		{
 			var controller = other.transform.GetComponentInParent<
@@ -29,12 +31,30 @@ namespace chibi.controller
 		{
 			if ( time_is_pause )
 			{
-				if ( Input.anyKey )
+				if ( axis_string == "any" )
+					if ( Input.anyKey )
+					{
+					}
+				switch ( axis_string )
 				{
-					time_is_pause = false;
-					Time.timeScale = 1f;
-					controller.action_tutorial( action_string );
-					Destroy( this.gameObject );
+					case "any":
+						if ( Input.anyKey )
+						{
+							time_is_pause = false;
+							Time.timeScale = 1f;
+							controller.action_tutorial( action_string );
+							Destroy( this.gameObject );
+						}
+						break;
+					default:
+						if ( Input.GetButton( axis_string ) )
+						{
+							time_is_pause = false;
+							Time.timeScale = 1f;
+							controller.action_tutorial( action_string );
+							Destroy( this.gameObject );
+						}
+						break;
 				}
 			}
 		}
