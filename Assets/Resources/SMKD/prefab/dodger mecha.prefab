@@ -296,7 +296,7 @@ MonoBehaviour:
   has_the_ball: 0
   ball_collision: {fileID: 0}
   hp_motor: {fileID: 0}
-  death_time: 10
+  death_time: 1
   _delta_death_time: 0
   animator: {fileID: 5564241052008441828}
 --- !u!114 &2315376189187604158

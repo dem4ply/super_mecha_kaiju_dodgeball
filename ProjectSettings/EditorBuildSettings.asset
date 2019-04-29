@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/SMKD/scene/tutorial.unity
     guid: bf2bcb84ac93b4d4e9af70815e11e502
+  - enabled: 1
+    path: Assets/Resources/SMKD/scene/game_mode_mvp.unity
+    guid: bc12afea70863ff4ab2f07896a3ba5dd
   m_configObjects: {}

@@ -6,7 +6,7 @@ using rol_sheet;
 
 namespace chibi.controller
 {
-	public class Enable_tuto: Controller
+	public class Enable_tuto: Chibi_behaviour
 	{
 		public GameObject tuto;
 

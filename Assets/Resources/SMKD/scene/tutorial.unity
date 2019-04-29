@@ -895,9 +895,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
-  motor: {fileID: 0}
-  actuator_controller: {fileID: 0}
-  pasive_motor: 0
   tuto: {fileID: 724545820}
 --- !u!54 &443770614
 Rigidbody:
@@ -1120,6 +1117,11 @@ MonoBehaviour:
   is_steering: 0
   steering_mass: 1
   velocity_acceleration: {x: 0, y: 0, z: 0}
+  last_shotter: {fileID: 0}
+  live_time: 10
+  current_live_time: 30
+  max_bounce: 10
+  current_amount_of_bounce: 0
 --- !u!114 &546798422 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6703610102897278654, guid: aa2c84ed325fc884c9e938c016087c11,
@@ -1904,7 +1906,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1083480960}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 922474682}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ad928fca96caab4a9ef6f601d98ea6e, type: 3}
@@ -2234,6 +2236,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906963521}
   m_CullTransparentMesh: 0
+--- !u!1 &922474682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2315376189187604151, guid: 4f23678ef2e72b740b10b95df0fc8550,
+    type: 3}
+  m_PrefabInstance: {fileID: 1083480960}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &922474692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922474682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e254cea0a58a0d9479882c9b8d944631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  time_to_change_scene: 10
+  _delta_time: 0
 --- !u!1001 &940239874
 PrefabInstance:
   m_ObjectHideFlags: 0

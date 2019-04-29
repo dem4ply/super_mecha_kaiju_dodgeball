@@ -26,7 +26,7 @@ namespace chibi.controller.npc
 		public Collider ball_collision;
 
 		public damage.motor.HP_motor hp_motor;
-		public float death_time = 10f;
+		public float death_time = 1f;
 		public float _delta_death_time = 0f;
 
 		public Animator animator;
@@ -85,7 +85,14 @@ namespace chibi.controller.npc
 				damage_reciver.SetActive( true );
 				var bullet = gun.shot();
 				has_the_ball = false;
+
+				var bullet_motor = ( chibi.motor.weapons.gun.bullet.Bullet_bounce_motor )bullet.motor;
+					
+				bullet_motor.last_shotter = this;
+				bullet_motor.current_live_time = 0f;
+
 				return new List<Controller_bullet>() { bullet };
+
 			}
 			return null;
 		}
@@ -122,11 +129,13 @@ namespace chibi.controller.npc
 			var d = transform_ball.GetComponentInChildren<damage.Damage>();
 			var bullet_controller = transform_ball.GetComponent<
 				chibi.controller.weapon.gun.bullet.Controller_bullet>();
+
 			bullet_controller.desire_direction = Vector3.zero;
 			gun.bullet = bullet_controller;
 			transform_ball.position = ball_position.position;
 			has_the_ball = true;
 			d.reset();
+
 		}
 
 		public virtual void dodge_ball( Transform transform_ball )
@@ -151,6 +160,16 @@ namespace chibi.controller.npc
 					Physics.IgnoreCollision( col1, ball_collision, false  );
 					is_dodging = false;
 				}
+			}
+
+			if ( hp_motor.is_dead )
+			{
+				_delta_death_time += Time.deltaTime;
+				if ( _delta_death_time > death_time )
+					foreach ( var c in GetComponents<Collider>() )
+					{
+						c.enabled = false;
+					}
 			}
 
 			animator.SetBool( "is_dodge", is_dodging );
