@@ -25,6 +25,12 @@ namespace chibi.controller.npc
 
 		public Collider ball_collision;
 
+		public damage.motor.HP_motor hp_motor;
+		public float death_time = 10f;
+		public float _delta_death_time = 0f;
+
+		public Animator animator;
+
 		public override Vector3 desire_direction
 		{
 			get {
@@ -46,25 +52,28 @@ namespace chibi.controller.npc
 		#region funciones de controller
 		public override void action( string name, string e )
 		{
-			base.action( name, e );
-			switch ( name )
+			if ( !hp_motor.is_dead )
 			{
-				case chibi.joystick.actions.fire_1:
-					switch ( e )
-					{
-						case chibi.joystick.events.down:
-							shot();
-							break;
-					}
-					break;
-				case chibi.joystick.actions.fire_2:
-					switch ( e )
-					{
-						case chibi.joystick.events.down:
-							dodge();
-							break;
-					}
-					break;
+				//base.action( name, e );
+				switch ( name )
+				{
+					case chibi.joystick.actions.fire_1:
+						switch ( e )
+						{
+							case chibi.joystick.events.down:
+								shot();
+								break;
+						}
+						break;
+					case chibi.joystick.actions.fire_2:
+						switch ( e )
+						{
+							case chibi.joystick.events.down:
+								dodge();
+								break;
+						}
+						break;
+				}
 			}
 		}
 		#endregion
@@ -73,7 +82,7 @@ namespace chibi.controller.npc
 		{
 			if ( has_the_ball )
 			{
-				Debug.Log( "shot!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" );
+				damage_reciver.SetActive( true );
 				var bullet = gun.shot();
 				has_the_ball = false;
 				return new List<Controller_bullet>() { bullet };
@@ -109,6 +118,7 @@ namespace chibi.controller.npc
 
 		public virtual void grab_ball( Transform transform_ball )
 		{
+			damage_reciver.SetActive( false );
 			var d = transform_ball.GetComponentInChildren<damage.Damage>();
 			var bullet_controller = transform_ball.GetComponent<
 				chibi.controller.weapon.gun.bullet.Controller_bullet>();
@@ -130,7 +140,7 @@ namespace chibi.controller.npc
 
 		public void Update()
 		{
-			if ( is_dodging )
+			if ( !hp_motor.is_dead && is_dodging )
 			{
 				dodge_delta += Time.deltaTime;
 				if ( dodge_delta > dodge_time )
@@ -142,6 +152,12 @@ namespace chibi.controller.npc
 					is_dodging = false;
 				}
 			}
+
+			animator.SetBool( "is_dodge", is_dodging );
+			animator.SetBool( "is_dead", hp_motor.is_dead );
+			animator.SetBool( "has_the_ball", has_the_ball );
+			animator.SetFloat( "horizontal", desire_direction.x );
+			animator.SetFloat( "vertical", desire_direction.z );
 		}
 
 		protected override void _init_cache()
@@ -151,6 +167,12 @@ namespace chibi.controller.npc
 			if ( !rol )
 				Debug.LogError( string.Format(
 					"[doger_controller] no encontro un 'Rol_sheet' en {0}",
+					helper.game_object.name.full( this ) ), this.gameObject );
+
+			hp_motor = GetComponent< damage.motor.HP_motor >();
+			if ( !hp_motor)
+				Debug.LogError( string.Format(
+					"[doger_controller] no encontro un 'hp_motor' en {0}",
 					helper.game_object.name.full( this ) ), this.gameObject );
 
 			catch_radar = new radar.Radar_box( catch_radar );

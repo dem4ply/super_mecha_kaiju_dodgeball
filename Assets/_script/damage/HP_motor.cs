@@ -27,8 +27,8 @@ namespace damage
 				if ( is_dead )
 				{
 					Debug.Log( string.Format(
-						"[HP_motor] murio: {0}",
-						helper.game_object.name.full( gameObject ) ) );
+						"[HP_motor] murio: '{0}'",
+						helper.game_object.name.full( this ) ) );
 				}
 			}
 
@@ -48,6 +48,16 @@ namespace damage
 					other.gameObject, damage_mask ) )
 				{
 					Damage damage = other.GetComponent<Damage>();
+					proccess_damage( damage );
+				}
+			}
+
+			private void OnCollisionEnter( Collision collision )
+			{
+				if ( helper.layer_mask.game_object_is_in_mask(
+					collision.collider.gameObject, damage_mask ) )
+				{
+					Damage damage = collision.collider.GetComponent<Damage>();
 					proccess_damage( damage );
 				}
 			}
@@ -76,7 +86,7 @@ namespace damage
 
 			protected virtual bool is_my_damage( Damage damage )
 			{
-				if ( damage.owner != null )
+				if ( damage.owner != null && rol )
 					return damage.owner == rol;
 				return false;
 			}
