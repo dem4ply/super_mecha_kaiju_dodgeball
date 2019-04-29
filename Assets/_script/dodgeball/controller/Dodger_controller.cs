@@ -29,6 +29,10 @@ namespace chibi.controller.npc
 		public float death_time = 1f;
 		public float _delta_death_time = 0f;
 
+		public float counter_time = 2f;
+		public float _delta_counter_time = 0f;
+
+
 		public Animator animator;
 
 		public override Vector3 desire_direction
@@ -85,6 +89,7 @@ namespace chibi.controller.npc
 				damage_reciver.SetActive( true );
 				var bullet = gun.shot();
 				has_the_ball = false;
+				_delta_counter_time = 0f;
 
 				var bullet_motor = ( chibi.motor.weapons.gun.bullet.Bullet_bounce_motor )bullet.motor;
 					
@@ -134,6 +139,7 @@ namespace chibi.controller.npc
 			gun.bullet = bullet_controller;
 			transform_ball.position = ball_position.position;
 			has_the_ball = true;
+			_delta_counter_time = 0f;
 			d.reset();
 
 		}
@@ -172,9 +178,19 @@ namespace chibi.controller.npc
 					}
 			}
 
+			if ( has_the_ball )
+			{
+				_delta_counter_time += Time.deltaTime;
+				if ( _delta_counter_time > counter_time )
+				{
+					shot();
+				}
+			}
+
 			animator.SetBool( "is_dodge", is_dodging );
 			animator.SetBool( "is_dead", hp_motor.is_dead );
 			animator.SetBool( "has_the_ball", has_the_ball );
+			Debug.Log( desire_direction, gameObject ); 
 			animator.SetFloat( "horizontal", desire_direction.x );
 			animator.SetFloat( "vertical", desire_direction.z );
 		}
