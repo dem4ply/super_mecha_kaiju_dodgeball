@@ -73,6 +73,7 @@ namespace chibi.controller.npc
 		{
 			if ( has_the_ball )
 			{
+				Debug.Log( "shot!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" );
 				var bullet = gun.shot();
 				has_the_ball = false;
 				return new List<Controller_bullet>() { bullet };

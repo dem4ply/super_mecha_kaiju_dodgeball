@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Resources/fisher/scene/push_start old.unity
     guid: 479d89d06797dbe48b08f8bdcd89aeb8
+  - enabled: 1
+    path: Assets/Resources/SMKD/scene/tutorial.unity
+    guid: bf2bcb84ac93b4d4e9af70815e11e502
   m_configObjects: {}
