@@ -27,11 +27,14 @@ namespace helper
 
 			protected virtual void died()
 			{
+				throw new System.NotImplementedException();
+				/*
 				var motor = GetComponent<controller.motor.Motor_base>();
 				if ( motor != null )
 					motor.died();
 				else
 					Destroy( gameObject );
+				*/
 			}
 		}
 	}

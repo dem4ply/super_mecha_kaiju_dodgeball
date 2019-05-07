@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using controller;
-using controller.animator;
 using Unity.Entities;
 using System;
 
 namespace chibi.motor
 {
 	[ RequireComponent( typeof( Rigidbody ) ) ]
-	public class Motor : Chibi_behaviour
+	public class Motor : chibi.Chibi_behaviour
 	{
 		public Vector3 current_speed = Vector3.zero;
 		public float desire_speed;

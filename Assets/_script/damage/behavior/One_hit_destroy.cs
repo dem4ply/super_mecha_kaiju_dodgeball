@@ -17,8 +17,8 @@ namespace damage
 				var motor = get_motor( damage );
 				if ( motor == null )
 					MonoBehaviour.Destroy( damage.gameObject );
-				else
-					motor.died();
+				else;
+					//motor.died();
 			}
 		}
 	}

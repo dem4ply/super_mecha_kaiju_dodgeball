@@ -1,14 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using controller.animator;
-using controller.motor;
-using controller.controllers;
 using chibi;
 using chibi.controller;
 
 namespace chibi.joystick
 {
-	public class Joystick_SMKD : Chibi_behaviour
+	public class Joystick_SMKD : chibi.Chibi_behaviour
 	{
 		#region public vars
 		public string key_map = "p1";

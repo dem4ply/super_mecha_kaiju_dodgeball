@@ -2,7 +2,6 @@
 using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
-using controller.motor;
 using damage.motor;
 using chibi.controller.ai;
 using helper.test.assert;

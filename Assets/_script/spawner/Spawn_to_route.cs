@@ -9,12 +9,15 @@ namespace spawner
 
 		public override GameObject spawn()
 		{
+			throw new System.NotImplementedException();
+			/*
 			var result = base.spawn();
 			var ai = result.GetComponent<
 				controller.controllers.ai.tree_d.AI_controller_3d>();
 			if ( target != null && ai != null )
 				ai.target = target.transform;
 			return result;
+			*/
 		}
 	}
 }

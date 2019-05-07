@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using weapon.stat;
 using weapon.ammo;
-using controller.controllers;
 
 
 namespace weapon
@@ -26,12 +25,14 @@ namespace weapon
 
 			public override void attack()
 			{
-				shot();
+				// shot();
 			}
 
+			/*
 			public abstract Bullet_controller_3d shot();
 			public abstract Bullet_controller_3d shot(
 				rol_sheet.Rol_sheet owner );
+			*/
 
 			protected override void _init_cache()
 			{
@@ -48,7 +49,7 @@ namespace weapon
 
 			public virtual void start_shoting()
 			{
-				shot( owner );
+				// shot( owner );
 				if ( continue_shotting )
 					Invoke( "start_shoting", 1 / stat.rate_fire );
 			}

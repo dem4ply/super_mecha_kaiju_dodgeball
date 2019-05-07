@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using controller.animator;
-using controller.motor;
 using System;
 using weapon.ammo;
 

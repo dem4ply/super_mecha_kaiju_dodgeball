@@ -11,10 +11,9 @@ namespace damage
 		{
 			public abstract void taken_damange( Damage damage );
 
-			public virtual controller.motor.Motor_base get_motor( Damage damage )
+			public virtual chibi.motor.Motor get_motor( Damage damage )
 			{
-				var motor = damage.GetComponent<controller.motor.Motor_base>();
-				return motor;
+				throw new System.NotImplementedException();
 			}
 		}
 	}
