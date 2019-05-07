@@ -4,7 +4,7 @@ namespace damage
 {
 	namespace motor
 	{
-		public class HP_motor_old : chibi_base.Chibi_behaviour
+		public class HP_motor_old : chibi.Chibi_behaviour
 		{
 			public stat.Hp_stat stat;
 			[HideInInspector] public float total_of_points = 1;

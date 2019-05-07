@@ -2,8 +2,8 @@
 
 namespace singleton
 {
-	public class Singleton<T> : chibi_base.Chibi_object
-		where T : chibi_base.Chibi_object
+	public class Singleton<T> : chibi.Chibi_object
+		where T : chibi.Chibi_object
 	{
 		private static T _instance;
 		private static bool _quitting = false;

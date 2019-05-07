@@ -5,7 +5,7 @@ namespace events
 {
 	namespace scene
 	{
-		public class Event_scene : chibi_base.Chibi_behaviour
+		public class Event_scene : chibi.Chibi_behaviour
 		{
 			public GameObject prefab_event_scene;
 			public Transform where_is_goin_open;

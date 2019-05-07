@@ -7,7 +7,7 @@ namespace damage
 {
 	namespace behavior
 	{
-		public abstract class Beavior : chibi_base.Chibi_object
+		public abstract class Beavior : chibi.Chibi_object
 		{
 			public abstract void taken_damange( Damage damage );
 

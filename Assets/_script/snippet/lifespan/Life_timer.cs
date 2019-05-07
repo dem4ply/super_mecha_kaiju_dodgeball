@@ -5,7 +5,7 @@ namespace helper
 {
 	namespace life
 	{
-		public class Life_timer : chibi_base.Chibi_behaviour
+		public class Life_timer : chibi.Chibi_behaviour
 		{
 			public Life_span live_span;
 

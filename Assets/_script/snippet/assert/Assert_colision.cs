@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace helper.test.assert
 {
-	public class Assert_colision : chibi_base.Chibi_behaviour
+	public class Assert_colision : chibi.Chibi_behaviour
 	{
 		List<obj.Assert_collision_event> collisions_enters;
 		List<obj.Assert_collision_event> collisions_exits;

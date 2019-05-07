@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace chibi.spawner
 {
-	public class Spawner : chibi_base.Chibi_behaviour
+	public class Spawner : chibi.Chibi_behaviour
 	{
 		public List<GameObject> objects;
 		public bool is_continuos = false;

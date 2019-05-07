@@ -6,7 +6,7 @@ namespace weapon
 	namespace ammo
 	{
 		[ CreateAssetMenu( menuName="weapon/gun/ammo/base") ]
-		public class Ammo : chibi_base.Chibi_object
+		public class Ammo : chibi.Chibi_object
 		{
 			public Bullet_motor prefab_bullet;
 

@@ -16,7 +16,7 @@ namespace helper
 						var a = _instance as chibi.Chibi_behaviour;
 						if ( a )
 							return a.debug_mode;
-						var b = _instance as chibi_base.Chibi_behaviour;
+						var b = _instance as chibi.Chibi_behaviour;
 						if ( b )
 							return b.debug_mode;
 						return false;

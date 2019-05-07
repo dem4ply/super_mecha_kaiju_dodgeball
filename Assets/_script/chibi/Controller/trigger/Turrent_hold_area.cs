@@ -2,7 +2,7 @@
 
 namespace chibi.controller.trigger
 {
-	public class Turrent_hold_area : chibi_base.Chibi_behaviour
+	public class Turrent_hold_area : chibi.Chibi_behaviour
 	{
 		public weapon.gun.turrent.Controller_turrent turrent;
 		public Transform hold_position;

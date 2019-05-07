@@ -10,7 +10,7 @@ namespace damage
 		namespace stat
 		{
 			[CreateAssetMenu( menuName = "hp/stat" )]
-			public class Hp_stat : chibi_base.Chibi_object
+			public class Hp_stat : chibi.Chibi_object
 			{
 				public float total = 1;
 				public float current = 1;

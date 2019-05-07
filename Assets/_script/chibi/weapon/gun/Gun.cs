@@ -48,12 +48,12 @@ namespace chibi.weapon.gun
 			}
 		}
 
-		protected virtual chibi_base.Chibi_object load_default_ammo()
+		protected virtual chibi.Chibi_object load_default_ammo()
 		{
 			return Ammo.CreateInstance<Ammo>().find_default<Ammo>();
 		}
 
-		protected virtual chibi_base.Chibi_object load_default_stat()
+		protected virtual chibi.Chibi_object load_default_stat()
 		{
 			return Gun_stat.CreateInstance<Gun_stat>()
 				.find_default<Gun_stat>();

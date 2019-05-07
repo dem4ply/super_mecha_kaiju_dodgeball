@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using chibi_base;
 
 
 namespace weapon
@@ -7,7 +6,7 @@ namespace weapon
 	namespace bullet
 	{
 		[ RequireComponent( typeof( Rigidbody ) ) ]
-		public class Bullet_base : Chibi_behaviour
+		public class Bullet_base : chibi.Chibi_behaviour
 		{
 			public float max_speed = 1;
 
