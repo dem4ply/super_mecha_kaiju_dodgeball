@@ -13,7 +13,6 @@ namespace chibi.controller
 		protected float _speed;
 
 		public motor.Motor motor;
-		public actuator.Actuador_controller actuator_controller;
 
 		public bool pasive_motor;
 
@@ -41,21 +40,6 @@ namespace chibi.controller
 			}
 		}
 
-		public virtual void activate()
-		{
-			if ( actuator_controller )
-			{
-				actuator_controller.action();
-			}
-			else
-			{
-				Debug.LogError(
-					string.Format(
-						"no esta asignado el actuator controller en '{0}'",
-						helper.game_object.name.full( this ) ) );
-			}
-		}
-
 		public virtual void action( string name, string e )
 		{
 			Debug.Log( string.Format(
@@ -68,7 +52,6 @@ namespace chibi.controller
 		{
 			base._init_cache();
 			load_motors();
-			load_actuator_controller();
 		}
 
 		protected virtual void load_motors()
@@ -90,33 +73,5 @@ namespace chibi.controller
 			}
 		}
 
-		protected virtual void load_actuator_controller()
-		{
-			// TODO: deberia de haber una mejor manera de hacer esto
-			if ( !actuator_controller )
-			{
-				actuator_controller = GetComponent<Actuador_controller>();
-				if ( !actuator_controller )
-				{
-					actuator_controller =
-						GetComponentInChildren<Actuador_controller>();
-					if ( !actuator_controller )
-					{
-						Debug.LogWarning(
-							string.Format(
-								"no se econtro un controller de actuadores en '{0}'",
-								helper.game_object.name.full( this ) ) );
-					}
-				}
-			}
-			if ( actuator_controller )
-				actuator_controller.controller = this;
-			else
-				Debug.LogWarning(
-					string.Format(
-						"no hay un actuador controller en '{0}'",
-						helper.game_object.name.full( this ) ) );
-
-		}
 	}
 }

@@ -81,11 +81,6 @@ namespace fisher.controller
 			}
 		}
 
-		protected override void load_actuator_controller()
-		{
-			// base.load_actuator_controller();
-		}
-
 		protected override void load_motors()
 		{
 			// base.load_motors();
