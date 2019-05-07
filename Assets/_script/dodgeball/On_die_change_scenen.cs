@@ -23,7 +23,7 @@ namespace chibi.controller
 
 		private void Update()
 		{
-			var hp_motor = GetComponent<HP_motor>();
+			var hp_motor = GetComponent<HP_motor_old>();
 			if ( hp_motor.is_dead )
 			{
 				_delta_time += Time.deltaTime;

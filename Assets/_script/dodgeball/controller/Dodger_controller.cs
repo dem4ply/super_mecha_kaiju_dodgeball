@@ -25,7 +25,7 @@ namespace chibi.controller.npc
 
 		public Collider ball_collision;
 
-		public damage.motor.HP_motor hp_motor;
+		public damage.motor.HP_motor_old hp_motor;
 		public float death_time = 1f;
 		public float _delta_death_time = 0f;
 
@@ -204,7 +204,7 @@ namespace chibi.controller.npc
 					"[doger_controller] no encontro un 'Rol_sheet' en {0}",
 					helper.game_object.name.full( this ) ), this.gameObject );
 
-			hp_motor = GetComponent< damage.motor.HP_motor >();
+			hp_motor = GetComponent< damage.motor.HP_motor_old >();
 			if ( !hp_motor)
 				Debug.LogError( string.Format(
 					"[doger_controller] no encontro un 'hp_motor' en {0}",

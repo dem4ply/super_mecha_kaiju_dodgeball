@@ -11,9 +11,9 @@ namespace damage
 		public rol_sheet.Rol_sheet owner;
 		[HideInInspector] public float amount = 1;
 
-		protected List<motor.HP_motor> _taken_by;
+		protected List<motor.HP_motor_old> _taken_by;
 
-		public List<motor.HP_motor> taken_by
+		public List<motor.HP_motor_old> taken_by
 		{
 			get {
 				return _taken_by;
@@ -27,10 +27,10 @@ namespace damage
 			{
 				amount = damage.amount;
 			}
-			_taken_by = new List<motor.HP_motor>();
+			_taken_by = new List<motor.HP_motor_old>();
 		}
 
-		public virtual void taken( motor.HP_motor hp_motor )
+		public virtual void taken( motor.HP_motor_old hp_motor )
 		{
 			if ( !taken_by.Contains( hp_motor ) )
 				taken_by.Add( hp_motor );

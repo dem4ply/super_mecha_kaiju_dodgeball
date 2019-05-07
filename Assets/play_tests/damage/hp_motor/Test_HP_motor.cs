@@ -33,7 +33,7 @@ namespace tests.damage.hp_motor
 		public IEnumerator when_HP_motor_touch_a_damage_trigger_should_loss_hp()
 		{
 			ai.desire_direction = Vector3.forward;
-			var hp = ai.GetComponent<HP_motor>();
+			var hp = ai.GetComponent<HP_motor_old>();
 			float start_hp = hp.current_points;
 			yield return new WaitForSeconds( 1 );
 			Assert.Less( hp.current_points, start_hp );
@@ -44,7 +44,7 @@ namespace tests.damage.hp_motor
 		public IEnumerator when_hp_is_0_or_less_the_motor_2d_should_be_dead()
 		{
 			ai.desire_direction = Vector3.forward;
-			var hp = ai.GetComponent<HP_motor>();
+			var hp = ai.GetComponent<HP_motor_old>();
 			float start_hp = hp.current_points;
 
 			Assert.Greater( start_hp, 0 );
