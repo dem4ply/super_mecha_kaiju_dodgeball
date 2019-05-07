@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using chibi_base;
 
 namespace chibi.animator
 {

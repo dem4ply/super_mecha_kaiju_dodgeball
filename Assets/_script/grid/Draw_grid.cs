@@ -1,12 +1,7 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-using chibi_base;
-using grid.cell;
-using System;
-using snippet.objects;
-using grid.cell.interfaces;
+﻿using grid.cell;
 
-namespace grid {
+namespace grid
+{
 	public class Draw_grid : Grid {
 
 		protected override Cell _instanciate_cell( int column, int row ) {

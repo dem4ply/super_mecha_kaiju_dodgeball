@@ -4,7 +4,6 @@
 // 2014/03/13 N.Kobyasahi
 //
 using UnityEngine;
-using System.Collections;
 
 // 必要なコンポーネントの列記
 [RequireComponent(typeof (Animator))]

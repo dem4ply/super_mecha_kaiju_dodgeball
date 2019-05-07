@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using System;
 
-namespace helper {
+namespace helper
+{
 	class vector3 {
 		public static Vector3 clamp( Vector3 vector, Vector3 min, Vector3 max ){
 			return new Vector3(

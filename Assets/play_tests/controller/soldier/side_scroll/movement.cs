@@ -1,12 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using helper.test.assert;
 using chibi.controller.npc;
 using chibi.controller.ai;
-using rol_sheet;
+using chibi.rol_sheet;
 
 namespace tests.controller.npc.soldier.side_scroll
 {

@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Unity.Entities;
-using chibi.motor.weapons.gun.bullet;
 
 namespace chibi.systems.weapon.gun.bullet
 {

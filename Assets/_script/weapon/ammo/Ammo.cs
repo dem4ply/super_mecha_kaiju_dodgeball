@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using damage;
 using chibi.motor.weapons.gun.bullet;
 
 namespace weapon
@@ -31,7 +30,7 @@ namespace weapon
 			}
 
 			public virtual Bullet_motor instanciate(
-				Vector3 position, rol_sheet.Rol_sheet owner )
+				Vector3 position, chibi.rol_sheet.Rol_sheet owner )
 			{
 				Bullet_motor obj = instanciate( position );
 				var controller = obj.GetComponent<

@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using chibi.motor.weapons.gun.turrent;
-using snippet.objects;
 
 namespace chibi.editor.motor.weapons.gun.turrent
 {

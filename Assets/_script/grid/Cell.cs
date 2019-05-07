@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 using chibi_base;
 using snippet.objects;
-using grid.cell;
-using System;
 
 using grid.cell.interfaces;
 
-namespace grid {
-	namespace cell {
+namespace grid
+{
+	namespace cell
+	{
 		[ExecuteInEditMode]
 		public class Cell : Chibi_behaviour, i_cell {
 			public GameObject relative_position;

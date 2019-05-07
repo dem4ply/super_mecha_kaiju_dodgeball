@@ -1,12 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using chibi.controller.weapon.gun.bullet;
-using rol_sheet;
 
 namespace fisher.controller
 {

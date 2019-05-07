@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-using helper.test.assert;
-using chibi.inventory;
 using chibi.radar;
 
 namespace tests.radar

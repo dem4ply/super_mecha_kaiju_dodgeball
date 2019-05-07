@@ -1,8 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using controller;
-using chibi.controller.actuator;
-using Unity.Entities;
 
 namespace chibi.controller.steering.behavior
 {

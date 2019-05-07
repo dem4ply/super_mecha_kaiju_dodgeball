@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-
-namespace chibi.joystick
+﻿namespace chibi.joystick
 {
 	public abstract class actions
 	{

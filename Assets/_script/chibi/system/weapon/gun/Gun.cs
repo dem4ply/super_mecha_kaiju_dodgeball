@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Unity.Entities;
-using chibi.motor;
 
 namespace chibi.systems.weapon.gun
 {

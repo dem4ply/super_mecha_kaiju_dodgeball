@@ -4,7 +4,6 @@ using System.Collections;
 using UnityEngine.TestTools;
 using UnityEngine;
 using chibi.controller.npc;
-using chibi.motor;
 using helper.test.assert;
 using System.Linq;
 

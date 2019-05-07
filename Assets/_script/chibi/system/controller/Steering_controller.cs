@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Unity.Entities;
-using System.Linq;
 
 namespace chibi.systems.controller
 {

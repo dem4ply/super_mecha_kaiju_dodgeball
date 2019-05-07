@@ -12,7 +12,7 @@ namespace damage
 
 			public LayerMask damage_mask;
 			//public controller.motor.Motor_base motor;
-			public rol_sheet.Rol_sheet rol;
+			public chibi.rol_sheet.Rol_sheet rol;
 
 			public virtual bool is_dead
 			{
@@ -93,8 +93,11 @@ namespace damage
 
 			protected virtual bool is_from_my_faction( Damage damage )
 			{
-				if ( damage.owner != null )
-					return damage.owner.faction == rol.faction;
+				if ( damage.owner != null && damage.owner.sheet != null
+					&& damage.owner.sheet.faction )
+				{
+					return damage.owner.sheet.faction == rol.sheet.faction;
+				}
 				return false;
 			}
 

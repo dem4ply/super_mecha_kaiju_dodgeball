@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace chibi.actuator
+﻿namespace chibi.actuator
 {
 	public abstract class Actuator : chibi.Chibi_behaviour
 	{

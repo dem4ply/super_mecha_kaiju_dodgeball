@@ -1,11 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using helper.test.assert;
 using damage;
-using rol_sheet;
+using chibi.rol_sheet;
 
 namespace tests.controller.weapon.gun
 {

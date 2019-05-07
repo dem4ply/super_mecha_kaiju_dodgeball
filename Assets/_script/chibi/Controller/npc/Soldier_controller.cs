@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using chibi.controller.weapon.gun.bullet;
-using rol_sheet;
+using chibi.rol_sheet;
 
 namespace chibi.controller.npc
 {

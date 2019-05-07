@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using weapon.stat;
+﻿using weapon.stat;
 using weapon.ammo;
 
 

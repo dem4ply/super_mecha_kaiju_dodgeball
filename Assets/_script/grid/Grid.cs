@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using chibi_base;
 using grid.cell;
 using System;
 using snippet.objects;
 using grid.cell.interfaces;
 
-namespace grid {
+namespace grid
+{
 	public class Grid : Cell, grid.interfaces.i_grid {
 
 		public Cell prototype_cell;

@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
-using chibi.motor;
 using chibi.dialog;
 using chibi.animator.avatar;
 

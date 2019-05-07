@@ -1,7 +1,7 @@
 using UnityEngine;
-using System.Collections;
 
-namespace helper {
+namespace helper
+{
 	public class mouse {
 
 		public static float time_doble_click = 0.3f;

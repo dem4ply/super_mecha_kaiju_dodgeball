@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-namespace chibi_base {
+namespace chibi_base
+{
 	public class Chibi_object : ScriptableObject
 	{
 		public virtual string path_of_the_default

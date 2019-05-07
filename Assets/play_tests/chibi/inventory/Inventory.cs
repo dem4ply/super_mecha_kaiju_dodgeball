@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-using helper.test.assert;
 using chibi.inventory;
 
 namespace tests.inventory

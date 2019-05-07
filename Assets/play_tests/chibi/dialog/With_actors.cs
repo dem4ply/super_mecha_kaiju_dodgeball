@@ -1,12 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.TestTools;
-using helper.test.assert;
-using chibi.controller.ai;
-using chibi.controller.npc;
 
 namespace tests.dialog
 {

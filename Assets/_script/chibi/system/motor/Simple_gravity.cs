@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Unity.Entities;
-using chibi.motor;
 using UnityEngine.Experimental.PlayerLoop;
 
 namespace chibi.systems.motor

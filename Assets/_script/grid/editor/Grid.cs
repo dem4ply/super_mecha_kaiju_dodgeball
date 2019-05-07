@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEditor;
 using snippet.objects;
 
-namespace grid {
-	namespace editor {
+namespace grid
+{
+	namespace editor
+	{
 
 		[CustomEditor( typeof( Grid ) ) ]
 		public class GridInpector : Editor {

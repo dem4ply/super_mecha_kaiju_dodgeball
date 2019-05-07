@@ -8,7 +8,7 @@ namespace damage
 	public class Damage : chibi.Chibi_behaviour {
 		public damage.Damage damage;
 		public behavior.Beavior behavior;
-		public rol_sheet.Rol_sheet owner;
+		public chibi.rol_sheet.Rol_sheet owner;
 		[HideInInspector] public float amount = 1;
 
 		protected List<motor.HP_motor_old> _taken_by;

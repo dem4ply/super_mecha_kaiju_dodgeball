@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using Unity.Entities;
-using System;
 
 namespace chibi.motor.npc
 {

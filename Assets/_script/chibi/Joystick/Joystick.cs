@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using chibi;
 using chibi.controller;
 
 namespace chibi.joystick

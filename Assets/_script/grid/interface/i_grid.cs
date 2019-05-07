@@ -1,10 +1,10 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-using grid.cell.interfaces;
+﻿using grid.cell.interfaces;
 using snippet.objects;
 
-namespace grid {
-	namespace interfaces {
+namespace grid
+{
+	namespace interfaces
+	{
 		interface i_grid : i_cell {
 
 			i_cell cell { get; }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-namespace helper {
+namespace helper
+{
 	public class joystick {
 
 		/// <summary>

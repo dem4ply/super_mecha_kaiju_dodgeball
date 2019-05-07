@@ -1,17 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using chibi.controller.weapon.gun.bullet;
-using rol_sheet;
-using UnityEngine;
-using chibi.controller.weapon.gun.bullet;
-using rol_sheet;
 using damage.motor;
 
 namespace chibi.controller

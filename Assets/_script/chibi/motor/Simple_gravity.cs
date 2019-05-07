@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
-using Unity.Entities;
-using System;
 
 namespace chibi.motor
 {

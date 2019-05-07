@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-namespace chibi {
+namespace chibi
+{
 	public class Chibi_behaviour : MonoBehaviour {
 
 		protected bool _is_drawing_gizmo;

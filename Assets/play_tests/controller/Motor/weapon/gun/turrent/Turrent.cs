@@ -1,10 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using helper.test.assert;
-using chibi.controller.weapon.gun.bullet;
 
 namespace tests.motor.weapons.gun.turrent
 {

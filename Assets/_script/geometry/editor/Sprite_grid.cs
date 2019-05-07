@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEditor;
-using snippet.objects;
 
-namespace geometry{
-	namespace grid {
-		namespace editor {
+namespace geometry
+{
+	namespace grid
+	{
+		namespace editor
+		{
 
 			[CustomEditor( typeof( Sprite_grid ) )]
 			public class SpriteGridInpector : Editor{

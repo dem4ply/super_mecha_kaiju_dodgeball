@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using System;
 
-namespace helper {
+namespace helper
+{
 	public static class clone
 	{
 		public static Vector3 _( Vector3 v )

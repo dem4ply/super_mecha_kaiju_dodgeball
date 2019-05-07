@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using damage;
-using System.Collections.Generic;
 
 namespace singleton
 {

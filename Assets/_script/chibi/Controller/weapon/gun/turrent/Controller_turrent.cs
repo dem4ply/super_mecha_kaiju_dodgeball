@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using chibi.weapon.gun;
-using rol_sheet;
+using chibi.rol_sheet;
 
 namespace chibi.controller.weapon.gun.turrent
 {

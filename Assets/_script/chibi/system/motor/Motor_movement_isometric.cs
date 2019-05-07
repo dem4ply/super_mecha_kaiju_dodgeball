@@ -1,11 +1,5 @@
 ﻿using UnityEngine;
 using Unity.Entities;
-using Unity.Jobs;
-using Unity.Burst;
-using Unity.Mathematics;
-using Unity.Transforms;
-using System.Collections;
-using chibi.controller;
 using chibi.motor.npc;
 
 namespace chibi.systems.controller

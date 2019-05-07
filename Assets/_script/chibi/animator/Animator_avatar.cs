@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
-using chibi_base;
 using chibi.dialog;
 
 namespace chibi.animator.avatar

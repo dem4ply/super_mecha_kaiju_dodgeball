@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using chibi.controller.weapon.gun.bullet;
-using UnityEngine;
+﻿using chibi.controller.weapon.gun.bullet;
 
 namespace chibi.weapon.gun
 {

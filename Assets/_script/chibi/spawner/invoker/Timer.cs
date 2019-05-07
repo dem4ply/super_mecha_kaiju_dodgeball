@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-
-namespace chibi.spawner.invoker
+﻿namespace chibi.spawner.invoker
 {
 	public class Timer : Invoker
 	{
