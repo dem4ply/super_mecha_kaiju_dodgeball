@@ -6,7 +6,7 @@ using rol_sheet;
 
 namespace chibi.controller.npc
 {
-	public class Soldier_controller : Controller_npc
+	public class Soldier_controller : Controller
 	{
 		public chibi.controller.weapon.gun.turrent.Controller_turrent turrent;
 		public chibi.controller.npc.Controller_npc npc;
@@ -80,11 +80,6 @@ namespace chibi.controller.npc
 					"[soldier controller] no encontro un 'Rol_sheet' en {0}",
 					helper.game_object.name.full( this ) ) );
 			load_actuator_controller();
-		}
-
-		protected override void load_motors()
-		{
-			//base.load_motors();
 		}
 
 		public virtual void activate()

@@ -27,17 +27,6 @@ namespace chibi.controller
 			}
 		}
 
-		public override float speed
-		{
-			get {
-				return base.speed;
-			}
-
-			set {
-				_speed = value;
-			}
-		}
-
 		#region funciones de controller
 		public override void action( string name, string e )
 		{
@@ -76,11 +65,6 @@ namespace chibi.controller
 		{
 			foreach ( var dodger in dodgers )
 				dodger.dodge();
-		}
-
-		protected override void load_motors()
-		{
-			// base.load_motors();
 		}
 	}
 }

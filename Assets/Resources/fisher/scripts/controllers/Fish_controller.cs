@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace fisher.controller
 {
-	public class Fish_controller : chibi.controller.Controller
+	public class Fish_controller : chibi.controller.Controller_motor
 	{
 		public chibi.radar.Radar_box radar;
 		public chibi.rol_sheet.Rol_sheet rol;

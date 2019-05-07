@@ -4,7 +4,7 @@ using chibi.motor;
 
 namespace chibi.controller.npc
 {
-	public class Controller_npc : Controller
+	public class Controller_npc : Controller_motor
 	{
 
 		public Vector3 angle_vector_for_floor = Vector3.left;

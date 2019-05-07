@@ -11,7 +11,7 @@ namespace chibi.controller.steering
 	public class Steering : Chibi_behaviour
 	{
 		public Transform target;
-		public Controller controller;
+		public Controller_motor controller;
 		public List<behavior.Behavior> behaviors;
 		public List<Steering_properties> behaviors_properties;
 

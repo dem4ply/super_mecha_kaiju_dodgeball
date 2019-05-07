@@ -24,7 +24,6 @@ namespace fisher.controller
 
 		public override void action( string name, string e )
 		{
-			//base.action( name, e );
 			if ( current == push_start_panel )
 			{
 				dodget_tutortial.grab_ball( bullet.transform );
@@ -57,33 +56,6 @@ namespace fisher.controller
 					current = tuto_3;
 					break;
 			}
-		}
-
-		public override Vector3 desire_direction
-		{
-			get {
-				return base.desire_direction;
-			}
-
-			set {
-				//base.desire_direction = value;
-			}
-		}
-
-		public override float speed
-		{
-			get {
-				return base.speed;
-			}
-
-			set {
-				//base.speed = value;
-			}
-		}
-
-		protected override void load_motors()
-		{
-			// base.load_motors();
 		}
 	}
 }

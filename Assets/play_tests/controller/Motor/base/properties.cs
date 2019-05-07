@@ -33,8 +33,8 @@ namespace tests.controller.motor
 		[UnityTest]
 		public IEnumerator when_is_not_moving_his_speed_should_be_0()
 		{
-			Assert.AreEqual( motor.current_speed.magnitude, 0 );
 			yield return new WaitForSeconds( 1 );
+			Assert.AreEqual( 0, motor.current_speed.magnitude, 0.001f );
 		}
 
 		[UnityTest]

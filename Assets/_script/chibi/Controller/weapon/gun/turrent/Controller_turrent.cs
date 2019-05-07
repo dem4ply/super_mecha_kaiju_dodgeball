@@ -5,7 +5,7 @@ using rol_sheet;
 
 namespace chibi.controller.weapon.gun.turrent
 {
-	public class Controller_turrent : Controller
+	public class Controller_turrent : Controller_motor
 	{
 		Gun[] guns;
 

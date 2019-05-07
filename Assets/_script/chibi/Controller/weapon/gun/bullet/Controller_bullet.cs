@@ -5,7 +5,7 @@ using damage;
 
 namespace chibi.controller.weapon.gun.bullet
 {
-	public class Controller_bullet : Controller
+	public class Controller_bullet : Controller_motor
 	{
 		public Damage[] damages
 		{
