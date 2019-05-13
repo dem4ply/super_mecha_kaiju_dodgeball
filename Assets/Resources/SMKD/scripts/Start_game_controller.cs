@@ -5,7 +5,7 @@ namespace chibi.controller
 {
 	public class Start_game_controller: Chibi_behaviour
 	{
-		public chibi.controller.npc.Dodger_controller dodger_start;
+		public SMKD.controller.npc.Dodger_controller dodger_start;
 		public Controller_bullet bullet;
 
 		public float start_time = 2f;

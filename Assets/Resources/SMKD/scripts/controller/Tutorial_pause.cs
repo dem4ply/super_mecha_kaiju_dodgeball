@@ -6,7 +6,7 @@ namespace chibi.controller
 	public class Tutorial_pause : Controller
 	{
 		bool time_is_pause = false;
-		public fisher.controller.Push_start_controller controller;
+		public SMKD.controller.Push_start_controller controller;
 		public string action_string;
 		public GameObject tuto;
 

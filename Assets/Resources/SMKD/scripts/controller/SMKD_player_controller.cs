@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace chibi.controller
+namespace SMKD.controller
 {
-	public class SMKD_player_controller : Controller
+	public class SMKD_player_controller : chibi.controller.Controller
 	{
 
 		public List<npc.Dodger_controller> dodgers;

@@ -7,7 +7,7 @@ namespace chibi.systems.weapon.gun.bullet
 	{
 		struct group
 		{
-			public chibi.motor.weapons.gun.bullet.Bullet_bounce_motor motor;
+			public SMKD.motor.weapons.gun.bullet.Bullet_bounce_motor motor;
 			public Rigidbody rigidbody;
 		}
 

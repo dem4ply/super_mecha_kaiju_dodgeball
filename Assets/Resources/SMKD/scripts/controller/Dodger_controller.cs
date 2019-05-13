@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using chibi.controller.weapon.gun.bullet;
+using chibi.radar;
 
-namespace chibi.controller.npc
+namespace SMKD.controller.npc
 {
-	public class Dodger_controller : Controller_npc
+	public class Dodger_controller : chibi.controller.npc.Controller_npc
 	{
 		public chibi.rol_sheet.Rol_sheet rol;
 		public SMKD.weapon.gun.Dodger_gun gun;
@@ -89,7 +90,7 @@ namespace chibi.controller.npc
 				has_the_ball = false;
 				_delta_counter_time = 0f;
 
-				var bullet_motor = ( chibi.motor.weapons.gun.bullet.Bullet_bounce_motor )bullet.motor;
+				var bullet_motor = ( SMKD.motor.weapons.gun.bullet.Bullet_bounce_motor )bullet.motor;
 					
 				bullet_motor.last_shotter = this;
 				bullet_motor.current_live_time = 0f;
@@ -207,8 +208,8 @@ namespace chibi.controller.npc
 					"[doger_controller] no encontro un 'hp_motor' en {0}",
 					helper.game_object.name.full( this ) ), this.gameObject );
 
-			catch_radar = new radar.Radar_box( catch_radar );
-			dodge_radar = new radar.Radar_box( dodge_radar );
+			catch_radar = new Radar_box( catch_radar );
+			dodge_radar = new Radar_box( dodge_radar );
 		}
 
 		private void OnDrawGizmos()

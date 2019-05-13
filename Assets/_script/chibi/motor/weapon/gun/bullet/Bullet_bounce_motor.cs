@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace chibi.motor.weapons.gun.bullet
+namespace SMKD.motor.weapons.gun.bullet
 {
-	public class Bullet_bounce_motor : Motor
+	public class Bullet_bounce_motor : chibi.motor.Motor
 	{
-		public chibi.controller.npc.Dodger_controller last_shotter;
+		public SMKD.controller.npc.Dodger_controller last_shotter;
 		public float live_time = 10f;
 		public float current_live_time = 30f;
 		public int max_bounce = 10;
@@ -39,11 +39,11 @@ namespace chibi.motor.weapons.gun.bullet
 			}
  		}
 
-		public chibi.controller.npc.Dodger_controller get_last_shooter()
+		public SMKD.controller.npc.Dodger_controller get_last_shooter()
 		{
 			if ( last_shotter && !last_shotter.hp_motor.is_dead )
 				return last_shotter;
-			var shotters = FindObjectsOfType<chibi.controller.npc.Dodger_controller>();
+			var shotters = FindObjectsOfType<SMKD.controller.npc.Dodger_controller>();
 			foreach ( var shotter in shotters )
 			{
 				if ( shotter.hp_motor.is_dead )

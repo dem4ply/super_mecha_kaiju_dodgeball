@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using chibi.controller.weapon.gun.bullet;
 
-namespace fisher.controller
+namespace SMKD.controller
 {
 	public class Push_start_controller : chibi.controller.Controller
 	{
 		public GameObject push_start_panel;
 
-		public chibi.controller.npc.Dodger_controller dodget_tutortial;
+		public SMKD.controller.npc.Dodger_controller dodget_tutortial;
 		public Controller_bullet bullet;
 
 		public GameObject current;
