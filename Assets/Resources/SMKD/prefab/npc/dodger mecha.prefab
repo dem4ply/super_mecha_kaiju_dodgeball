@@ -61,57 +61,6 @@ Transform:
   m_Father: {fileID: 2315376189187604147}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2315376188159137302
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2315376188159137301}
-  - component: {fileID: 2315376188159137300}
-  m_Layer: 0
-  m_Name: dodger_gun
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2315376188159137301
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2315376188159137302}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.087, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2315376189187604147}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2315376188159137300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2315376188159137302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30af5aa5860f1cd4ea2b4e3e8764bfe5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug_mode: 0
-  owner: {fileID: 0}
-  stat: {fileID: 0}
-  ammo: {fileID: 0}
-  automatic_shot: 0
-  last_automatic_shot: 0
-  bullet: {fileID: 0}
-  distan_of_the_shot: 1
 --- !u!1 &2315376189187604151
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +214,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug_mode: 0
   motor: {fileID: 0}
-  actuator_controller: {fileID: 0}
   pasive_motor: 0
   angle_vector_for_floor: {x: -1, y: 0, z: 0}
   min_angle_for_floor: 20
@@ -298,6 +246,8 @@ MonoBehaviour:
   hp_motor: {fileID: 0}
   death_time: 1
   _delta_death_time: 0
+  counter_time: 2
+  _delta_counter_time: 0
   animator: {fileID: 5564241052008441828}
 --- !u!114 &2315376189187604158
 MonoBehaviour:
@@ -498,3 +448,90 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2315376189117110576}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3356867865844922134
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2315376189187604147}
+    m_Modifications:
+    - target: {fileID: 1059511299949699328, guid: 607108092866d2f4cbf613465683066d,
+        type: 3}
+      propertyPath: m_Name
+      value: dodger_gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059511299949699331, guid: 607108092866d2f4cbf613465683066d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059511299949699331, guid: 607108092866d2f4cbf613465683066d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.087
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059511299949699331, guid: 607108092866d2f4cbf613465683066d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059511299949699331, guid: 607108092866d2f4cbf613465683066d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059511299949699331, guid: 607108092866d2f4cbf613465683066d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059511299949699331, guid: 607108092866d2f4cbf613465683066d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059511299949699331, guid: 607108092866d2f4cbf613465683066d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059511299949699331, guid: 607108092866d2f4cbf613465683066d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059511299949699331, guid: 607108092866d2f4cbf613465683066d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059511299949699331, guid: 607108092866d2f4cbf613465683066d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059511299949699331, guid: 607108092866d2f4cbf613465683066d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 607108092866d2f4cbf613465683066d, type: 3}
+--- !u!4 &2315376188159137301 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1059511299949699331, guid: 607108092866d2f4cbf613465683066d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3356867865844922134}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2315376188159137300 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1059511299949699330, guid: 607108092866d2f4cbf613465683066d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3356867865844922134}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30af5aa5860f1cd4ea2b4e3e8764bfe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

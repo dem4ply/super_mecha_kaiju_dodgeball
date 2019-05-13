@@ -188,7 +188,6 @@ namespace chibi.controller.npc
 			animator.SetBool( "is_dodge", is_dodging );
 			animator.SetBool( "is_dead", hp_motor.is_dead );
 			animator.SetBool( "has_the_ball", has_the_ball );
-			Debug.Log( desire_direction, gameObject ); 
 			animator.SetFloat( "horizontal", desire_direction.x );
 			animator.SetFloat( "vertical", desire_direction.z );
 		}

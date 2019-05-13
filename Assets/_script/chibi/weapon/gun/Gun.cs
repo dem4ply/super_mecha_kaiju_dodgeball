@@ -12,6 +12,8 @@ namespace chibi.weapon.gun
 		public Gun_stat stat;
 		public Ammo ammo;
 
+		public Transform position_of_shot;
+
 		public bool automatic_shot = false;
 
 		[HideInInspector] public float last_automatic_shot = 0f;
@@ -62,9 +64,18 @@ namespace chibi.weapon.gun
 		protected void OnDrawGizmos()
 		{
 			Gizmos.color = Color.blue;
-			Gizmos.DrawWireSphere( transform.position, 0.2f );
-			Gizmos.color = Color.red;
-			helper.draw.arrow.gizmo( transform.position, direction_shot );
+			if ( position_of_shot )
+			{
+				Gizmos.DrawWireSphere( position_of_shot.position, 0.2f );
+				Gizmos.color = Color.red;
+				helper.draw.arrow.gizmo( position_of_shot.position, direction_shot );
+			}
+			else
+			{
+				Gizmos.DrawWireSphere( transform.position, 0.2f );
+				Gizmos.color = Color.red;
+				helper.draw.arrow.gizmo( transform.position, direction_shot );
+			}
 		}
 	}
 }
