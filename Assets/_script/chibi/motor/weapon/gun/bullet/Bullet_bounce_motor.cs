@@ -2,7 +2,7 @@
 
 namespace SMKD.motor.weapons.gun.bullet
 {
-	public class Bullet_bounce_motor : chibi.motor.Motor
+	public class Bullet_bounce_motor : chibi.motor.weapons.gun.bullet.Bullet_motor
 	{
 		public SMKD.controller.npc.Dodger_controller last_shotter;
 		public float live_time = 10f;

@@ -9,6 +9,7 @@ namespace SMKD.weapon.gun
 		public Controller_bullet bullet;
 		public float distan_of_the_shot = 0.5f;
 
+		/*
 		public override Controller_bullet shot()
 		{
 			if ( !bullet )
@@ -24,5 +25,6 @@ namespace SMKD.weapon.gun
 			bullet = null;
 			return result;
 		}
+		*/
 	}
 }

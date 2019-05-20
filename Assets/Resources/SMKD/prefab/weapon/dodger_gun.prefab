@@ -46,7 +46,8 @@ MonoBehaviour:
   debug_mode: 0
   owner: {fileID: 0}
   stat: {fileID: 0}
-  ammo: {fileID: 0}
+  ammo: {fileID: 11400000, guid: 196555d8a155406489428f4d7c6b9887, type: 2}
+  position_of_shot: {fileID: 0}
   automatic_shot: 0
   last_automatic_shot: 0
   bullet: {fileID: 0}
