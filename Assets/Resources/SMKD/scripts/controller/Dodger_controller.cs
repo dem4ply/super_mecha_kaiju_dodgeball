@@ -9,6 +9,7 @@ namespace SMKD.controller.npc
 	{
 		public chibi.rol_sheet.Rol_sheet rol;
 		public SMKD.weapon.gun.Dodger_gun gun;
+		public SMKD.tool.Dodger_set dodger_set;
 
 		public Transform ball_position;
 

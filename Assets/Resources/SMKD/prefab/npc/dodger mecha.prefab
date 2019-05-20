@@ -223,6 +223,7 @@ MonoBehaviour:
   max_angle_for_wall: 110
   rol: {fileID: 0}
   gun: {fileID: 2315376188159137300}
+  dodger_set: {fileID: 11400000, guid: d3a8330891fff7b4186b2d406b74f99b, type: 2}
   ball_position: {fileID: 2315376187391767949}
   catch_radar:
     size: {x: 2, y: 5, z: 2}
