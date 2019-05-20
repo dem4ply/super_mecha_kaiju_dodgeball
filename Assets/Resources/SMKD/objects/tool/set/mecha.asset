@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a0cf592baf475543bba5685e8be9053, type: 3}
-  m_Name: kaijus
+  m_Name: mecha
   m_EditorClassIdentifier: 
   list: []
