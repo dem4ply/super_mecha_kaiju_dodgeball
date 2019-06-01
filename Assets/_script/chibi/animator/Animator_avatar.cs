@@ -58,11 +58,13 @@ namespace chibi.animator.avatar
 		{
 			base._init_cache();
 			if ( !transform_avatar )
+			{
 				Debug.LogError( string.Format(
 					"el avatar '{0}' no tiene modelo asignado se intade de buscar" +
 					"uno",
 					helper.game_object.name.full( this ) ) );
 				transform_avatar = transform.Find( "model" );
+			}
 		}
 
 		#region funciones protegidas

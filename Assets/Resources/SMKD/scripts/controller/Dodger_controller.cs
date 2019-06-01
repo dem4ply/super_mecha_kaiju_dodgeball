@@ -32,7 +32,7 @@ namespace SMKD.controller.npc
 		public float _delta_counter_time = 0f;
 
 
-		public Animator animator;
+		public SMKD.animator.Animator_dodger animator;
 
 		public override Vector3 desire_direction
 		{
@@ -150,11 +150,10 @@ namespace SMKD.controller.npc
 				}
 			}
 
-			animator.SetBool( "is_dodge", is_dodging );
-			animator.SetBool( "is_dead", hp_motor.is_dead );
-			animator.SetBool( "has_the_ball", has_the_ball );
-			animator.SetFloat( "horizontal", desire_direction.x );
-			animator.SetFloat( "vertical", desire_direction.z );
+			animator.is_dodge = is_dodging;
+			animator.is_dead = hp_motor.is_dead;
+			animator.has_the_ball = has_the_ball;
+			animator.direction = desire_direction;
 		}
 
 		protected override void _init_cache()
