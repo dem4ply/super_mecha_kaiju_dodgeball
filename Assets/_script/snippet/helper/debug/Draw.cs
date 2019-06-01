@@ -28,10 +28,10 @@ namespace helper
 					_instance = instance;
 				}
 
-				public void arrow( Vector3 position, Vector3 direction )
+				public void arrow( Vector3 position, Vector3 direction, float duration=0f )
 				{
 					if ( debuging )
-						helper.draw.arrow.debug( position, direction );
+						helper.draw.arrow.debug( position, direction, duration:duration );
 				}
 
 				public void line( Vector3 position, Vector3 to_position )
@@ -76,9 +76,9 @@ namespace helper
 					line( _instance.transform.position, to_position );
 				}
 
-				public void arrow( Vector3 direction )
+				public void arrow( Vector3 direction, float duration=0f )
 				{
-					arrow( _instance.transform.position, direction );
+					arrow( _instance.transform.position, direction, duration:duration );
 				}
 
 				public void arrow_to( Vector3 position, Vector3 to_position )

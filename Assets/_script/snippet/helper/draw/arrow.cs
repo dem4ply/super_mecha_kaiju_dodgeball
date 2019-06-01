@@ -68,42 +68,13 @@ namespace helper
 			}
 
 			public static void debug(
-				Vector3 position, Vector3 direction,
-				float arrow_head_length = 0.25f, float arrow_head_angle = 20.0f )
+				Vector3 position, Vector3 direction, Color color = new Color(),
+				float arrow_head_length = 0.25f, float arrow_head_angle = 20.0f,
+				float duration = 0f )
 			{
 				if ( direction.magnitude == 0 )
 					return;
 
-				Debug.DrawRay( position, direction );
-
-				Vector3 right =
-					Quaternion.LookRotation( direction )
-					* Quaternion.Euler( 0, 180 + arrow_head_angle, 0 )
-					* new Vector3( 0, 0, 1 );
-				Vector3 left =
-					Quaternion.LookRotation( direction )
-					* Quaternion.Euler( 0, 180 - arrow_head_angle, 0 )
-					* new Vector3( 0, 0, 1 );
-				Vector3 up =
-					Quaternion.LookRotation( direction )
-					* Quaternion.Euler( 180 +  arrow_head_angle, 0 , 0 )
-					* new Vector3( 0, 0, 1 );
-				Vector3 down =
-					Quaternion.LookRotation( direction )
-					* Quaternion.Euler( 180 -  arrow_head_angle, 0 , 0 )
-					* new Vector3( 0, 0, 1 );
-
-				Debug.DrawRay( position + direction, right * arrow_head_length );
-				Debug.DrawRay( position + direction, left * arrow_head_length );
-				Debug.DrawRay( position + direction, up * arrow_head_length );
-				Debug.DrawRay( position + direction, down * arrow_head_length );
-			}
-
-			public static void debug(
-				Vector3 position, Vector3 direction, Color color,
-				float arrow_head_length = 0.25f, float arrow_head_angle = 20.0f,
-				float duration = 0f )
-			{
 				Debug.DrawRay( position, direction, color, duration );
 
 				Vector3 right =

@@ -31,5 +31,10 @@ namespace chibi.motor
 				Debug.Log( string.Format(
 					"no se encontro un ridgetbody en el objeco {0}", name ) );
 		}
+
+		protected virtual void FixedUpdate()
+		{
+			ridgetbody.velocity += gravity * Time.deltaTime;
+		}
 	}
 }

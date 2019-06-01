@@ -80,7 +80,14 @@ namespace chibi.motor
 			ridgetbody = GetComponent<Rigidbody>();
 			if ( !ridgetbody )
 				Debug.Log( string.Format(
-					"no se encontro un ridgetbody en el objeco {0}", name ) );
+					"no se encontro un ridgetbody en el en el motor '{0}'",
+					helper.game_object.name.full( this ) ) );
+		}
+
+		protected virtual void FixedUpdate()
+		{
+			ridgetbody.velocity = desire_velocity;
+			current_speed = desire_velocity;
 		}
 	}
 }

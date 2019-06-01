@@ -11,7 +11,6 @@ namespace SMKD.controller.npc
 		public SMKD.weapon.gun.Dodger_gun gun;
 		public SMKD.tool.Dodger_set dodger_set;
 
-		public Transform ball_position;
 
 		public chibi.radar.Radar_box catch_radar;
 		public chibi.radar.Radar_box dodge_radar;
@@ -137,7 +136,6 @@ namespace SMKD.controller.npc
 
 			bullet_controller.desire_direction = Vector3.zero;
 			gun.bullet = bullet_controller;
-			transform_ball.position = ball_position.position;
 			has_the_ball = true;
 			_delta_counter_time = 0f;
 			d.reset();
