@@ -73,9 +73,7 @@ GameObject:
   - component: {fileID: 2315376189187604146}
   - component: {fileID: 2315376189187604148}
   - component: {fileID: 2315376189187604159}
-  - component: {fileID: 2315376189187604145}
-  - component: {fileID: 2315376189187604144}
-  - component: {fileID: 2315376189187604149}
+  - component: {fileID: 8054652563170521084}
   - component: {fileID: 2315376189187604150}
   - component: {fileID: 2315376189187604158}
   - component: {fileID: 2315376189187604157}
@@ -147,7 +145,7 @@ CapsuleCollider:
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: 0.75, z: 0}
---- !u!114 &2315376189187604145
+--- !u!114 &8054652563170521084
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,37 +154,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2315376189187604151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0b233b8a2538214dbab34153e0cca37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug_mode: 0
-  gravity: {x: 0, y: -9.8, z: 0}
---- !u!114 &2315376189187604144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2315376189187604151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fe60c289bcaf1443ade995849ec3c08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug_mode: 0
-  max_jump_heigh: 4
-  min_jump_heigh: 1
-  jump_time: 0.4
---- !u!114 &2315376189187604149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2315376189187604151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb32a06d33097ed4389b4917abe8e600, type: 3}
+  m_Script: {fileID: 11500000, guid: ca73992745fd3f14cb2c4b916fe8885a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
@@ -200,6 +168,18 @@ MonoBehaviour:
   is_steering: 0
   steering_mass: 1
   velocity_acceleration: {x: 0, y: 0, z: 0}
+  catch_radar:
+    size: {x: 1, y: 1, z: 1}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    masks: []
+    origin: {fileID: 2315376189187604147}
+  dodge_radar:
+    size: {x: 3, y: 3, z: 3}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    masks: []
+    origin: {fileID: 2315376189187604147}
+  is_dodging: 0
+  has_the_ball: 0
 --- !u!114 &2315376189187604150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +204,6 @@ MonoBehaviour:
   rol: {fileID: 0}
   gun: {fileID: 2315376188159137300}
   dodger_set: {fileID: 11400000, guid: d3a8330891fff7b4186b2d406b74f99b, type: 2}
-  ball_position: {fileID: 2315376187391767949}
   catch_radar:
     size: {x: 2, y: 5, z: 2}
     rotation: {x: 0, y: 0, z: 0, w: 0}
