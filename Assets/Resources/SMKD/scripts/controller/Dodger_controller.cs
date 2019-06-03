@@ -42,13 +42,13 @@ namespace SMKD.controller.npc
 
 			set {
 				if ( value.magnitude < 0.2 )
-					_desire_direction = transform.forward;
+					base.desire_direction = transform.forward;
 				else
-					_desire_direction = value;
+					base.desire_direction = value;
 
-				var direction = transform.position + _desire_direction;
-				gun.transform.LookAt( ( gun.transform.position + _desire_direction ) );
-				//base.desire_direction = value;
+				var direction = transform.position + desire_direction;
+				gun.aim_direction = desire_direction;
+				//gun.transform.LookAt( ( gun.transform.position + _desire_direction ) );
 			}
 		}
 
@@ -133,12 +133,6 @@ namespace SMKD.controller.npc
 
 			if ( hp_motor.is_dead )
 			{
-				_delta_death_time += Time.deltaTime;
-				if ( _delta_death_time > death_time )
-					foreach ( var c in GetComponents<Collider>() )
-					{
-						c.enabled = false;
-					}
 			}
 
 			if ( has_the_ball )

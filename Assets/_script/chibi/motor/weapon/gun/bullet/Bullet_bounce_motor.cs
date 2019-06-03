@@ -14,7 +14,6 @@ namespace SMKD.motor.weapons.gun.bullet
 		private void OnCollisionEnter( Collision collision )
 		{
 			var new_direction = Vector3.Reflect( desire_direction, collision.contacts[ 0 ].normal );
-			Debug.Log( new_direction );
 			desire_direction = new_direction;
 
 			current_amount_of_bounce += 1;

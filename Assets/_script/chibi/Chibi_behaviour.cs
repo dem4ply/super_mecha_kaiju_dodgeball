@@ -36,5 +36,10 @@ namespace chibi
 		public virtual void reset()
 		{
 		}
+
+		public virtual void recycle()
+		{
+			Destroy( this.gameObject );
+		}
 	}
 }

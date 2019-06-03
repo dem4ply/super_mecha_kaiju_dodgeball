@@ -9,6 +9,8 @@ namespace SMKD.weapon.gun
 		public Controller_bullet bullet;
 		public float distan_of_the_shot = 0.5f;
 
+		public bool is_load = false;
+
 		/*
 		public override Controller_bullet shot()
 		{
@@ -26,5 +28,21 @@ namespace SMKD.weapon.gun
 			return result;
 		}
 		*/
+
+		public override Controller_bullet shot()
+		{
+			if ( is_load )
+			{
+				var bullet = base.shot();
+				is_load = false;
+				return bullet;
+			}
+			return null;
+		}
+
+		public void load()
+		{
+			is_load = true;
+		}
 	}
 }
