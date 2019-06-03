@@ -4,7 +4,7 @@ namespace SMKD.motor.weapons.gun.bullet
 {
 	public class Bullet_bounce_motor : chibi.motor.weapons.gun.bullet.Bullet_motor
 	{
-		public SMKD.controller.npc.Dodger_controller last_shotter;
+		// public SMKD.controller.npc.Dodger_controller last_shotter;
 		public float live_time = 10f;
 		public float current_live_time = 30f;
 		public int max_bounce = 10;
@@ -19,13 +19,14 @@ namespace SMKD.motor.weapons.gun.bullet
 			current_amount_of_bounce += 1;
 			if ( current_amount_of_bounce > max_bounce )
 			{
-				get_last_shooter().grab_ball( transform );
+				//get_last_shooter().grab_ball( transform );
 			}
 			current_live_time = 0f;
 		}
 
 		private void Update()
 		{
+			/*
 			var _last_shooter = get_last_shooter();
 			if ( _last_shooter )
 			{
@@ -37,10 +38,13 @@ namespace SMKD.motor.weapons.gun.bullet
 					current_live_time = 0f;
 				}
 			}
+			*/
  		}
 
 		public SMKD.controller.npc.Dodger_controller get_last_shooter()
 		{
+			return null;
+			/*
 			if ( last_shotter && !last_shotter.hp_motor.is_dead )
 				return last_shotter;
 			var shotters = FindObjectsOfType<SMKD.controller.npc.Dodger_controller>();
@@ -50,6 +54,7 @@ namespace SMKD.motor.weapons.gun.bullet
 					return shotter;
 			}
 			return last_shotter;
+			*/
 		}
 	}
 }

@@ -15,9 +15,11 @@ namespace chibi.systems.weapon.gun.bullet
 		{
 			foreach ( var entity in GetEntities<group>() )
 			{
+				/*
 				entity.motor.desire_speed = entity.motor.max_speed;
 				Vector3 desire_velocity = entity.motor.desire_velocity;
 				entity.rigidbody.velocity = desire_velocity;
+				*/
 			}
 		}
 	}

@@ -34,6 +34,10 @@ namespace SMKD.weapon.gun
 			if ( is_load )
 			{
 				var bullet = base.shot();
+				var bullet_position = (
+					direction_shot.normalized * distan_of_the_shot )
+					+ transform.position;
+				bullet.transform.position = bullet_position;
 				is_load = false;
 				return bullet;
 			}

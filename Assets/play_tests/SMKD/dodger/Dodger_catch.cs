@@ -73,5 +73,24 @@ namespace tests.controller.motor.SMKD
 			yield return new WaitForSeconds( 1f );
 			Assert.IsFalse( dodger.hp_motor.is_dead );
 		}
+
+		[UnityTest]
+		public IEnumerator after_catch_should_can_shot()
+		{
+			var bullet = gun.shot();
+			yield return new WaitForSeconds( 1.4f );
+			dodger.dodge();
+			yield return new WaitForSeconds( 0.1f );
+			var motor = dodger.motor as Dodger_motor;
+			Assert.IsTrue( motor.has_the_ball );
+			dodger.desire_direction = Vector3.right + Vector3.forward;
+			var list_of_bullets = dodger.shot();
+			Assert.IsNotNull( list_of_bullets );
+			Assert.GreaterOrEqual( 1, list_of_bullets.Count );
+			bullet = list_of_bullets[0];
+			yield return new WaitForSeconds( 7 );
+			tests_tool.assert.game_object.is_not_null( bullet );
+			up_45.assert_collision_enter( bullet );
+		}
 	}
 }

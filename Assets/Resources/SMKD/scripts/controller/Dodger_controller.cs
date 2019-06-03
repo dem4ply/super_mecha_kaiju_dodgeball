@@ -8,31 +8,12 @@ namespace SMKD.controller.npc
 	public class Dodger_controller : chibi.controller.npc.Controller_npc
 	{
 		public chibi.rol_sheet.Rol_sheet rol;
-		public SMKD.weapon.gun.Dodger_gun gun;
 		public SMKD.tool.Dodger_set dodger_set;
 
-
-		public chibi.radar.Radar_box catch_radar;
-		public chibi.radar.Radar_box dodge_radar;
-
-		public float dodge_time = 1f;
-		protected float dodge_delta = 0f;
-
-		public GameObject damage_reciver;
-		public bool is_dodging = false;
-		public bool has_the_ball = false;
-
-		public Collider ball_collision;
-
 		public damage.motor.HP_motor_old hp_motor;
-		public float death_time = 1f;
-		public float _delta_death_time = 0f;
 
 		public float counter_time = 2f;
 		public float _delta_counter_time = 0f;
-
-
-		public SMKD.animator.Animator_dodger animator;
 
 		public override Vector3 desire_direction
 		{
@@ -45,10 +26,13 @@ namespace SMKD.controller.npc
 					base.desire_direction = transform.forward;
 				else
 					base.desire_direction = value;
+			}
+		}
 
-				var direction = transform.position + desire_direction;
-				gun.aim_direction = desire_direction;
-				//gun.transform.LookAt( ( gun.transform.position + _desire_direction ) );
+		public SMKD.motor.Dodger_motor dodger_motor
+		{
+			get {
+				return motor as SMKD.motor.Dodger_motor;
 			}
 		}
 
@@ -72,7 +56,7 @@ namespace SMKD.controller.npc
 						switch ( e )
 						{
 							case chibi.joystick.events.down:
-								( ( SMKD.motor.Dodger_motor )motor ).dodge();
+								dodge();
 								break;
 						}
 						break;
@@ -83,59 +67,27 @@ namespace SMKD.controller.npc
 
 		public List< Controller_bullet > shot()
 		{
-			if ( has_the_ball )
-			{
-				damage_reciver.SetActive( true );
-				var bullet = gun.shot();
-				has_the_ball = false;
-				_delta_counter_time = 0f;
-
-				var bullet_motor = ( SMKD.motor.weapons.gun.bullet.Bullet_bounce_motor )bullet.motor;
-					
-				bullet_motor.last_shotter = this;
-				bullet_motor.current_live_time = 0f;
-
-				return new List<Controller_bullet>() { bullet };
-
-			}
-			return null;
+			return dodger_motor.shot();
 		}
 
 		public void dodge()
 		{
-			( ( SMKD.motor.Dodger_motor )motor ).dodge();
+			dodger_motor.dodge();
 		}
 
 		public virtual void grab_ball( Transform transform_ball )
 		{
-			( ( SMKD.motor.Dodger_motor )motor ).grab_ball( transform_ball );
+			dodger_motor.grab_ball( transform_ball );
 		}
 
 		public virtual void dodge_ball( Transform transform_ball )
 		{
-			( ( SMKD.motor.Dodger_motor )motor ).dodge_ball( transform_ball );
+			dodger_motor.dodge_ball( transform_ball );
 		}
 
 		public void Update()
 		{
-			if ( !hp_motor.is_dead && is_dodging )
-			{
-				dodge_delta += Time.deltaTime;
-				if ( dodge_delta > dodge_time )
-				{
-					dodge_delta = 0f;
-					damage_reciver.SetActive( true );
-					var col1 = GetComponent<BoxCollider>();
-					Physics.IgnoreCollision( col1, ball_collision, false  );
-					is_dodging = false;
-				}
-			}
-
-			if ( hp_motor.is_dead )
-			{
-			}
-
-			if ( has_the_ball )
+			if ( dodger_motor.has_the_ball )
 			{
 				_delta_counter_time += Time.deltaTime;
 				if ( _delta_counter_time > counter_time )
@@ -143,11 +95,6 @@ namespace SMKD.controller.npc
 					shot();
 				}
 			}
-
-			animator.is_dodge = is_dodging;
-			animator.is_dead = hp_motor.is_dead;
-			animator.has_the_ball = has_the_ball;
-			animator.direction = desire_direction;
 		}
 
 		protected override void _init_cache()
@@ -164,9 +111,6 @@ namespace SMKD.controller.npc
 				Debug.LogError( string.Format(
 					"[doger_controller] no encontro un 'hp_motor' en {0}",
 					helper.game_object.name.full( this ) ), this.gameObject );
-
-			// catch_radar = new Radar_box( catch_radar );
-			// dodge_radar = new Radar_box( dodge_radar );
 		}
 
 	}

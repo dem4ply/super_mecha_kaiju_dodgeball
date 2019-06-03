@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d0f52193d392345b1b2f57c2f4607a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug_mode: 0
+  debug_mode: 1
   current_speed: {x: 0, y: 0, z: 0}
   desire_speed: 0
   max_speed: 4
@@ -23,7 +23,7 @@ MonoBehaviour:
   is_steering: 0
   steering_mass: 1
   velocity_acceleration: {x: 0, y: 0, z: 0}
-  last_shotter: {fileID: 0}
+  ammo: {fileID: 0}
   live_time: 10
   current_live_time: 30
   max_bounce: 10
@@ -107,7 +107,7 @@ PrefabInstance:
     - target: {fileID: 6795797179513685633, guid: aa2c84ed325fc884c9e938c016087c11,
         type: 3}
       propertyPath: m_Name
-      value: bullet_base (1) Variant
+      value: ball
       objectReference: {fileID: 0}
     - target: {fileID: 6795797179513685633, guid: aa2c84ed325fc884c9e938c016087c11,
         type: 3}

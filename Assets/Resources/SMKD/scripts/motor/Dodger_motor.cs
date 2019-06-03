@@ -1,4 +1,5 @@
-﻿using chibi.controller.weapon.gun.bullet;
+﻿using System.Collections.Generic;
+using chibi.controller.weapon.gun.bullet;
 using chibi.weapon.gun;
 using UnityEngine;
 
@@ -19,10 +20,27 @@ namespace SMKD.motor
 		public GameObject damage_reciver;
 		public damage.motor.HP_motor_old hp_motor;
 
+		public float counter_time = 2f;
+		public float _delta_counter_time = 0f;
+
+		public SMKD.animator.Animator_dodger animator;
+
 		public bool is_dead
 		{
 			get {
 				return hp_motor.is_dead;
+			}
+		}
+
+		public override Vector3 desire_direction
+		{
+			get {
+				return base.desire_direction;
+			}
+
+			set {
+				base.desire_direction = value;
+				gun.aim_direction = value;
 			}
 		}
 
@@ -70,6 +88,26 @@ namespace SMKD.motor
 			col1.enabled = false;
 		}
 
+		public List< Controller_bullet > shot()
+		{
+			if ( has_the_ball && gun.is_load )
+			{
+				var bullet = gun.shot();
+				has_the_ball = false;
+				_delta_counter_time = 0f;
+
+				var bullet_motor = (
+					SMKD.motor.weapons.gun.bullet.Bullet_bounce_motor )bullet.motor;
+					
+				// bullet_motor.last_shotter = this;
+				// bullet_motor.current_live_time = 0f;
+
+				return new List<Controller_bullet>() { bullet };
+
+			}
+			return null;
+		}
+
 		private void Update()
 		{
 			if ( !is_dead && is_dodging )
@@ -84,6 +122,16 @@ namespace SMKD.motor
 					is_dodging = false;
 				}
 			}
+
+			animator.is_dodge = is_dodging;
+			animator.is_dead = hp_motor.is_dead;
+			animator.has_the_ball = has_the_ball;
+			animator.direction = desire_direction;
+		}
+
+		protected override void FixedUpdate()
+		{
+			// base.FixedUpdate();
 		}
 
 		protected override void _init_cache()
