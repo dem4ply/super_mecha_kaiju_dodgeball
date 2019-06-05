@@ -50,22 +50,22 @@ PrefabInstance:
     - target: {fileID: 4382843496106849807, guid: 8c151acc6de62d142bbad03201f75a2c,
         type: 3}
       propertyPath: m_Name
-      value: __stuff
+      value: __stuff SMKD
       objectReference: {fileID: 0}
     - target: {fileID: 4282006684101803123, guid: 8c151acc6de62d142bbad03201f75a2c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 520.70166
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282006684101803123, guid: 8c151acc6de62d142bbad03201f75a2c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 221.9057
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282006684101803123, guid: 8c151acc6de62d142bbad03201f75a2c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 213.18944
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282006684101803123, guid: 8c151acc6de62d142bbad03201f75a2c,
         type: 3}

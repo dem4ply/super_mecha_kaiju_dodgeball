@@ -76,6 +76,11 @@ namespace SMKD.motor
 			var bullet_controller = transform_ball.GetComponent<
 				chibi.controller.weapon.gun.bullet.Controller_bullet>();
 			bullet_controller.recycle();
+			load_gun();
+		}
+
+		public virtual void load_gun()
+		{
 			gun.load();
 			has_the_ball = true;
 		}

@@ -9,12 +9,24 @@ namespace SMKD.motor.weapons.gun.bullet
 		public float current_live_time = 30f;
 		public int max_bounce = 10;
 
-		public int current_amount_of_bounce = 0;
+		public float ignore_coliders = 0.05f;
+
+		public float current_amount_of_bounce = 0.05f;
+		public float delta_current_amount_of_bounce = 0f;
 
 		private void OnCollisionEnter( Collision collision )
 		{
+			if ( delta_current_amount_of_bounce < ignore_coliders )
+			{
+				Debug.Log( "ignorando" );
+				Debug.Log( collision.gameObject.name, collision.gameObject );
+				return;
+			}
+			delta_current_amount_of_bounce = 0f;
+			Debug.Log( collision.gameObject.name, collision.gameObject );
 			var new_direction = Vector3.Reflect( desire_direction, collision.contacts[ 0 ].normal );
 			desire_direction = new_direction;
+			Debug.Log( desire_direction, collision.gameObject );
 
 			current_amount_of_bounce += 1;
 			if ( current_amount_of_bounce > max_bounce )
@@ -26,6 +38,7 @@ namespace SMKD.motor.weapons.gun.bullet
 
 		private void Update()
 		{
+			delta_current_amount_of_bounce += Time.deltaTime;
 			/*
 			var _last_shooter = get_last_shooter();
 			if ( _last_shooter )
