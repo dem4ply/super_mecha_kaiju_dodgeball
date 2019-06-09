@@ -18,15 +18,11 @@ namespace SMKD.motor.weapons.gun.bullet
 		{
 			if ( delta_current_amount_of_bounce < ignore_coliders )
 			{
-				Debug.Log( "ignorando" );
-				Debug.Log( collision.gameObject.name, collision.gameObject );
 				return;
 			}
 			delta_current_amount_of_bounce = 0f;
-			Debug.Log( collision.gameObject.name, collision.gameObject );
 			var new_direction = Vector3.Reflect( desire_direction, collision.contacts[ 0 ].normal );
 			desire_direction = new_direction;
-			Debug.Log( desire_direction, collision.gameObject );
 
 			current_amount_of_bounce += 1;
 			if ( current_amount_of_bounce > max_bounce )

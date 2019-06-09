@@ -85,7 +85,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!136 &2315376189187604159
 CapsuleCollider:
@@ -145,7 +145,7 @@ MonoBehaviour:
   damage_reciver: {fileID: 201087365008016794}
   hp_motor: {fileID: 0}
   counter_time: 2
-  _delta_counter_time: 0
+  counter_pomodoro: {fileID: 0}
   animator: {fileID: 445989261932385475}
 --- !u!114 &2315376189187604150
 MonoBehaviour:
@@ -170,9 +170,6 @@ MonoBehaviour:
   max_angle_for_wall: 110
   rol: {fileID: 0}
   dodger_set: {fileID: 11400000, guid: d3a8330891fff7b4186b2d406b74f99b, type: 2}
-  hp_motor: {fileID: 0}
-  counter_time: 2
-  _delta_counter_time: 0
 --- !u!114 &2315376189187604158
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -37,7 +37,21 @@ namespace tests.controller.motor.SMKD
 		{
 			var bullet = gun.shot();
 			yield return new WaitForSeconds( 2 );
-			Assert.IsTrue( dodger.hp_motor.is_dead );
+			Assert.IsTrue( dodger.dodger_motor.hp_motor.is_dead );
+		}
+
+		[UnityTest]
+		public IEnumerator after_is_dead_should_disable_his_coliders()
+		{
+			var bullet = gun.shot();
+			yield return new WaitForSeconds( 2 );
+			var motor = dodger.dodger_motor;
+			Assert.IsTrue( motor.is_dead );
+			Assert.IsFalse( motor.damage_reciver.activeSelf );
+			foreach ( var collider in motor.GetComponents<Collider>() )
+			{
+				Assert.IsFalse( collider.enabled );
+			}
 		}
 
 		[UnityTest]
@@ -71,7 +85,7 @@ namespace tests.controller.motor.SMKD
 			Assert.IsFalse( motor.has_the_ball );
 			Assert.IsTrue( motor.is_dodging );
 			yield return new WaitForSeconds( 1f );
-			Assert.IsFalse( dodger.hp_motor.is_dead );
+			Assert.IsFalse( dodger.dodger_motor.hp_motor.is_dead );
 		}
 
 		[UnityTest]
@@ -91,6 +105,35 @@ namespace tests.controller.motor.SMKD
 			yield return new WaitForSeconds( 7 );
 			tests_tool.assert.game_object.is_not_null( bullet );
 			up_45.assert_collision_enter( bullet );
+		}
+
+		[UnityTest]
+		public IEnumerator after_catch_shot_when_the_counter_end()
+		{
+			var bullet = gun.shot();
+			yield return new WaitForSeconds( 1.4f );
+			dodger.dodge();
+			yield return new WaitForSeconds( 0.1f );
+			var motor = dodger.motor as Dodger_motor;
+			Assert.IsTrue( motor.has_the_ball );
+			dodger.desire_direction = Vector3.right + Vector3.forward;
+			yield return new WaitForSeconds( 1.1f );
+			yield return new WaitForSeconds( 7 );
+			up_45.assert_collision_enter();
+		}
+
+		[UnityTest]
+		public IEnumerator if_give_the_ball_should_no_enable_the_counter()
+		{
+			yield return new WaitForSeconds( 0.1f );
+			var motor = dodger.motor as Dodger_motor;
+			motor.give_ball();
+			yield return new WaitForSeconds( 0.1f );
+			Assert.IsTrue( motor.has_the_ball );
+			dodger.desire_direction = Vector3.right + Vector3.forward;
+			yield return new WaitForSeconds( 1.1f );
+			yield return new WaitForSeconds( 7 );
+			up_45.assert_not_collision_enter();
 		}
 	}
 }

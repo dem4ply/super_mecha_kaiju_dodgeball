@@ -2,6 +2,7 @@
 using chibi.controller.weapon.gun.bullet;
 using chibi.weapon.gun;
 using UnityEngine;
+using chibi.pomodoro;
 
 namespace SMKD.motor
 {
@@ -21,7 +22,7 @@ namespace SMKD.motor
 		public damage.motor.HP_motor_old hp_motor;
 
 		public float counter_time = 2f;
-		public float _delta_counter_time = 0f;
+		public Pomodoro counter_pomodoro;
 
 		public SMKD.animator.Animator_dodger animator;
 
@@ -77,6 +78,13 @@ namespace SMKD.motor
 				chibi.controller.weapon.gun.bullet.Controller_bullet>();
 			bullet_controller.recycle();
 			load_gun();
+			counter_pomodoro.is_enable = true;
+		}
+
+		public virtual void give_ball()
+		{
+			load_gun();
+			counter_pomodoro.is_enable = false;
 		}
 
 		public virtual void load_gun()
@@ -99,11 +107,11 @@ namespace SMKD.motor
 			{
 				var bullet = gun.shot();
 				has_the_ball = false;
-				_delta_counter_time = 0f;
+				counter_pomodoro.reset();
 
 				var bullet_motor = (
 					SMKD.motor.weapons.gun.bullet.Bullet_bounce_motor )bullet.motor;
-					
+
 				// bullet_motor.last_shotter = this;
 				// bullet_motor.current_live_time = 0f;
 
@@ -125,6 +133,21 @@ namespace SMKD.motor
 					var col1 = GetComponent<BoxCollider>();
 					col1.enabled = true;
 					is_dodging = false;
+				}
+			}
+
+			if ( has_the_ball )
+			{
+				if ( counter_pomodoro.tick() )
+					shot();
+			}
+
+			if ( is_dead )
+			{
+				damage_reciver.SetActive( false );
+				foreach ( var collider in GetComponents<Collider>() )
+				{
+					collider.enabled = false;
 				}
 			}
 
@@ -151,6 +174,10 @@ namespace SMKD.motor
 				Debug.LogError( string.Format(
 					"[doger_motor] no encontro un 'hp_motor' en {0}",
 					helper.game_object.name.full( this ) ), this.gameObject );
+
+			counter_pomodoro = Pomodoro.CreateInstance<Pomodoro>();
+			counter_pomodoro.frecuency = counter_time;
+			counter_pomodoro.reset();
 		}
 
 		private void OnDrawGizmos()

@@ -9,6 +9,8 @@ namespace chibi.pomodoro
 		public float frecuency = 1f;
 		public float _sigma_frecuency = 0f;
 
+		public bool is_enable = true;
+
 		public bool is_time
 		{
 			get {
@@ -23,14 +25,17 @@ namespace chibi.pomodoro
 
 		public bool tick()
 		{
-			_sigma_frecuency += Time.deltaTime;
-			return is_time;
+			return tick( Time.deltaTime );
 		}
 
 		public bool tick( float delta_time )
 		{
-			_sigma_frecuency += delta_time;
-			return is_time;
+			if ( is_enable )
+			{
+				_sigma_frecuency += delta_time;
+				return is_time;
+			}
+			return false;
 		}
 
 		public void add_to_global()
