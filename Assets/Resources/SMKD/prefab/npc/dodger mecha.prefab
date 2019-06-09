@@ -338,7 +338,7 @@ PrefabInstance:
     - target: {fileID: 2516308796786498730, guid: b4704030ba5622b4f8a91b67d6adb425,
         type: 3}
       propertyPath: m_Name
-      value: receive_damage cube (1)
+      value: receive_damage
       objectReference: {fileID: 0}
     - target: {fileID: 4352074780350701141, guid: b4704030ba5622b4f8a91b67d6adb425,
         type: 3}
