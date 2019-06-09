@@ -70,7 +70,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7205532819467106219}
-  - component: {fileID: 7483364729718810322}
   - component: {fileID: 1590867999784926565}
   - component: {fileID: 7479862297107699050}
   - component: {fileID: 2347954400316705480}
@@ -97,18 +96,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7483364729718810322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2231557116277685804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bf10cdea1344482e91a4f2b58506b77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &1590867999784926565
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -145,10 +132,14 @@ MonoBehaviour:
     _x: 0
     _y: 0
     _z: 0
+  is_steering: 0
+  steering_mass: 1
+  velocity_acceleration: {x: 0, y: 0, z: 0}
   rotation_vector: {x: 0, y: 1, z: 0}
   max_rotation_angle: 180
   current_rotation_angle: 0
-  original_rotation: {x: 0, y: 0, z: 0}
+  original_direction: {x: 0, y: 0, z: 0}
+  original_rotation: {x: 0, y: 0, z: 0, w: 0}
   rotation_times: 0
   current_angle: 0
 --- !u!114 &2347954400316705480
@@ -165,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug_mode: 0
   motor: {fileID: 0}
+  pasive_motor: 0
 --- !u!1 &4154675149738977566
 GameObject:
   m_ObjectHideFlags: 0

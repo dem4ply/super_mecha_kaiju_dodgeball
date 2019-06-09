@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 666792969496816819}
-  - component: {fileID: 666792969496816818}
   - component: {fileID: 666792969496816817}
   m_Layer: 0
   m_Name: dialogue_manager
@@ -32,18 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &666792969496816818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666792969496816816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bf10cdea1344482e91a4f2b58506b77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &666792969496816817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,7 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
-  dialogues: []
+  dialogues: {fileID: 0}
   letters_by_second: 10
   current_dialogue: 0
+  put_texy: 0
+  total_delta_time: 0
   dialogue_box: {fileID: 0}
+  place_of_actors: []

@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1768364415723452434}
   - component: {fileID: 1372685758996145881}
   - component: {fileID: 6703610102897278654}
-  - component: {fileID: 5685177648198921144}
   - component: {fileID: 4169775498495162844}
   m_Layer: 0
   m_Name: bullet_base
@@ -132,6 +131,9 @@ MonoBehaviour:
     _x: 0
     _y: 0
     _z: 0
+  is_steering: 0
+  steering_mass: 1
+  velocity_acceleration: {x: 0, y: 0, z: 0}
   ammo: {fileID: 11400000, guid: f153125a6fb748a4db922cc9afce2b6e, type: 2}
 --- !u!114 &6703610102897278654
 MonoBehaviour:
@@ -147,18 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug_mode: 0
   motor: {fileID: 0}
---- !u!114 &5685177648198921144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6795797179513685633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bf10cdea1344482e91a4f2b58506b77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  pasive_motor: 0
 --- !u!114 &4169775498495162844
 MonoBehaviour:
   m_ObjectHideFlags: 0
