@@ -65,5 +65,16 @@ namespace chibi.rol_sheet
 			}
 			buffos_are_going_to_remove.Clear();
 		}
+
+		private void Update()
+		{
+			var delta_time = Time.deltaTime;
+			foreach ( var buff_attacher in buffos )
+			{
+				buff_attacher.total_duration += delta_time;
+				buff_attacher.delta_sigma += delta_time;
+			}
+			clean();
+		}
 	}
 }

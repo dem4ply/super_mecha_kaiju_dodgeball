@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System;
 using NUnit.Framework;
-using Unity.Entities;
+// using Unity.Entities;
 
 namespace helper.tests
 {
 	public class basic_test
 	{
-		protected World world;
+		// protected World world;
 
 	}
 

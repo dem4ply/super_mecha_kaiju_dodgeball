@@ -20,5 +20,32 @@ namespace chibi.motor.weapons.gun.turrent
 			original_direction = transform.forward;
 			original_rotation = transform.rotation;
 		}
+
+		private void Update()
+		{
+			float angle = Vector3.SignedAngle(
+				original_direction, desire_direction,
+				rotation_vector );
+			float max_angle = max_rotation_angle / 2;
+			angle = Mathf.Clamp( angle, -max_angle, max_angle );
+			Quaternion desire_rotation;
+			if ( angle == 0 )
+			{
+				desire_rotation = original_rotation;
+			}
+			else
+			{
+				desire_rotation = Quaternion.AngleAxis( angle, rotation_vector );
+				desire_rotation = desire_rotation * original_rotation;
+			}
+			/*
+			Debug.Log( string.Format(
+				"[system.turrent]{0} :: {1} :: {2} :: {3}",
+				angle, original_direction, desire_direction,
+				desire_rotation.eulerAngles ) );
+			*/
+			//entity.rigidbody.rotation = desire_rotation;
+			ridgetbody.MoveRotation( desire_rotation );
+		}
 	}
 }

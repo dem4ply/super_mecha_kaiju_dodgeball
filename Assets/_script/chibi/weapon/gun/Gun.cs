@@ -89,5 +89,21 @@ namespace chibi.weapon.gun
 				helper.draw.arrow.gizmo( transform.position, direction_shot );
 			}
 		}
+
+		private void Update()
+		{
+			if ( automatic_shot )
+				do_automatic_shot( Time.deltaTime, this );
+		}
+
+		protected virtual void do_automatic_shot( float delta_time, Gun gun )
+		{
+			gun.last_automatic_shot += delta_time;
+			if ( gun.last_automatic_shot > gun.rate_fire )
+			{
+				gun.last_automatic_shot -= gun.rate_fire;
+				gun.shot();
+			}
+		}
 	}
 }

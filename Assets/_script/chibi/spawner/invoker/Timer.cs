@@ -20,5 +20,10 @@
 				}
 			}
 		}
+
+		private void Update()
+		{
+			time += UnityEngine.Time.deltaTime;
+		}
 	}
 }
