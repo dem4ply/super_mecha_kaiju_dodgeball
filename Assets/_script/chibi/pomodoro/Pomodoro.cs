@@ -6,13 +6,13 @@ namespace chibi.pomodoro
 	[ CreateAssetMenu( menuName="chibi/pomodoro/base" ) ]
 	public class Pomodoro : chibi.Chibi_object
 	{
-		public float frecuency = 0f;
+		public float frecuency = 1f;
 		public float _sigma_frecuency = 0f;
 
 		public bool is_time
 		{
 			get {
-				return frecuency >= _sigma_frecuency;
+				return _sigma_frecuency > frecuency;
 			}
 		}
 
@@ -31,6 +31,11 @@ namespace chibi.pomodoro
 		{
 			_sigma_frecuency += delta_time;
 			return is_time;
+		}
+
+		public void add_to_global()
+		{
+			singleton.pomodoro.Pomodoro_singleton.instance.add( this );
 		}
 	}
 }
