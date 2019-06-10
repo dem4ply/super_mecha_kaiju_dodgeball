@@ -1454,6 +1454,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8054652563170521084, guid: 4f23678ef2e72b740b10b95df0fc8550,
+        type: 3}
+      propertyPath: hola.use_constant
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f23678ef2e72b740b10b95df0fc8550, type: 3}
 --- !u!4 &1076938359 stripped
@@ -1852,6 +1857,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315376189187604157, guid: 4f23678ef2e72b740b10b95df0fc8550,
+        type: 3}
+      propertyPath: hola.use_constant
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315376189187604157, guid: 4f23678ef2e72b740b10b95df0fc8550,
+        type: 3}
+      propertyPath: hola._current
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315376189187604157, guid: 4f23678ef2e72b740b10b95df0fc8550,
+        type: 3}
+      propertyPath: hola._max
+      value: 31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f23678ef2e72b740b10b95df0fc8550, type: 3}
