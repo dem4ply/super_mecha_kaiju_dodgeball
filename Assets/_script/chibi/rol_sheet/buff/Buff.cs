@@ -13,7 +13,7 @@ namespace chibi.rol_sheet.buff
 		public virtual void effect_in_rol_sheet( Rol_sheet rol_sheet )
 		{
 			Debug.Log( string.Format(
-				"se calcula el efecto de '{0}' a {1}",
+				"[Buff] se calcula el efecto de '{0}' a {1}",
 				name, helper.game_object.name.full( rol_sheet ) ),
 				rol_sheet.gameObject );
 		}
@@ -21,7 +21,7 @@ namespace chibi.rol_sheet.buff
 		public virtual void attach( Rol_sheet rol_sheet )
 		{
 			Debug.Log( string.Format(
-				"se agrega el buffo '{0}' a {1}",
+				"[Buff] se agrega el buffo '{0}' a {1}",
 				name, helper.game_object.name.full( rol_sheet ) ),
 				rol_sheet.gameObject );
 		}
@@ -29,7 +29,7 @@ namespace chibi.rol_sheet.buff
 		public virtual void unattach( Rol_sheet rol_sheet )
 		{
 			Debug.Log( string.Format(
-				"se remueve el buffo '{0}' a {1}",
+				"[Buff] se remueve el buffo '{0}' a {1}",
 				name, helper.game_object.name.full( rol_sheet ) ),
 				rol_sheet.gameObject );
 		}

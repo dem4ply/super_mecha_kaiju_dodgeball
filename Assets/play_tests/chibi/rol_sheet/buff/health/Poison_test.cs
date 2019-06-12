@@ -19,13 +19,13 @@ namespace tests.rol_sheet.buff.health
 		{
 			yield return new WaitForSeconds( 0.1f );
 			var buff = (Poison)create_buff();
-			rol_sheet.max_hp = 10f;
-			rol_sheet.hp = 10f;
+			rol_sheet.hp.max = 10f;
+			rol_sheet.hp.current = 10f;
 			buff.duration = 3f;
 			buff.amount = 1;
 			rol_sheet.attach_buff( buff );
 			yield return new WaitForSeconds( 3f );
-			Assert.AreEqual( 7, rol_sheet.hp, 0.05 );
+			Assert.AreEqual( 7, rol_sheet.hp.current, 0.05 );
 		}
 	}
 }

@@ -7,9 +7,39 @@ namespace chibi_incompleto.damage
 		public class HP_motor : chibi.Chibi_behaviour
 		{
 			/*
-			public chibi.UI.chicken_o_meter.Gauge hp_stat;
-			[HideInInspector] public float total_of_points = 1;
-			[HideInInspector] public float current_points = 1;
+			public chibi.rol_sheet.Rol_sheet rol;
+			public bool use_hp_from_rol = true;
+			public chibi.tool.reference.Reference_gauge hp_stat;
+
+			protected virtual void OnTriggerEnter( Collider other )
+			{
+				if ( helper.consts.tags.damage == other.tag )
+				{
+					Damage damage = other.GetComponent<Damage>();
+					proccess_damage( damage );
+				}
+			}
+
+			private void OnCollisionEnter( Collision collision )
+			{
+				if ( helper.consts.tags.damage == collision.gameObject.tag )
+				{
+					Damage damage = collision.gameObject.GetComponent<Damage>();
+					proccess_damage( damage );
+				}
+			}
+
+			protected override void _init_cache()
+			{
+				base._init_cache();
+				if ( use_hp_from_rol )
+				{
+					hp_stat = rol.hp;
+				}
+			}
+			*/
+
+			/*
 
 			public LayerMask damage_mask;
 			//public controller.motor.Motor_base motor;
@@ -30,36 +60,6 @@ namespace chibi_incompleto.damage
 					Debug.Log( string.Format(
 						"[HP_motor] murio: '{0}'",
 						helper.game_object.name.full( this ) ) );
-				}
-			}
-
-			protected virtual void OnTriggerEnter2D( Collider2D other )
-			{
-				if ( helper.layer_mask.game_object_is_in_mask(
-					other.gameObject, damage_mask ) )
-				{
-					Damage damage = other.GetComponent<Damage>();
-					proccess_damage( damage );
-				}
-			}
-
-			protected virtual void OnTriggerEnter( Collider other )
-			{
-				if ( helper.layer_mask.game_object_is_in_mask(
-					other.gameObject, damage_mask ) )
-				{
-					Damage damage = other.GetComponent<Damage>();
-					proccess_damage( damage );
-				}
-			}
-
-			private void OnCollisionEnter( Collision collision )
-			{
-				if ( helper.layer_mask.game_object_is_in_mask(
-					collision.collider.gameObject, damage_mask ) )
-				{
-					Damage damage = collision.collider.GetComponent<Damage>();
-					proccess_damage( damage );
 				}
 			}
 
@@ -102,17 +102,6 @@ namespace chibi_incompleto.damage
 				return false;
 			}
 
-			protected override void _init_cache()
-			{
-				base._init_cache();
-				if ( damage_mask.value == 0 )
-					damage_mask = helper.consts.layers.receives_damage;
-				if ( stat != null )
-				{
-					total_of_points = stat.total;
-					current_points = stat.current;
-				}
-			}
 		*/
 		}
 	}

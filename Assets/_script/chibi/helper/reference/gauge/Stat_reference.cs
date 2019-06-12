@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
 using System;
-using chibi.UI.chicken_o_meter;
+using chibi.rol_sheet.stat;
 
 
 namespace chibi.tool.reference
 {
 	[Serializable]
-	public class Reference_gauge
+	public class Stat_reference
 	{
 		public bool use_constant = true;
 		public float _current, _max;
-		public Gauge variable;
+		public Stat variable;
 
-		public Reference_gauge()
+		public Stat_reference()
 		{ }
 
-		public Reference_gauge( float current, float max )
+		public Stat_reference( float current, float max )
 		{
 			use_constant = true;
 			_current = current;

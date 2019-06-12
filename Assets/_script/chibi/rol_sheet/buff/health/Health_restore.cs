@@ -11,7 +11,7 @@ namespace chibi.rol_sheet.buff.health
 		public override void effect_in_rol_sheet( Rol_sheet rol_sheet )
 		{
 			float delta_amount = amount * delta;
-			rol_sheet.hp += delta_amount;
+			rol_sheet.hp.current += delta_amount;
 		}
 	}
 }
