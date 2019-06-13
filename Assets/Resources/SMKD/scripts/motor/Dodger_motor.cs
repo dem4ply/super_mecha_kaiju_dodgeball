@@ -19,7 +19,7 @@ namespace SMKD.motor
 		protected float dodge_delta = 0f;
 
 		public GameObject damage_reciver;
-		public damage.motor.HP_motor_old hp_motor;
+		public chibi.damage.motor.HP_engine hp_motor;
 
 		public float counter_time = 2f;
 		public Pomodoro counter_pomodoro;
@@ -169,10 +169,10 @@ namespace SMKD.motor
 			catch_radar = new chibi.radar.Radar_box( catch_radar );
 			dodge_radar = new chibi.radar.Radar_box( dodge_radar );
 
-			hp_motor = GetComponent< damage.motor.HP_motor_old >();
+			hp_motor = GetComponent< chibi.damage.motor.HP_engine >();
 			if ( !hp_motor)
 				Debug.LogError( string.Format(
-					"[doger_motor] no encontro un 'hp_motor' en {0}",
+					"[doger_motor] no encontro un 'hp_engine' en {0}",
 					helper.game_object.name.full( this ) ), this.gameObject );
 
 			counter_pomodoro = Pomodoro.CreateInstance<Pomodoro>();

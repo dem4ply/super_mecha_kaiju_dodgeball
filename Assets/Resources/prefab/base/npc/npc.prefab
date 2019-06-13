@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 666477725944427768}
   - component: {fileID: 780768394898340606}
   - component: {fileID: 1213317015969613010}
-  - component: {fileID: 4496845336156898826}
   - component: {fileID: 8952121329113947013}
   - component: {fileID: 2295530694842590314}
+  - component: {fileID: 4417593559549546152}
   m_Layer: 0
   m_Name: npc
   m_TagString: Untagged
@@ -124,26 +124,6 @@ MonoBehaviour:
   max_jump_heigh: 4
   min_jump_heigh: 1
   jump_time: 0.4
---- !u!114 &4496845336156898826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359830470592594691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b646c874bf37ddb4e9516258cc0ed622, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug_mode: 0
-  stat: {fileID: 0}
-  total_of_points: 1
-  current_points: 1
-  damage_mask:
-    serializedVersion: 2
-    m_Bits: 256
-  rol: {fileID: 0}
 --- !u!114 &8952121329113947013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +159,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug_mode: 0
   sheet: {fileID: 0}
+  hp:
+    use_constant: 1
+    _current: 1
+    _max: 1
+    variable: {fileID: 0}
+--- !u!114 &4417593559549546152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359830470592594691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e121132dc80ecd344a8498764aa7fecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  rol: {fileID: 0}
+  use_hp_from_rol: 1
+  stat:
+    use_constant: 1
+    _current: 0
+    _max: 0
+    variable: {fileID: 0}
 --- !u!1 &1359830471659977002
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,8 +45,8 @@ GameObject:
   - component: {fileID: 8054652563170521084}
   - component: {fileID: 2315376189187604150}
   - component: {fileID: 2315376189187604158}
-  - component: {fileID: 2315376189187604157}
   - component: {fileID: 2315376189187604156}
+  - component: {fileID: 5743611827204232975}
   m_Layer: 0
   m_Name: dodger mecha
   m_TagString: Untagged
@@ -184,26 +184,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug_mode: 0
   sheet: {fileID: 11400000, guid: f4146da528b672b46a808ecd2acc81c2, type: 2}
---- !u!114 &2315376189187604157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2315376189187604151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b646c874bf37ddb4e9516258cc0ed622, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug_mode: 0
-  stat: {fileID: 11400000, guid: 51959a8561a448e41beac39105552520, type: 2}
-  total_of_points: 1
-  current_points: 1
-  damage_mask:
-    serializedVersion: 2
-    m_Bits: 768
-  rol: {fileID: 0}
+  hp:
+    use_constant: 1
+    _current: 1
+    _max: 1
+    variable: {fileID: 0}
 --- !u!65 &2315376189187604156
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -217,6 +202,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 2, z: 0.4}
   m_Center: {x: 0, y: 0.75, z: 0}
+--- !u!114 &5743611827204232975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2315376189187604151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e121132dc80ecd344a8498764aa7fecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  rol: {fileID: 0}
+  use_hp_from_rol: 1
+  stat:
+    use_constant: 1
+    _current: 0
+    _max: 0
+    variable: {fileID: 0}
 --- !u!114 &445989261932385475
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -111,6 +111,7 @@ namespace damage
 					total_of_points = stat.total;
 					current_points = stat.current;
 				}
+				Debug.LogError( "remove", this );
 			}
 		}
 	}
