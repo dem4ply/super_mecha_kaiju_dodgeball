@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 3000444458643559606}
   - component: {fileID: 8943686303632933017}
   - component: {fileID: 4583187948941503198}
+  - component: {fileID: 8342778021088494886}
   m_Layer: 8
   m_Name: damage
-  m_TagString: Untagged
+  m_TagString: damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,5 +108,21 @@ MonoBehaviour:
   debug_mode: 0
   damage: {fileID: 0}
   behavior: {fileID: 0}
+  owner: {fileID: 0}
+  amount: 1
+--- !u!114 &8342778021088494886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502810820939906742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec54c402a6c10684398a927d1d66c71d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  damage: {fileID: 0}
   owner: {fileID: 0}
   amount: 1

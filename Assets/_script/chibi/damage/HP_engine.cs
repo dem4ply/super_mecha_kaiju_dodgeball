@@ -40,6 +40,12 @@ namespace chibi.damage
 				base._init_cache();
 				if ( use_hp_from_rol )
 				{
+					if ( !rol )
+						rol = GetComponent<chibi.rol_sheet.Rol_sheet>();
+					if ( !rol )
+						Debug.LogError( string.Format(
+							"[hp_engine] no se encontro un Rol_sheet en '{0}'",
+							helper.game_object.name.full( this ) ) );
 					stat = rol.hp;
 				}
 			}
@@ -47,10 +53,12 @@ namespace chibi.damage
 			protected virtual bool is_my_damage( Damage damage )
 			{
 				if ( damage.owner && rol )
+				{
 					if ( rol )
 						return damage.owner == rol;
 					if ( damage.owner.sheet && damage.owner.sheet.faction && rol.sheet )
 						return damage.owner.sheet.faction == rol.sheet.faction;
+				}
 				return false;
 			}
 

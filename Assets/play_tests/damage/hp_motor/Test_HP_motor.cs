@@ -2,13 +2,13 @@
 using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
-using damage.motor;
+using chibi.damage.motor;
 using chibi.controller.ai;
 using helper.test.assert;
 
-namespace tests.damage.hp_motor
+namespace tests.damage.hp_engine
 {
-	public class Test_HP_motor : helper.tests.Scene_test
+	public class Test_HP_engine : helper.tests.Scene_test
 	{
 		Assert_colision assert;
 		Ai_walk ai;
@@ -32,10 +32,10 @@ namespace tests.damage.hp_motor
 		public IEnumerator when_HP_motor_touch_a_damage_trigger_should_loss_hp()
 		{
 			ai.desire_direction = Vector3.forward;
-			var hp = ai.GetComponent<HP_motor_old>();
-			float start_hp = hp.current_points;
+			var hp = ai.GetComponent<HP_engine>();
+			float start_hp = hp.stat.current;
 			yield return new WaitForSeconds( 1 );
-			Assert.Less( hp.current_points, start_hp );
+			Assert.Less( hp.stat.current, start_hp );
 			assert.assert_collision_enter( ai.gameObject );
 		}
 
@@ -43,13 +43,13 @@ namespace tests.damage.hp_motor
 		public IEnumerator when_hp_is_0_or_less_the_motor_2d_should_be_dead()
 		{
 			ai.desire_direction = Vector3.forward;
-			var hp = ai.GetComponent<HP_motor_old>();
-			float start_hp = hp.current_points;
+			var hp = ai.GetComponent<HP_engine>();
+			float start_hp = hp.stat.current;
 
 			Assert.Greater( start_hp, 0 );
 			Assert.IsFalse( hp.is_dead );
 			yield return new WaitForSeconds( 1 );
-			Assert.LessOrEqual( hp.current_points, 0 );
+			Assert.LessOrEqual( hp.stat.current, 0 );
 			Assert.IsTrue( hp.is_dead );
 		}
 	}
