@@ -17,6 +17,13 @@
 					return "Player";
 				}
 			}
+
+			public static string damage
+			{
+				get {
+					return "damage";
+				}
+			}
 		}
 	}
 }
