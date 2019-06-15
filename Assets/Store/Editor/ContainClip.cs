@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEditor;
-using UnityEditorInternal;
 using System.Collections.Generic;
 
 namespace AnimationClipExtensions

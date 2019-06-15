@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace snippet {
-	namespace objects {
+namespace snippet
+{
+	namespace objects
+	{
 		public class Position {
 
 			protected Vector2 _min, _max;

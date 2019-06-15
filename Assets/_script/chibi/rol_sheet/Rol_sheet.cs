@@ -11,31 +11,7 @@ namespace chibi.rol_sheet
 		[ SerializeField ]
 		public List<Buff_attacher> buffos;
 		protected List<Buff_attacher> buffos_are_going_to_remove;
-
-		protected float _current_hp = -1f;
-		protected float _raw_hp = 1f;
-		protected float _const_added_hp = 0f;
-		protected float _persentil_hp = 1f;
-
-		public float max_hp
-		{
-			get {
-				return _raw_hp;
-			}
-			set {
-				_raw_hp = value;
-			}
-		}
-
-		public float hp
-		{
-			get {
-				return _current_hp;
-			}
-			set {
-				_current_hp = Mathf.Clamp( value, 0f, max_hp );
-			}
-		}
+		public chibi.tool.reference.Stat_reference hp;
 
 		public void attach_buff( Buff buff )
 		{
@@ -64,6 +40,17 @@ namespace chibi.rol_sheet
 				buffos.Remove( buff );
 			}
 			buffos_are_going_to_remove.Clear();
+		}
+
+		private void Update()
+		{
+			var delta_time = Time.deltaTime;
+			foreach ( var buff_attacher in buffos )
+			{
+				buff_attacher.total_duration += delta_time;
+				buff_attacher.delta_sigma += delta_time;
+			}
+			clean();
 		}
 	}
 }

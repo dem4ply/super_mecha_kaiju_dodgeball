@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
-using chibi.motor;
 using chibi.dialog;
 using chibi.animator.avatar;
 
 namespace chibi.controller.avatar
 {
-	public class Controller_avatar : Controller
+	public class Controller_avatar : Controller_motor
 	{
 		public animator.avatar.Animator_avatar animator;
 

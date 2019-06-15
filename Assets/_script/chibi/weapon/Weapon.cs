@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using rol_sheet;
+﻿using chibi.rol_sheet;
 
 namespace chibi.weapon
 {

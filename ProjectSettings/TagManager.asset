@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - scenery
+  - damage
   layers:
   - Default
   - TransparentFX

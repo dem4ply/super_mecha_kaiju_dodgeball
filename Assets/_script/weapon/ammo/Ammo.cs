@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using damage;
 using chibi.motor.weapons.gun.bullet;
 
 namespace weapon
@@ -7,7 +6,7 @@ namespace weapon
 	namespace ammo
 	{
 		[ CreateAssetMenu( menuName="weapon/gun/ammo/base") ]
-		public class Ammo : chibi_base.Chibi_object
+		public class Ammo : chibi.Chibi_object
 		{
 			public Bullet_motor prefab_bullet;
 
@@ -31,7 +30,7 @@ namespace weapon
 			}
 
 			public virtual Bullet_motor instanciate(
-				Vector3 position, rol_sheet.Rol_sheet owner )
+				Vector3 position, chibi.rol_sheet.Rol_sheet owner )
 			{
 				Bullet_motor obj = instanciate( position );
 				var controller = obj.GetComponent<

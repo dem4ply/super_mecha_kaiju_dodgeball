@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 namespace fisher.controller
 {
-	public class Fish_controller : chibi.controller.Controller
+	public class Fish_controller : chibi.controller.Controller_motor
 	{
 		public chibi.radar.Radar_box radar;
 		public chibi.rol_sheet.Rol_sheet rol;

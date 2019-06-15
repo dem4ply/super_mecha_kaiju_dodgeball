@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 
-namespace controller {
-	namespace eye {
+namespace controller
+{
+	namespace eye
+	{
 		public class Eye : MonoBehaviour {
 
 			public Transform look_at;

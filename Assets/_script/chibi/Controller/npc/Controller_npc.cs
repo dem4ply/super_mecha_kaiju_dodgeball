@@ -4,7 +4,7 @@ using chibi.motor;
 
 namespace chibi.controller.npc
 {
-	public class Controller_npc : Controller
+	public class Controller_npc : Controller_motor
 	{
 
 		public Vector3 angle_vector_for_floor = Vector3.left;
@@ -60,7 +60,8 @@ namespace chibi.controller.npc
 		#region manejo de salto
 		public virtual void jump()
 		{
-			jump_motor.want_to_jump = true;
+			if ( jump_motor )
+				jump_motor.want_to_jump = true;
 		}
 		#endregion
 
@@ -151,16 +152,8 @@ namespace chibi.controller.npc
 		{
 			base.load_motors();
 			jump_motor = GetComponent<Vertical_jump>();
-			if ( !jump_motor )
-			{
-				Debug.LogError(
-					string.Format(
-						"no se encontro un motor de salto en el object {0}" +
-						"se agrega un motor", name ) );
-				jump_motor = gameObject.AddComponent<Vertical_jump>();
-			}
-
-			jump_motor.manager_collisions = manager_collisions;
+			if( jump_motor )
+				jump_motor.manager_collisions = manager_collisions;
 			motor.manager_collisions = manager_collisions;
 		}
 	}

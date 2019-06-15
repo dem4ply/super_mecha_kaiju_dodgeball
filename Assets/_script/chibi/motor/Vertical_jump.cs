@@ -1,14 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
-using controller;
-using controller.animator;
-using Unity.Entities;
 using System;
 
 namespace chibi.motor
 {
-	[ RequireComponent( typeof( Rigidbody ) ) ]
-	public class Vertical_jump: Chibi_behaviour
+	[RequireComponent( typeof( Rigidbody ) )]
+	public class Vertical_jump : Chibi_behaviour
 	{
 		public float max_jump_heigh = 4f;
 		public float min_jump_heigh = 1f;
@@ -83,6 +79,17 @@ namespace chibi.motor
 					"no se encontro un ridgetbody en el objecto {0}", name ) );
 
 			ridgetbody.useGravity = false;
+		}
+
+		protected virtual void FixedUpdate()
+		{
+			if ( want_to_jump && is_grounded )
+			{
+				ridgetbody.velocity = new Vector3(
+					ridgetbody.velocity.x, desire_velocity,
+					ridgetbody.velocity.z );
+				want_to_jump = false;
+			}
 		}
 	}
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 namespace events
@@ -9,7 +7,7 @@ namespace events
 	{
 		namespace handler
 		{
-			public class Event_handler : chibi_base.Chibi_behaviour
+			public class Event_handler : chibi.Chibi_behaviour
 			{
 				protected virtual void OnTriggerEnter( Collider other )
 				{

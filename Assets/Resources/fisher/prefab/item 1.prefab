@@ -90,10 +90,9 @@ GameObject:
   - component: {fileID: 4941103642461438396}
   - component: {fileID: 6789975804136253545}
   - component: {fileID: 9070254983391556041}
-  - component: {fileID: 6769399645388490798}
   - component: {fileID: 9039608793319363103}
   - component: {fileID: 3673225459236046202}
-  - component: {fileID: 8409895491627135446}
+  - component: {fileID: 4252197570812895838}
   - component: {fileID: 8597211190022079670}
   m_Layer: 11
   m_Name: item 1
@@ -145,18 +144,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6769399645388490798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5957274175134754348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bf10cdea1344482e91a4f2b58506b77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &9039608793319363103
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -196,7 +183,7 @@ MonoBehaviour:
   is_steering: 1
   steering_mass: 20
   velocity_acceleration: {x: 0, y: 0, z: 0}
---- !u!114 &8409895491627135446
+--- !u!114 &4252197570812895838
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,12 +192,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5957274175134754348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5388755b465cd8e4c909890a330a8d0b, type: 3}
+  m_Script: {fileID: 11500000, guid: e7d01f963f253864ba718dea65dfaf9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
   motor: {fileID: 0}
-  actuator_controller: {fileID: 0}
   pasive_motor: 0
 --- !u!114 &8597211190022079670
 MonoBehaviour:
@@ -226,7 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug_mode: 1
   target: {fileID: 0}
-  controller: {fileID: 8409895491627135446}
+  controller: {fileID: 4252197570812895838}
   behaviors:
   - {fileID: 11400000, guid: fff42a07bb6e3af4197a48793a5ac9c1, type: 2}
   - {fileID: 11400000, guid: f29012b63b3b4f948925543b05c468e3, type: 2}

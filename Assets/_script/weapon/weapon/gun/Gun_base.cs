@@ -1,7 +1,5 @@
-﻿using UnityEngine;
-using weapon.stat;
+﻿using weapon.stat;
 using weapon.ammo;
-using controller.controllers;
 
 
 namespace weapon
@@ -26,12 +24,14 @@ namespace weapon
 
 			public override void attack()
 			{
-				shot();
+				// shot();
 			}
 
+			/*
 			public abstract Bullet_controller_3d shot();
 			public abstract Bullet_controller_3d shot(
 				rol_sheet.Rol_sheet owner );
+			*/
 
 			protected override void _init_cache()
 			{
@@ -48,7 +48,7 @@ namespace weapon
 
 			public virtual void start_shoting()
 			{
-				shot( owner );
+				// shot( owner );
 				if ( continue_shotting )
 					Invoke( "start_shoting", 1 / stat.rate_fire );
 			}
@@ -59,12 +59,12 @@ namespace weapon
 				continue_shotting = false;
 			}
 
-			protected virtual chibi_base.Chibi_object load_default_ammo()
+			protected virtual chibi.Chibi_object load_default_ammo()
 			{
 				return Ammo.CreateInstance<Ammo>().find_default<Ammo>();
 			}
 
-			protected virtual chibi_base.Chibi_object load_default_stat()
+			protected virtual chibi.Chibi_object load_default_stat()
 			{
 				return Gun_stat.CreateInstance<Gun_stat>()
 					.find_default<Gun_stat>();

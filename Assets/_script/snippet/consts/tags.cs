@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-
-namespace helper
+﻿namespace helper
 {
 	namespace consts
 	{
@@ -21,6 +15,13 @@ namespace helper
 			{
 				get {
 					return "Player";
+				}
+			}
+
+			public static string damage
+			{
+				get {
+					return "damage";
 				}
 			}
 		}

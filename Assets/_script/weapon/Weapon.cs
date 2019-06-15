@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using chibi_base;
 using weapon.bullet;
 
 
@@ -8,7 +6,7 @@ namespace weapon
 {
 	namespace weapon
 	{
-		public class Weapon : Chibi_behaviour
+		public class Weapon : chibi.Chibi_behaviour
 		{
 			public GameObject prefab_bullet;
 			public Transform bullet_spawn;

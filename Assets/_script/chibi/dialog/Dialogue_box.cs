@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using chibi.controller.avatar;
 
@@ -177,6 +176,25 @@ namespace chibi.dialog
 						"the dialog box {0} no have dialogues",
 						helper.game_object.name.full( this ) ) );
 			_instanciate_actors = new List<Controller_avatar>();
+		}
+
+		private void Update()
+		{
+			if ( put_texy )
+			{
+				total_delta_time += Time.deltaTime;
+				float total_of_letters = ( letters_by_second * total_delta_time );
+
+				// detener el calculo cuando escriba todas las letras
+				if ( total_of_letters >= current_text.Length )
+				{
+					put_texy = false;
+					pull_all_text();
+				}
+				else
+					dialogue_box.text = current_text.Substring(
+						0, Mathf.RoundToInt( total_of_letters ) );
+			}
 		}
 	}
 }

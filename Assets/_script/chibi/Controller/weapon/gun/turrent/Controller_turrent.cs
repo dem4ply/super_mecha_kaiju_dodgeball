@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using chibi.weapon.gun;
-using rol_sheet;
+using chibi.rol_sheet;
 
 namespace chibi.controller.weapon.gun.turrent
 {
-	public class Controller_turrent : Controller
+	public class Controller_turrent : Controller_motor
 	{
 		Gun[] guns;
 

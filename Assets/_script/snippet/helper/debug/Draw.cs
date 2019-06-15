@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using chibi_base;
 
 namespace helper
 {
@@ -18,7 +16,7 @@ namespace helper
 						var a = _instance as chibi.Chibi_behaviour;
 						if ( a )
 							return a.debug_mode;
-						var b = _instance as chibi_base.Chibi_behaviour;
+						var b = _instance as chibi.Chibi_behaviour;
 						if ( b )
 							return b.debug_mode;
 						return false;
@@ -30,10 +28,10 @@ namespace helper
 					_instance = instance;
 				}
 
-				public void arrow( Vector3 position, Vector3 direction )
+				public void arrow( Vector3 position, Vector3 direction, float duration=0f )
 				{
 					if ( debuging )
-						helper.draw.arrow.debug( position, direction );
+						helper.draw.arrow.debug( position, direction, duration:duration );
 				}
 
 				public void line( Vector3 position, Vector3 to_position )
@@ -78,9 +76,9 @@ namespace helper
 					line( _instance.transform.position, to_position );
 				}
 
-				public void arrow( Vector3 direction )
+				public void arrow( Vector3 direction, float duration=0f )
 				{
-					arrow( _instance.transform.position, direction );
+					arrow( _instance.transform.position, direction, duration:duration );
 				}
 
 				public void arrow_to( Vector3 position, Vector3 to_position )

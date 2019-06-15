@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using Unity.Entities;
+﻿using UnityEngine;
 using weapon.stat;
 using weapon.ammo;
 
@@ -14,9 +12,12 @@ namespace chibi.weapon.gun
 		public Gun_stat stat;
 		public Ammo ammo;
 
+		public Transform position_of_shot;
+
 		public bool automatic_shot = false;
 
 		[HideInInspector] public float last_automatic_shot = 0f;
+		protected Vector3 _aim_direction;
 
 		public Vector3 direction_shot
 		{
@@ -30,6 +31,17 @@ namespace chibi.weapon.gun
 			}
 		}
 
+		public Vector3 aim_direction
+		{
+			get {
+				return _aim_direction;
+			}
+			set {
+				_aim_direction = transform.position + value;
+				transform.LookAt( _aim_direction );
+			}
+		}
+
 		public abstract Controller_bullet shot();
 
 		public override void attack()
@@ -40,22 +52,22 @@ namespace chibi.weapon.gun
 		protected override void _init_cache()
 		{
 			base._init_cache();
-			if ( ammo == null )
+			if ( !ammo )
 			{
 				ammo = load_default_ammo() as Ammo;
 			}
-			if ( stat == null )
+			if ( !stat )
 			{
 				stat = load_default_stat() as Gun_stat;
 			}
 		}
 
-		protected virtual chibi_base.Chibi_object load_default_ammo()
+		protected virtual chibi.Chibi_object load_default_ammo()
 		{
 			return Ammo.CreateInstance<Ammo>().find_default<Ammo>();
 		}
 
-		protected virtual chibi_base.Chibi_object load_default_stat()
+		protected virtual chibi.Chibi_object load_default_stat()
 		{
 			return Gun_stat.CreateInstance<Gun_stat>()
 				.find_default<Gun_stat>();
@@ -64,9 +76,34 @@ namespace chibi.weapon.gun
 		protected void OnDrawGizmos()
 		{
 			Gizmos.color = Color.blue;
-			Gizmos.DrawWireSphere( transform.position, 0.2f );
-			Gizmos.color = Color.red;
-			helper.draw.arrow.gizmo( transform.position, direction_shot );
+			if ( position_of_shot )
+			{
+				Gizmos.DrawWireSphere( position_of_shot.position, 0.2f );
+				Gizmos.color = Color.red;
+				helper.draw.arrow.gizmo( position_of_shot.position, direction_shot );
+			}
+			else
+			{
+				Gizmos.DrawWireSphere( transform.position, 0.2f );
+				Gizmos.color = Color.red;
+				helper.draw.arrow.gizmo( transform.position, direction_shot );
+			}
+		}
+
+		private void Update()
+		{
+			if ( automatic_shot )
+				do_automatic_shot( Time.deltaTime, this );
+		}
+
+		protected virtual void do_automatic_shot( float delta_time, Gun gun )
+		{
+			gun.last_automatic_shot += delta_time;
+			if ( gun.last_automatic_shot > gun.rate_fire )
+			{
+				gun.last_automatic_shot -= gun.rate_fire;
+				gun.shot();
+			}
 		}
 	}
 }

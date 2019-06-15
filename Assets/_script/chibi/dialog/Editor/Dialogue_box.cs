@@ -1,10 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
-using snippet.objects;
-using UnityEditor.SceneManagement;
-using UnityEngine.SceneManagement;
 
 
 namespace chibi.dialog.editor

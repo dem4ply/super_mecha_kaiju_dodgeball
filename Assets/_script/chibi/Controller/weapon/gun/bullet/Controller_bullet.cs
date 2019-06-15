@@ -1,11 +1,10 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-using chibi.motor;
-using damage;
+﻿using System.Collections.Generic;
+using chibi.damage;
+using UnityEngine;
 
 namespace chibi.controller.weapon.gun.bullet
 {
-	public class Controller_bullet : Controller
+	public class Controller_bullet : Controller_motor
 	{
 		public Damage[] damages
 		{
@@ -16,6 +15,18 @@ namespace chibi.controller.weapon.gun.bullet
 				if ( damage != null )
 					result.Add( damage );
 				return result.ToArray();
+			}
+		}
+
+		public override Vector3 desire_direction
+		{
+			get {
+				return base.desire_direction;
+			}
+
+			set {
+				base.desire_direction = value;
+				motor.desire_speed = motor.max_speed;
 			}
 		}
 	}

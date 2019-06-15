@@ -5,7 +5,7 @@ namespace helper
 {
 	namespace life
 	{
-		public class Life_timer : chibi_base.Chibi_behaviour
+		public class Life_timer : chibi.Chibi_behaviour
 		{
 			public Life_span live_span;
 
@@ -27,11 +27,14 @@ namespace helper
 
 			protected virtual void died()
 			{
+				throw new System.NotImplementedException();
+				/*
 				var motor = GetComponent<controller.motor.Motor_base>();
 				if ( motor != null )
 					motor.died();
 				else
 					Destroy( gameObject );
+				*/
 			}
 		}
 	}

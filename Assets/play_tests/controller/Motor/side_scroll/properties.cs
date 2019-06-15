@@ -1,9 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-using helper.test.assert;
 using chibi.controller.ai;
 using chibi.motor;
 
@@ -33,8 +31,8 @@ namespace tests.controller.motor.side_scroll
 		[UnityTest]
 		public IEnumerator when_is_not_moving_his_speed_should_be_0()
 		{
-			Assert.AreEqual( motor.current_speed.magnitude, 0 );
 			yield return new WaitForSeconds( 1 );
+			Assert.AreEqual( 0, motor.current_speed.magnitude, 0.001f );
 		}
 
 		[UnityTest]

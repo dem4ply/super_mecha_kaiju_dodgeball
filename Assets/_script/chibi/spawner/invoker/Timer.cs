@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-
-namespace chibi.spawner.invoker
+﻿namespace chibi.spawner.invoker
 {
 	public class Timer : Invoker
 	{
@@ -22,6 +19,11 @@ namespace chibi.spawner.invoker
 					_sigma_time -= frequency;
 				}
 			}
+		}
+
+		private void Update()
+		{
+			time += UnityEngine.Time.deltaTime;
 		}
 	}
 }

@@ -10,14 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1359830470592594703}
   - component: {fileID: 1359830470592594690}
-  - component: {fileID: 1359830470592594697}
   - component: {fileID: 1359830470592594700}
-  - component: {fileID: 1359830470592594702}
+  - component: {fileID: 2238620801877690898}
   - component: {fileID: 666477725944427768}
   - component: {fileID: 780768394898340606}
   - component: {fileID: 1213317015969613010}
-  - component: {fileID: 4496845336156898826}
   - component: {fileID: 3050522909085782204}
+  - component: {fileID: 222006975561104409}
   m_Layer: 0
   m_Name: npc
   m_TagString: Untagged
@@ -55,18 +54,6 @@ CapsuleCollider:
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: 0.75, z: 0}
---- !u!114 &1359830470592594697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359830470592594691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bf10cdea1344482e91a4f2b58506b77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1359830470592594700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +74,10 @@ MonoBehaviour:
     _x: 0
     _y: 0
     _z: 0
---- !u!114 &1359830470592594702
+  is_steering: 0
+  steering_mass: 1
+  velocity_acceleration: {x: 0, y: 0, z: 0}
+--- !u!114 &2238620801877690898
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,12 +86,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1359830470592594691}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5388755b465cd8e4c909890a330a8d0b, type: 3}
+  m_Script: {fileID: 11500000, guid: e7d01f963f253864ba718dea65dfaf9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
   motor: {fileID: 0}
-  actuator_controller: {fileID: 0}
+  pasive_motor: 0
 --- !u!54 &666477725944427768
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -148,26 +138,6 @@ MonoBehaviour:
   max_jump_heigh: 4
   min_jump_heigh: 1
   jump_time: 0.4
---- !u!114 &4496845336156898826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359830470592594691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b646c874bf37ddb4e9516258cc0ed622, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug_mode: 0
-  stat: {fileID: 0}
-  total_of_points: 1
-  current_points: 1
-  damage_mask:
-    serializedVersion: 2
-    m_Bits: 768
-  rol: {fileID: 0}
 --- !u!114 &3050522909085782204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +152,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug_mode: 0
   sheet: {fileID: 11400000, guid: cb2083705fefa1f44a9c342e47819873, type: 2}
+  hp:
+    use_constant: 1
+    _current: 1
+    _max: 1
+    variable: {fileID: 0}
+--- !u!114 &222006975561104409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359830470592594691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e121132dc80ecd344a8498764aa7fecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  rol: {fileID: 0}
+  use_hp_from_rol: 1
+  stat:
+    use_constant: 1
+    _current: 0
+    _max: 0
+    variable: {fileID: 0}
 --- !u!1 &1359830471659977002
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,10 +215,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1359830471659977013}
     m_Modifications:
-    - target: {fileID: 100326, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
-      propertyPath: m_Name
-      value: unitychan
-      objectReference: {fileID: 0}
     - target: {fileID: 400326, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -267,6 +258,10 @@ PrefabInstance:
     - target: {fileID: 400326, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100326, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
+      propertyPath: m_Name
+      value: unitychan
       objectReference: {fileID: 0}
     - target: {fileID: 13700020, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
       propertyPath: m_AABB.m_Center.y

@@ -1,14 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
-using controller;
-using controller.animator;
-using Unity.Entities;
-using System;
 
 namespace chibi.motor
 {
 	[ RequireComponent( typeof( Rigidbody ) ) ]
-	public class Motor : Chibi_behaviour
+	public class Motor : chibi.Chibi_behaviour
 	{
 		public Vector3 current_speed = Vector3.zero;
 		public float desire_speed;
@@ -85,7 +80,14 @@ namespace chibi.motor
 			ridgetbody = GetComponent<Rigidbody>();
 			if ( !ridgetbody )
 				Debug.Log( string.Format(
-					"no se encontro un ridgetbody en el objeco {0}", name ) );
+					"no se encontro un ridgetbody en el en el motor '{0}'",
+					helper.game_object.name.full( this ) ) );
+		}
+
+		protected virtual void FixedUpdate()
+		{
+			ridgetbody.velocity = desire_velocity;
+			current_speed = desire_velocity;
 		}
 	}
 }
