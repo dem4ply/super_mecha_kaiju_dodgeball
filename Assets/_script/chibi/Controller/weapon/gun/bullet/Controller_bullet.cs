@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using damage;
+using chibi.damage;
 using UnityEngine;
 
 namespace chibi.controller.weapon.gun.bullet

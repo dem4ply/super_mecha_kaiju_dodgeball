@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using damage.motor;
+using chibi.damage.motor;
 
 namespace chibi.controller
 {
@@ -11,7 +11,7 @@ namespace chibi.controller
 
 		private void Update()
 		{
-			var hp_motor = GetComponent<HP_motor_old>();
+			var hp_motor = GetComponent<HP_engine>();
 			if ( hp_motor.is_dead )
 			{
 				_delta_time += Time.deltaTime;

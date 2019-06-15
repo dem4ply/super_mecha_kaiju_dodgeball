@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09c9f1e715fb43244aa16151be04b02d, type: 3}
-  m_Name: dodger_hp
+  m_Script: {fileID: 11500000, guid: ba82ae121cf73594a872d6e5fe5eb084, type: 3}
+  m_Name: slasing
   m_EditorClassIdentifier: 
-  total: 1
-  current: 1
+  amount: 1

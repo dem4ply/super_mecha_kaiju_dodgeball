@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
-using damage.motor;
+using chibi.damage.motor;
 
 namespace chibi.controller
 {
@@ -11,8 +11,8 @@ namespace chibi.controller
 		public GameObject win_1, win_2;
 		public bool end_game;
 
-		public List<HP_motor_old> dodgers_player_1;
-		public List<HP_motor_old> dodgers_player_2;
+		public List<HP_engine> dodgers_player_1;
+		public List<HP_engine> dodgers_player_2;
 
 		private void Update()
 		{

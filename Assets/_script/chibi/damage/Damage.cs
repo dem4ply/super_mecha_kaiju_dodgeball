@@ -6,7 +6,7 @@ using UnityEngine;
 namespace chibi.damage
 {
 	public class Damage : chibi.Chibi_behaviour {
-		public damage.type.Damage damage;
+		public chibi.damage.damage.Damage damage;
 		public chibi.rol_sheet.Rol_sheet owner;
 		[HideInInspector] public float amount = 1;
 

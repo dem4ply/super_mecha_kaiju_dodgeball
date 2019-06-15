@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1768364415723452434}
   - component: {fileID: 1372685758996145881}
   - component: {fileID: 6703610102897278654}
-  - component: {fileID: 4169775498495162844}
+  - component: {fileID: 6339340060676393504}
   m_Layer: 0
   m_Name: bullet_base
   m_TagString: Untagged
@@ -150,7 +150,7 @@ MonoBehaviour:
   debug_mode: 0
   motor: {fileID: 0}
   pasive_motor: 0
---- !u!114 &4169775498495162844
+--- !u!114 &6339340060676393504
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,11 +159,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6795797179513685633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3798b99c99262ac4192453d517b45012, type: 3}
+  m_Script: {fileID: 11500000, guid: ec54c402a6c10684398a927d1d66c71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
-  damage: {fileID: 11400000, guid: a026e166ecf88204894953185b2bc371, type: 2}
-  behavior: {fileID: 0}
+  damage: {fileID: 11400000, guid: 094840b56b394244dabf995ccde3ef63, type: 2}
   owner: {fileID: 0}
   amount: 1

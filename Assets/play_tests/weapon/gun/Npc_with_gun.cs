@@ -3,7 +3,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using helper.test.assert;
-using damage;
+using chibi.damage;
 using chibi.rol_sheet;
 
 namespace tests.controller.weapon.gun
