@@ -56,7 +56,7 @@ namespace chibi.editor.tool.reference
 
 			if ( useConstant.boolValue )
 			{
-				Debug.Log( position );
+				// Debug.Log( position );
 				Rect current_position = new Rect( position );
 				current_position.yMin += popupStyle.margin.top;
 				current_position.width = ( position.width - buttonRect.width ) / 2;

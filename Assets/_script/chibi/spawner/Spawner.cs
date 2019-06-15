@@ -12,7 +12,13 @@ namespace chibi.spawner
 
 		public virtual GameObject spawn()
 		{
-			var result = _instance( objects[ object_index++ ] );
+			var result = _instance( next() );
+			return result;
+		}
+
+		protected virtual GameObject next()
+		{
+			var result = objects[ object_index++ ];
 			object_index %= objects.Count;
 			return result;
 		}
@@ -20,6 +26,11 @@ namespace chibi.spawner
 		protected virtual GameObject _instance( GameObject obj )
 		{
 			return helper.instantiate._( obj, transform.position );
+		}
+
+		protected virtual GameObject _instance( GameObject obj, Vector3 position )
+		{
+			return helper.instantiate._( obj, position );
 		}
 	}
 }
