@@ -210,9 +210,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d897d9d43a817a540954c52bc8783510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug_mode: 1
+  debug_mode: 0
   target: {fileID: 0}
   controller: {fileID: 4252197570812895838}
   behaviors:
-  - {fileID: 11400000, guid: fff42a07bb6e3af4197a48793a5ac9c1, type: 2}
+  - {fileID: 11400000, guid: f66704eeded275e48a2c5fb5b18fbbb8, type: 2}
   - {fileID: 11400000, guid: f29012b63b3b4f948925543b05c468e3, type: 2}
+  - {fileID: 11400000, guid: 65d111ec795d793489ab22cc6e7ec828, type: 2}
