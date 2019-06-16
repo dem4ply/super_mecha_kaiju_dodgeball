@@ -118,6 +118,11 @@ PrefabInstance:
       propertyPath: m_Interpolate
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1768364415723452434, guid: aa2c84ed325fc884c9e938c016087c11,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6339340060676393504, guid: aa2c84ed325fc884c9e938c016087c11,
         type: 3}
       propertyPath: m_Enabled
