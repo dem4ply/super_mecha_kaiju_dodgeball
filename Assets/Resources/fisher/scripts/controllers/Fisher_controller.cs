@@ -11,9 +11,10 @@ namespace fisher.controller
 		public void throw_net( Vector3 position )
 		{
 			gun.aim_to( position );
-			Controller_bullet_chaser bullet = (Controller_bullet_chaser)gun.shot();
+			var bullet = (Controller_bullet_yoyo)gun.shot();
 			var target_net = helper.instantiate._( prefab_target_net, position );
 			bullet.target = target_net.transform;
+			bullet.origin = transform;
 		}
 
 		protected override void _init_cache()
