@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a2d4f7f1bb66245be40fab318afc17, type: 3}
   m_Name: net ammo
   m_EditorClassIdentifier: 
-  prefab_bullet: {fileID: 2618548631625579270, guid: 44b8eb67c88c730489be312bedc47300,
+  prefab_bullet: {fileID: 441624436885331140, guid: fbebcafae89064441b5bae6e39baed5f,
     type: 3}
