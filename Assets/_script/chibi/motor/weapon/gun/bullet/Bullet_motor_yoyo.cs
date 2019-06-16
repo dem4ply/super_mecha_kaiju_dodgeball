@@ -9,23 +9,40 @@ namespace chibi.motor.weapons.gun.bullet
 		public Transform origin;
 		public float distant_for_return = 0.1f;
 
-		protected override void FixedUpdate()
+		public float distant_to_target
 		{
-			base.FixedUpdate();
-			float distance = Vector3.Distance( transform.position, target.position );
-			if ( distance < distant_for_return )
+			get {
+				return Vector3.Distance( transform.position, target.position );
+			}
+		}
+
+		public bool is_in_target
+		{
+			get {
+				return distant_to_target < distant_for_return;
+			}
+		}
+
+		protected void Update()
+		{
+			if ( is_in_target )
 			{
-				if ( origin )
-				{
-					target = origin;
-					origin = null;
-				}
-				else
-				{
-					recycle();
-				}
+				on_reach_target();
 			}
 			desire_direction = target.position - transform.position;
+		}
+
+		public virtual void on_reach_target()
+		{
+			if ( origin )
+			{
+				target = origin;
+				origin = null;
+			}
+			else
+			{
+				recycle();
+			}
 		}
 	}
 }
