@@ -62,6 +62,11 @@ namespace chibi.weapon.gun
 			}
 		}
 
+		public virtual void aim_to( Vector3 position )
+		{
+			aim_direction = position - transform.position;
+		}
+
 		protected virtual chibi.Chibi_object load_default_ammo()
 		{
 			return Ammo.CreateInstance<Ammo>().find_default<Ammo>();

@@ -43,8 +43,8 @@ namespace chibi.inventory
 
 		protected virtual void add_single_item( Item item )
 		{
-			item.transform.parent = container;
 			item.gameObject.SetActive( false );
+			item.transform.parent = container;
 		}
 
 		protected override void _init_cache()
