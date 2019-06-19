@@ -10,5 +10,17 @@ namespace fisher.rol_sheet
 		public chibi.rol_sheet.gender.Gender gender;
 		public chibi.tool.reference.Need_reference reproduction;
 		public bool want_to_reproducing = false;
+
+		public fisher.tool.fish_set all_fish;
+
+		private void OnEnable()
+		{
+			all_fish.add( this );
+		}
+
+		private void OnDisable()
+		{
+			all_fish.remove( this );
+		}
 	}
 }

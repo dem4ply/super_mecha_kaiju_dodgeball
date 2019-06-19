@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfdd24cfcceb49d4295246a657281501, type: 3}
-  m_Name: reproduction default
+  m_Script: {fileID: 11500000, guid: cb19577547afcbb488dea8d86fc63749, type: 3}
+  m_Name: all_fish
   m_EditorClassIdentifier: 
-  delta: 0.05
-  duration: 1
-  no_duration_limit: 1
-  amount: 0.05
+  list: []
