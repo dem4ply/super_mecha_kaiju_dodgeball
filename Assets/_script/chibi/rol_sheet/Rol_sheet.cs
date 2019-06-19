@@ -10,6 +10,7 @@ namespace chibi.rol_sheet
 		public Sheet sheet;
 		[ SerializeField ]
 		public List<Buff_attacher> buffos;
+		public List<Buff> start_buffos;
 		protected List<Buff_attacher> buffos_are_going_to_remove;
 		public chibi.tool.reference.Stat_reference hp;
 
@@ -31,6 +32,8 @@ namespace chibi.rol_sheet
 			base._init_cache();
 			buffos = new List<Buff_attacher>();
 			buffos_are_going_to_remove = new List<Buff_attacher>();
+			foreach ( var buff in start_buffos )
+				attach_buff( buff );
 		}
 
 		public void clean()

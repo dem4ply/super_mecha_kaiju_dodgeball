@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 3673225459236046202}
   - component: {fileID: 4252197570812895838}
   - component: {fileID: 8597211190022079670}
+  - component: {fileID: 1742534749443508700}
   m_Layer: 11
   m_Name: fish
   m_TagString: Untagged
@@ -217,3 +218,31 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f66704eeded275e48a2c5fb5b18fbbb8, type: 2}
   - {fileID: 11400000, guid: f29012b63b3b4f948925543b05c468e3, type: 2}
   - {fileID: 11400000, guid: 65d111ec795d793489ab22cc6e7ec828, type: 2}
+--- !u!114 &1742534749443508700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5957274175134754348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df03fa13ed28846438a7b44ab386fabc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  sheet: {fileID: 0}
+  start_buffos:
+  - {fileID: 11400000, guid: 2735728a1b910c64ea020e7ff57c9098, type: 2}
+  hp:
+    use_constant: 1
+    _current: 1
+    _max: 1
+    variable: {fileID: 0}
+  gender: {fileID: 0}
+  reproduction:
+    use_constant: 1
+    _current: 0
+    _max: 1
+    variable: {fileID: 0}
+  want_to_reproducing: 0

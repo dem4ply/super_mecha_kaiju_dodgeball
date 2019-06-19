@@ -64,7 +64,7 @@ namespace tests.rol_sheet.buff
 			rol_sheet.attach_buff( buff );
 			yield return new WaitForSeconds( 2f );
 			var attacher = rol_sheet.buffos.Find( x => x.buff == buff );
-			Assert.IsNull( attacher );
+			Assert.IsNotNull( attacher );
 			yield return new WaitForSeconds( 0.1f );
 		}
 	}

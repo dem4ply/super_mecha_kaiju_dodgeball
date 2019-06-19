@@ -27,7 +27,7 @@ namespace chibi.rol_sheet.buff
 
 			set {
 				_total_duration = value;
-				if ( total_duration > buff.duration )
+				if ( !buff.no_duration_limit && total_duration > buff.duration )
 					unattach();
 			}
 		}
