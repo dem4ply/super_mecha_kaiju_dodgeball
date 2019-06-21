@@ -12,15 +12,18 @@ namespace fisher.rol_sheet
 		public bool want_to_reproducing = false;
 
 		public fisher.tool.fish_set all_fish;
+		public fisher.tool.fish_specie_set specie;
 
 		private void OnEnable()
 		{
 			all_fish.add( this );
+			specie.add( this );
 		}
 
 		private void OnDisable()
 		{
 			all_fish.remove( this );
+			specie.add( this );
 		}
 	}
 }

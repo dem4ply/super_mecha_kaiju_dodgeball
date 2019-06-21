@@ -247,3 +247,4 @@ MonoBehaviour:
     variable: {fileID: 0}
   want_to_reproducing: 0
   all_fish: {fileID: 11400000, guid: dafcea51ea06b7944979713e54497fca, type: 2}
+  specie: {fileID: 11400000, guid: ef28b7b3c99d3cf48be2bab15aad56ec, type: 2}
