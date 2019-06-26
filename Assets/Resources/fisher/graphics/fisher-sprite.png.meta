@@ -1,7 +1,16 @@
 fileFormatVersion: 2
-guid: 0eece2c0cdd024278b0aaf3164f4368d
+guid: 7357f696536fa4b7499d3c38f837783e
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -7821792437863827019
+    second: fisher-sprite_0
+  - first:
+      213: -1609407036726470108
+    second: fisher-sprite_1
+  - first:
+      213: -6400190679932268690
+    second: fisher-sprite_2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -31,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -40,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -82,11 +91,74 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: fisher-sprite_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 12
+        width: 313
+        height: 345
+      alignment: 9
+      pivot: {x: 0.49039802, y: 0.65638727}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf8aba75490d54a8cbbce5046b97402d
+      internalID: -7821792437863827019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fisher-sprite_1
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 10
+        width: 308
+        height: 345
+      alignment: 9
+      pivot: {x: 0.48248747, y: 0.65351415}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 032af28121a97421982e5efdb17271ac
+      internalID: -1609407036726470108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fisher-sprite_2
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 11
+        width: 282
+        height: 345
+      alignment: 9
+      pivot: {x: 0.43803135, y: 0.6565409}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20265f4ec9e9a46dca8dd4372cff10e3
+      internalID: -6400190679932268690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 27db980d353694da997d921719850245
     internalID: 0
     vertices: []
     indices: 
