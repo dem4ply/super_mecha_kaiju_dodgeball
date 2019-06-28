@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 290915647009531428}
   - component: {fileID: 6004587053449431399}
+  - component: {fileID: 8181687077058118300}
   m_Layer: 0
   m_Name: fisher
   m_TagString: Untagged
@@ -109,6 +110,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8181687077058118300
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3555226562631023749}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 97a1e720563884c199380474d7b4a88e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4251025449530491874
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug_mode: 0
   sheet: {fileID: 11400000, guid: 367346ecbc0501e4aa4d504ca6adc46d, type: 2}
+  start_buffos: []
   hp:
     use_constant: 1
     _current: 1
