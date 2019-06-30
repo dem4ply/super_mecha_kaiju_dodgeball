@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 564c5281b05519d4a9307be719c1afe6, type: 3}
   m_Name: wander
   m_EditorClassIdentifier: 
-  weight: 1
+  weight: 5
   debug_color: {r: 0, g: 0.060156345, b: 1, a: 1}
   seek_color: {r: 1, g: 0.868332, b: 0, a: 1}
   circle_distance: 3

@@ -109,7 +109,7 @@ MonoBehaviour:
   debug_mode: 0
   current_speed: {x: 0, y: 0, z: 0}
   desire_speed: 0
-  max_speed: 4
+  max_speed: 20
   period_to_desice_direction:
     _x: 0
     _y: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   ammo: {fileID: 0}
   target: {fileID: 0}
   origin: {fileID: 0}
-  distant_for_return: 0.1
+  distant_for_return: 0.2
   catch_radar:
     size: {x: 1, y: 2, z: 1}
     rotation: {x: 0, y: 0, z: 0, w: 0}
