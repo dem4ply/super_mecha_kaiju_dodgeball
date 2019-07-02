@@ -9,12 +9,14 @@ public class GameManager : MonoBehaviour
 
     public Text scoreText;
     int scorePlayer = 0;
+    int maxScorePlayer;
 
     public Canvas canvasPause, canvasGameOver;
 
     // Start is called before the first frame update
     void Start()
     {
+        maxScorePlayer = PlayerPrefs.GetInt("MaxScore", 0);
         scoreText.text = "Score: " + scorePlayer;
     }
 
@@ -53,6 +55,11 @@ public class GameManager : MonoBehaviour
     // Mostar Game Over
     public void ShowGameOver()
     {
+        if (scorePlayer > maxScorePlayer)
+        {
+            PlayerPrefs.SetInt("MaxScore", scorePlayer);
+            maxScorePlayer = scorePlayer;
+        }
 
         //Time.timeScale = 0;           <=== Detener tiempo en 'GameOver'
         canvasGameOver.enabled = true;
