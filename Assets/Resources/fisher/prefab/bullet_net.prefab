@@ -122,7 +122,7 @@ MonoBehaviour:
   origin: {fileID: 0}
   distant_for_return: 0.2
   catch_radar:
-    size: {x: 1, y: 2, z: 1}
+    size: {x: 2, y: 5, z: 2}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     masks:
     - serializedVersion: 2

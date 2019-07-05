@@ -10,6 +10,8 @@ namespace fisher.controller
 		public chibi.weapon.gun.Gun gun;
 		public GameObject prefab_target_net;
 		public chibi.inventory.Inventory inventory;
+		public GameManager manager;
+		public chibi.inventory.item.Item band_fish;
 
 		public void throw_net( Vector3 position )
 		{
@@ -23,7 +25,16 @@ namespace fisher.controller
 
 		internal void grab( Item item )
 		{
-			inventory.add( item );
+			if ( band_fish == item.item )
+			{
+				item.recycle();
+				manager.add_band_fish();
+			}
+			else
+			{
+				inventory.add( item );
+				manager.AddPointsScore();
+			}
 		}
 
 		protected override void _init_cache()
