@@ -10,7 +10,7 @@ namespace fisher.controller
 		public chibi.weapon.gun.Gun gun;
 		public GameObject prefab_target_net;
 		public chibi.inventory.Inventory inventory;
-		public GameManager manager;
+		public fisher.game_manager.Game_manager_fisher manager;
 		public chibi.inventory.item.Item band_fish;
 
 		public void throw_net( Vector3 position )
