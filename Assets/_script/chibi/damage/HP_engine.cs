@@ -10,6 +10,9 @@ namespace chibi.damage
 			public bool use_hp_from_rol = true;
 			public chibi.tool.reference.Stat_reference stat;
 
+			public delegate void on_died_delegate();
+			public event on_died_delegate on_died;
+
 			public virtual bool is_dead
 			{
 				get {
@@ -80,9 +83,14 @@ namespace chibi.damage
 				stat.current -= damage.amount;
 				if ( is_dead )
 				{
-					Debug.Log( string.Format(
-						"[HP_engine] murio: '{0}'",
-						helper.game_object.name.full( this ) ) );
+					if ( on_died != null )
+						on_died();
+					else
+					{
+						Debug.Log( string.Format(
+							"[HP_engine] murio: '{0}'",
+							helper.game_object.name.full( this ) ) );
+					}
 				}
 			}
 		}

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4694026829245549316}
   - component: {fileID: 4694026829245549319}
   - component: {fileID: 2326769951513498727}
+  - component: {fileID: 8793060768936231635}
   m_Layer: 0
   m_Name: arkanoid block
   m_TagString: scenery
@@ -109,6 +110,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &8793060768936231635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4694026829245549318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e121132dc80ecd344a8498764aa7fecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  rol: {fileID: 0}
+  use_hp_from_rol: 0
+  stat:
+    use_constant: 1
+    _current: 1
+    _max: 1
+    variable: {fileID: 0}
 --- !u!1001 &2510383744093063309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -175,6 +196,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594224411450449072, guid: b4704030ba5622b4f8a91b67d6adb425,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594224411450449072, guid: b4704030ba5622b4f8a91b67d6adb425,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594224411450449072, guid: b4704030ba5622b4f8a91b67d6adb425,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4704030ba5622b4f8a91b67d6adb425, type: 3}

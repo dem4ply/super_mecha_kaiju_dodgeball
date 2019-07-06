@@ -890,6 +890,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: dodger mecha (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2315376189187604156, guid: 4f23678ef2e72b740b10b95df0fc8550,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315376189187604156, guid: 4f23678ef2e72b740b10b95df0fc8550,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315376189187604156, guid: 4f23678ef2e72b740b10b95df0fc8550,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2315376189187604147, guid: 4f23678ef2e72b740b10b95df0fc8550,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -944,21 +959,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2315376189187604156, guid: 4f23678ef2e72b740b10b95df0fc8550,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2315376189187604156, guid: 4f23678ef2e72b740b10b95df0fc8550,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2315376189187604156, guid: 4f23678ef2e72b740b10b95df0fc8550,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f23678ef2e72b740b10b95df0fc8550, type: 3}
@@ -1948,6 +1948,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1384835693294883901, guid: 5356b4e8c579d764d958eb4d998d0d9a,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5356b4e8c579d764d958eb4d998d0d9a, type: 3}
 --- !u!4 &1570382858 stripped
@@ -2272,15 +2277,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1188073126, guid: 2beb89c36d219c74b9a1caab2150691f, type: 3}
-      propertyPath: controller
-      value: 
-      objectReference: {fileID: 1241509850}
     - target: {fileID: 6677108092463324581, guid: 2beb89c36d219c74b9a1caab2150691f,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1188073126, guid: 2beb89c36d219c74b9a1caab2150691f, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1241509850}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2beb89c36d219c74b9a1caab2150691f, type: 3}
 --- !u!1001 &1893064441

@@ -62,7 +62,6 @@ namespace SMKD.motor
 				dodge_radar.ping();
 				foreach ( var hit in dodge_radar.hits )
 				{
-					Debug.Log( hit.transform.name );
 					if ( hit.transform.GetComponent<Controller_bullet>() )
 					{
 						dodge_ball( hit.transform );
@@ -180,13 +179,27 @@ namespace SMKD.motor
 			counter_pomodoro.reset();
 		}
 
-		private void OnDrawGizmos()
+		protected virtual void on_died()
 		{
-			Gizmos.color = Color.red;
-			Gizmos.DrawWireCube( catch_radar.origin.position, catch_radar.size );
+			Debug.Log( string.Format(
+				"[Dodger_motor] murio: '{0}'",
+				helper.game_object.name.full( this ) ) );
+		}
 
-			Gizmos.color = Color.blue;
-			Gizmos.DrawWireCube( dodge_radar.origin.position, dodge_radar.size );
+		protected virtual void OnEnable()
+		{
+			hp_motor.on_died += on_died;
+		}
+
+		protected virtual void OnDisable()
+		{
+			hp_motor.on_died -= on_died;
+		}
+
+		protected virtual void OnDrawGizmos()
+		{
+			catch_radar.draw_gizmos( Color.red );
+			dodge_radar.draw_gizmos( Color.blue );
 		}
 	}
 }

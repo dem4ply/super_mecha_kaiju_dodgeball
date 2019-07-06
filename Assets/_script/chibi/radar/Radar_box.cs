@@ -11,6 +11,7 @@ namespace chibi.radar
 		public Radar_box( Radar_box radar ) : base( radar )
 		{
 		}
+
 		public Radar_box(
 			Transform origin, Vector3 size, Quaternion rotation, List<LayerMask> masks,
 			Predicate< Transform > filter = null )
@@ -56,6 +57,20 @@ namespace chibi.radar
 				if ( results.Count == 0 )
 					masks_hits.Remove( mask );
 			}
+
+		}
+
+		public void draw_gizmos()
+		{
+			Gizmos.DrawWireCube( origin.position, size );
+		}
+
+		public void draw_gizmos( Color color )
+		{
+			var previus_color = Gizmos.color;
+			Gizmos.color = color;
+			Gizmos.DrawWireCube( origin.position, size );
+			Gizmos.color = previus_color;
 		}
 	}
 }
