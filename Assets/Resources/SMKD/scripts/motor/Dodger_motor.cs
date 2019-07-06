@@ -170,30 +170,23 @@ namespace SMKD.motor
 
 			hp_motor = GetComponent< chibi.damage.motor.HP_engine >();
 			if ( !hp_motor)
-				Debug.LogError( string.Format(
-					"[doger_motor] no encontro un 'hp_engine' en {0}",
-					helper.game_object.name.full( this ) ), this.gameObject );
+				debug.error( "no se encontro un hp_engine" );
 
 			counter_pomodoro = Pomodoro.CreateInstance<Pomodoro>();
 			counter_pomodoro.frecuency = counter_time;
 			counter_pomodoro.reset();
+			hp_motor.on_died += on_died;
+		}
+
+		protected override void _dispose_cache()
+		{
+			base._dispose_cache();
+			hp_motor.on_died -= on_died;
 		}
 
 		protected virtual void on_died()
 		{
-			Debug.Log( string.Format(
-				"[Dodger_motor] murio: '{0}'",
-				helper.game_object.name.full( this ) ) );
-		}
-
-		protected virtual void OnEnable()
-		{
-			hp_motor.on_died += on_died;
-		}
-
-		protected virtual void OnDisable()
-		{
-			hp_motor.on_died -= on_died;
+			debug.info( "murio" );
 		}
 
 		protected virtual void OnDrawGizmos()

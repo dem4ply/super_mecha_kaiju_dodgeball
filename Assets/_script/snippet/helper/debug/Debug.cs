@@ -27,6 +27,34 @@ namespace helper
 				_instance = instance;
 				draw = new draw.Draw( _instance );
 			}
+
+			public void info( string msg )
+			{
+				UnityEngine.Debug.Log( string.Format(
+					"[{0}]{{{1}}} {2}", type_name, full_name, msg ) );
+			}
+
+			public void warning( string msg )
+			{
+				UnityEngine.Debug.LogWarning( string.Format(
+					"[{0}]{{{1}}} {2}", type_name, full_name, msg ) );
+			}
+
+			public void error( string msg )
+			{
+				UnityEngine.Debug.LogError( string.Format(
+					"[{0}]{{{1}}} {2}", type_name, full_name, msg ) );
+			}
+
+			protected string full_name
+			{
+				get { return helper.game_object.name.full( _instance ); }
+			}
+
+			protected string type_name
+			{
+				get { return _instance.GetType().Name; }
+			}
 		}
 	}
 }

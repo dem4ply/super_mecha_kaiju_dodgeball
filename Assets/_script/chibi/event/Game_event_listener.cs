@@ -11,13 +11,15 @@ namespace chibi.events
 		public Game_event _event;
 		public UnityEvent response;
 
-		private void OnEnable()
+		protected override void _init_cache()
 		{
+			base._init_cache();
 			_event.register( this );
 		}
 
-		private void OnDisable()
+		protected override void _dispose_cache()
 		{
+			base._dispose_cache();
 			_event.unregister( this );
 		}
 

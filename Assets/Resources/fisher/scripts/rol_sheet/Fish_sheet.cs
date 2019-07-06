@@ -14,14 +14,16 @@ namespace fisher.rol_sheet
 		public fisher.tool.fish_set all_fish;
 		public fisher.tool.fish_specie_set specie;
 
-		private void OnEnable()
+		protected override void _init_cache()
 		{
+			base._init_cache();
 			all_fish.add( this );
 			specie.add( this );
 		}
 
-		private void OnDisable()
+		protected override void _dispose_cache()
 		{
+			base._dispose_cache();
 			all_fish.remove( this );
 			specie.add( this );
 		}

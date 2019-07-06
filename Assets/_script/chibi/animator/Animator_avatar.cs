@@ -65,13 +65,7 @@ namespace chibi.animator.avatar
 					helper.game_object.name.full( this ) ) );
 				transform_avatar = transform.Find( "model" );
 			}
-		}
-
-		#region funciones protegidas
-		protected void OnEnable()
-		{
 			emotion = emotion;
 		}
-		#endregion
 	}
 }

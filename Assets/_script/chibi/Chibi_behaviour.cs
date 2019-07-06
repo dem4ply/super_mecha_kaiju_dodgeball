@@ -14,14 +14,20 @@ namespace chibi
 		protected virtual void Awake()
 		{
 			debug = new helper.debug.Debug( this );
-			_init_cache();
+			//_init_cache();
 		}
 
 		protected virtual void Start() {
 			debug = new helper.debug.Debug( this );
 		}
 
-		protected virtual void _init_cache() {}
+		protected virtual void _init_cache() {
+			debug = new helper.debug.Debug( this );
+		}
+
+		protected virtual void _dispose_cache() {
+			debug = null;
+		}
 
 		public void gizmo_awake() {
 			_is_drawing_gizmo = true;
@@ -30,6 +36,7 @@ namespace chibi
 		}
 
 		public void extert_init_cache() {
+			debug.warning( "se esta llamando el extern_init_cache" );
 			_init_cache();
 		}
 
@@ -40,6 +47,16 @@ namespace chibi
 		public virtual void recycle()
 		{
 			Destroy( this.gameObject );
+		}
+
+		protected virtual void OnEnable()
+		{
+			_init_cache();
+		}
+
+		private void OnDisable()
+		{
+			_dispose_cache();
 		}
 	}
 }
