@@ -32,8 +32,11 @@ namespace chibi.rol_sheet
 			base._init_cache();
 			buffos = new List<Buff_attacher>();
 			buffos_are_going_to_remove = new List<Buff_attacher>();
-			foreach ( var buff in start_buffos )
-				attach_buff( buff );
+			if ( start_buffos != null )
+			{
+				foreach ( var buff in start_buffos )
+					attach_buff( buff );
+			}
 		}
 
 		public void clean()
