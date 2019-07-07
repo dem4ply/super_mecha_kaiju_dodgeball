@@ -90,10 +90,14 @@ namespace SMKD.controller.npc
 			base._init_cache();
 			rol = GetComponent< chibi.rol_sheet.Rol_sheet >();
 			if ( !rol )
-				Debug.LogError( string.Format(
-					"[doger_controller] no encontro un 'Rol_sheet' en {0}",
-					helper.game_object.name.full( this ) ), this.gameObject );
+				debug.error( "no encontro un 'Rol_sheet'" );
+			dodger_set.add( this );
 		}
 
+		protected override void _dispose_cache()
+		{
+			base._dispose_cache();
+			dodger_set.remove( this );
+		}
 	}
 }

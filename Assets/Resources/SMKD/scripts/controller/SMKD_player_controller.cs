@@ -6,7 +6,8 @@ namespace SMKD.controller
 	public class SMKD_player_controller : chibi.controller.Controller
 	{
 
-		public List<npc.Dodger_controller> dodgers;
+		// public List<npc.Dodger_controller> dodgers;
+		public tool.Dodger_set dodgers;
 		public override Vector3 desire_direction
 		{
 			get {
@@ -19,7 +20,7 @@ namespace SMKD.controller
 				else
 					_desire_direction = value;
 
-				foreach ( var dodger in dodgers )
+				foreach ( var dodger in dodgers.list )
 					dodger.desire_direction = _desire_direction;
 			}
 		}
@@ -52,7 +53,7 @@ namespace SMKD.controller
 
 		public void shot()
 		{
-			foreach ( var dodger in dodgers )
+			foreach ( var dodger in dodgers.list )
 			{
 				dodger.shot();
 			}
@@ -60,7 +61,7 @@ namespace SMKD.controller
 
 		public void dodge()
 		{
-			foreach ( var dodger in dodgers )
+			foreach ( var dodger in dodgers.list )
 				dodger.dodge();
 		}
 	}

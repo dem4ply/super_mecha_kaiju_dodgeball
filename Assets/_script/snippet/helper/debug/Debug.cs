@@ -31,19 +31,22 @@ namespace helper
 			public void info( string msg )
 			{
 				UnityEngine.Debug.Log( string.Format(
-					"[{0}]{{{1}}} {2}", type_name, full_name, msg ) );
+					"[{0}]{{{1}}} {2}", type_name, full_name, msg ),
+					_instance.gameObject );
 			}
 
 			public void warning( string msg )
 			{
 				UnityEngine.Debug.LogWarning( string.Format(
-					"[{0}]{{{1}}} {2}", type_name, full_name, msg ) );
+					"[{0}]{{{1}}} {2}", type_name, full_name, msg ),
+					_instance.gameObject );
 			}
 
 			public void error( string msg )
 			{
 				UnityEngine.Debug.LogError( string.Format(
-					"[{0}]{{{1}}} {2}", type_name, full_name, msg ) );
+					"[{0}]{{{1}}} {2}", type_name, full_name, msg ),
+					_instance.gameObject );
 			}
 
 			protected string full_name

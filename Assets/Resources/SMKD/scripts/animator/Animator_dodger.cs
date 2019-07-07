@@ -8,6 +8,8 @@ namespace SMKD.animator
 		protected bool _is_dodge, _is_dead, _has_the_ball;
 		protected Vector3 _direction;
 
+		public SMKD.motor.Dodger_motor motor;
+
 		#region propiedades public
 		public bool is_dodge
 		{
@@ -54,5 +56,21 @@ namespace SMKD.animator
 			}
 		}
 		#endregion
+
+		protected override void _init_cache()
+		{
+			base._init_cache();
+			if ( !motor )
+			{
+				motor = GetComponent<SMKD.motor.Dodger_motor>();
+				if ( !motor )
+					debug.error( "no se encontro el Dodger_motor" );
+			}
+		}
+
+		public void on_end_died()
+		{
+			motor.on_end_died();
+		}
 	}
 }

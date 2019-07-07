@@ -184,6 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug_mode: 0
   sheet: {fileID: 11400000, guid: f4146da528b672b46a808ecd2acc81c2, type: 2}
+  start_buffos: []
   hp:
     use_constant: 1
     _current: 1
@@ -236,6 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug_mode: 0
   animator: {fileID: 5564241052008441828}
+  motor: {fileID: 8054652563170521084}
 --- !u!1001 &2024513207108280020
 PrefabInstance:
   m_ObjectHideFlags: 0
