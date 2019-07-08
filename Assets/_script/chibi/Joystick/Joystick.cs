@@ -10,6 +10,8 @@ namespace chibi.joystick
 		public string key_map = "player 1";
 		public Controller controller;
 
+		public Axis desire_direction;
+
 		public Vector3 axis_mouse = Vector2.zero;
 		public Vector3 axis_esdf = Vector2.zero;
 		public Vector3 mouse_position = Vector2.zero;
@@ -51,16 +53,18 @@ namespace chibi.joystick
 		#region public functions
 		public void update_all_axis()
 		{
-			_get_axis_esdf();
-			_get_axis_mouse();
-			_get_mouse_pos();
+			// _get_axis_esdf();
+			// _get_axis_mouse();
+			// _get_mouse_pos();
+
+			desire_direction.update();
 		}
 
 		public void update_all_buttons()
 		{
-			_get_keys_running();
-			_get_keys_jump();
-			_get_key_jump_is_release();
+			// _get_keys_running();
+			// _get_keys_jump();
+			// _get_key_jump_is_release();
 		}
 		#endregion
 
@@ -71,9 +75,9 @@ namespace chibi.joystick
 			update_all_buttons();
 			// si pasa la zona muerta el stick entonces se mueve
 			// y cambia la direcion
-			if ( is_pass_deadzone_esdf_axis )
+			if ( desire_direction.pass_dead_zone )
 			{
-				controller.desire_direction = axis_esdf;
+				controller.desire_direction = desire_direction.vector;
 				controller.speed = 1f;
 			}
 			else
@@ -81,6 +85,7 @@ namespace chibi.joystick
 				controller.desire_direction = Vector3.zero;
 				controller.speed = 0f;
 			}
+
 			foreach ( string action in actions )
 			{
 				if ( check_action_down( action ) )
@@ -88,26 +93,6 @@ namespace chibi.joystick
 				if ( check_action_up( action ) )
 					controller.action( action, "up" );
 			}
-			/*
-			controller.is_running = run_key;
-			if ( jump_key )
-				controller.jump();
-			else
-				controller.stop_jump();
-
-			if ( _fire_key_down( 1 ) )
-				controller.attack();
-			if ( _fire_key_up( 1 ) )
-				controller.stop_attack();
-
-			if ( _left_bumper_key_down() )
-				controller.left_bumper();
-
-			if ( _right_bumper_key_down() )
-				controller.right_bumper();
-			*/
-
-			//_draw_debug();
 		}
 
 		/// <summary>
@@ -199,16 +184,12 @@ namespace chibi.joystick
 		/// </summary>
 		protected override void _init_cache()
 		{
-			_init_cache_controller();
-		}
-
-		/// <summary>
-		/// inicia el cache del controller
-		/// </summary>
-		protected virtual void _init_cache_controller()
-		{
 			if ( controller == null )
 				controller = GetComponent<Controller>();
+			if ( !desire_direction )
+			{
+				debug.error( "no hay un axis de desire_direction" );
+			}
 		}
 
 		/// <summary>

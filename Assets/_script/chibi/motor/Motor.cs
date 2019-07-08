@@ -84,10 +84,15 @@ namespace chibi.motor
 					helper.game_object.name.full( this ) ) );
 		}
 
-		protected virtual void FixedUpdate()
+		protected virtual void update_motion()
 		{
 			ridgetbody.velocity = desire_velocity;
 			current_speed = desire_velocity;
+		}
+
+		protected virtual void FixedUpdate()
+		{
+			update_motion();
 		}
 	}
 }

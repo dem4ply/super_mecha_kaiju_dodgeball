@@ -156,9 +156,8 @@ namespace SMKD.motor
 			animator.direction = desire_direction;
 		}
 
-		protected override void FixedUpdate()
+		protected override void update_motion()
 		{
-			// base.FixedUpdate();
 		}
 
 		protected override void _init_cache()

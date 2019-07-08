@@ -11,7 +11,7 @@ namespace chibi.motor.npc
 			}
 		}
 
-		protected override void FixedUpdate()
+		protected override void update_motion()
 		{
 			ridgetbody.velocity = new Vector3(
 				desire_velocity.x, ridgetbody.velocity.y,

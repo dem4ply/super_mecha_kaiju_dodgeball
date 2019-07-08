@@ -6,9 +6,9 @@ namespace fisher.motor.weapons.gun.bullet
 {
 	public class Fish_motor : Motor_isometric
 	{
-		protected override void FixedUpdate()
+		protected override void update_motion()
 		{
-			base.FixedUpdate();
+			base.update_motion();
 			transform.LookAt(
 				transform.position + ridgetbody.velocity );
 		}

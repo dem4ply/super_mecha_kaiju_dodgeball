@@ -46,6 +46,7 @@ MonoBehaviour:
   debug_mode: 0
   key_map: player 1
   controller: {fileID: 0}
+  desire_direction: {fileID: 11400000, guid: 4be29aad5b0e29a41b7eea122fddab18, type: 2}
   axis_mouse: {x: 0, y: 0, z: 0}
   axis_esdf: {x: 0, y: 0, z: 0}
   mouse_position: {x: 0, y: 0, z: 0}
@@ -56,3 +57,7 @@ MonoBehaviour:
   dead_zone_esdf_axis: 0.01
   dead_zone_mouse_axis: 0.01
   dead_zone_mouse_wheel: 0.01
+  actions:
+  - fire1
+  - fire2
+  - fire3

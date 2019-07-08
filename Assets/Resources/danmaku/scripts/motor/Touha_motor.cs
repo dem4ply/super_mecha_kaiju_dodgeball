@@ -26,16 +26,5 @@ namespace danmaku.motor
 			base._dispose_cache();
 			hp_motor.on_died -= on_died;
 		}
-
-		public virtual void on_died()
-		{
-			debug.info( "murio" );
-		}
-
-		public virtual void on_end_died()
-		{
-			debug.info( "termino de morir" );
-			this.recycle();
-		}
 	}
 }
