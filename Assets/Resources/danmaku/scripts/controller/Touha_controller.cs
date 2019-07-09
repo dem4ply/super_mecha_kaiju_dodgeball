@@ -23,7 +23,8 @@ namespace danmaku.controller.npc
 		protected override void _init_cache()
 		{
 			base._init_cache();
-			rol = GetComponent< chibi.rol_sheet.Rol_sheet >();
+			if ( !rol )
+				rol = GetComponent< chibi.rol_sheet.Rol_sheet >();
 			if ( !rol )
 				debug.error( "no encontro un 'Rol_sheet'" );
 

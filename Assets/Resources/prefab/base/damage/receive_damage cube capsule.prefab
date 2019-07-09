@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4352074780350701141}
   - component: {fileID: -7328692128102437388}
   m_Layer: 9
-  m_Name: receive_damage cube 1
+  m_Name: receive_damage cube capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

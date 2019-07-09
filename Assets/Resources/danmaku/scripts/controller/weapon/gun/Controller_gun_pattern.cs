@@ -30,7 +30,7 @@ namespace danmaku.controller.weapon.gun
 			update_owner();
 		}
 
-		public List<Controller_bullet> shot()
+		public override List<Controller_bullet> shot()
 		{
 			List<Controller_bullet> bullets = new List<Controller_bullet>();
 			foreach ( var gun in guns )
