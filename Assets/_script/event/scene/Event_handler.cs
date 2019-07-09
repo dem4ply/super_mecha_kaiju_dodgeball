@@ -20,9 +20,15 @@ namespace events
 
 				protected virtual void OnDrawGizmos()
 				{
-					BoxCollider collider = GetComponent<BoxCollider>();
+					//Gizmos.DrawWireCube( collider.transform.position, collider.size );
+
+					var collider = GetComponent<BoxCollider>();
+					Matrix4x4 rotationMatrix = Matrix4x4.TRS(
+						transform.position, transform.rotation, transform.lossyScale );
+					Gizmos.matrix = rotationMatrix;
 					Gizmos.color = Color.red;
-					Gizmos.DrawWireCube( collider.transform.position, collider.size );
+					Gizmos.color = Color.cyan;
+					Gizmos.DrawWireCube( Vector3.zero, collider.size );
 				}
 			}
 

@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: reimu
       objectReference: {fileID: 0}
+    - target: {fileID: 230087433925894349, guid: 539d3a18e323514409c5193e55108a56,
+        type: 3}
+      propertyPath: m_Direction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 852267897849714905, guid: 539d3a18e323514409c5193e55108a56,
         type: 3}
       propertyPath: m_LocalPosition.x

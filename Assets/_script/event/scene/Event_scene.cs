@@ -17,8 +17,7 @@ namespace events
 					obj = helper.instantiate._(
 						prefab_event_scene, where_is_goin_open.position );
 				else
-					obj = helper.instantiate._(
-						prefab_event_scene, transform.position );
+					obj = helper.instantiate._( prefab_event_scene );
 				return obj;
 			}
 
