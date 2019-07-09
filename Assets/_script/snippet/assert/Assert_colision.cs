@@ -6,8 +6,8 @@ namespace helper.test.assert
 {
 	public class Assert_colision : chibi.Chibi_behaviour
 	{
-		List<obj.Assert_collision_event> collisions_enters;
-		List<obj.Assert_collision_event> collisions_exits;
+		public List<obj.Assert_collision_event> collisions_enters;
+		public List<obj.Assert_collision_event> collisions_exits;
 
 		protected override void Awake()
 		{
