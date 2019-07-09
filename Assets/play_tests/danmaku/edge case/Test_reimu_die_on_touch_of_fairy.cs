@@ -6,16 +6,16 @@ using helper.test.assert;
 using danmaku.controller.npc;
 using chibi.damage.motor;
 
-namespace tests.edge_case.player_shot_enemy.danmaku
+namespace tests.edge_case.player_receive_damge.danmaku
 {
-	public class Test_reimu_can_kill_faires: helper.tests.Scene_test
+	public class Test_reimu_die_on_touch_of_fairy: helper.tests.Scene_test
 	{
 		Touha_controller reimu, enemy;
 
 		public override string scene_dir
 		{
 			get {
-				return "danmaku/tests/scene/edge case/reimu can kill faries";
+				return "danmaku/tests/scene/edge case/reimu_die_on_touch";
 			}
 		}
 
@@ -27,11 +27,13 @@ namespace tests.edge_case.player_shot_enemy.danmaku
 		}
 
 		[UnityTest]
-		public IEnumerator when_shot_should_kill_the_fairy()
+		public IEnumerator when_reimu_is_touched_should_die()
 		{
-			var bullets = reimu.shot();
+			enemy.desire_direction =
+				reimu.transform.position - enemy.transform.position;
+			enemy.speed = 100f;
 			yield return new WaitForSeconds( 1 );
-			var hp = enemy.GetComponent<HP_engine>();
+			var hp = reimu.GetComponent<HP_engine>();
 			Assert.True( hp.is_dead );
 		}
 	}
