@@ -8,6 +8,10 @@ namespace helper.tests
 	public class basic_test
 	{
 		// protected World world;
+		[SetUp]
+		public virtual void set_up()
+		{
+		}
 
 	}
 

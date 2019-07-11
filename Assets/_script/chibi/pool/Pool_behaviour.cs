@@ -5,11 +5,12 @@ using chibi.motor.weapons.gun.bullet;
 
 namespace chibi.pool
 {
+	[ CreateAssetMenu( menuName="chibi/pool/behavior" ) ]
 	public class Pool_behaviour : chibi.Chibi_object
 	{
 		public GameObject prefab;
 		public Transform container;
-		protected Stack<chibi.Chibi_behaviour> _pool_stack;
+		protected Stack<GameObject> _pool_stack;
 
 		public string container_name
 		{
@@ -18,8 +19,16 @@ namespace chibi.pool
 			}
 		}
 
+		public int count
+		{
+			get {
+				return _pool_stack.Count;
+			}
+		}
+
 		protected virtual void OnEnable()
 		{
+			_pool_stack = new Stack<GameObject>();
 			if ( !container )
 			{
 				var generic_pool = helper.game_object.prepare.stuff_container(
@@ -30,11 +39,11 @@ namespace chibi.pool
 			}
 		}
 
-		public virtual chibi.Chibi_behaviour pop()
+		public virtual GameObject pop()
 		{
-			chibi.Chibi_behaviour result = null;
+			GameObject result = null;
 			var stack = _pool_stack;
-			if ( _pool_stack.Count > 0 )
+			if ( count > 0 )
 				result = _pool_stack.Pop();
 			if ( result == null )
 				result = instantiate();
@@ -42,19 +51,24 @@ namespace chibi.pool
 			return result;
 		}
 
-		public virtual void push( chibi.Chibi_behaviour obj )
+		public virtual void push( GameObject obj )
 		{
 			move_to_container( obj );
 			_pool_stack.Push( obj );
 		}
 
-		public virtual void move_to_container( chibi.Chibi_behaviour obj )
+		public virtual void push( MonoBehaviour obj )
+		{
+			push( obj.gameObject );
+		}
+
+		public virtual void move_to_container( GameObject obj )
 		{
 			obj.gameObject.SetActive( false );
 			obj.transform.parent = container;
 		}
 
-		protected chibi.Chibi_behaviour instantiate()
+		protected GameObject instantiate()
 		{
 			if ( prefab == null )
 			{
@@ -62,7 +76,7 @@ namespace chibi.pool
 				return null;
 			}
 			var obj = helper.instantiate._( prefab );
-			return obj.transform.GetComponent<chibi.Chibi_behaviour>();
+			return obj;
 		}
 	}
 }
