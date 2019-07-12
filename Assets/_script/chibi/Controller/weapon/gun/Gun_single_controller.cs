@@ -18,5 +18,10 @@ namespace chibi.controller.weapon.gun
 			if ( !gun )
 				debug.error( "no se encontro un 'Gun'" );
 		}
+
+		public override List<Controller_bullet> shot()
+		{
+			return new List<Controller_bullet>{ gun.shot() };
+		}
 	}
 }

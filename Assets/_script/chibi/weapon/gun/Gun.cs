@@ -62,6 +62,11 @@ namespace chibi.weapon.gun
 			}
 		}
 
+		public virtual void aim_to( Transform target )
+		{
+			aim_to( target.position );
+		}
+
 		public virtual void aim_to( Vector3 position )
 		{
 			aim_direction = position - transform.position;

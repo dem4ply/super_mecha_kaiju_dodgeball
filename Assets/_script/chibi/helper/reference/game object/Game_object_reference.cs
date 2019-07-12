@@ -26,6 +26,12 @@ namespace chibi.tool.reference
 					return constant_value;
 				return variable.value;
 			}
+			set {
+				if ( use_constant )
+					constant_value = value;
+				else
+					variable.value = value;
+			}
 		}
 	}
 }
