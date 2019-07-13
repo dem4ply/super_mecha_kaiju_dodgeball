@@ -57,10 +57,12 @@ namespace chibi.damage
 			{
 				if ( damage.owner && rol )
 				{
+					if ( damage.owner.sheet && damage.owner.sheet.faction
+							&& rol.sheet )
+						return damage.owner.sheet.faction == rol.sheet.faction;
+
 					if ( rol )
 						return damage.owner == rol;
-					if ( damage.owner.sheet && damage.owner.sheet.faction && rol.sheet )
-						return damage.owner.sheet.faction == rol.sheet.faction;
 				}
 				return false;
 			}
