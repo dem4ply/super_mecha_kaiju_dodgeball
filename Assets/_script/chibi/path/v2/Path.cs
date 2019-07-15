@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Linq;
 
-namespace chibi.path.v2
+namespace chibi.path
 {
 	[System.Serializable]
 	public class Path

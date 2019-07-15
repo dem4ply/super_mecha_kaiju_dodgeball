@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace chibi.path.v2
+namespace chibi.path
 {
 	public class Path_behaviour : chibi.Chibi_behaviour
 	{
