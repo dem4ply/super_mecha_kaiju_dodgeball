@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using chibi.path;
+using chibi.path.v1;
 
-namespace chibi.editor.path
+namespace chibi.editor.path.v1
 {
 	[CustomEditor( typeof( Path_creator ) )]
 	public class Path_editor : Editor

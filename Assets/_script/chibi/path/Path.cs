@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Linq;
 
-namespace chibi.path
+namespace chibi.path.v1
 {
 	[System.Serializable]
 	public class Path
@@ -122,6 +122,10 @@ namespace chibi.path
 
 		public void add_segment( Vector3 anchor_position )
 		{
+			// count == 4
+			// p3 == 3 el anchor 2
+			// p2 == 2 control 2
+
 			var p3 = this[ count - 1 ];
 			var p2 = this[ count - 2 ];
 
