@@ -10,7 +10,9 @@ namespace chibi.path
 		public Transform p1, p2, c1, c2;
 		public Transform container;
 
-		public Vector3 vp1
+		public Segment previous, next;
+
+		public virtual Vector3 vp1
 		{
 			get {
 				return p1.position;
@@ -20,7 +22,7 @@ namespace chibi.path
 			}
 		}
 
-		public Vector3 vp2
+		public virtual Vector3 vp2
 		{
 			get {
 				return p2.position;
@@ -30,7 +32,7 @@ namespace chibi.path
 			}
 		}
 
-		public Vector3 vc1
+		public virtual Vector3 vc1
 		{
 			get {
 				return c1.position;
@@ -40,7 +42,7 @@ namespace chibi.path
 			}
 		}
 
-		public Vector3 vc2
+		public virtual Vector3 vc2
 		{
 			get {
 				return c2.position;
@@ -93,19 +95,27 @@ namespace chibi.path
 			this.c2 = c2;
 		}
 
+		public Segment( Segment segment ) : this(
+			segment.p1, segment.c1, segment.c2, segment.p2,
+			segment.container )
+		{
+		}
+
 		public Segment( Segment segment, Transform p3 ) : this(
 			  segment.p2,
 			  segment.vp2 * 2 - segment.vc2,
 			  ( segment.vc1 + p3.position ) * 0.5f,
 			  p3, segment.container )
-		{ }
+		{
+		}
 
 		public Segment( Segment segment, Vector3 vp3 ) : this(
 			  segment.p2,
 			  segment.vp2 * 2 - segment.vc2,
 			  ( segment.vc1 + vp3 ) * 0.5f,
 			  vp3, segment.container )
-		{ }
+		{
+		}
 
 		protected Transform create_point( Vector3 position )
 		{

@@ -9,7 +9,10 @@ namespace chibi.path
 
 		public void create_path()
 		{
-			path = new Path( transform );
+			if ( path != null )
+				path = new Path( transform, path );
+			else
+				path = new Path( transform );
 		}
 
 		private void OnDrawGizmos()

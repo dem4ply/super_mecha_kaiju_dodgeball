@@ -38,7 +38,6 @@ namespace chibi.path.old
 				points[ i ].name = string.Format( "p{0}", i );
 			List<Transform> to_delete = new List<Transform>();
 
-			Debug.Log( container.childCount );
 			for ( int i = container.childCount - 1; i > 0; --i )
 			{
 				var child = container.GetChild( i );

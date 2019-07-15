@@ -7,6 +7,7 @@ using chibi.path;
 
 namespace chibi.editor.path
 {
+
 	[CustomEditor( typeof( Path_behaviour ) )]
 	public class Path_editor : Editor
 	{
@@ -16,6 +17,12 @@ namespace chibi.editor.path
 		public override void OnInspectorGUI()
 		{
 			EditorGUI.BeginChangeCheck();
+			var new_type = (path_types)EditorGUILayout.EnumPopup( path.type );
+			if ( new_type != path.type )
+			{
+				Undo.RecordObject( creator, "change type" );
+				path.type = new_type;
+			}
 			if ( GUILayout.Button( "add segment" ) )
 			{
 				Undo.RecordObject( creator, "add segment" );
@@ -65,39 +72,65 @@ namespace chibi.editor.path
 
 		protected void handdlers_for_move_points()
 		{
-			foreach ( var segment in path.segments )
+			Segment segment = path.segments[ 0 ];
+			var p1 = Handles.PositionHandle(
+				segment.vp1, Quaternion.identity );
+
+			if ( p1 != segment.vp1 )
 			{
-				Vector3 p1 = Handles.PositionHandle(
-					segment.vp1, Quaternion.identity );
+				Undo.RecordObject( creator, "move point" );
+				segment.vp1 = p1;
+			}
 
-				if ( p1 != segment.vp1 )
-				{
-					Undo.RecordObject( creator, "move point" );
-					segment.vp1 = p1;
-				}
+			var p2 = Handles.PositionHandle(
+				segment.vp2, Quaternion.identity );
 
-				Vector3 p2 = Handles.PositionHandle(
-					segment.vp1, Quaternion.identity );
+			if ( p2 != segment.vp2 )
+			{
+				Undo.RecordObject( creator, "move point" );
+				segment.vp2 = p2;
+			}
 
-				if ( p2 != segment.vp1 )
-				{
-					Undo.RecordObject( creator, "move point" );
-					segment.vp2 = p2;
-				}
+			var c1 = Handles.PositionHandle(
+				segment.vc1, Quaternion.identity );
 
-				Vector3 c1 = Handles.PositionHandle(
+			if ( c1 != segment.vc1 )
+			{
+				Undo.RecordObject( creator, "move point" );
+				segment.vc1 = c1;
+			}
+
+			var c2 = Handles.PositionHandle(
+				segment.vc2, Quaternion.identity );
+
+			if ( c2 != segment.vc2 )
+			{
+				Undo.RecordObject( creator, "move point" );
+				segment.vc2 = c2;
+			}
+
+			for ( int i = 1; i < path.segments.Count; ++i )
+			{
+				segment = path.segments[i];
+
+				c1 = Handles.PositionHandle(
 					segment.vc1, Quaternion.identity );
 
-				if ( c1 != segment.vp1 )
+				if ( c1 != segment.vc1 )
 				{
 					Undo.RecordObject( creator, "move point" );
 					segment.vc1 = c1;
 				}
 
-				Vector3 c2 = Handles.PositionHandle(
-					segment.vc2, Quaternion.identity );
+				p2 = Handles.PositionHandle( segment.vp2, Quaternion.identity );
+				if ( p2 != segment.vp2 )
+				{
+					Undo.RecordObject( creator, "move point" );
+					segment.vp2 = p2;
+				}
 
-				if ( c2 != segment.vp1 )
+				c2 = Handles.PositionHandle( segment.vc2, Quaternion.identity );
+				if ( c2 != segment.vc2 )
 				{
 					Undo.RecordObject( creator, "move point" );
 					segment.vc2 = c2;
