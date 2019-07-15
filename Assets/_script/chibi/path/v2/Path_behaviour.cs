@@ -15,6 +15,12 @@ namespace chibi.path
 				path = new Path( transform );
 		}
 
+		protected override void _init_cache()
+		{
+			base._init_cache();
+			path = new Path( path );
+		}
+
 		private void OnDrawGizmos()
 		{
 			foreach ( var segment in path.segments )

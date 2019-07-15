@@ -64,11 +64,11 @@ namespace chibi.controller.steering.behavior
 		}
 
 		public override Steering_properties prepare_properties(
-			Steering controller, Steering_properties properties )
+			Steering controller, Steering_properties properties, Transform target )
 		{
 			properties.radar = new chibi.radar.Radar_box(
 				controller.controller.transform, radar_size, radar_rotation, layers );
-			return base.prepare_properties( controller, properties );
+			return base.prepare_properties( controller, properties, target );
 		}
 
 		public override float desire_speed(

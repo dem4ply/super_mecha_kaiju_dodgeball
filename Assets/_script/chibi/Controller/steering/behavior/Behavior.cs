@@ -37,7 +37,7 @@ namespace chibi.controller.steering.behavior
 		}
 
 		public virtual Steering_properties prepare_properties(
-			Steering controller, Steering_properties properties )
+			Steering controller, Steering_properties properties, Transform target )
 		{
 			return properties;
 		}

@@ -34,6 +34,16 @@ namespace chibi.path
 			}
 		}
 
+		public Path( Path path )
+		{
+			resolution = path.resolution;
+			spacing = path.spacing;
+			segments = path.segments;
+			container = path.container;
+			type = path.type;
+			bake_points = path.bake_points;
+		}
+
 		public Path( Transform center )
 		{
 			container = center;
