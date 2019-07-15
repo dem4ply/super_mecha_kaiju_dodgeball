@@ -35,6 +35,7 @@ namespace chibi.editor.path
 				path = creator.path;
 			}
 
+
 			if ( GUILayout.Button( "flat y" ) )
 			{
 				Undo.RecordObject( creator, "flat y" );
@@ -47,6 +48,15 @@ namespace chibi.editor.path
 					s.vc2 = new Vector3( s.vc2.x, creator.transform.position.y, s.vc2.z );
 				}
 				path = creator.path;
+			}
+
+			path.resolution = EditorGUILayout.FloatField( "resolution:", path.resolution );
+			path.spacing = EditorGUILayout.FloatField( "spacing:", path.spacing );
+
+			if ( GUILayout.Button( "bake" ) )
+			{
+				Undo.RecordObject( creator, "bake" );
+				creator.path.bake();
 			}
 
 			if ( EditorGUI.EndChangeCheck() )

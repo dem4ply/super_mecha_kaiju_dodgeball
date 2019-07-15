@@ -52,6 +52,23 @@ namespace chibi.path
 			}
 		}
 
+		public float net_distance
+		{
+			get {
+				return
+					Vector3.Distance( vp1, vc1 ) + Vector3.Distance( vc2, vc2 )
+					+ Vector3.Distance( vc2, vp2 );
+			}
+		}
+
+		public float estimate_distance
+		{
+			get {
+				return
+					Vector3.Distance( vp1, vp2 ) + ( net_distance / 2 );
+			}
+		}
+
 		public Segment( Transform center, Transform container )
 		{
 			this.container = container;
@@ -123,6 +140,11 @@ namespace chibi.path
 			game_object.transform.position = position;
 			game_object.transform.parent = container;
 			return game_object.transform;
+		}
+
+		public Vector3 evaluate( float t )
+		{
+			return helper.shapes.Bezier.evaluate( vp1, vc1, vc2, vp2, t );
 		}
 
 		public void draw_gizmo()

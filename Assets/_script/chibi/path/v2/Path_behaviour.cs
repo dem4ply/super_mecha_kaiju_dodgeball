@@ -21,6 +21,13 @@ namespace chibi.path
 			{
 				segment.draw_gizmo();
 			}
+
+			if ( path.bake_points.Count > 0 )
+			{
+				Gizmos.color = Color.green;
+				foreach ( var vector in path.bake_points )
+					Gizmos.DrawWireSphere( vector, 0.05f );
+			}
 		}
 	}
 }

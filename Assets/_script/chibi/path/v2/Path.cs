@@ -12,6 +12,8 @@ namespace chibi.path
 	[System.Serializable]
 	public class Path
 	{
+		public float resolution = 10f, spacing = 1;
+		public List<Vector3> bake_points;
 		public List<Segment> segments;
 		public Transform container;
 
@@ -58,6 +60,45 @@ namespace chibi.path
 			segments.Add( new_segment );
 			relink();
 			rename_points();
+		}
+
+		public List<Vector3> get_eveling_space_points( float spacing )
+		{
+			Vector3 last_point = segments[ 0 ].vp1;
+			float distance_sinse_last_point = 0f;
+			var result = new List<Vector3> { last_point };
+
+			foreach ( var segment in segments )
+			{
+				int divisions = Mathf.CeilToInt(
+					segment.estimate_distance * resolution );
+				float t = 0;
+				float t_step = 1f / divisions;
+				while ( t <= 1 )
+				{
+					t += t_step;
+					var new_point = segment.evaluate( t );
+					distance_sinse_last_point += Vector3.Distance( last_point, new_point );
+
+					while ( distance_sinse_last_point >= spacing )
+					{
+						float over_distance = distance_sinse_last_point - spacing;
+						Vector3 new_eveling_space_point =
+							new_point + ( last_point - new_point ).normalized
+							* over_distance;
+						result.Add( new_eveling_space_point );
+						distance_sinse_last_point = over_distance;
+						last_point = new_eveling_space_point;
+					}
+					last_point = new_point;
+				}
+			}
+			return result;
+		}
+
+		public void bake()
+		{
+			bake_points = get_eveling_space_points( spacing );
 		}
 
 		public IEnumerable<Transform> plain_points()
