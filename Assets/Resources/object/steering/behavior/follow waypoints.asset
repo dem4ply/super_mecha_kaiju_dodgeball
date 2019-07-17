@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: follow waypoints
   m_EditorClassIdentifier: 
   weight: 1
-  debug_color: {r: 0, g: 0, b: 0, a: 0}
-  seek_color: {r: 0, g: 0, b: 0, a: 0}
+  debug_color: {r: 1, g: 0, b: 0.9863348, a: 1}
+  seek_color: {r: 1, g: 0.94731724, b: 0, a: 1}

@@ -72,6 +72,17 @@ namespace chibi.path
 			rename_points();
 		}
 
+		public Vector3 evaluate( float t )
+		{
+			float persentil_fraction = 1 / segments.Count;
+			int segment_index = Mathf.FloorToInt(
+				segments.Count * t );
+			float t_for_segment = t - persentil_fraction * segment_index;
+			Segment segment = segments[ segment_index ];
+			
+			return segment.evaluate( t_for_segment );
+		}
+
 		public List<Vector3> get_eveling_space_points( float spacing )
 		{
 			Vector3 last_point = segments[ 0 ].vp1;
