@@ -9,6 +9,7 @@ namespace chibi
 		protected bool _is_instanciate;
 
 		public bool debug_mode = false;
+		public chibi.pool.Pool_behaviour pool;
 		public helper.debug.Debug debug;
 
 		protected virtual void Awake()
@@ -46,7 +47,16 @@ namespace chibi
 
 		public virtual void recycle()
 		{
-			Destroy( this.gameObject );
+			if ( pool )
+			{
+				debug.info( "el objecto de envia al pool" );
+				pool.push( this );
+			}
+			else
+			{
+				debug.info( "el objecto se destruira" );
+				Destroy( this.gameObject );
+			}
 		}
 
 		protected virtual void OnEnable()

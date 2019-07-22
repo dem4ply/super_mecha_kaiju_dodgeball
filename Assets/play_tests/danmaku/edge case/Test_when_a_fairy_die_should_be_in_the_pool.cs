@@ -8,7 +8,7 @@ using chibi.damage.motor;
 
 namespace tests.edge_case.player_shot_enemy.danmaku
 {
-	public class Test_when_a_fairy_die_should_be_in_the_pool: helper.tests.Scene_test
+	public class Test_dead_fairy_go_to_pool: helper.tests.Scene_test
 	{
 		Touha_controller reimu, enemy;
 
@@ -33,7 +33,6 @@ namespace tests.edge_case.player_shot_enemy.danmaku
 			yield return new WaitForSeconds( 1 );
 			var hp = enemy.GetComponent<HP_engine>();
 			Assert.True( hp.is_dead );
-			Assert.False( hp.gameObject.activeSelf );
 		}
 	}
 }
