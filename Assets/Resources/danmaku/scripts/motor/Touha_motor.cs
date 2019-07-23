@@ -10,6 +10,8 @@ namespace danmaku.motor
 	{
 		public chibi.damage.motor.HP_engine hp_motor;
 
+		public GameObject explotion_prefab;
+
 		protected override void _init_cache()
 		{
 			base._init_cache();
@@ -19,12 +21,20 @@ namespace danmaku.motor
 				debug.error( "no se encontro un hp_engine" );
 
 			hp_motor.on_died += on_died;
+			if ( !explotion_prefab )
+				debug.warning( "no hay un prefab de explocion" );
 		}
 
 		protected override void _dispose_cache()
 		{
 			base._dispose_cache();
 			hp_motor.on_died -= on_died;
+		}
+
+		public virtual void on_died()
+		{
+			helper.instantiate._( explotion_prefab, transform.position );
+			recycle();
 		}
 	}
 }
