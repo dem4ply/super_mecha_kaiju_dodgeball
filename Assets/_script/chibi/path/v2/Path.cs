@@ -74,6 +74,8 @@ namespace chibi.path
 
 		public Vector3 evaluate( float t )
 		{
+			if( t == 1 )
+				return segments.Last().vp2;
 			float persentil_fraction = 1 / segments.Count;
 			int segment_index = Mathf.FloorToInt(
 				segments.Count * t );

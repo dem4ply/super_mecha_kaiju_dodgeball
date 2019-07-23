@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using chibi.controller.handler;
 using UnityEngine;
 
 namespace chibi.path
@@ -6,6 +7,7 @@ namespace chibi.path
 	public class Path_behaviour : chibi.Chibi_behaviour
 	{
 		public Path path;
+		public List< Path_handler > path_handlers;
 
 		public void create_path()
 		{

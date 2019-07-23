@@ -11,10 +11,17 @@ namespace chibi.controller.handler
 		private void OnTriggerEnter( Collider other )
 		{
 			var controller = other.transform.GetComponent< Controller >();
+			if ( !controller )
+			{
+				controller = other.GetComponentInParent< Controller >();
+			}
 			if ( controller && ( is_global ) )
 			{
 				foreach ( var handler in handlers )
+				{
+					debug.info( "afectando alfgo" );
 					handler.action( controller );
+				}
 			}
 		}
 

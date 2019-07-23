@@ -13,6 +13,7 @@ namespace chibi.editor.path
 	{
 		Path_behaviour creator;
 		Path path;
+		Transform handler_container;
 
 		public override void OnInspectorGUI()
 		{
@@ -41,22 +42,28 @@ namespace chibi.editor.path
 				Undo.RecordObject( creator, "flat y" );
 				foreach ( var s in path.segments )
 				{
-					s.vp1 = new Vector3( s.vp1.x, creator.transform.position.y, s.vp1.z );
-					s.vc1 = new Vector3( s.vc1.x, creator.transform.position.y, s.vc1.z );
+					s.vp1 = new Vector3(
+						s.vp1.x, creator.transform.position.y, s.vp1.z );
+					s.vc1 = new Vector3(
+						s.vc1.x, creator.transform.position.y, s.vc1.z );
 
-					s.vp2 = new Vector3( s.vp2.x, creator.transform.position.y, s.vp2.z );
-					s.vc2 = new Vector3( s.vc2.x, creator.transform.position.y, s.vc2.z );
+					s.vp2 = new Vector3(
+						s.vp2.x, creator.transform.position.y, s.vp2.z );
+					s.vc2 = new Vector3(
+						s.vc2.x, creator.transform.position.y, s.vc2.z );
 				}
 				path = creator.path;
 			}
 
-			path.resolution = EditorGUILayout.FloatField( "resolution:", path.resolution );
+			path.resolution = EditorGUILayout.FloatField(
+					"resolution:", path.resolution );
 			path.spacing = EditorGUILayout.FloatField( "spacing:", path.spacing );
 
 			if ( GUILayout.Button( "bake" ) )
 			{
 				Undo.RecordObject( creator, "bake" );
 				creator.path.bake();
+				create_handlers();
 			}
 
 			if ( EditorGUI.EndChangeCheck() )
@@ -146,6 +153,36 @@ namespace chibi.editor.path
 					segment.vc2 = c2;
 				}
 			}
+		}
+
+		protected void create_handlers()
+		{
+			if ( !handler_container )
+			{
+				handler_container = helper.game_object.Find._(
+					creator.transform, "handler_container" );
+
+				if ( !handler_container )
+					handler_container = new GameObject().transform;
+			}
+			handler_container.name = "handler_container";
+			handler_container.parent = creator.transform;
+
+			for ( int i = handler_container.childCount - 1; i >= 0; --i )
+			{
+				var child = handler_container.GetChild( i );
+				GameObject.DestroyImmediate( child.gameObject );
+			}
+
+			for ( int i = 0; i < creator.path_handlers.Count; ++i )
+			{
+				var handler = creator.path_handlers[i];
+				var point = handler.make_point( path );
+				point.transform.parent = handler_container.transform;
+				point.name = string.Format( "handler__p{0}", i );
+			}
+
+
 		}
 
 		private void OnEnable()
