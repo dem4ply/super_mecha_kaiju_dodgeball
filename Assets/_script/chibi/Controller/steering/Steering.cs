@@ -11,6 +11,8 @@ namespace chibi.controller.steering
 		public List<behavior.Behavior> behaviors;
 		public List<Steering_properties> behaviors_properties;
 
+		public float start_speed = -1f;
+
 		protected override void _init_cache()
 		{
 			base._init_cache();
@@ -29,6 +31,15 @@ namespace chibi.controller.steering
 				behaviors[ i ].prepare_properties( this, propertie, target );
 				behaviors_properties.Add( propertie );
 			}
+
+		}
+
+		protected override void Start()
+		{
+			if ( start_speed == -1f )
+				controller.speed = controller.max_speed;
+			else
+				controller.speed = start_speed;
 		}
 
 		public IEnumerable<(behavior.Behavior, Steering_properties)> zip()
@@ -41,9 +52,8 @@ namespace chibi.controller.steering
 		private void Update()
 		{
 			Vector3 desire_direction = Vector3.zero;
-			float desire_speed = 1f;
 
-			foreach ( var (behavior, properties) in zip() )
+			foreach ( var ( behavior, properties ) in zip() )
 			{
 				properties.time += Time.deltaTime;
 				var behavior_direction = behavior.desire_direction(
@@ -57,9 +67,6 @@ namespace chibi.controller.steering
 			}
 			debug.draw.arrow( desire_direction, Color.black );
 			controller.desire_direction = desire_direction;
-
-			desire_speed = controller.motor.max_speed * desire_speed;
-			controller.speed = desire_speed;
 		}
 	}
 }
