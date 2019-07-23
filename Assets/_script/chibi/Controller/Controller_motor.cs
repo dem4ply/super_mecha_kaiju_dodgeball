@@ -31,6 +31,12 @@ namespace chibi.controller
 			}
 		}
 
+		public virtual float max_speed {
+			get {
+				return motor.max_speed;
+			}
+		}
+
 		protected override void _init_cache()
 		{
 			base._init_cache();

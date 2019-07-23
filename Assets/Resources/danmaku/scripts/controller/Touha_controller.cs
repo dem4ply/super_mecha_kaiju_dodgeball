@@ -14,6 +14,18 @@ namespace danmaku.controller.npc
 		public Controller_gun_pattern current_patter;
 		public List< Controller_gun_pattern > patters;
 
+		public bool automatic_shot
+		{
+			get
+			{
+				return current_patter.automatic_shot;
+			}
+			set
+			{
+				current_patter.automatic_shot = value;
+			}
+		}
+
 		public List<Controller_bullet> shot()
 		{
 			List<Controller_bullet> bullets = current_patter.shot();

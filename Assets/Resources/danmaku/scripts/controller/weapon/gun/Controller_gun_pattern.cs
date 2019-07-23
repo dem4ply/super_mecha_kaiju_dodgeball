@@ -40,6 +40,24 @@ namespace danmaku.controller.weapon.gun
 			return bullets;
 		}
 
+		public override void start_automatic_shot()
+		{
+			debug.info( "start" );
+			foreach( var gun in guns )
+			{
+				gun.automatic_shot = true;
+			}
+		}
+
+		public override void stop_automatic_shot()
+		{
+			debug.info( "stop" );
+			foreach( var gun in guns )
+			{
+				gun.automatic_shot = false;
+			}
+		}
+
 		protected void update_owner( )
 		{
 			foreach ( var gun in guns )
