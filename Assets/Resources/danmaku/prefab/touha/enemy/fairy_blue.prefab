@@ -73,6 +73,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4287349038637002359, guid: 3d4c4230f3745df61bdf5c6fe46992dc,
         type: 3}
+    - target: {fileID: 8732375923995687829, guid: 58eaa905c59fa194b95ff14c28b35c9a,
+        type: 3}
+      propertyPath: current_patter
+      value: 
+      objectReference: {fileID: 6974961108927659224}
     - target: {fileID: 414422673065318300, guid: 58eaa905c59fa194b95ff14c28b35c9a,
         type: 3}
       propertyPath: ammo
@@ -93,6 +98,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3407786684989541847}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6974961108927659224 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5730524600657752335, guid: 58eaa905c59fa194b95ff14c28b35c9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 3407786684989541847}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c5e0c2b07f584439ce39d2fe926e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7748597778664470138
 PrefabInstance:
   m_ObjectHideFlags: 0

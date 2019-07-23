@@ -31,7 +31,7 @@ namespace danmaku.motor
 			hp_motor.on_died -= on_died;
 		}
 
-		public virtual void on_died()
+		public override void on_died()
 		{
 			helper.instantiate._( explotion_prefab, transform.position );
 			recycle();

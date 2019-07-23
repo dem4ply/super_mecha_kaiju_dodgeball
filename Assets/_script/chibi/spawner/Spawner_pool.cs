@@ -5,7 +5,7 @@ namespace chibi.spawner
 {
 	public class Spawner_pool : Spawner
 	{
-		public chibi.pool.Pool_behaviour pool;
+		// public chibi.pool.Pool_behaviour pool;
 
 		protected override GameObject _instance( GameObject obj )
 		{
