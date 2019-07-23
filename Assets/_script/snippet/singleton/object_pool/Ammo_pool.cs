@@ -51,7 +51,10 @@ namespace singleton
 					result = instantiate( key );
 				}
 				else
+				{
 					result.transform.parent = null;
+					result.gameObject.SetActive( true );
+				}
 				return result;
 			}
 

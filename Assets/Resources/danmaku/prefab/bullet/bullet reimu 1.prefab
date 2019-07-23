@@ -76,6 +76,7 @@ MonoBehaviour:
   steering_mass: 1
   velocity_acceleration: {x: 0, y: 0, z: 0}
   ammo: {fileID: 11400000, guid: f153125a6fb748a4db922cc9afce2b6e, type: 2}
+  life_span: 1
 --- !u!114 &6703610102897278654
 MonoBehaviour:
   m_ObjectHideFlags: 0

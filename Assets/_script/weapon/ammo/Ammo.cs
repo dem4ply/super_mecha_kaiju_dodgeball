@@ -40,6 +40,11 @@ namespace weapon
 					damage.owner = owner;
 				return obj;
 			}
+
+			public virtual void push( Bullet_motor bullet )
+			{
+				singleton.object_pool.Ammo_pool.instance.push( bullet );
+			}
 		}
 	}
 }
