@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1372685758996145881}
   - component: {fileID: 6703610102897278654}
   m_Layer: 0
-  m_Name: bullet
+  m_Name: bullet reimu 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,9 +64,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   current_speed: {x: 0, y: 0, z: 0}
   desire_speed: 0
-  max_speed: 4
+  max_speed: 10
   period_to_desice_direction:
     _x: 0
     _y: 0
@@ -88,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   motor: {fileID: 0}
   pasive_motor: 0
 --- !u!1 &6874078174058799496
