@@ -81,11 +81,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: reimu
       objectReference: {fileID: 0}
-    - target: {fileID: 230087433925894349, guid: 539d3a18e323514409c5193e55108a56,
-        type: 3}
-      propertyPath: m_Direction
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 852267897849714905, guid: 539d3a18e323514409c5193e55108a56,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -141,6 +136,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2722046663485783932, guid: 539d3a18e323514409c5193e55108a56,
+        type: 3}
+      propertyPath: explotion_prefab
+      value: 
+      objectReference: {fileID: 4891079830838865638, guid: f7f05b19739ab1c2a833f0c4ef86853c,
+        type: 3}
     - target: {fileID: 9116389978464814409, guid: 539d3a18e323514409c5193e55108a56,
         type: 3}
       propertyPath: m_RootOrder
@@ -150,6 +151,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 230087433925894349, guid: 539d3a18e323514409c5193e55108a56,
+        type: 3}
+      propertyPath: m_Direction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1741535739049378954, guid: 539d3a18e323514409c5193e55108a56,
         type: 3}
@@ -221,7 +227,7 @@ PrefabInstance:
     - target: {fileID: 3766218871379703031, guid: d7defbd2077cf7a47b91205a546ed442,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3766218871379703031, guid: d7defbd2077cf7a47b91205a546ed442,
         type: 3}

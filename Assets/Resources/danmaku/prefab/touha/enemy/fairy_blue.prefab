@@ -67,6 +67,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4048131033237417066, guid: 58eaa905c59fa194b95ff14c28b35c9a,
+        type: 3}
+      propertyPath: explotion_prefab
+      value: 
+      objectReference: {fileID: 4287349038637002359, guid: 3d4c4230f3745df61bdf5c6fe46992dc,
+        type: 3}
     - target: {fileID: 414422673065318300, guid: 58eaa905c59fa194b95ff14c28b35c9a,
         type: 3}
       propertyPath: ammo
