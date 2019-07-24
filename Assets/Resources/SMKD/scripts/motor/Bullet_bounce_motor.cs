@@ -32,7 +32,7 @@ namespace SMKD.motor.weapons.gun.bullet
 			current_live_time = 0f;
 		}
 
-		private void Update()
+		protected override void Update()
 		{
 			delta_current_amount_of_bounce += Time.deltaTime;
 			/*

@@ -8,6 +8,7 @@ namespace chibi.path
 	public class Path_handler
 	{
 		public List< Handler > handlers;
+		[Range( 0, 1 )]
 		public float position_curve = 0f;
 		public float raidus = 1f;
 

@@ -31,8 +31,7 @@ namespace tests.edge_case.player_shot_enemy.danmaku
 		{
 			var bullets = reimu.shot();
 			yield return new WaitForSeconds( 1 );
-			var hp = enemy.GetComponent<HP_engine>();
-			Assert.True( hp.is_dead );
+			Assert.IsFalse( enemy );
 		}
 	}
 }

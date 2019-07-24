@@ -9,7 +9,7 @@ namespace chibi.controller.handler
 	{
 		public types type;
 
-		public virtual void action( Controller controller )
+		public virtual void action( Controller_motor controller_motor )
 		{
 			throw new System.NotImplementedException();
 		}

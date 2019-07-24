@@ -33,8 +33,7 @@ namespace tests.edge_case.player_receive_damge.danmaku
 				reimu.transform.position - enemy.transform.position;
 			enemy.speed = 100f;
 			yield return new WaitForSeconds( 1 );
-			var hp = reimu.GetComponent<HP_engine>();
-			Assert.True( hp.is_dead );
+			Assert.False( reimu );
 		}
 	}
 }

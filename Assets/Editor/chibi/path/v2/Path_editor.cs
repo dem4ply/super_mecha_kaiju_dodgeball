@@ -9,6 +9,7 @@ namespace chibi.editor.path
 {
 
 	[CustomEditor( typeof( Path_behaviour ) )]
+	[CanEditMultipleObjects]
 	public class Path_editor : Editor
 	{
 		Path_behaviour creator;
@@ -17,6 +18,7 @@ namespace chibi.editor.path
 
 		public override void OnInspectorGUI()
 		{
+			Debug.Log( targets.Length );
 			EditorGUI.BeginChangeCheck();
 			var new_type = (path_types)EditorGUILayout.EnumPopup( path.type );
 			if ( new_type != path.type )
@@ -62,8 +64,12 @@ namespace chibi.editor.path
 			if ( GUILayout.Button( "bake" ) )
 			{
 				Undo.RecordObject( creator, "bake" );
-				creator.path.bake();
-				create_handlers();
+				foreach ( var multi_creator in targets )
+				{
+					var tmp_creator = multi_creator as Path_behaviour;
+					tmp_creator.path.bake();
+					create_handlers( tmp_creator );
+				}
 			}
 
 			if ( EditorGUI.EndChangeCheck() )
@@ -155,34 +161,21 @@ namespace chibi.editor.path
 			}
 		}
 
-		protected void create_handlers()
+		protected void create_handlers( Path_behaviour creator )
 		{
-			if ( !handler_container )
-			{
-				handler_container = helper.game_object.Find._(
-					creator.transform, "handler_container" );
+			Debug.Log( creator.name, creator.gameObject );
+			handler_container = helper.game_object.prepare.stuff_container(
+				"handler_container", creator.transform ).transform;
 
-				if ( !handler_container )
-					handler_container = new GameObject().transform;
-			}
-			handler_container.name = "handler_container";
-			handler_container.parent = creator.transform;
-
-			for ( int i = handler_container.childCount - 1; i >= 0; --i )
-			{
-				var child = handler_container.GetChild( i );
-				GameObject.DestroyImmediate( child.gameObject );
-			}
+			helper.game_object.clean.children_immediate( handler_container );
 
 			for ( int i = 0; i < creator.path_handlers.Count; ++i )
 			{
 				var handler = creator.path_handlers[i];
-				var point = handler.make_point( path );
+				var point = handler.make_point( creator.path );
 				point.transform.parent = handler_container.transform;
 				point.name = string.Format( "handler__p{0}", i );
 			}
-
-
 		}
 
 		private void OnEnable()

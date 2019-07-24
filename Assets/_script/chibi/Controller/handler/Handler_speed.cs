@@ -7,7 +7,7 @@ namespace chibi.controller.handler
 	{
 		public float amount;
 
-		public override void action( Controller controller )
+		public override void action( Controller_motor controller )
 		{
 			switch ( type )
 			{
