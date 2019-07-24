@@ -18,7 +18,6 @@ namespace chibi.editor.path
 
 		public override void OnInspectorGUI()
 		{
-			Debug.Log( targets.Length );
 			EditorGUI.BeginChangeCheck();
 			var new_type = (path_types)EditorGUILayout.EnumPopup( path.type );
 			if ( new_type != path.type )
@@ -163,7 +162,6 @@ namespace chibi.editor.path
 
 		protected void create_handlers( Path_behaviour creator )
 		{
-			Debug.Log( creator.name, creator.gameObject );
 			handler_container = helper.game_object.prepare.stuff_container(
 				"handler_container", creator.transform ).transform;
 
