@@ -121,6 +121,7 @@ namespace chibi.path
 
 		public void bake()
 		{
+			rename_points();
 			bake_points = get_eveling_space_points( spacing );
 		}
 
