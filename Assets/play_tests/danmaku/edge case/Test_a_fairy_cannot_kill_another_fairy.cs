@@ -45,5 +45,19 @@ namespace tests.edge_case.friend_fire.danmaku
 			var hp = enemy1.GetComponent<HP_engine>();
 			Assert.False( hp.is_dead );
 		}
+
+		[UnityTest]
+		public IEnumerator when_the_enemies_touch_another_should_no_be_fine()
+		{
+			enemy1.desire_direction = Vector3.back;
+			enemy1.speed = enemy1.max_speed;
+			enemy2.desire_direction = Vector3.forward;
+			enemy2.speed = enemy2.max_speed;
+			yield return new WaitForSeconds( 1 );
+			var hp = enemy1.GetComponent<HP_engine>();
+			Assert.False( hp.is_dead );
+			hp = enemy2.GetComponent<HP_engine>();
+			Assert.False( hp.is_dead );
+		}
 	}
 }
