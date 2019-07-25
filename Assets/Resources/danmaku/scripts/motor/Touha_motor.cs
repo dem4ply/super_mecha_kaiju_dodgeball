@@ -33,7 +33,8 @@ namespace danmaku.motor
 
 		public override void on_died()
 		{
-			helper.instantiate._( explotion_prefab, transform.position );
+			if ( explotion_prefab )
+				helper.instantiate._( explotion_prefab, transform.position );
 			recycle();
 		}
 	}

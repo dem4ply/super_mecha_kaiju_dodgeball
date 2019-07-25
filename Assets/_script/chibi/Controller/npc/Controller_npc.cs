@@ -18,6 +18,8 @@ namespace chibi.controller.npc
 		public static string STR_WALL = "wall";
 		public static string STR_FLOOR = "floor";
 
+		public chibi.damage.motor.HP_engine hp;
+
 		protected manager.Collision manager_collisions;
 		protected Vertical_jump jump_motor;
 
@@ -53,8 +55,9 @@ namespace chibi.controller.npc
 
 		protected override void _init_cache()
 		{
-			manager_collisions = new manager.Collision();
 			base._init_cache();
+			manager_collisions = new manager.Collision();
+			hp = GetComponent<chibi.damage.motor.HP_engine>();
 		}
 
 		#region manejo de salto
@@ -156,5 +159,17 @@ namespace chibi.controller.npc
 				jump_motor.manager_collisions = manager_collisions;
 			motor.manager_collisions = manager_collisions;
 		}
+
+		#region hp
+		public virtual void died()
+		{
+			if ( !hp )
+			{
+				debug.error( "no tiene un HP_engine" );
+			}
+			else
+				hp.died();
+		}
+		#endregion
 	}
 }

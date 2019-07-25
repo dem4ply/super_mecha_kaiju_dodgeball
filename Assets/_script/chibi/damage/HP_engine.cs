@@ -84,15 +84,26 @@ namespace chibi.damage
 			{
 				stat.current -= damage.amount;
 				if ( is_dead )
+					died( true );
+			}
+
+			public virtual void died()
+			{
+				stat.current = 0f;
+				died( true );
+				if ( on_died != null )
+					on_died();
+			}
+
+			public virtual void died( bool is_internal )
+			{
+				if ( on_died != null )
+					on_died();
+				else
 				{
-					if ( on_died != null )
-						on_died();
-					else
-					{
-						Debug.Log( string.Format(
-							"[HP_engine] murio: '{0}'",
-							helper.game_object.name.full( this ) ) );
-					}
+					Debug.Log( string.Format(
+						"[HP_engine] murio: '{0}'",
+						helper.game_object.name.full( this ) ) );
 				}
 			}
 		}

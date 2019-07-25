@@ -31,7 +31,6 @@ namespace chibi.controller.steering
 				behaviors[ i ].prepare_properties( this, propertie, target );
 				behaviors_properties.Add( propertie );
 			}
-
 		}
 
 		protected override void Start()
@@ -40,13 +39,6 @@ namespace chibi.controller.steering
 				controller.speed = controller.max_speed;
 			else
 				controller.speed = start_speed;
-		}
-
-		public IEnumerable<(behavior.Behavior, Steering_properties)> zip()
-		{
-			return behaviors.Zip(
-				behaviors_properties,
-				( behavior, properties ) => (behavior, properties) );
 		}
 
 		private void Update()
