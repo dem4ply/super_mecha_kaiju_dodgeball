@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8427828977342754682}
   - component: {fileID: 2320141982074023728}
   - component: {fileID: 6060812120743909509}
+  - component: {fileID: 2685399260341050332}
   m_Layer: 0
   m_Name: blue fairy explotion
   m_TagString: Untagged
@@ -4810,3 +4811,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &2685399260341050332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4287349038637002359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f024988632f4f94bbacbfc3de3d56027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  pool: {fileID: 0}
+  life_time: 2
