@@ -55,8 +55,8 @@ namespace chibi.controller.npc
 
 		protected override void _init_cache()
 		{
-			base._init_cache();
 			manager_collisions = new manager.Collision();
+			base._init_cache();
 			hp = GetComponent<chibi.damage.motor.HP_engine>();
 		}
 

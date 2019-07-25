@@ -12,6 +12,8 @@ namespace danmaku.controller.weapon.gun
 		protected chibi.rol_sheet.Rol_sheet _owner;
 		public List< Gun > guns;
 
+		public List< Controller_gun > controllers_guns;
+
 		public chibi.rol_sheet.Rol_sheet owner
 		{
 			get {
@@ -27,15 +29,22 @@ namespace danmaku.controller.weapon.gun
 		{
 			base._init_cache();
 			guns = new List<Gun>( transform.GetComponentsInChildren<Gun>() );
+			controllers_guns = new List<Controller_gun>(
+					transform.GetComponentsInChildren<Controller_gun>() );
 			update_owner();
 		}
 
 		public override List<Controller_bullet> shot()
 		{
 			List<Controller_bullet> bullets = new List<Controller_bullet>();
+			foreach( var controller_gun in controllers_guns )
+			{
+				debug.info( controller_gun.name );
+				controller_gun.shot();
+			}
 			foreach ( var gun in guns )
 			{
-				bullets.Add( gun.shot() );
+				//bullets.Add( gun.shot() );
 			}
 			return bullets;
 		}
