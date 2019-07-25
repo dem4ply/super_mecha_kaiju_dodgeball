@@ -19,6 +19,9 @@ namespace chibi.weapon.gun
 		[HideInInspector] public float last_automatic_shot = 0f;
 		protected Vector3 _aim_direction;
 
+		protected int burst_amount = 0;
+		protected int amount_of_automatic_shot = 0;
+
 		public Vector3 direction_shot
 		{
 			get { return transform.forward.normalized; }
@@ -113,7 +116,21 @@ namespace chibi.weapon.gun
 			{
 				gun.last_automatic_shot -= gun.rate_fire;
 				gun.shot();
+				++amount_of_automatic_shot;
+				if ( burst_amount > 0 && burst_amount <= amount_of_automatic_shot )
+				{
+					burst_amount = 0;
+					amount_of_automatic_shot = 0;
+					automatic_shot = false;
+				}
 			}
+		}
+
+		public void burst()
+		{
+			automatic_shot = true;
+			burst_amount = stat.burst_amount;
+			amount_of_automatic_shot = 0;
 		}
 	}
 }

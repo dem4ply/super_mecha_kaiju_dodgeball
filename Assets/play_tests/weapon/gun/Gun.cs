@@ -33,5 +33,16 @@ namespace tests.controller.motor
 			yield return new WaitForSeconds( 1 );
 			tests_tool.assert.game_object.is_not_null( bullet );
 		}
+
+		[UnityTest]
+		public IEnumerator on_buirst_should_shot_the_same_amount_in_the_stat()
+		{
+			float wait_time =
+				( 1 / gun.stat.rate_fire ) * gun.stat.burst_amount + 1;
+			gun.burst();
+			Debug.Log( wait_time );
+			yield return new WaitForSeconds( wait_time );
+			assert.assert_collision_enter( gun.stat.burst_amount );
+		}
 	}
 }
