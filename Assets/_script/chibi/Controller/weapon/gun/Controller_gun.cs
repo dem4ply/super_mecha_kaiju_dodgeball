@@ -28,7 +28,7 @@ namespace chibi.controller.weapon.gun
 
 		public virtual List<Controller_bullet> shot()
 		{
-			debug.info( "shot" );
+			//debug.info( "shot" );
 			throw new System.NotImplementedException();
 		}
 

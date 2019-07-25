@@ -4,6 +4,7 @@ using UnityEngine;
 using chibi.controller.weapon.gun.bullet;
 using chibi.controller.weapon.gun;
 using chibi.weapon.gun;
+using chibi.controller.weapon.gun.single;
 
 namespace danmaku.controller.weapon.gun
 {
@@ -12,7 +13,7 @@ namespace danmaku.controller.weapon.gun
 		protected chibi.rol_sheet.Rol_sheet _owner;
 		public List< Gun > guns;
 
-		public List< Controller_gun > controllers_guns;
+		public List< Controller_gun_single > controllers_guns;
 
 		public chibi.rol_sheet.Rol_sheet owner
 		{
@@ -29,8 +30,8 @@ namespace danmaku.controller.weapon.gun
 		{
 			base._init_cache();
 			guns = new List<Gun>( transform.GetComponentsInChildren<Gun>() );
-			controllers_guns = new List<Controller_gun>(
-					transform.GetComponentsInChildren<Controller_gun>() );
+			controllers_guns = new List<Controller_gun_single>(
+					transform.GetComponentsInChildren<Controller_gun_single>() );
 			update_owner();
 		}
 
@@ -39,7 +40,7 @@ namespace danmaku.controller.weapon.gun
 			List<Controller_bullet> bullets = new List<Controller_bullet>();
 			foreach( var controller_gun in controllers_guns )
 			{
-				debug.info( controller_gun.name );
+				// debug.info( controller_gun.name );
 				controller_gun.shot();
 			}
 			foreach ( var gun in guns )
@@ -51,7 +52,6 @@ namespace danmaku.controller.weapon.gun
 
 		public override void start_automatic_shot()
 		{
-			debug.info( "start" );
 			foreach( var gun in guns )
 			{
 				gun.automatic_shot = true;
@@ -60,7 +60,6 @@ namespace danmaku.controller.weapon.gun
 
 		public override void stop_automatic_shot()
 		{
-			debug.info( "stop" );
 			foreach( var gun in guns )
 			{
 				gun.automatic_shot = false;
