@@ -52,9 +52,13 @@ namespace chibi.controller.steering
 		private void Update()
 		{
 			Vector3 desire_direction = Vector3.zero;
+			behavior.Behavior behavior;
+			Steering_properties properties;
 
-			foreach ( var ( behavior, properties ) in zip() )
+			for ( int i = 0; i < behaviors_properties.Count; ++i )
 			{
+				properties = behaviors_properties[i];
+				behavior = behaviors[i];
 				properties.time += Time.deltaTime;
 				var behavior_direction = behavior.desire_direction(
 					this, target, properties );
