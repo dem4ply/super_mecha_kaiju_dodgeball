@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   item: {fileID: 11400000, guid: 17cd1c45d4025f6469aacf58b4cea503, type: 2}
   amount: 1
 --- !u!65 &9070254983391556041
@@ -195,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   motor: {fileID: 0}
   pasive_motor: 0
 --- !u!114 &8597211190022079670
@@ -210,12 +212,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   target: {fileID: 0}
   controller: {fileID: 4252197570812895838}
   behaviors:
   - {fileID: 11400000, guid: f66704eeded275e48a2c5fb5b18fbbb8, type: 2}
   - {fileID: 11400000, guid: f29012b63b3b4f948925543b05c468e3, type: 2}
   - {fileID: 11400000, guid: 65d111ec795d793489ab22cc6e7ec828, type: 2}
+  start_speed: -1
 --- !u!114 &1742534749443508700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   sheet: {fileID: 0}
   start_buffos:
   - {fileID: 11400000, guid: 2735728a1b910c64ea020e7ff57c9098, type: 2}
@@ -245,7 +250,7 @@ MonoBehaviour:
     variable: {fileID: 0}
   want_to_reproducing: 0
   all_fish: {fileID: 11400000, guid: dafcea51ea06b7944979713e54497fca, type: 2}
-  specie: {fileID: 11400000, guid: ef28b7b3c99d3cf48be2bab15aad56ec, type: 2}
+  specie: {fileID: 11400000, guid: fd6736563fa880e4893181564eeee18e, type: 2}
 --- !u!114 &3320257440463154265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   current_speed: {x: 0, y: 0, z: 0}
   desire_speed: 0
   max_speed: 4
