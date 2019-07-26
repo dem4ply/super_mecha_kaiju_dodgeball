@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1328558228578934373}
-  - component: {fileID: 8523995640592048738}
+  - component: {fileID: 1600390332989728395}
   - component: {fileID: 1328558228578934374}
   m_Layer: 0
   m_Name: danmaku burst  gun
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8523995640592048738
+--- !u!114 &1600390332989728395
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1328558228578934375}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4dbfcffc7c97aaecafb98d91578516e, type: 3}
+  m_Script: {fileID: 11500000, guid: bf0966c6bc4edada09a0efab5bc5703e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
   pool: {fileID: 0}
   gun: {fileID: 0}
+  burst_mode: 0
 --- !u!114 &1328558228578934374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,5 +66,3 @@ MonoBehaviour:
   stat: {fileID: 11400000, guid: cbab7e97d9a7f634881277866c5b3941, type: 2}
   ammo: {fileID: 11400000, guid: f153125a6fb748a4db922cc9afce2b6e, type: 2}
   position_of_shot: {fileID: 0}
-  automatic_shot: 0
-  last_automatic_shot: 0

@@ -31,6 +31,7 @@ namespace tests.navigation.touhas.danmaku
 		}
 
 		[UnityTest]
+		[ Timeout( 60000 ) ]
 		public IEnumerator see_all_touhas()
 		{
 			yield return new WaitForSeconds( 1 );

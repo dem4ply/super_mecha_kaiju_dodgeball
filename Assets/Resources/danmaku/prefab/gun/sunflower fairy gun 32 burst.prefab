@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 1328558228578934375, guid: 28a734269a83fcc4a84fc4ad132cfdfc,
         type: 3}
       propertyPath: m_Name
-      value: sunflower fairy gun
+      value: sunflower fairy gun 32 burst
       objectReference: {fileID: 0}
     - target: {fileID: 1328558228578934373, guid: 28a734269a83fcc4a84fc4ad132cfdfc,
         type: 3}
@@ -82,7 +82,7 @@ PrefabInstance:
         type: 3}
       propertyPath: stat
       value: 
-      objectReference: {fileID: 11400000, guid: 328e9c4db8084da0b943c84dea6382e5,
+      objectReference: {fileID: 11400000, guid: eed435bb1757eaaca9b5fab057e3db4f,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a734269a83fcc4a84fc4ad132cfdfc, type: 3}

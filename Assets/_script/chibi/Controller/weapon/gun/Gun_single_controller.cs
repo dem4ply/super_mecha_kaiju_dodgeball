@@ -10,6 +10,8 @@ namespace chibi.controller.weapon.gun
 	{
 		public Gun gun;
 
+		public bool burst_mode = false;
+
 		protected override void _init_cache()
 		{
 			base._init_cache();
@@ -21,7 +23,14 @@ namespace chibi.controller.weapon.gun
 
 		public override List<Controller_bullet> shot()
 		{
-			return new List<Controller_bullet>{ gun.shot() };
+			debug.info( "sadfdf" );
+			if ( burst_mode )
+			{
+				gun.burst();
+				return null;
+			}
+			else
+				return new List<Controller_bullet>{ gun.shot() };
 		}
 	}
 }

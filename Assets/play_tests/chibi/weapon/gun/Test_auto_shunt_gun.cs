@@ -6,7 +6,7 @@ using UnityEngine;
 using chibi.weapon.gun;
 using chibi.spawner;
 using chibi.damage.motor;
-using chibi.controller.weapon.gun;
+using chibi.controller.weapon.gun.single;
 using helper.test.assert;
 
 namespace tests.weapon.linerar.gun
