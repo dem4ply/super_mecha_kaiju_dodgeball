@@ -36,7 +36,8 @@ namespace chibi.controller.steering.behavior
 		}
 
 		public override Steering_properties prepare_properties(
-			Steering controller, Steering_properties properties, Transform target )
+			Steering controller, Steering_properties properties,
+			Transform target )
 		{
 			properties = base.prepare_properties( controller, properties, target );
 			chibi.path.Path_behaviour path = target.GetComponent<

@@ -24,5 +24,16 @@ namespace helper.shapes
 				angle += 360;
 			return angle / 360;
 		}
+
+		public static float perimeter( float r1, float r2 )
+		{
+			if ( r1 == r2 )
+				return r1 * 2 * Mathf.PI;
+			else if( r1 > r2 )
+				return 3 * ( r1 + r2 )
+					- Mathf.Sqrt( ( 3*r1 + r2 ) * ( r1 + 3*r2 ) );
+			else
+				return perimeter( r2, r1 );
+		}
 	}
 }

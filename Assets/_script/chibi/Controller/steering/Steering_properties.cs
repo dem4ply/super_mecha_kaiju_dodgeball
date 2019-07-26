@@ -13,5 +13,7 @@ namespace chibi.controller.steering
 		public int current_waypoint;
 
 		public chibi.radar.Radar radar;
+
+		public float x;
 	}
 }
