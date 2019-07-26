@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   current_speed: {x: 0, y: 0, z: 0}
   desire_speed: 0
   max_speed: 4
@@ -74,7 +75,8 @@ MonoBehaviour:
   is_steering: 0
   steering_mass: 1
   velocity_acceleration: {x: 0, y: 0, z: 0}
-  ammo: {fileID: 11400000, guid: f153125a6fb748a4db922cc9afce2b6e, type: 2}
+  ammo: {fileID: 11400000, guid: 0936b0c6d8c8cea46b9f7639cd465962, type: 2}
+  life_span: 0
 --- !u!114 &6703610102897278654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   motor: {fileID: 0}
   pasive_motor: 0
 --- !u!1 &6874078174058799496
@@ -203,16 +206,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4419262778446866371}
     m_Modifications:
-    - target: {fileID: 7280716390571315477, guid: fcb95c96c6294fc4a87fe84484cf38e1,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 7280716390571315477, guid: fcb95c96c6294fc4a87fe84484cf38e1,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 502810820939906742, guid: fcb95c96c6294fc4a87fe84484cf38e1,
         type: 3}
       propertyPath: m_Name
@@ -271,6 +264,16 @@ PrefabInstance:
     - target: {fileID: 6627745664965032791, guid: fcb95c96c6294fc4a87fe84484cf38e1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280716390571315477, guid: fcb95c96c6294fc4a87fe84484cf38e1,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280716390571315477, guid: fcb95c96c6294fc4a87fe84484cf38e1,
+        type: 3}
+      propertyPath: m_Center.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
