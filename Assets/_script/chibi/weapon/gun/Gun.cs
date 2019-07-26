@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using weapon.stat;
 using weapon.ammo;
 
@@ -11,12 +12,13 @@ namespace chibi.weapon.gun
 	{
 		public Gun_stat stat;
 		public Ammo ammo;
+		protected IEnumerator __automatic_shot;
 
 		public Transform position_of_shot;
 
-		public bool automatic_shot = false;
+		private bool _automatic_shot = false;
 
-		[HideInInspector] public float last_automatic_shot = 0f;
+		// [HideInInspector] public float last_automatic_shot = 0f;
 		protected Vector3 _aim_direction;
 
 		protected int burst_amount = 0;
@@ -42,6 +44,26 @@ namespace chibi.weapon.gun
 			set {
 				_aim_direction = transform.position + value;
 				transform.LookAt( _aim_direction );
+			}
+		}
+
+		public bool automatic_shot
+		{
+			get{
+				return _automatic_shot;
+			}
+
+			set {
+				_automatic_shot = value;
+				if ( automatic_shot )
+				{
+					__automatic_shot = do_automatic_shot();
+					StartCoroutine( __automatic_shot );
+				}
+				else if ( __automatic_shot != null )
+				{
+					StopCoroutine( __automatic_shot );
+				}
 			}
 		}
 
@@ -103,34 +125,27 @@ namespace chibi.weapon.gun
 			}
 		}
 
-		private void Update()
+		protected virtual IEnumerator do_automatic_shot()
 		{
-			if ( automatic_shot )
-				do_automatic_shot( Time.deltaTime, this );
-		}
-
-		protected virtual void do_automatic_shot( float delta_time, Gun gun )
-		{
-			gun.last_automatic_shot += delta_time;
-			if ( gun.last_automatic_shot > gun.rate_fire )
+			while( true )
 			{
-				gun.last_automatic_shot -= gun.rate_fire;
-				gun.shot();
+				shot();
 				++amount_of_automatic_shot;
-				if ( burst_amount > 0 && burst_amount <= amount_of_automatic_shot )
+				if ( burst_amount > 0 && amount_of_automatic_shot >= burst_amount )
 				{
 					burst_amount = 0;
 					amount_of_automatic_shot = 0;
 					automatic_shot = false;
 				}
+				yield return new WaitForSeconds( rate_fire );
 			}
 		}
 
 		public void burst()
 		{
-			automatic_shot = true;
 			burst_amount = stat.burst_amount;
 			amount_of_automatic_shot = 0;
+			automatic_shot = true;
 		}
 	}
 }
