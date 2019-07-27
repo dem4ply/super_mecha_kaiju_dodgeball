@@ -7,6 +7,8 @@ namespace chibi.weapon.gun
 	{
 		public override Controller_bullet shot()
 		{
+			if ( auto_aim_target.Value != null )
+				aim_to( auto_aim_target.Value );
 			Bullet_motor bullet;
 			if ( position_of_shot )
 				bullet = ammo.instanciate( position_of_shot.position, owner );

@@ -21,6 +21,7 @@ namespace chibi.controller.weapon.gun.single
 
 		public override List<Controller_bullet> shot()
 		{
+			debug.info( "sfdasdf" );
 			gun.aim_direction = 
 				gun.transform.position - target.Value.transform.position;
 			return base.shot();

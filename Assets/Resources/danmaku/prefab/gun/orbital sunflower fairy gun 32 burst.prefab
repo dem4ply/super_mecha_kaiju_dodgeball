@@ -1,111 +1,16 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!54 &2709421197679008084
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2226528268642253460}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1670497701895984955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2226528268642253460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb32a06d33097ed4389b4917abe8e600, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug_mode: 0
-  pool: {fileID: 0}
-  current_speed: {x: 0, y: 0, z: 0}
-  desire_speed: 0
-  max_speed: 4
-  period_to_desice_direction:
-    _x: 0
-    _y: 0
-    _z: 0
-  is_steering: 0
-  steering_mass: 1
-  velocity_acceleration: {x: 0, y: 0, z: 0}
---- !u!114 &3425929081602167323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2226528268642253460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7d01f963f253864ba718dea65dfaf9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug_mode: 0
-  pool: {fileID: 0}
-  motor: {fileID: 0}
-  pasive_motor: 0
---- !u!114 &5480370529068435353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2226528268642253460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d897d9d43a817a540954c52bc8783510, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug_mode: 0
-  pool: {fileID: 0}
-  target: {fileID: 0}
-  controller: {fileID: 3425929081602167323}
-  behaviors:
-  - {fileID: 11400000, guid: 76525aa6fedd7e6db951738248a7e76f, type: 2}
-  start_speed: -1
---- !u!114 &1093781779257710558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2226528268642253460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdcc061055939c46cadd67f5a547a047, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug_mode: 0
-  pool: {fileID: 0}
-  gun: {fileID: 0}
-  burst_mode: 1
-  target:
-    use_constant: 1
-    constant_value: {fileID: 0}
-    variable: {fileID: 0}
---- !u!1001 &903476412316902643
+--- !u!1001 &197146461132755911
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 671370527107296160}
     m_Modifications:
     - target: {fileID: 1328558228578934375, guid: 28a734269a83fcc4a84fc4ad132cfdfc,
         type: 3}
       propertyPath: m_Name
-      value: orbital sunflower fairy gun 32 burst
+      value: danmaku burst  gun
       objectReference: {fileID: 0}
     - target: {fileID: 1328558228578934373, guid: 28a734269a83fcc4a84fc4ad132cfdfc,
         type: 3}
@@ -162,24 +67,97 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1328558228578934374, guid: 28a734269a83fcc4a84fc4ad132cfdfc,
-        type: 3}
-      propertyPath: ammo
-      value: 
-      objectReference: {fileID: 11400000, guid: 0f9f40cb3a84471e682132e210c68590,
-        type: 2}
-    - target: {fileID: 1328558228578934374, guid: 28a734269a83fcc4a84fc4ad132cfdfc,
-        type: 3}
-      propertyPath: stat
-      value: 
-      objectReference: {fileID: 11400000, guid: eed435bb1757eaaca9b5fab057e3db4f,
-        type: 2}
-    m_RemovedComponents:
-    - {fileID: 3537542900482003552, guid: 28a734269a83fcc4a84fc4ad132cfdfc, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a734269a83fcc4a84fc4ad132cfdfc, type: 3}
---- !u!1 &2226528268642253460 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1328558228578934375, guid: 28a734269a83fcc4a84fc4ad132cfdfc,
+--- !u!1001 &6836697106453016484
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -5753507926956388586, guid: 231e2cd44938a76448c279df34e4c5c5,
+        type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 7903489686309465013}
+    - target: {fileID: 5654131312865194343, guid: 231e2cd44938a76448c279df34e4c5c5,
+        type: 3}
+      propertyPath: m_Name
+      value: orbital sunflower fairy gun 32 burst
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319108984665474052, guid: 231e2cd44938a76448c279df34e4c5c5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319108984665474052, guid: 231e2cd44938a76448c279df34e4c5c5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319108984665474052, guid: 231e2cd44938a76448c279df34e4c5c5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319108984665474052, guid: 231e2cd44938a76448c279df34e4c5c5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319108984665474052, guid: 231e2cd44938a76448c279df34e4c5c5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319108984665474052, guid: 231e2cd44938a76448c279df34e4c5c5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319108984665474052, guid: 231e2cd44938a76448c279df34e4c5c5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319108984665474052, guid: 231e2cd44938a76448c279df34e4c5c5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319108984665474052, guid: 231e2cd44938a76448c279df34e4c5c5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319108984665474052, guid: 231e2cd44938a76448c279df34e4c5c5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319108984665474052, guid: 231e2cd44938a76448c279df34e4c5c5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 231e2cd44938a76448c279df34e4c5c5, type: 3}
+--- !u!4 &671370527107296160 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6319108984665474052, guid: 231e2cd44938a76448c279df34e4c5c5,
     type: 3}
-  m_PrefabInstance: {fileID: 903476412316902643}
+  m_PrefabInstance: {fileID: 6836697106453016484}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7903489686309465013 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -5526472867943627759, guid: 231e2cd44938a76448c279df34e4c5c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6836697106453016484}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d01f963f253864ba718dea65dfaf9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

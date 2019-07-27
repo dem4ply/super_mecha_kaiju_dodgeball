@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4bd5ef3664ffa41ae9184cd5ec41bd, type: 3}
   m_Name: burst 32 shots
   m_EditorClassIdentifier: 
-  rate_fire: 16
-  burst_amount: 32
+  rate_fire: 32
+  burst_amount: 64

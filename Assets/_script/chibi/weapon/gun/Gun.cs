@@ -8,6 +8,9 @@ using chibi.controller.weapon.gun.bullet;
 
 namespace chibi.weapon.gun
 {
+	public enum Auto_aim_type
+	{ aim, shunt }
+
 	public abstract class Gun : Weapon
 	{
 		public Gun_stat stat;
@@ -24,9 +27,17 @@ namespace chibi.weapon.gun
 		protected int burst_amount = 0;
 		protected int amount_of_automatic_shot = 0;
 
+		public chibi.tool.reference.Game_object_reference auto_aim_target;
+		public Auto_aim_type auto_aim_type;
+
 		public Vector3 direction_shot
 		{
-			get { return transform.forward.normalized; }
+			get {
+				var direction = transform.forward.normalized;
+				if ( auto_aim_type == Auto_aim_type.shunt )
+					return -direction;
+				return direction;
+			}
 		}
 
 		public float rate_fire
@@ -45,6 +56,21 @@ namespace chibi.weapon.gun
 				_aim_direction = transform.position + value;
 				transform.LookAt( _aim_direction );
 			}
+		}
+
+		public virtual void aim_to( GameObject target )
+		{
+			aim_to( target.transform );
+		}
+
+		public virtual void aim_to( Transform target )
+		{
+			aim_to( target.position );
+		}
+
+		public virtual void aim_to( Vector3 position )
+		{
+			aim_direction = position - transform.position;
 		}
 
 		public bool automatic_shot
@@ -85,16 +111,6 @@ namespace chibi.weapon.gun
 			{
 				stat = load_default_stat() as Gun_stat;
 			}
-		}
-
-		public virtual void aim_to( Transform target )
-		{
-			aim_to( target.position );
-		}
-
-		public virtual void aim_to( Vector3 position )
-		{
-			aim_direction = position - transform.position;
 		}
 
 		protected virtual chibi.Chibi_object load_default_ammo()

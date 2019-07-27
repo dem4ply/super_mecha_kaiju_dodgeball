@@ -35,6 +35,11 @@ namespace helper
 					_instance.gameObject );
 			}
 
+			public void log( string msg )
+			{
+				info( msg );
+			}
+
 			public void warning( string msg )
 			{
 				UnityEngine.Debug.LogWarning( string.Format(
