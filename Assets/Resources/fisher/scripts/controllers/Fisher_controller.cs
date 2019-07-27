@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using chibi.controller.weapon.gun.bullet;
 using chibi.inventory;
-using System;
 
 namespace fisher.controller
 {

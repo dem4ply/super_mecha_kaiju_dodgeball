@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace SMKD
+﻿namespace SMKD
 {
 	public class game_manager_arkanoid : chibi.Chibi_behaviour
 	{

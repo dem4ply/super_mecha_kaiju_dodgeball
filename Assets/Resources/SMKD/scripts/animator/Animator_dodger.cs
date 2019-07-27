@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using chibi.dialog;
 
 namespace SMKD.animator
 {

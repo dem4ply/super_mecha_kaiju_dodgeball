@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using weapon.ammo;
 
 namespace chibi.motor.weapons.gun.bullet
 {

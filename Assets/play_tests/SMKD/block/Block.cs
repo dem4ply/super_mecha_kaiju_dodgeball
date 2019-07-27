@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.TestTools;
-using helper.test.assert;
-using SMKD.controller.npc;
 using SMKD.motor;
 using NUnit.Framework;
 

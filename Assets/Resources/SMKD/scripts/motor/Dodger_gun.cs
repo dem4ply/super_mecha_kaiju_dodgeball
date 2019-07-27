@@ -1,6 +1,5 @@
 ﻿using chibi.controller.weapon.gun.bullet;
 using chibi.weapon.gun;
-using UnityEngine;
 
 namespace SMKD.weapon.gun
 {

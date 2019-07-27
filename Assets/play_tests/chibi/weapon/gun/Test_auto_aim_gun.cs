@@ -1,23 +1,8 @@
-﻿using NUnit.Framework;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine.TestTools;
 using UnityEngine;
-using chibi.weapon.gun;
-using chibi.spawner;
-using chibi.damage.motor;
-using chibi.controller.weapon.gun;
 using helper.test.assert;
-using NUnit.Framework;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.TestTools;
-using UnityEngine;
-using chibi.weapon.gun;
-using chibi.spawner;
-using chibi.damage.motor;
 using chibi.controller.weapon.gun.single;
-using helper.test.assert;
 
 namespace tests.weapon.linerar.gun
 {

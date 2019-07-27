@@ -1,19 +1,17 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using LetterboxCamera;
 
 namespace LetterboxCamera
 {
-    /* ForceCameraRatio.cs
-     *
-     * Forces the assigned Cameras to a given Aspect Ratio by Letterboxing them horizontally or vertically
-     *
-     * Copyright Hexdragonal Games 2015
-     * Written by Tom Elliott */
+	/* ForceCameraRatio.cs
+	 *
+	 * Forces the assigned Cameras to a given Aspect Ratio by Letterboxing them horizontally or vertically
+	 *
+	 * Copyright Hexdragonal Games 2015
+	 * Written by Tom Elliott */
 
-    // A class for tracking individual Cameras and their Viewports
-    [System.Serializable]
+	// A class for tracking individual Cameras and their Viewports
+	[System.Serializable]
     public class CameraRatio
     {
         public enum CameraAnchor

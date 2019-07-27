@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using chibi.controller.weapon.gun.bullet;
-using chibi.radar;
-using danmaku.controller.weapon.gun;
+﻿using UnityEngine;
 
 namespace danmaku.controller.player
 {

@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.TestTools;
 using helper.test.assert;
-using chibi.controller.ai;
 
 namespace tests.controller.steering.behavior.chibi
 {

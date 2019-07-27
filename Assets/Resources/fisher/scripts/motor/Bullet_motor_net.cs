@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-using weapon.ammo;
-using chibi.motor.weapons.gun.bullet;
+﻿using chibi.motor.weapons.gun.bullet;
 
 namespace fisher.motor.weapons.gun.bullet
 {

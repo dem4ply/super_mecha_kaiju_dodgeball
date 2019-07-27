@@ -2,9 +2,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-using helper.test.assert;
 using danmaku.controller.npc;
-using chibi.damage.motor;
 
 namespace tests.edge_case.player_shot_enemy.danmaku
 {

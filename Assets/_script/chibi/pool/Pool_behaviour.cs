@@ -1,7 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using weapon.ammo;
-using chibi.motor.weapons.gun.bullet;
 
 namespace chibi.pool
 {

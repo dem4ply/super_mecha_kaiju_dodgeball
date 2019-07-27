@@ -1,7 +1,4 @@
-﻿using chibi.rol_sheet;
-using UnityEngine;
-using System.Collections.Generic;
-using UnityEngine.Events;
+﻿using UnityEngine.Events;
 
 
 namespace chibi.events

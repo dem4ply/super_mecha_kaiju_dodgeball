@@ -1,9 +1,4 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-using chibi.rol_sheet.buff;
-
-
-namespace chibi.pomodoro
+﻿namespace chibi.pomodoro
 {
 	public class Pomodoro_ticker: chibi.Chibi_behaviour
 	{

@@ -1,12 +1,5 @@
 using System.Collections.Generic;
-using chibi.damage;
-using UnityEngine;
-using chibi.weapon.gun;
 using chibi.controller.weapon.gun.bullet;
-using UnityEngine;
-using chibi.controller.weapon.gun.bullet;
-using chibi.controller.weapon.gun;
-using chibi.weapon.gun;
 
 
 namespace chibi.controller.weapon.gun.single

@@ -1,10 +1,4 @@
-﻿using System.Collections.Generic;
-using chibi.controller.weapon.gun.bullet;
-using chibi.weapon.gun;
-using UnityEngine;
-using chibi.pomodoro;
-
-namespace SMKD.motor
+﻿namespace SMKD.motor
 {
 	public class Block_motor : chibi.motor.Motor
 	{

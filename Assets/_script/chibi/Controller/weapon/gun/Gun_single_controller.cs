@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using chibi.damage;
-using UnityEngine;
 using chibi.weapon.gun;
 using chibi.controller.weapon.gun.bullet;
 

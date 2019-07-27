@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-using helper.test.assert;
 using danmaku.controller.npc;
 using chibi.damage.motor;
 

@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
-using chibi.controller;
 
 namespace chibi.game_manager
 {

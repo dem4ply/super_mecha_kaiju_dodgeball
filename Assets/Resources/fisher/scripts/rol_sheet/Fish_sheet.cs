@@ -1,9 +1,4 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-using chibi.rol_sheet.buff;
-
-
-namespace fisher.rol_sheet
+﻿namespace fisher.rol_sheet
 {
 	public class Fish_sheet : chibi.rol_sheet.Rol_sheet
 	{

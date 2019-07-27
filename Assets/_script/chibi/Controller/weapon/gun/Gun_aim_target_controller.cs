@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
-using chibi.damage;
-using UnityEngine;
-using chibi.weapon.gun;
 using chibi.controller.weapon.gun.bullet;
 
-namespace chibi.controller.weapon.gun
+namespace chibi.controller.weapon.gun.single
 {
-	public class Gun_aim_target_controller : Gun_single_controller
+	public class Gun_aim_target_controller : Controller_gun_single
 	{
 		public chibi.tool.reference.Game_object_reference target;
 

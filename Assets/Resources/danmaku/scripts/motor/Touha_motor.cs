@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using chibi.controller.weapon.gun.bullet;
-using chibi.weapon.gun;
-using UnityEngine;
-using chibi.pomodoro;
+﻿using UnityEngine;
 
 namespace danmaku.motor
 {

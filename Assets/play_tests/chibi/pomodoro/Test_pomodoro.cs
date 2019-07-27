@@ -1,9 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-using chibi.radar;
 using chibi.pomodoro;
 
 namespace tests.pomodoro

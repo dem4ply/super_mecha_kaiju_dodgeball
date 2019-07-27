@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using chibi.damage;
-using UnityEngine;
-using chibi.motor.weapons.gun.bullet;
-using chibi.controller.weapon.gun.bullet;
+﻿using chibi.controller.weapon.gun.bullet;
 using fisher.motor.weapons.gun.bullet;
 
 namespace fisher.controller

@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using weapon.ammo;
 using chibi.pomodoro;
 
 namespace singleton.pomodoro

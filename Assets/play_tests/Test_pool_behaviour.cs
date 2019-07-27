@@ -1,10 +1,6 @@
 ﻿using UnityEngine;
 using NUnit.Framework;
-using weapon.ammo;
-using chibi.motor.weapons.gun.bullet;
-using singleton.object_pool;
 using chibi.pool;
-using chibi;
 
 namespace unit_tests.pool.chibi
 {
