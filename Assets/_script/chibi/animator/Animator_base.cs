@@ -15,9 +15,7 @@ namespace chibi.animator
 				animator = GetComponent<Animator>();
 			if ( !animator )
 			{
-				Debug.LogError( string.Format(
-					"[Animator_base]el gameobject {0} no tiene un animator",
-					helper.game_object.name.full( this ) ) );
+				debug.error( "no se encontro el componente animator" );
 			}
 		}
 		#endregion

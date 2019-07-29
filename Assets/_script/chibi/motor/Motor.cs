@@ -17,8 +17,6 @@ namespace chibi.motor
 		public Vector3 velocity_acceleration = Vector3.zero;
 
 		private Vector3 _desire_direction;
-
-
 		public manager.Collision manager_collisions;
 
 		protected Rigidbody ridgetbody;

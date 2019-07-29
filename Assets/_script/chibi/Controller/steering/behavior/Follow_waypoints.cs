@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using chibi.controller.handler;
 
 namespace chibi.controller.steering.behavior
 {
@@ -44,6 +45,10 @@ namespace chibi.controller.steering.behavior
 				chibi.path.Path_behaviour>();
 			properties.current_waypoint = 0;
 			properties.waypoints = path.path.bake_points;
+
+			var handlers = target.GetComponentsInChildren<Handler_behaviour>();
+			foreach( var handler in handlers )
+				handler.add( controller.controller );
 			return properties;
 		}
 	}

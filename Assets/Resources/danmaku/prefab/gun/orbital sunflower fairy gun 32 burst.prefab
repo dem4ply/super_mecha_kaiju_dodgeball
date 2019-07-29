@@ -76,16 +76,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5753507926956388586, guid: 231e2cd44938a76448c279df34e4c5c5,
-        type: 3}
-      propertyPath: controller
-      value: 
-      objectReference: {fileID: 7903489686309465013}
-    - target: {fileID: 5654131312865194343, guid: 231e2cd44938a76448c279df34e4c5c5,
-        type: 3}
-      propertyPath: m_Name
-      value: orbital sunflower fairy gun 32 burst
-      objectReference: {fileID: 0}
     - target: {fileID: 6319108984665474052, guid: 231e2cd44938a76448c279df34e4c5c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -141,6 +131,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5753507926956388586, guid: 231e2cd44938a76448c279df34e4c5c5,
+        type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654131312865194343, guid: 231e2cd44938a76448c279df34e4c5c5,
+        type: 3}
+      propertyPath: m_Name
+      value: orbital sunflower fairy gun 32 burst
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 231e2cd44938a76448c279df34e4c5c5, type: 3}
 --- !u!4 &671370527107296160 stripped
@@ -149,15 +149,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6836697106453016484}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7903489686309465013 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -5526472867943627759, guid: 231e2cd44938a76448c279df34e4c5c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6836697106453016484}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7d01f963f253864ba718dea65dfaf9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

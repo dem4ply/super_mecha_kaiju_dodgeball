@@ -19,6 +19,7 @@ namespace chibi.path
 			var collider = obj.AddComponent<SphereCollider>();
 			var handler_behaviour = obj.AddComponent<Handler_behaviour>();
 			handler_behaviour.handlers = handlers;
+			handler_behaviour.is_global = false;
 
 			collider.radius = raidus;
 			collider.isTrigger = true;

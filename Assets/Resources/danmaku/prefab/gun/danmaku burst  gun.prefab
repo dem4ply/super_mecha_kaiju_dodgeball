@@ -47,7 +47,7 @@ MonoBehaviour:
   debug_mode: 0
   pool: {fileID: 0}
   gun: {fileID: 0}
-  burst_mode: 0
+  burst_mode: 1
 --- !u!114 &1328558228578934374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,3 +66,8 @@ MonoBehaviour:
   stat: {fileID: 11400000, guid: cbab7e97d9a7f634881277866c5b3941, type: 2}
   ammo: {fileID: 11400000, guid: f153125a6fb748a4db922cc9afce2b6e, type: 2}
   position_of_shot: {fileID: 0}
+  auto_aim_target:
+    use_constant: 1
+    constant_value: {fileID: 0}
+    variable: {fileID: 0}
+  auto_aim_type: 0
