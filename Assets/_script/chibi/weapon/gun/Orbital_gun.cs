@@ -20,7 +20,6 @@ namespace chibi.weapon.gun
 			var desire = helper.shapes.Ellipse.evaluate(
 				radius_x, radius_z, period );
 			period += delta_period;
-			debug.log( period.ToString() );
 			desire += auto_aim_target.Value.transform.position;
 			transform.position = desire;
 		}

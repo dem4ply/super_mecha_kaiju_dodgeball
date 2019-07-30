@@ -84,6 +84,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 328e9c4db8084da0b943c84dea6382e5,
         type: 2}
+    - target: {fileID: 1612544699660193432, guid: 6ad23b45676aff24f8a8f3eab9a80abd,
+        type: 3}
+      propertyPath: burst_bullet_option.enable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ad23b45676aff24f8a8f3eab9a80abd, type: 3}
 --- !u!1001 &1373249606247551523
@@ -170,6 +175,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 328e9c4db8084da0b943c84dea6382e5,
         type: 2}
+    - target: {fileID: 1612544699660193432, guid: 6ad23b45676aff24f8a8f3eab9a80abd,
+        type: 3}
+      propertyPath: burst_bullet_option.enable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ad23b45676aff24f8a8f3eab9a80abd, type: 3}
 --- !u!1001 &1430031936683768866
@@ -256,6 +266,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 328e9c4db8084da0b943c84dea6382e5,
         type: 2}
+    - target: {fileID: 1612544699660193432, guid: 6ad23b45676aff24f8a8f3eab9a80abd,
+        type: 3}
+      propertyPath: burst_bullet_option.enable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ad23b45676aff24f8a8f3eab9a80abd, type: 3}
 --- !u!1001 &2334472020796070477
@@ -342,6 +357,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 328e9c4db8084da0b943c84dea6382e5,
         type: 2}
+    - target: {fileID: 1612544699660193432, guid: 6ad23b45676aff24f8a8f3eab9a80abd,
+        type: 3}
+      propertyPath: burst_bullet_option.enable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ad23b45676aff24f8a8f3eab9a80abd, type: 3}
 --- !u!1001 &2778096841451148067
@@ -428,6 +448,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 328e9c4db8084da0b943c84dea6382e5,
         type: 2}
+    - target: {fileID: 1612544699660193432, guid: 6ad23b45676aff24f8a8f3eab9a80abd,
+        type: 3}
+      propertyPath: burst_bullet_option.enable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ad23b45676aff24f8a8f3eab9a80abd, type: 3}
 --- !u!1001 &3407786684989541847
@@ -440,7 +465,7 @@ PrefabInstance:
     - target: {fileID: 1048122408620238113, guid: 58eaa905c59fa194b95ff14c28b35c9a,
         type: 3}
       propertyPath: m_Name
-      value: fairy_blue step bullet 2
+      value: fairy_blue step bullet 3
       objectReference: {fileID: 0}
     - target: {fileID: 1601209564912389071, guid: 58eaa905c59fa194b95ff14c28b35c9a,
         type: 3}
@@ -693,5 +718,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 328e9c4db8084da0b943c84dea6382e5,
         type: 2}
+    - target: {fileID: 1612544699660193432, guid: 6ad23b45676aff24f8a8f3eab9a80abd,
+        type: 3}
+      propertyPath: burst_bullet_option.enable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ad23b45676aff24f8a8f3eab9a80abd, type: 3}

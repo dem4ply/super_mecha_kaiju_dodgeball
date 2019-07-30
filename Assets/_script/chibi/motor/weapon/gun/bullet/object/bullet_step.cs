@@ -18,6 +18,8 @@ namespace chibi.motor.weapons.gun.bullet
 		[Header( "update step variables" )]
 		public AnimationCurve speed_over_life_span;
 
+		protected float max_speed = 0f;
+
 		public virtual void start( Bullet_motor motor )
 		{
 			var transform = motor.transform;
@@ -27,19 +29,26 @@ namespace chibi.motor.weapons.gun.bullet
 			motor.desire_direction =
 				( rotation_to_current_direction * rotation_to_add_angle )
 				* motor.desire_direction;
+
+			max_speed = motor.desire_speed;
 		}
 
 		public virtual void update( Bullet_motor motor )
 		{
 			float time = current_life_span / life_span;
 			motor.desire_speed =
-				speed_over_life_span.Evaluate( time ) * motor.max_speed;
+				speed_over_life_span.Evaluate( time ) * max_speed;
 		}
 
 		public bool tick( float time )
 		{
 			current_life_span += time;
 			return current_life_span > life_span;
+		}
+
+		public void reset()
+		{
+			current_life_span = 0f;
 		}
 	}
 }

@@ -64,7 +64,7 @@ namespace chibi
 			_init_cache();
 		}
 
-		private void OnDisable()
+		protected virtual void OnDisable()
 		{
 			_dispose_cache();
 		}

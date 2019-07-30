@@ -38,8 +38,13 @@ namespace danmaku.controller.weapon.gun
 			List<Controller_bullet> bullets = new List<Controller_bullet>();
 			foreach( var controller_gun in controllers_guns )
 			{
-				debug.info( controller_gun.name );
-				controller_gun.shot();
+				if( controller_gun )
+					controller_gun.shot();
+				else
+				{
+					debug.log( controller_gun.name );
+					debug.error( "algo esta mal" );
+				}
 			}
 			foreach ( var gun in guns )
 			{

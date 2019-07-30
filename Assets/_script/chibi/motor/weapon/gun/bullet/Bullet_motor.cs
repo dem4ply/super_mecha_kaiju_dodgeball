@@ -34,8 +34,9 @@ namespace chibi.motor.weapons.gun.bullet
 		{
 			base.update_motion();
 			if ( alway_rotate_to_velocity_direction )
-				transform.rotation = Quaternion.LookRotation(
-					ridgetbody.velocity, transform.up );
+				if ( ridgetbody.velocity.magnitude > 0 )
+					transform.rotation = Quaternion.LookRotation(
+						ridgetbody.velocity, transform.up );
 		}
 	}
 }

@@ -9,7 +9,6 @@ namespace chibi.motor.weapons.gun.bullet
 	{
 		[Header( "step motor" )]
 		public int index_step = 0;
-		public float current_life_span = 0f;
 		public List< Bullet_step > steps;
 
 		protected bool stop_steps = false;
@@ -45,9 +44,26 @@ namespace chibi.motor.weapons.gun.bullet
 			}
 		}
 
+		protected override void OnEnable()
+		{
+			base.OnEnable();
+			if ( steps.Count > 0 )
+				steps[0].start();
+			debug.log( "enable" );
+		}
+
+		protected override void OnDisable()
+		{
+			base.OnDisable();
+			debug.log( "disable" );
+		}
+
 		public override void reset()
 		{
-			debug.log( "reset" );
+			index_step = 0;
+			stop_steps = false;
+			foreach ( var step in steps )
+				step.reset();
 			base.reset();
 		}
 	}

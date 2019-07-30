@@ -9,26 +9,29 @@ using chibi.controller.weapon.gun.bullet;
 namespace chibi.weapon.gun
 {
 	public enum Auto_aim_type
-	{ aim, shunt }
+		{ aim, shunt }
 
 	public abstract class Gun : Weapon
 	{
+		[ Header( "gun stats" ) ]
 		public Gun_stat stat;
 		public Ammo ammo;
-		protected IEnumerator __automatic_shot;
-
 		public Transform position_of_shot;
 
-		private bool _automatic_shot = false;
+		[ Header( "auto aim settings" ) ]
+		public chibi.tool.reference.Game_object_reference auto_aim_target;
+		public Auto_aim_type auto_aim_type;
 
-		// [HideInInspector] public float last_automatic_shot = 0f;
+		[ Header( "burst options" ) ]
+		public Burst_by_bullet_option burst_bullet_option;
+
+		protected IEnumerator __automatic_shot;
+		private bool _automatic_shot = false;
 		protected Vector3 _aim_direction;
 
 		protected int burst_amount = 0;
 		protected int amount_of_automatic_shot = 0;
 
-		public chibi.tool.reference.Game_object_reference auto_aim_target;
-		public Auto_aim_type auto_aim_type;
 
 		public Vector3 direction_shot
 		{
@@ -145,13 +148,18 @@ namespace chibi.weapon.gun
 		{
 			while( true )
 			{
-				shot();
+				var bullet = shot();
 				++amount_of_automatic_shot;
-				if ( burst_amount > 0 && amount_of_automatic_shot >= burst_amount )
+				if ( burst_amount > 0 )
 				{
-					burst_amount = 0;
-					amount_of_automatic_shot = 0;
-					automatic_shot = false;
+					burst_bullet_option.update( bullet );
+					if ( amount_of_automatic_shot >= burst_amount )
+					{
+						burst_bullet_option.reset();
+						burst_amount = 0;
+						amount_of_automatic_shot = 0;
+						automatic_shot = false;
+					}
 				}
 				yield return new WaitForSeconds( rate_fire );
 			}
@@ -162,6 +170,7 @@ namespace chibi.weapon.gun
 			burst_amount = stat.burst_amount;
 			amount_of_automatic_shot = 0;
 			automatic_shot = true;
+			burst_bullet_option.reset();
 		}
 	}
 }
