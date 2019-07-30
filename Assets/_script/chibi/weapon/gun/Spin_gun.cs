@@ -11,8 +11,7 @@ namespace chibi.weapon.gun
 		public override void step()
 		{
 			transform.RotateAround(
-				transform.position, transform.up, angle_by_step
-			);
+				transform.position, transform.up, angle_by_step );
 		}
 	}
 }

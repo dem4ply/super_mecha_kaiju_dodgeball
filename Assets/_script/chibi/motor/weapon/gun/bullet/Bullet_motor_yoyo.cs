@@ -22,7 +22,7 @@ namespace chibi.motor.weapons.gun.bullet
 			}
 		}
 
-		protected override void Update()
+		protected virtual void Update()
 		{
 			if ( is_in_target )
 			{

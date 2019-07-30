@@ -43,6 +43,7 @@ namespace weapon
 
 			public virtual void push( Bullet_motor bullet )
 			{
+				bullet.reset();
 				singleton.object_pool.Ammo_pool.instance.push( bullet );
 			}
 		}
