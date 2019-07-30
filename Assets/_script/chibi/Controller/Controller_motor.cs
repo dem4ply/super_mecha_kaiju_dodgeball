@@ -4,8 +4,8 @@ namespace chibi.controller
 {
 	public class Controller_motor : Controller
 	{
+		[Header( "motor properties" )]
 		public motor.Motor motor;
-
 		public bool pasive_motor;
 
 		public override Vector3 desire_direction

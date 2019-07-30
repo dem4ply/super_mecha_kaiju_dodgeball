@@ -7,6 +7,7 @@ namespace chibi.controller.npc
 	public class Controller_npc : Controller_motor
 	{
 
+		[Header( "Wall manager" )]
 		public Vector3 angle_vector_for_floor = Vector3.left;
 		public float min_angle_for_floor = 20f;
 		public float max_angle_for_floor = 160;

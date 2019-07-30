@@ -18,8 +18,6 @@ namespace chibi.controller.steering.behavior
 			float delta_period =
 				( controller.controller.speed / perimeter );
 
-			var current_position = controller.controller.transform.position;
-
 			float current_period = properties.x;
 			current_period += ( delta_period * Time.deltaTime ) % 1f;
 			properties.x = current_period;
