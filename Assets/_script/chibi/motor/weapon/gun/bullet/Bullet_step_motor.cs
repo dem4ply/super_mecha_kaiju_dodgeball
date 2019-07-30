@@ -16,7 +16,6 @@ namespace chibi.motor.weapons.gun.bullet
 
 		protected virtual void step()
 		{
-			debug.warning( index_step.ToString() );
 			var step = steps[ index_step ];
 			step.update( this );
 		}

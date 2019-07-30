@@ -21,8 +21,12 @@ namespace chibi.motor.weapons.gun.bullet
 		public virtual void start( Bullet_motor motor )
 		{
 			var transform = motor.transform;
-			transform.RotateAround(
-				transform.position, transform.up, rotate_angle_on_start );
+			var rotation_to_current_direction =
+				Quaternion.Euler( motor.desire_direction );
+			var rotation_to_add_angle = Quaternion.Euler( 0, rotate_angle_on_start, 0 );
+			motor.desire_direction =
+				( rotation_to_current_direction * rotation_to_add_angle )
+				* motor.desire_direction;
 		}
 
 		public virtual void update( Bullet_motor motor )

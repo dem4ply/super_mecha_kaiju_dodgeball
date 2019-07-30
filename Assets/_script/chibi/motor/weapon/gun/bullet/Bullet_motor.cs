@@ -9,6 +9,7 @@ namespace chibi.motor.weapons.gun.bullet
 	{
 		public Ammo ammo;
 		public float life_span;
+		public bool alway_rotate_to_velocity_direction = true;
 		protected IEnumerator __life_span;
 
 		protected override void _init_cache()
@@ -29,21 +30,12 @@ namespace chibi.motor.weapons.gun.bullet
 			ammo.push( this );
 		}
 
-		public override Vector3 desire_direction
+		protected override void update_motion()
 		{
-			get {
-				var desire = base.desire_direction;
-				if ( desire.magnitude > 0 )
-					return transform.forward;
-				return Vector3.zero;
-			}
-
-			set {
-				base.desire_direction = value;
-				if ( value.magnitude > 0 )
-					transform.rotation = Quaternion.LookRotation(
-						value, transform.up );
-			}
+			base.update_motion();
+			if ( alway_rotate_to_velocity_direction )
+				transform.rotation = Quaternion.LookRotation(
+					ridgetbody.velocity, transform.up );
 		}
 	}
 }
