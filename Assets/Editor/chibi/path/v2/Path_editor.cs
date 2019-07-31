@@ -4,6 +4,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using chibi.path;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 namespace chibi.editor.path
 {
@@ -174,6 +176,7 @@ namespace chibi.editor.path
 				point.transform.parent = handler_container.transform;
 				point.name = string.Format( "handler__p{0}", i );
 			}
+			EditorSceneManager.MarkSceneDirty(creator.gameObject.scene);
 		}
 
 		private void OnEnable()
