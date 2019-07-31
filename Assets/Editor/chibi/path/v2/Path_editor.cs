@@ -58,9 +58,28 @@ namespace chibi.editor.path
 				path = creator.path;
 			}
 
-			path.resolution = EditorGUILayout.FloatField(
+			var resolution = EditorGUILayout.FloatField(
 					"resolution:", path.resolution );
-			path.spacing = EditorGUILayout.FloatField( "spacing:", path.spacing );
+			if ( path.resolution != resolution )
+			{
+				Undo.RecordObject( creator, "resolution change" );
+				foreach ( var multi_creator in targets )
+				{
+					var tmp_creator = multi_creator as Path_behaviour;
+					tmp_creator.path.resolution = resolution;
+				}
+			}
+			var spacing = EditorGUILayout.FloatField( "spacing:", path.spacing );
+
+			if ( path.spacing != spacing )
+			{
+				Undo.RecordObject( creator, "spacing change" );
+				foreach ( var multi_creator in targets )
+				{
+					var tmp_creator = multi_creator as Path_behaviour;
+					tmp_creator.path.spacing = spacing;
+				}
+			}
 
 			if ( GUILayout.Button( "bake" ) )
 			{
