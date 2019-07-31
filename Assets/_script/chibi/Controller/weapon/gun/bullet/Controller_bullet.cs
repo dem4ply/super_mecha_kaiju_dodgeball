@@ -18,6 +18,17 @@ namespace chibi.controller.weapon.gun.bullet
 			}
 		}
 
+		public bool is_ready
+		{
+			get;
+			set;
+		}
+
+		public bool is_not_ready
+		{
+			get { return !is_ready; }
+		}
+
 		public override Vector3 desire_direction
 		{
 			get {
@@ -28,6 +39,18 @@ namespace chibi.controller.weapon.gun.bullet
 				base.desire_direction = value;
 				motor.desire_speed = motor.max_speed;
 			}
+		}
+
+		protected override void _init_cache()
+		{
+			base._init_cache();
+			is_ready = false;
+		}
+
+		public void ready()
+		{
+			motor.enabled = true;
+			is_ready = true;
 		}
 	}
 }

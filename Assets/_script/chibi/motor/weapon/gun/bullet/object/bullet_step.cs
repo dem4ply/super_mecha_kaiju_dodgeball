@@ -20,6 +20,11 @@ namespace chibi.motor.weapons.gun.bullet
 
 		protected float max_speed = 0f;
 
+		public virtual void prepare( Bullet_motor motor )
+		{
+			max_speed = motor.desire_speed;
+		}
+
 		public virtual void start( Bullet_motor motor )
 		{
 			var transform = motor.transform;
@@ -29,8 +34,6 @@ namespace chibi.motor.weapons.gun.bullet
 			motor.desire_direction =
 				( rotation_to_current_direction * rotation_to_add_angle )
 				* motor.desire_direction;
-
-			max_speed = motor.desire_speed;
 		}
 
 		public virtual void update( Bullet_motor motor )

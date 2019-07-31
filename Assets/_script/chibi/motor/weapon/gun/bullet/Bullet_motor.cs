@@ -27,6 +27,11 @@ namespace chibi.motor.weapons.gun.bullet
 		protected virtual IEnumerator recicle_when_life_span_end()
 		{
 			yield return new WaitForSeconds( life_span );
+			recycle();
+		}
+
+		public override void recycle()
+		{
 			ammo.push( this );
 		}
 
@@ -34,9 +39,9 @@ namespace chibi.motor.weapons.gun.bullet
 		{
 			base.update_motion();
 			if ( alway_rotate_to_velocity_direction )
-				if ( ridgetbody.velocity.magnitude > 0 )
+				if ( ridgetbody.velocity != Vector3.zero )
 					transform.rotation = Quaternion.LookRotation(
-						ridgetbody.velocity, transform.up );
+						ridgetbody.velocity.normalized, transform.up );
 		}
 	}
 }

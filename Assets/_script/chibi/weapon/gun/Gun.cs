@@ -98,6 +98,14 @@ namespace chibi.weapon.gun
 
 		public abstract Controller_bullet shot();
 
+		public Controller_bullet shot( bool commit )
+		{
+			var bullet = shot();
+			if ( commit )
+				bullet.ready();
+			return bullet;
+		}
+
 		public override void attack()
 		{
 			shot();
@@ -148,7 +156,7 @@ namespace chibi.weapon.gun
 		{
 			while( true )
 			{
-				var bullet = shot();
+				var bullet = shot( false );
 				++amount_of_automatic_shot;
 				if ( burst_amount > 0 )
 				{
@@ -161,16 +169,17 @@ namespace chibi.weapon.gun
 						automatic_shot = false;
 					}
 				}
+				bullet.ready();
 				yield return new WaitForSeconds( rate_fire );
 			}
 		}
 
 		public void burst()
 		{
+			burst_bullet_option.reset();
 			burst_amount = stat.burst_amount;
 			amount_of_automatic_shot = 0;
 			automatic_shot = true;
-			burst_bullet_option.reset();
 		}
 	}
 }

@@ -47,15 +47,12 @@ namespace chibi.motor.weapons.gun.bullet
 		protected override void OnEnable()
 		{
 			base.OnEnable();
-			if ( steps.Count > 0 )
-				steps[0].start();
-			debug.log( "enable" );
+			reset();
 		}
 
 		protected override void OnDisable()
 		{
 			base.OnDisable();
-			debug.log( "disable" );
 		}
 
 		public override void reset()
@@ -63,7 +60,11 @@ namespace chibi.motor.weapons.gun.bullet
 			index_step = 0;
 			stop_steps = false;
 			foreach ( var step in steps )
+			{
 				step.reset();
+				step.prepare( this );
+			}
+			steps[ 0 ].start( this );
 			base.reset();
 		}
 	}

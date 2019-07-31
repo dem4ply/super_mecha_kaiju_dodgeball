@@ -26,7 +26,6 @@ namespace chibi.weapon.gun
 		{
 			if ( !enable )
 				return;
-			Debug.Log( "update" );
 			bullet.speed = current_speed;
 			switch( speed_additype_type )
 			{
