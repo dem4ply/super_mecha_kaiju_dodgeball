@@ -95,9 +95,9 @@ MonoBehaviour:
   life_span: 10
   alway_rotate_to_velocity_direction: 1
   index_step: 0
-  current_life_span: 0
   steps:
   - life_span: 1
+    use_max_speed: 0
     rotate_angle_on_start: 0
     speed_over_life_span:
       serializedVersion: 2
@@ -133,6 +133,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
   - life_span: 3
+    use_max_speed: 1
     rotate_angle_on_start: -90
     speed_over_life_span:
       serializedVersion: 2

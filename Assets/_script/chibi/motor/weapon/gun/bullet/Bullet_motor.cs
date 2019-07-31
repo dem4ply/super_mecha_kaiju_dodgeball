@@ -35,13 +35,19 @@ namespace chibi.motor.weapons.gun.bullet
 			ammo.push( this );
 		}
 
-		protected override void update_motion()
+		public override Vector3 desire_direction
 		{
-			base.update_motion();
-			if ( alway_rotate_to_velocity_direction )
-				if ( desire_direction != Vector3.zero )
+			get
+			{
+				return base.desire_direction;
+			}
+			set
+			{
+				if ( alway_rotate_to_velocity_direction && value != Vector3.zero )
 					transform.rotation = Quaternion.LookRotation(
-						desire_direction, transform.up );
+						value, transform.up );
+				base.desire_direction = value;
+			}
 		}
 	}
 }

@@ -13,6 +13,7 @@ namespace chibi.motor.weapons.gun.bullet
 		protected float current_life_span = 0f;
 
 		[Header( "start step variables" )]
+		public bool use_max_speed = true;
 		public float rotate_angle_on_start = 0f;
 
 		[Header( "update step variables" )]
@@ -22,7 +23,10 @@ namespace chibi.motor.weapons.gun.bullet
 
 		public virtual void prepare( Bullet_motor motor )
 		{
-			max_speed = motor.desire_speed;
+			if ( use_max_speed )
+				max_speed = motor.max_speed;
+			else
+				max_speed = motor.desire_speed;
 		}
 
 		public virtual void start( Bullet_motor motor )
