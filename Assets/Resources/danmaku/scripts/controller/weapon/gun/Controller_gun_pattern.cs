@@ -30,6 +30,10 @@ namespace danmaku.controller.weapon.gun
 			guns = new List<Gun>( transform.GetComponentsInChildren<Gun>() );
 			controllers_guns = new List<Controller_gun_single>(
 					transform.GetComponentsInChildren<Controller_gun_single>() );
+		}
+
+		protected override void Start()
+		{
 			update_owner();
 		}
 
@@ -51,26 +55,20 @@ namespace danmaku.controller.weapon.gun
 
 		public override void start_automatic_shot()
 		{
-			foreach( var gun in guns )
-			{
-				gun.automatic_shot = true;
-			}
+			foreach ( var gun in controllers_guns )
+				gun.gun.automatic_shot = true;
 		}
 
 		public override void stop_automatic_shot()
 		{
-			foreach( var gun in guns )
-			{
-				gun.automatic_shot = false;
-			}
+			foreach ( var gun in controllers_guns )
+				gun.gun.automatic_shot = false;
 		}
 
 		protected void update_owner( )
 		{
-			foreach ( var gun in guns )
-			{
-				gun.owner = owner;
-			}
+			foreach ( var gun in controllers_guns )
+				gun.gun.owner = owner;
 		}
 	}
 }

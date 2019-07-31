@@ -6,7 +6,7 @@ namespace helper {
 		public static GameObject position( GameObject original, Vector3 pos ){
 			return _( original, pos );
 		}
-		
+
 		public static GameObject parent(
 			GameObject original, Transform parent_target )
 		{
@@ -22,7 +22,7 @@ namespace helper {
 			result.transform.parent = parent_target;
 			return result;
 		}
-		
+
 		public static GameObject parent(
 			GameObject original, GameObject parent_target )
 		{
@@ -34,7 +34,7 @@ namespace helper {
 		{
 			return parent( original, parent_target.transform );
 		}
-		
+
 		public static GameObject parent(
 			GameObject original, Transform parent_target, bool reset_pos )
 		{
@@ -55,13 +55,13 @@ namespace helper {
 			}
 			return result;
 		}
-		
+
 		public static GameObject parent(
 				GameObject original, GameObject parent_target, bool reset_pos )
 		{
 			return parent( original, parent_target.transform, reset_pos );
 		}
-		
+
 		public static T parent<T>( T original, Transform parent )
 			where T : MonoBehaviour
 		{
@@ -83,14 +83,14 @@ namespace helper {
 		{
 			return parent<T>( original, parent_target.transform );
 		}
-		
+
 		public static T parent<T>(
 			T original, GameObject parent_target, string name )
 			where T : MonoBehaviour
 		{
 			return parent<T>( original, parent_target.transform, name );
 		}
-		
+
 		public static T parent<T>(
 			T original, Transform parent_target, bool reset_pos )
 			where T : MonoBehaviour
@@ -112,7 +112,7 @@ namespace helper {
 			}
 			return result;
 		}
-		
+
 		public static T parent<T>(
 			T original, GameObject parent_target, bool reset_pos )
 			where T : MonoBehaviour
@@ -128,7 +128,7 @@ namespace helper {
 			return parent<T>(
 				original, parent_target, reset_pos, name );
 		}
-		
+
 		public static T _<T>( T obj ) where T : MonoBehaviour
 		{
 			return MonoBehaviour.Instantiate( obj ) as T;
@@ -140,14 +140,14 @@ namespace helper {
 			result.name = name;
 			return result;
 		}
-		
+
 		public static T _<T>( T obj, Vector3 pos ) where T : MonoBehaviour
 		{
 			T result = _( obj );
 			result.transform.position = pos;
 			return result;
 		}
-		
+
 		public static T _<T>( T obj, Vector3 pos, Quaternion rot )
 			where T : MonoBehaviour
 		{
@@ -155,7 +155,7 @@ namespace helper {
 			result.transform.rotation = rot;
 			return result;
 		}
-		
+
 		public static GameObject _( GameObject obj )
 		{
 			return MonoBehaviour.Instantiate( obj ) as GameObject;
@@ -167,14 +167,14 @@ namespace helper {
 			result.name = name;
 			return result;
 		}
-		
+
 		public static GameObject _( GameObject obj, Vector3 pos )
 		{
 			GameObject result = _( obj );
 			result.transform.position = pos;
 			return result;
 		}
-		
+
 		public static GameObject _(
 			GameObject obj, Vector3 pos, Quaternion rot )
 		{
@@ -213,7 +213,7 @@ namespace helper {
 			foreach ( Transform child in childrens )
 				destroy_immediate( child );
 		}
-		
+
 		public static class inactive
 		{
 			public static GameObject position(
@@ -221,7 +221,7 @@ namespace helper {
 			{
 				return _( original, pos );
 			}
-			
+
 			public static T parent<T>( T original, Transform parent )
 				where T : MonoBehaviour
 			{
@@ -229,13 +229,13 @@ namespace helper {
 				result.transform.parent = parent;
 				return result;
 			}
-			
+
 			public static T parent<T>( T original, GameObject parent_target )
 				where T : MonoBehaviour
 			{
 				return parent<T>( original, parent_target.transform );
 			}
-			
+
 			public static T parent<T>(
 				T original, Transform parent_target, bool reset_pos )
 				where T : MonoBehaviour
@@ -246,7 +246,7 @@ namespace helper {
 				}
 				return result;
 			}
-			
+
 			public static GameObject parent(
 				GameObject original, Transform parent_target )
 			{
@@ -254,13 +254,13 @@ namespace helper {
 				result.transform.parent = parent_target;
 				return result;
 			}
-			
+
 			public static GameObject parent(
 				GameObject original, GameObject parent_target )
 			{
 				return parent( original, parent_target.transform );
 			}
-			
+
 			public static GameObject parent(
 				GameObject original, Transform parent_target, bool reset_pos )
 			{
@@ -269,27 +269,27 @@ namespace helper {
 					result.transform.localPosition = Vector3.zero;
 				return result;
 			}
-			
+
 			public static GameObject parent(
 				GameObject original, GameObject parent_target, bool reset_pos )
 			{
 				return parent( original, parent_target.transform, reset_pos );
 			}
-			
+
 			public static T _<T>( T obj ) where T: MonoBehaviour
 			{
 				T result = instantiate._<T>( obj );
 				result.gameObject.SetActive( false );
 				return result;
 			}
-			
+
 			public static T _<T>( T obj, Vector3 pos ) where T : MonoBehaviour
 			{
 				T result = _<T>( obj );
 				result.transform.position = pos;
 				return result;
 			}
-			
+
 			public static T _<T>( T obj, Vector3 pos, Quaternion rot )
 				where T : MonoBehaviour
 			{
@@ -297,20 +297,20 @@ namespace helper {
 				result.transform.rotation = rot;
 				return result;
 			}
-			
+
 			public static GameObject _( GameObject obj )
 			{
 				GameObject result = instantiate._( obj );
 				result.SetActive( false );
 				return result;
 			}
-			
+
 			public static GameObject _( GameObject obj, Vector3 pos ){
 				GameObject result = _( obj );
 				result.transform.position = pos;
 				return result;
 			}
-			
+
 			public static GameObject _(
 				GameObject obj, Vector3 pos, Quaternion rot )
 			{
@@ -324,6 +324,11 @@ namespace helper {
 				GameObject result = _( obj );
 				result.name = name;
 				return result;
+			}
+
+			public static GameObject _( GameObject obj, Transform pos )
+			{
+				return _( obj, pos.position );
 			}
 		}
 	}
