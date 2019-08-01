@@ -39,6 +39,12 @@ namespace chibi.editor.path
 				path = creator.path;
 			}
 
+			bool is_closed = GUILayout.Toggle( path.is_close, "closed" );
+			if ( is_closed != path.is_close )
+			{
+				Undo.RecordObject( creator, "toggle closed" );
+				path.is_close = is_closed;
+			}
 
 			if ( GUILayout.Button( "flat y" ) )
 			{

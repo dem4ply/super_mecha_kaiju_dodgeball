@@ -16,8 +16,55 @@ namespace chibi.path
 		public List<Vector3> bake_points;
 		public List<Segment> segments;
 		public Transform container;
+		protected bool _is_close = false;
 
 		protected path_types _type;
+
+		public bool is_close
+		{
+			get
+			{
+				return _is_close;
+			}
+			set
+			{
+				if ( is_close == value )
+					return;
+
+				_is_close = value;
+				if ( is_close )
+				{
+					var segment_last = segments.Last();
+					var segment_first = segments.First();
+					Segment new_segment = null;
+					Vector3 direction = Vector3.left;
+
+					if ( type == path_types.free )
+					{
+						Vector3 c1 = - ( segment_last.vc2 - segment_last.vp2 );
+						Vector3 c2 = - ( segment_first.vc1 - segment_first.vp1 );
+						new_segment = new Segment(
+							segment_last.p2, c1, c2, segment_first.p1,
+							segment_first.container );
+					}
+					else if ( type == path_types.aligment )
+					{
+						Vector3 c1 = - ( segment_last.vc2 - segment_last.vp2 );
+						Vector3 c2 = - ( segment_first.vc1 - segment_first.vp1 );
+						new_segment = new Segment_aligment(
+							segment_last.p2, c1, c2, segment_first.p1,
+							segment_first.container );
+					}
+					segments.Add( new_segment );
+					relink();
+					rename_points();
+				}
+				else
+				{
+					segments.RemoveAt( segments.Count - 1 );
+				}
+			}
+		}
 
 		public path_types type
 		{
