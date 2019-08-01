@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 544427926}
   - component: {fileID: 544427925}
   m_Layer: 0
-  m_Name: manager
+  m_Name: manager enemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -351,6 +351,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug_mode: 0
   pool: {fileID: 0}
+  on_start:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1450736753}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  on_end:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1148109636}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1182575341}
+        m_MethodName: start_behaviour
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   objs:
   - target_time: 5
     obj: {fileID: 2095756709}
@@ -874,7 +917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1148109637
 Transform:
   m_ObjectHideFlags: 0
@@ -1005,6 +1048,36 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 32227947148540641}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1450736753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1450736754}
+  m_Layer: 0
+  m_Name: manager boss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1450736754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450736753}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 331151155}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1554060705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,7 +1309,7 @@ PrefabInstance:
     - target: {fileID: 32227948411312591, guid: 1ffc72fb2576eb69586bd7f091287acf,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 32227948411312590, guid: 1ffc72fb2576eb69586bd7f091287acf,
         type: 3}
@@ -1310,7 +1383,7 @@ PrefabInstance:
     - target: {fileID: 3792860227114406730, guid: 92f06ce540c5bc1a49dccd65e3a1f090,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3792860227114406731, guid: 92f06ce540c5bc1a49dccd65e3a1f090,
         type: 3}
@@ -1384,7 +1457,7 @@ PrefabInstance:
     - target: {fileID: 4196312140819026440, guid: 1fde2d7216091a152ad16550725018dd,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4196312140819026443, guid: 1fde2d7216091a152ad16550725018dd,
         type: 3}
@@ -1464,7 +1537,7 @@ PrefabInstance:
     - target: {fileID: 8917133235718769939, guid: 6ab9d15379f37033599f14dca1cce9e9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7679900972706322956, guid: 6ab9d15379f37033599f14dca1cce9e9,
         type: 3}
@@ -1538,7 +1611,7 @@ PrefabInstance:
     - target: {fileID: 8005222307843918541, guid: 2c81ba44520342a469a3e94c75f36f4b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8005222307843918542, guid: 2c81ba44520342a469a3e94c75f36f4b,
         type: 3}
