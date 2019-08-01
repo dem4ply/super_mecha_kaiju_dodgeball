@@ -10,6 +10,7 @@ namespace chibi.motor.weapons.gun.bullet
 		public Ammo ammo;
 		public float life_span;
 		public bool alway_rotate_to_velocity_direction = true;
+		public float time_to_disable = 1f;
 		protected IEnumerator __life_span;
 
 		protected override void _init_cache()
@@ -22,12 +23,19 @@ namespace chibi.motor.weapons.gun.bullet
 		{
 			__life_span = recicle_when_life_span_end();
 			StartCoroutine( __life_span );
+			StartCoroutine( "_disable_in" );
 		}
 
 		protected virtual IEnumerator recicle_when_life_span_end()
 		{
 			yield return new WaitForSeconds( life_span );
 			recycle();
+		}
+
+		protected virtual IEnumerator _disable_in()
+		{
+			yield return new WaitForSeconds( time_to_disable );
+			set_static_next_update();
 		}
 
 		public override void recycle()

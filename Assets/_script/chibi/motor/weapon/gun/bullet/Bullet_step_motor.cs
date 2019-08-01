@@ -40,7 +40,10 @@ namespace chibi.motor.weapons.gun.bullet
 					step.start( this );
 				}
 				else
+				{
 					stop_steps = true;
+					set_static_next_update();
+				}
 			}
 		}
 

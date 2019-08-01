@@ -49,12 +49,12 @@ namespace chibi
 		{
 			if ( pool )
 			{
-				debug.info( "el objecto de envia al pool" );
+				// debug.info( "el objecto de envia al pool" );
 				pool.push( this );
 			}
 			else
 			{
-				debug.info( "el objecto se destruira" );
+				// debug.info( "el objecto se destruira" );
 				Destroy( this.gameObject );
 			}
 		}

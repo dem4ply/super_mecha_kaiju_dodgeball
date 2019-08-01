@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace chibi.motor
 {
@@ -70,6 +72,17 @@ namespace chibi.motor
 			set {
 				_desire_direction = value;
 			}
+		}
+
+		public void set_static_next_update()
+		{
+			StartCoroutine( "_set_static_next_update" );
+		}
+
+		protected IEnumerator _set_static_next_update()
+		{
+			yield return new WaitForFixedUpdate();
+			enabled = false;
 		}
 
 		protected override void _init_cache()
