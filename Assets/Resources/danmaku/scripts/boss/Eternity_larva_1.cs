@@ -40,6 +40,7 @@ namespace danmaku.boss_behaviour
 		protected void set_follow_waypoint()
 		{
 			var behavior = Follow_waypoints.CreateInstance<Follow_waypoints>();
+			behavior.loop = true;
 			steering.behaviors.Add( behavior );
 			steering.reload();
 		}
