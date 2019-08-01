@@ -4,15 +4,17 @@ using chibi.controller.handler;
 namespace chibi.controller.steering.behavior
 {
 	[CreateAssetMenu( menuName = "chibi/steering/behavior/follow_waypoints" )]
-	public class Follow_waypoints : chibi.controller.steering.behavior.Behavior
+	public class Follow_waypoints : Behavior
 	{
 		public override Vector3 desire_direction(
 			Steering controller, Transform target,
 			Steering_properties properties )
 		{
-			var current_target = properties.waypoints[ properties.current_waypoint ];
+			var current_target = properties.waypoints[
+				properties.current_waypoint ];
 			if ( properties.current_waypoint < properties.waypoints.Count - 1
-				&& Vector3.Distance( current_target, controller.transform.position ) < 0.1 )
+				&& Vector3.Distance(
+					current_target, controller.transform.position ) < 0.1 )
 			{
 				properties.current_waypoint += 1;
 			}
@@ -40,7 +42,8 @@ namespace chibi.controller.steering.behavior
 			Steering controller, Steering_properties properties,
 			Transform target )
 		{
-			properties = base.prepare_properties( controller, properties, target );
+			properties = base.prepare_properties(
+				controller, properties, target );
 			chibi.path.Path_behaviour path = target.GetComponent<
 				chibi.path.Path_behaviour>();
 			properties.current_waypoint = 0;

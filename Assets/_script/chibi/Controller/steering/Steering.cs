@@ -23,7 +23,12 @@ namespace chibi.controller.steering
 					helper.game_object.name.full( this )
 				) );
 			}
-			behaviors_properties = new List<Steering_properties>( behaviors.Count );
+		}
+
+		public virtual void reload_behaviors()
+		{
+			behaviors_properties = new List<Steering_properties>(
+				behaviors.Count );
 
 			for ( int i = 0; i < behaviors.Count; ++i )
 			{
@@ -33,12 +38,18 @@ namespace chibi.controller.steering
 			}
 		}
 
-		protected override void Start()
+		public virtual void reload()
 		{
+			reload_behaviors();
 			if ( start_speed == -1f )
 				controller.speed = controller.max_speed;
 			else
 				controller.speed = start_speed;
+		}
+
+		protected override void Start()
+		{
+			reload();
 		}
 
 		private void Update()
