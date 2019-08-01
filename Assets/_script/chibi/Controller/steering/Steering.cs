@@ -16,6 +16,8 @@ namespace chibi.controller.steering
 		protected override void _init_cache()
 		{
 			base._init_cache();
+			if ( behaviors == null )
+				behaviors = new List<behavior.Behavior>();
 			if ( !behaviors.Any() )
 			{
 				Debug.LogWarning( string.Format(
@@ -27,6 +29,8 @@ namespace chibi.controller.steering
 
 		public virtual void reload_behaviors()
 		{
+			if ( behaviors == null )
+				behaviors = new List<behavior.Behavior>();
 			behaviors_properties = new List<Steering_properties>(
 				behaviors.Count );
 

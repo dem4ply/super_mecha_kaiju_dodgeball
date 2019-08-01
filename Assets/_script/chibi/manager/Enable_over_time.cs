@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace chibi.game_manager
 {
-	public class Enable_over_time : chibi.Chibi_behaviour
+	public class Enable_over_time : Manager
 	{
 		public List< Game_object_to_enable > objs;
 

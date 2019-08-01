@@ -13,9 +13,18 @@ namespace danmaku.boss_behaviour
 
 		protected override IEnumerator do_behaviour()
 		{
+			yield return null;
+			// yield return new WaitForEndOfFrame();
 			get_sterring();
 			set_follow_waypoint();
+			//yield return new WaitForEndOfFrame();
 			yield return null;
+
+			while( true )
+			{
+				touha.shot();
+				yield return new WaitForSeconds( 5 );
+			}
 			end_behaviour();
 		}
 
@@ -24,6 +33,8 @@ namespace danmaku.boss_behaviour
 			steering = touha.GetComponent<Steering>();
 			if ( !steering )
 				steering = touha.gameObject.AddComponent<Steering>();
+			steering.target = path.transform;
+			steering.controller = touha;
 		}
 
 		protected void set_follow_waypoint()
