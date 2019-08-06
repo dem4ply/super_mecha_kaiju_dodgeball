@@ -28,27 +28,50 @@ namespace helper
 				draw = new draw.Draw( _instance );
 			}
 
-			public void info( string msg )
+			public void info( object msg )
 			{
+				info( msg.ToString() );
+			}
+
+			public void info( string msg, params object[] list )
+			{
+				msg = string.Format( msg, list );
 				UnityEngine.Debug.Log( string.Format(
 					"[{0}]{{{1}}} {2}", type_name, full_name, msg ),
 					_instance.gameObject );
 			}
 
-			public void log( string msg )
+			public void log( object msg )
 			{
-				info( msg );
+				log( msg.ToString() );
 			}
 
-			public void warning( string msg )
+			public void log( string msg, params object[] list )
 			{
+				info( msg, list );
+			}
+
+			public void warning( object msg )
+			{
+				warning( msg.ToString() );
+			}
+
+			public void warning( string msg, params object[] list )
+			{
+				msg = string.Format( msg, list );
 				UnityEngine.Debug.LogWarning( string.Format(
 					"[{0}]{{{1}}} {2}", type_name, full_name, msg ),
 					_instance.gameObject );
 			}
 
-			public void error( string msg )
+			public void error( object msg )
 			{
+				error( msg.ToString() );
+			}
+
+			public void error( string msg, params object[] list )
+			{
+				msg = string.Format( msg, list );
 				UnityEngine.Debug.LogError( string.Format(
 					"[{0}]{{{1}}} {2}", type_name, full_name, msg ),
 					_instance.gameObject );
