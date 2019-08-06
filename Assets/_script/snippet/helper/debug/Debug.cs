@@ -77,6 +77,11 @@ namespace helper
 					_instance.gameObject );
 			}
 
+			public void pause()
+			{
+				UnityEngine.Debug.Break();
+			}
+
 			protected string full_name
 			{
 				get { return helper.game_object.name.full( _instance ); }

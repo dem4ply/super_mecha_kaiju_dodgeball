@@ -60,7 +60,8 @@ namespace manager
 
 		public Dictionary<string, Collision_info> this[ GameObject obj ]
 		{
-			get{
+			get
+			{
 				Dictionary<string, Collision_info> result;
 				collisions.TryGetValue( obj, out result );
 				return result;

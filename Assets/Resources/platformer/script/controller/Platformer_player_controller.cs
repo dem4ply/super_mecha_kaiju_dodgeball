@@ -54,6 +54,17 @@ namespace platformer.controller.player
 							break;
 					}
 					break;
+				case "jump":
+					switch ( e )
+					{
+						case chibi.joystick.events.down:
+							player.jump();
+							break;
+						case chibi.joystick.events.up:
+							player.stop_jump();
+							break;
+					}
+					break;
 			}
 		}
 	}

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 using chibi.motor;
+using chibi.motor.npc;
 
 namespace chibi.controller.npc
 {
@@ -8,9 +10,7 @@ namespace chibi.controller.npc
 	{
 
 		[Header( "Wall manager" )]
-		public Vector3 angle_vector_for_floor = Vector3.left;
-		public float min_angle_for_floor = 20f;
-		public float max_angle_for_floor = 160;
+		public float max_slope_angle = 45f;
 
 		public Vector3 angle_vector_for_wall = Vector3.up;
 		public float min_angle_for_wall = 70f;
@@ -22,7 +22,6 @@ namespace chibi.controller.npc
 		public chibi.damage.motor.HP_engine hp;
 
 		protected manager.Collision manager_collisions;
-		protected Vertical_jump jump_motor;
 
 		#region propiedades publicas
 		public virtual bool is_grounded
@@ -64,8 +63,12 @@ namespace chibi.controller.npc
 		#region manejo de salto
 		public virtual void jump()
 		{
-			if ( jump_motor )
-				jump_motor.want_to_jump = true;
+			( (Motor_side_scroll)motor ).try_to_jump_the_next_update = true;
+		}
+
+		public virtual void stop_jump()
+		{
+			( (Motor_side_scroll)motor ).try_to_jump_the_next_update = false;
 		}
 		#endregion
 
@@ -90,14 +93,51 @@ namespace chibi.controller.npc
 		{
 			foreach ( ContactPoint contact in collision.contacts )
 			{
-				float angle = Vector3.Angle(
-					angle_vector_for_floor, contact.normal );
-				if ( helper.math.between(
-					angle, min_angle_for_floor, max_angle_for_floor ) )
+				// si es piso
+				float y = contact.normal.y;
+				if ( y > 0.01f )
 				{
-					manager_collisions.add( new manager.Collision_info(
-						STR_FLOOR, collision ) );
-					break;
+					debug.draw.arrow(
+						contact.point, contact.normal, Color.blue, 5f );
+					var v = Vector3.up;
+					debug.draw.arrow(
+						contact.point, v, Color.magenta, 5f );
+
+					var slope_angle = Vector3.Angle( contact.normal, v );
+					/*
+					debug.log(
+						"slope angle: {0} with '{1}', normal: {2}",
+						slope_angle, collision.gameObject.name, contact.normal );
+					*/
+
+					if ( slope_angle <= max_slope_angle )
+					{
+						manager_collisions.add( new manager.Collision_info(
+							STR_FLOOR, collision, slope_angle ) );
+						break;
+					}
+				}
+				// si es pared
+				else if ( y > -0.01 && y < 0.01 )
+				{
+					debug.draw.arrow(
+						contact.point, contact.normal, Color.red, 5f );
+				}
+				// si es techo
+				else if ( y < -0.01 )
+				{
+					debug.draw.arrow(
+						contact.point, contact.normal, Color.yellow, 5f );
+				}
+				// no se que paso
+				else
+				{
+					debug.error(
+						"no esta manejando este caso en en el "
+						+ "manager de las coliciones" );
+					debug.draw.arrow(
+						contact.point, contact.normal, Color.green, 5f );
+					debug.pause();
 				}
 			}
 		}
@@ -155,9 +195,6 @@ namespace chibi.controller.npc
 		protected override void load_motors()
 		{
 			base.load_motors();
-			jump_motor = GetComponent<Vertical_jump>();
-			if( jump_motor )
-				jump_motor.manager_collisions = manager_collisions;
 			motor.manager_collisions = manager_collisions;
 		}
 
