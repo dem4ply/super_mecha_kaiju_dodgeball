@@ -52,7 +52,7 @@ namespace chibi.editor.motor
 		public virtual void draw_steering( Motor motor )
 		{
 			motor.is_steering = EditorGUILayout.Foldout(
-				motor.is_steering, "is steering" );
+				motor.is_steering, "is steering", true );
 			if ( motor.is_steering )
 			{
 				motor.steering_mass = EditorGUILayout.FloatField(

@@ -28,6 +28,9 @@ namespace chibi.motor.npc
 		public float acceleration_time_in_ground = 0.1f;
 		public float acceleration_time_in_air = 0.2f;
 
+		public float time_to_reach_speed_in_ground = 0.1f;
+		public float time_to_reach_speed_in_air = 0.2f;
+
 		public bool try_to_jump_the_next_update = false;
 
 		public override Vector3 desire_direction
