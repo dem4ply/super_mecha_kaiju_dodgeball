@@ -84,7 +84,11 @@ namespace chibi.damage
 			{
 				stat.current -= damage.amount;
 				if ( is_dead )
+				{
+					Debug.Log( damage.owner.sheet );
+					Debug.Log( damage.owner.sheet.name );
 					died( true );
+				}
 			}
 
 			public virtual void died()

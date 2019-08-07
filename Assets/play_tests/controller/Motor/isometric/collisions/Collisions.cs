@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using chibi.controller.npc;
 using chibi.controller.ai;
+using chibi.motor.npc;
 
 namespace tests.controller.npc.isometric
 {
 	public class Collisions : helper.tests.Scene_test
 	{
-		Controller_npc motor;
+		Motor_isometric controller;
 		Ai_walk ai;
 
 		public override string scene_dir
@@ -25,7 +26,7 @@ namespace tests.controller.npc.isometric
 		{
 			base.Instanciate_scenary();
 
-			motor = helper.game_object.Find._< Controller_npc >( scene, "npc" );
+			controller = helper.game_object.Find._< Motor_isometric >( scene, "npc" );
 			ai = helper.game_object.Find._< Ai_walk >( scene, "npc" );
 		}
 
@@ -34,7 +35,7 @@ namespace tests.controller.npc.isometric
 		{
 			ai.desire_direction = Vector3.zero;
 			yield return new WaitForSeconds( 1 );
-			Assert.IsTrue( motor.is_grounded );
+			Assert.IsTrue( controller.is_grounded );
 		}
 
 		[UnityTest]
@@ -42,8 +43,8 @@ namespace tests.controller.npc.isometric
 		{
 			ai.desire_direction = Vector3.zero;
 			yield return new WaitForSeconds( 1 );
-			Assert.IsTrue( motor.is_grounded );
-			Assert.IsFalse( motor.is_walled );
+			Assert.IsTrue( controller.is_grounded );
+			Assert.IsFalse( controller.is_walled );
 		}
 
 		[UnityTest]
@@ -51,7 +52,7 @@ namespace tests.controller.npc.isometric
 		{
 			ai.desire_direction = Vector3.zero;
 			yield return new WaitForSeconds( 0.05f );
-			Assert.IsFalse( motor.is_grounded );
+			Assert.IsFalse( controller.is_grounded );
 		}
 
 		[UnityTest]
@@ -59,7 +60,7 @@ namespace tests.controller.npc.isometric
 		{
 			ai.desire_direction = Vector3.forward;
 			yield return new WaitForSeconds( 2 );
-			Assert.IsTrue( motor.is_walled );
+			Assert.IsTrue( controller.is_walled );
 		}
 
 		[UnityTest]
@@ -67,7 +68,7 @@ namespace tests.controller.npc.isometric
 		{
 			ai.desire_direction = Vector3.back;
 			yield return new WaitForSeconds( 2 );
-			Assert.IsTrue( motor.is_walled );
+			Assert.IsTrue( controller.is_walled );
 		}
 
 		[UnityTest]
@@ -75,7 +76,7 @@ namespace tests.controller.npc.isometric
 		{
 			ai.desire_direction = Vector3.left;
 			yield return new WaitForSeconds( 2 );
-			Assert.IsTrue( motor.is_walled );
+			Assert.IsTrue( controller.is_walled );
 		}
 
 		[UnityTest]
@@ -83,7 +84,7 @@ namespace tests.controller.npc.isometric
 		{
 			ai.desire_direction = Vector3.right;
 			yield return new WaitForSeconds( 2 );
-			Assert.IsTrue( motor.is_walled );
+			Assert.IsTrue( controller.is_walled );
 		}
 
 		[UnityTest]
@@ -91,7 +92,7 @@ namespace tests.controller.npc.isometric
 		{
 			ai.desire_direction = Vector3.right + Vector3.forward;
 			yield return new WaitForSeconds( 3 );
-			Assert.IsTrue( motor.is_walled );
+			Assert.IsTrue( controller.is_walled );
 		}
 
 		[UnityTest]
@@ -99,7 +100,7 @@ namespace tests.controller.npc.isometric
 		{
 			ai.desire_direction = Vector3.left + Vector3.forward;
 			yield return new WaitForSeconds( 3 );
-			Assert.IsTrue( motor.is_walled );
+			Assert.IsTrue( controller.is_walled );
 		}
 
 		[UnityTest]
@@ -107,7 +108,7 @@ namespace tests.controller.npc.isometric
 		{
 			ai.desire_direction = Vector3.right + Vector3.back;
 			yield return new WaitForSeconds( 3 );
-			Assert.IsTrue( motor.is_walled );
+			Assert.IsTrue( controller.is_walled );
 		}
 
 		[UnityTest]
@@ -115,7 +116,7 @@ namespace tests.controller.npc.isometric
 		{
 			ai.desire_direction = Vector3.left + Vector3.back;
 			yield return new WaitForSeconds( 3 );
-			Assert.IsTrue( motor.is_walled );
+			Assert.IsTrue( controller.is_walled );
 		}
 	}
 }

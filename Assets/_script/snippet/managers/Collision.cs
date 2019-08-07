@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-namespace manager
+namespace chibi.manager.collision
 {
-	public class Collision {
+	public class Manager_collision {
 		public Dictionary<
 			GameObject, Dictionary<string, Collision_info>> collisions;
 		public Dictionary<
 			string, Dictionary<GameObject, Collision_info>> collisions_by_name;
 
-		public Collision()
+		public Manager_collision()
 		{
 			collisions = new Dictionary<
 				GameObject, Dictionary<string, Collision_info>>();

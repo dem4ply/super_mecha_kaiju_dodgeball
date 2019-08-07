@@ -1,24 +1,24 @@
 ﻿using UnityEngine;
 using System;
+using chibi.manager.collision;
 
 namespace chibi.motor.npc
 {
 	public class Motor_side_scroll : Motor
 	{
-		[Header( "animator" )]
+		// [Header( "animator" )]
 		// public Platformer_animator_npc animator;
 
 		[Header( "jump" )]
-		public float max_jump_heigh = 4f;
-		public float min_jump_heigh = 1f;
-		public float jump_time = 0.4f;
+		protected float _max_jump_heigh = 4f;
+		protected float _min_jump_heigh = 1f;
+		protected float _jump_time = 0.4f;
 
-		public float max_jump_velocity;
-		public float min_jump_velocity;
-		public float gravity = -9.8f;
+		protected float _max_jump_velocity;
+		protected float _min_jump_velocity;
+		protected float _gravity = -9.8f;
 
 		public float multiplier_velocity_wall_slice = 0.8f;
-		public int last_direction = 0;
 
 		[Header( "wall jump" )]
 		public Vector3 wall_jump_climp = new Vector3( 0, 14, 14 );
@@ -28,16 +28,7 @@ namespace chibi.motor.npc
 		public float acceleration_time_in_ground = 0.1f;
 		public float acceleration_time_in_air = 0.2f;
 
-		public static string STR_WALL = "wall";
-		public static string STR_WALL_left = "wall left";
-		public static string STR_WALL_right = "wall right";
-		public static string STR_FLOOR = "floor";
-
-		protected bool _is_running = false;
 		public bool try_to_jump_the_next_update = false;
-		protected bool _is_grounded = false;
-
-		protected float horizontal_velocity_smooth;
 
 		public override Vector3 desire_direction
 		{
@@ -46,67 +37,94 @@ namespace chibi.motor.npc
 			}
 		}
 
+		public virtual float max_jump_heigh
+		{
+			get { return _max_jump_heigh; }
+			set {
+				_max_jump_heigh = value;
+				update_jump_properties();
+			}
+		}
+
+		public virtual float min_jump_heigh
+		{
+			get { return _min_jump_heigh; }
+			set {
+				_min_jump_heigh = value;
+				update_jump_properties();
+			}
+		}
+
+		public virtual float jump_time
+		{
+			get { return _jump_time; }
+			set {
+				jump_time = value;
+				update_jump_properties();
+			}
+		}
+
+		public virtual float gravity
+		{
+			get { return _gravity; }
+		}
+
+		public virtual float max_jump_velocity
+		{
+			get { return _max_jump_velocity; }
+		}
+
+		public virtual float min_jump_velocity
+		{
+			get { return _min_jump_velocity; }
+		}
+
 		#region propiedades publicas
+		public virtual Chibi_collision_side_scroll collision_manager_side_scroll
+		{
+			get { return manager_collision as Chibi_collision_side_scroll; }
+		}
+		#region propiedades conocer el estado de las coliciones
 		public virtual bool is_grounded
 		{
-			get {
-				return manager_collisions[ STR_FLOOR ];
-			}
+			get { return collision_manager_side_scroll.is_grounded; }
 		}
 
 		public virtual bool is_not_grounded
 		{
-			get {
-				return !is_grounded;
-			}
+			get { return !is_grounded; }
 		}
 
 		public virtual bool is_walled
 		{
-			get {
-				return manager_collisions[ STR_WALL ];
-			}
+			get { return collision_manager_side_scroll.is_walled; }
 		}
 
 		public virtual bool is_not_walled
 		{
-			get {
-				return !is_walled;
-			}
+			get { return !is_walled; }
 		}
 
 		public virtual bool is_walled_left
 		{
-			get {
-				return manager_collisions[ STR_WALL_left ];
-			}
+			get { return collision_manager_side_scroll.is_walled_left; }
 		}
 
 		public virtual bool is_walled_right
 		{
-			get {
-				return manager_collisions[ STR_WALL_right ];
-			}
+			get { return collision_manager_side_scroll.is_walled_right; }
 		}
 
 		public virtual bool no_is_walled_left
 		{
-			get {
-				return !is_walled_left;
-			}
+			get { return !is_walled_left; }
 		}
 
 		public virtual bool no_is_walled_right
 		{
-			get {
-				return !is_walled_right;
-			}
+			get { return !is_walled_right; }
 		}
-
-		public virtual bool is_jumping
-		{
-			get; set;
-		}
+		#endregion
 		#endregion
 
 		protected override void update_motion()
@@ -151,17 +169,17 @@ namespace chibi.motor.npc
 				}
 				else if ( is_grounded )
 				{
-					speed_vector.y = max_jump_velocity;
+					speed_vector.y = _max_jump_velocity;
 				}
 			}
-			else if ( speed_vector.y > min_jump_velocity )
-				speed_vector.y = min_jump_velocity;
+			else if ( speed_vector.y > _min_jump_velocity )
+				speed_vector.y = _min_jump_velocity;
 		}
 
 		protected virtual void _proccess_gravity(
 				ref Vector3 velocity_vector )
 		{
-			velocity_vector.y += ( gravity * Time.deltaTime );
+			velocity_vector.y += ( _gravity * Time.deltaTime );
 
 			if ( is_not_grounded && is_walled )
 				velocity_vector.y *= multiplier_velocity_wall_slice;
@@ -170,11 +188,16 @@ namespace chibi.motor.npc
 		protected override void _init_cache()
 		{
 			base._init_cache();
+			update_jump_properties();
+		}
 
-			gravity = -( 2 * max_jump_heigh ) / ( jump_time * jump_time );
-			max_jump_velocity = Math.Abs( gravity ) * jump_time;
-			min_jump_velocity = ( float )Math.Sqrt(
-				2.0 * Math.Abs( gravity ) * min_jump_heigh );
+
+		protected virtual void update_jump_properties()
+		{
+			_gravity = -( 2 * max_jump_heigh ) / ( jump_time * jump_time );
+			_max_jump_velocity = Math.Abs( _gravity ) * jump_time;
+			_min_jump_velocity = ( float )Math.Sqrt(
+				2.0 * Math.Abs( _gravity ) * min_jump_heigh );
 		}
 	}
 }

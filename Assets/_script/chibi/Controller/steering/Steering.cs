@@ -19,12 +19,7 @@ namespace chibi.controller.steering
 			if ( behaviors == null )
 				behaviors = new List<behavior.Behavior>();
 			if ( !behaviors.Any() )
-			{
-				Debug.LogWarning( string.Format(
-					"el steering controller de '{0}' no tiene behavior",
-					helper.game_object.name.full( this )
-				) );
-			}
+				debug.warning( "el steering controller no tiene behaviors" );
 		}
 
 		public virtual void reload_behaviors()
@@ -53,6 +48,7 @@ namespace chibi.controller.steering
 
 		protected override void Start()
 		{
+			base.Start();
 			reload();
 		}
 

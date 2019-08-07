@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using chibi.controller.npc;
 using chibi.controller.ai;
+using chibi.motor.npc;
 
 namespace tests.controller.npc.isometric
 {
 	public class Collisions_45 : helper.tests.Scene_test
 	{
-		Controller_npc motor;
+		Motor_isometric motor;
 		Ai_walk ai;
 
 		public override string scene_dir
@@ -25,7 +26,7 @@ namespace tests.controller.npc.isometric
 		{
 			base.Instanciate_scenary();
 
-			motor = helper.game_object.Find._< Controller_npc >( scene, "npc" );
+			motor = helper.game_object.Find._< Motor_isometric >( scene, "npc" );
 			ai = helper.game_object.Find._< Ai_walk >( scene, "npc" );
 		}
 

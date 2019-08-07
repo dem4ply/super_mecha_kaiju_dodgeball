@@ -6,7 +6,7 @@ using chibi.motor.npc;
 
 namespace chibi.manager.collision
 {
-	public class Chibi_collision_side_scroll : Chibi_collision_manager
+	public class Chibi_collision_isometric : Chibi_collision_manager
 	{
 		public static string STR_WALL = "wall";
 		public static string STR_WALL_left = "wall left";

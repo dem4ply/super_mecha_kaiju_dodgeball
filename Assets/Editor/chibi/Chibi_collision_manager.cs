@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEditor;
-using chibi.manager_v2.collision;
+using chibi.manager.collision;
 
 
 namespace chibi.editor.manager.collision
@@ -26,8 +26,7 @@ namespace chibi.editor.manager.collision
 					foreach ( var i_item in item.Value )
 					{
 						EditorGUILayout.BeginHorizontal();
-						EditorGUILayout.ObjectField(
-							i_item.Key, typeof( GameObject ) );
+						EditorGUILayout.ObjectField( i_item.Key, typeof( GameObject ), true );
 						EditorGUILayout.FloatField( i_item.Value.slope_angle );
 						EditorGUILayout.EndHorizontal();
 					}

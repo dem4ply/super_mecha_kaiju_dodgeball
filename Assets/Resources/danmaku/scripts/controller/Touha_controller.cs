@@ -35,7 +35,7 @@ namespace danmaku.controller.npc
 		{
 			base._init_cache();
 			if ( !rol )
-				rol = GetComponent< chibi.rol_sheet.Rol_sheet >();
+				rol = GetComponent<chibi.rol_sheet.Rol_sheet>();
 			if ( !rol )
 				debug.error( "no encontro un 'Rol_sheet'" );
 
@@ -50,6 +50,7 @@ namespace danmaku.controller.npc
 					+ "el primer elemento en los patroners" );
 				current_patter = patters[ 0 ];
 			}
+			debug.log( this.name + " " + "init_cache" );
 		}
 
 		protected override void _dispose_cache()

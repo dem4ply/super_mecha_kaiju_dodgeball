@@ -2419,6 +2419,7 @@ MonoBehaviour:
   min_angle_for_wall: 70
   max_angle_for_wall: 110
   hp: {fileID: 0}
+  manager_collision: {fileID: 0}
 --- !u!65 &2141172520203806834
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9255,44 +9256,6 @@ Transform:
   m_Father: {fileID: 5246479236817751948}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5833749509572926245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8481671216025530357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21a892d5e656ed45919ca395931ed04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug_mode: 0
-  pool: {fileID: 0}
-  current_speed: {x: 0, y: 0, z: 0}
-  desire_speed: 0
-  max_speed: 4
-  period_to_desice_direction:
-    _x: 0
-    _y: 0
-    _z: 0
-  is_steering: 0
-  steering_mass: 1
-  velocity_acceleration: {x: 0, y: 0, z: 0}
-  max_jump_heigh: 4
-  min_jump_heigh: 1
-  jump_time: 0.4
-  max_jump_velocity: 0
-  min_jump_velocity: 0
-  gravity: -9.8
-  multiplier_velocity_wall_slice: 0.8
-  last_direction: 0
-  wall_jump_climp: {x: 0, y: 14, z: 14}
-  wall_jump_off: {x: 0, y: 5, z: 8}
-  wall_jump_leap: {x: 0, y: 20, z: 14}
-  acceleration_time_in_ground: 0.1
-  acceleration_time_in_air: 0.2
-  try_to_jump_the_next_update: 0
 --- !u!4 &5919251643739094298
 Transform:
   m_ObjectHideFlags: 0
@@ -9400,13 +9363,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8481671216025530361}
   - component: {fileID: 8481671216025530356}
-  - component: {fileID: 8481671216025530358}
   - component: {fileID: 7950023661557602318}
+  - component: {fileID: 8481671216025530358}
   - component: {fileID: 1970245091893131123}
   - component: {fileID: 8696653821745481884}
   - component: {fileID: 6495761298280079966}
   - component: {fileID: 262240571759561503}
-  - component: {fileID: 5833749509572926245}
+  - component: {fileID: 8481671216025530359}
   m_Layer: 0
   m_Name: player_npc
   m_TagString: Untagged
@@ -9430,6 +9393,34 @@ MonoBehaviour:
   pool: {fileID: 0}
   max_slope_floor_angle: 45
   max_slope_ceil_angle: 45
+--- !u!114 &8481671216025530359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8481671216025530357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21a892d5e656ed45919ca395931ed04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  pool: {fileID: 0}
+  current_speed: {x: 0, y: 0, z: 0}
+  desire_speed: 0
+  max_speed: 4
+  is_steering: 0
+  steering_mass: 1
+  velocity_acceleration: {x: 0, y: 0, z: 0}
+  manager_collision: {fileID: 0}
+  multiplier_velocity_wall_slice: 0.8
+  wall_jump_climp: {x: 0, y: 14, z: 14}
+  wall_jump_off: {x: 0, y: 5, z: 8}
+  wall_jump_leap: {x: 0, y: 20, z: 14}
+  acceleration_time_in_ground: 0.1
+  acceleration_time_in_air: 0.2
+  try_to_jump_the_next_update: 0
 --- !u!4 &8481671216025530361
 Transform:
   m_ObjectHideFlags: 0

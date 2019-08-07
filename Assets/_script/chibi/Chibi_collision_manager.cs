@@ -4,15 +4,15 @@ using System;
 using chibi.motor;
 using chibi.motor.npc;
 
-namespace chibi.manager_v2.collision
+namespace chibi.manager.collision
 {
 	public class Chibi_collision_manager : Chibi_behaviour
 	{
-		public manager.Collision manager_collisions;
+		public manager.collision.Manager_collision manager_collisions;
 
 		protected virtual void OnCollisionEnter( Collision collision )
 		{
-			manager_collisions.add( new manager.Collision_info(
+			manager_collisions.add( new manager.collision.Collision_info(
 				"all", collision ) );
 			proccess_collision( collision );
 		}
@@ -59,7 +59,29 @@ namespace chibi.manager_v2.collision
 		protected override void _init_cache()
 		{
 			base._init_cache();
-			manager_collisions = new manager.Collision();
+			manager_collisions = new manager.collision.Manager_collision();
+		}
+
+		public Dictionary<string, Collision_info> this[ GameObject obj ]
+		{
+			get
+			{
+				return manager_collisions[ obj ];
+			}
+		}
+
+		public bool this[ GameObject obj, string name ]
+		{
+			get{
+				return manager_collisions[ obj, name ];
+			}
+		}
+
+		public bool this[ string name ]
+		{
+			get{
+				return manager_collisions[ name ];
+			}
 		}
 	}
 }

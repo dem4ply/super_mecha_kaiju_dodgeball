@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace manager
+namespace chibi.manager.collision
 {
 	public class Collision_info {
 		public string name;

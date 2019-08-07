@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using chibi.manager.collision;
 
 namespace chibi.motor
 {
@@ -10,7 +11,6 @@ namespace chibi.motor
 		public Vector3 current_speed = Vector3.zero;
 		public float desire_speed;
 		public float max_speed = 4f;
-		public unsigned_vector3 period_to_desice_direction;
 
 		public bool is_steering = false;
 
@@ -19,7 +19,7 @@ namespace chibi.motor
 		public Vector3 velocity_acceleration = Vector3.zero;
 
 		private Vector3 _desire_direction;
-		public manager.Collision manager_collisions;
+		public Chibi_collision_manager manager_collision;
 
 		protected Rigidbody ridgetbody;
 
@@ -90,9 +90,11 @@ namespace chibi.motor
 			base._init_cache();
 			ridgetbody = GetComponent<Rigidbody>();
 			if ( !ridgetbody )
-				Debug.Log( string.Format(
-					"no se encontro un ridgetbody en el en el motor '{0}'",
-					helper.game_object.name.full( this ) ) );
+				debug.log( "no se encontro el ridgetbody" );
+
+			manager_collision = GetComponent<Chibi_collision_manager>();
+			if ( !manager_collision )
+				debug.error( "no se encontro el manager de las collisiones" );
 		}
 
 		protected virtual void update_motion()

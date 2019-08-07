@@ -14,14 +14,18 @@ namespace danmaku.boss_behaviour
 		protected override IEnumerator do_behaviour()
 		{
 			yield return null;
+			debug.log( this.name + " " + "antes de stegin" );
 			// yield return new WaitForEndOfFrame();
 			get_sterring();
 			set_follow_waypoint();
 			//yield return new WaitForEndOfFrame();
+			debug.log( this.name + " " + "despues de steering" );
 			yield return null;
+			debug.log( this.name + " " + "despues de steering" );
 
-			while( true )
+			while( touha )
 			{
+				debug.log( this.name + " " + "shot" );
 				touha.shot();
 				yield return new WaitForSeconds( 5 );
 			}

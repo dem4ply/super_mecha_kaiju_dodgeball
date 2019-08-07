@@ -10,7 +10,7 @@ namespace chibi.motor
 		public float min_jump_heigh = 1f;
 		public float jump_time = 0.4f;
 
-		public manager.Collision manager_collisions;
+		public manager.collision.Manager_collision manager_collisions;
 
 		protected float max_jump_velocity;
 		protected float min_jump_velocity;

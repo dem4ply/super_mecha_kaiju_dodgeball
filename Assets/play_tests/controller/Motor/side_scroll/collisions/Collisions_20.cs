@@ -34,7 +34,7 @@ namespace tests.controller.npc.side_scroll
 		{
 			ai.desire_direction = Vector3.zero;
 			yield return new WaitForSeconds( 1 );
-			Assert.IsTrue( motor.is_grounded );
+			Assert.IsTrue( motor.motor_side_scroll.is_grounded );
 		}
 
 		[UnityTest]
@@ -42,7 +42,7 @@ namespace tests.controller.npc.side_scroll
 		{
 			ai.desire_direction = Vector3.zero;
 			yield return new WaitForSeconds( 0.05f );
-			Assert.IsFalse( motor.is_grounded );
+			Assert.IsFalse( motor.motor_side_scroll.is_grounded );
 		}
 
 		[UnityTest]
@@ -50,8 +50,8 @@ namespace tests.controller.npc.side_scroll
 		{
 			ai.desire_direction = Vector3.zero;
 			yield return new WaitForSeconds( 1 );
-			Assert.IsTrue( motor.is_grounded );
-			Assert.IsFalse( motor.is_walled );
+			Assert.IsTrue( motor.motor_side_scroll.is_grounded );
+			Assert.IsFalse( motor.motor_side_scroll.is_walled );
 		}
 
 		[UnityTest]
@@ -59,7 +59,7 @@ namespace tests.controller.npc.side_scroll
 		{
 			ai.desire_direction = Vector3.forward;
 			yield return new WaitForSeconds( 2.5f );
-			Assert.IsTrue( motor.is_walled );
+			Assert.IsTrue( motor.motor_side_scroll.is_walled );
 		}
 
 		[UnityTest]
@@ -67,7 +67,7 @@ namespace tests.controller.npc.side_scroll
 		{
 			ai.desire_direction = Vector3.back;
 			yield return new WaitForSeconds( 2.5f );
-			Assert.IsTrue( motor.is_walled );
+			Assert.IsTrue( motor.motor_side_scroll.is_walled );
 		}
 	}
 }
