@@ -9,17 +9,6 @@ namespace chibi.controller.npc
 {
 	public class Controller_npc : Controller_motor
 	{
-
-		[Header( "Wall manager" )]
-		public float max_slope_angle = 45f;
-
-		public Vector3 angle_vector_for_wall = Vector3.up;
-		public float min_angle_for_wall = 70f;
-		public float max_angle_for_wall = 110;
-
-		public static string STR_WALL = "wall";
-		public static string STR_FLOOR = "floor";
-
 		public chibi.damage.motor.HP_engine hp;
 
 		public Chibi_collision_manager manager_collision;

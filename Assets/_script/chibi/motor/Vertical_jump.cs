@@ -32,21 +32,6 @@ namespace chibi.motor
 			}
 		}
 
-		public virtual bool is_grounded
-		{
-			get {
-				return manager_collisions[
-					controller.npc.Controller_npc.STR_FLOOR ];
-			}
-		}
-
-		public virtual bool is_not_grounded
-		{
-			get {
-				return !is_grounded;
-			}
-		}
-
 		public virtual bool want_to_jump
 		{
 			get; set;
@@ -83,7 +68,8 @@ namespace chibi.motor
 
 		protected virtual void FixedUpdate()
 		{
-			if ( want_to_jump && is_grounded )
+			debug.error( "se deberia de elimnar esto" );
+			if ( want_to_jump && false )
 			{
 				ridgetbody.velocity = new Vector3(
 					ridgetbody.velocity.x, desire_velocity,

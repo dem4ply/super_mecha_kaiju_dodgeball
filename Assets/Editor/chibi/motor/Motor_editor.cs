@@ -11,7 +11,7 @@ namespace chibi.editor.motor
 {
 
 	[CustomEditor( typeof( Motor ), true )]
-	public class Motor_editor : Editor
+	public class Motor_editor : Chibi_behavior_editor
 	{
 		SerializedProperty current_speed;
 
@@ -30,8 +30,9 @@ namespace chibi.editor.motor
 			draw_steering( motor );
 		}
 
-		public virtual void draw_debug_mode( Motor motor )
+		public override void draw_debug_mode( Chibi_behaviour target )
 		{
+			Motor motor = ( Motor )target;
 			current_speed = serializedObject.FindProperty( "current_speed" );
 			EditorGUILayout.PropertyField( current_speed );
 		}
@@ -60,12 +61,13 @@ namespace chibi.editor.motor
 			}
 		}
 
-		protected virtual string[] ignore_properties()
+		protected override string[] ignore_properties()
 		{
+			var i = base.ignore_properties();
 			string[] ignore = new string[] {
 				"current_speed", "is_steering", "steering_mass", "desire_speed",
 				"max_speed", "velocity_acceleration" };
-			return ignore;
+			return i.Union( ignore ).ToArray();
 		}
 	}
 }

@@ -10,7 +10,7 @@ namespace chibi.editor.manager.collision
 {
 
 	[CustomEditor( typeof( Chibi_collision_manager ), true )]
-	public class Chibi_collision_manager_editor : Editor
+	public class Chibi_collision_manager_editor : chibi.editor.Chibi_behavior_editor
 	{
 		public override void OnInspectorGUI()
 		{

@@ -9,7 +9,7 @@ namespace chibi.motor.npc
 		// [Header( "animator" )]
 		// public Platformer_animator_npc animator;
 
-		[Header( "jump" )]
+		#region variables de jump
 		protected float _max_jump_heigh = 4f;
 		protected float _min_jump_heigh = 1f;
 		protected float _jump_time = 0.4f;
@@ -20,10 +20,10 @@ namespace chibi.motor.npc
 
 		public float multiplier_velocity_wall_slice = 0.8f;
 
-		[Header( "wall jump" )]
 		public Vector3 wall_jump_climp = new Vector3( 0, 14, 14 );
 		public Vector3 wall_jump_off = new Vector3( 0, 5, 8 );
 		public Vector3 wall_jump_leap = new Vector3( 0, 20, 14 );
+		#endregion
 
 		public float acceleration_time_in_ground = 0.1f;
 		public float acceleration_time_in_air = 0.2f;
@@ -33,6 +33,11 @@ namespace chibi.motor.npc
 
 		public bool try_to_jump_the_next_update = false;
 
+		public int current_direction = 0;
+
+		protected float current_horizontal_time_smooth = 0f;
+
+		#region propiedades publicas
 		public override Vector3 desire_direction
 		{
 			set {
@@ -40,6 +45,24 @@ namespace chibi.motor.npc
 			}
 		}
 
+		public virtual bool want_to_move
+		{
+			get {
+				return desire_direction.z > 0.01 || desire_direction.z < -0.01;
+			}
+		}
+
+		public virtual bool want_to_no_move
+		{
+			get { return !want_to_move; }
+		}
+
+		public virtual Chibi_collision_side_scroll collision_manager_side_scroll
+		{
+			get { return manager_collision as Chibi_collision_side_scroll; }
+		}
+
+		#region propiedades de salto
 		public virtual float max_jump_heigh
 		{
 			get { return _max_jump_heigh; }
@@ -81,12 +104,8 @@ namespace chibi.motor.npc
 		{
 			get { return _min_jump_velocity; }
 		}
+		#endregion
 
-		#region propiedades publicas
-		public virtual Chibi_collision_side_scroll collision_manager_side_scroll
-		{
-			get { return manager_collision as Chibi_collision_side_scroll; }
-		}
 		#region propiedades conocer el estado de las coliciones
 		public virtual bool is_grounded
 		{
@@ -127,7 +146,20 @@ namespace chibi.motor.npc
 		{
 			get { return !is_walled_right; }
 		}
+
+		public virtual Vector3 wall_direction
+		{
+			get {
+				if ( is_walled_left )
+					return Vector3.back;
+				else if ( is_walled_right )
+					return Vector3.forward;
+				else
+					return Vector3.zero;
+			}
+		}
 		#endregion
+
 		#endregion
 
 		protected override void update_motion()
@@ -141,10 +173,64 @@ namespace chibi.motor.npc
 			else
 				velocity_vector = ridgetbody.velocity;
 
+			update_change_direction( ref velocity_vector );
+
+			if ( is_grounded )
+				_proccess_ground_horizontal_velocity( ref velocity_vector );
+			else
+				_proccess_air_horizontal_velocity( ref velocity_vector );
+
 			_proccess_gravity( ref velocity_vector );
 			_process_jump( ref velocity_vector );
 
 			ridgetbody.velocity = velocity_vector;
+		}
+
+		protected virtual void _proccess_ground_horizontal_velocity(
+			ref Vector3 velocity_vector )
+		{
+			_proccess_horizontal_velocity( ref velocity_vector, acceleration_time_in_ground );
+		}
+
+		protected virtual void _proccess_air_horizontal_velocity(
+			ref Vector3 velocity_vector )
+		{
+			if ( want_to_no_move )
+				return;
+			Vector3 vector_current_direction = new Vector3( 0, 0, current_direction );
+			if ( is_walled )
+			{
+				if ( vector_current_direction == wall_direction )
+					velocity_vector.z = 0;
+			}
+			else
+			{
+				_proccess_horizontal_velocity( ref velocity_vector, acceleration_time_in_air );
+			}
+		}
+
+		protected virtual void _proccess_horizontal_velocity(
+			ref Vector3 velocity_vector, float acceleration )
+		{
+				float desire_horizontal_velocity = desire_direction.z * max_speed;
+				float current_horizontal_velocity = velocity_vector.z;
+
+				float final_horizontal_velocity = Mathf.SmoothDamp(
+					current_horizontal_velocity, desire_horizontal_velocity,
+					ref current_horizontal_time_smooth, acceleration );
+
+				velocity_vector.z = final_horizontal_velocity;
+		}
+
+		protected virtual void update_change_direction(
+			ref Vector3 velocity_vector )
+		{
+			if ( want_to_move )
+			{
+				int new_dir = Math.Sign( desire_direction.z );
+				if ( new_dir != 0 && new_dir != current_direction )
+					current_direction = new_dir;
+			}
 		}
 
 		protected virtual void _process_jump(ref Vector3 speed_vector)
@@ -182,7 +268,7 @@ namespace chibi.motor.npc
 		protected virtual void _proccess_gravity(
 				ref Vector3 velocity_vector )
 		{
-			velocity_vector.y += ( _gravity * Time.deltaTime );
+			velocity_vector.y += ( gravity * Time.deltaTime );
 
 			if ( is_not_grounded && is_walled )
 				velocity_vector.y *= multiplier_velocity_wall_slice;
