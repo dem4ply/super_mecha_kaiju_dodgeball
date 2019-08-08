@@ -35,12 +35,11 @@ namespace tests.controller.motor
 		}
 
 		[UnityTest]
-		public IEnumerator on_buirst_should_shot_the_same_amount_in_the_stat()
+		public IEnumerator on_burst_should_shot_the_same_amount_in_the_stat()
 		{
 			float wait_time =
 				( 1 / gun.stat.rate_fire ) * gun.stat.burst_amount + 1;
 			gun.burst();
-			Debug.Log( wait_time );
 			yield return new WaitForSeconds( wait_time );
 			assert.assert_collision_enter( gun.stat.burst_amount );
 		}
