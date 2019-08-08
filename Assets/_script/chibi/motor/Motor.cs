@@ -22,6 +22,13 @@ namespace chibi.motor
 		public Chibi_collision_manager manager_collision;
 
 		protected Rigidbody ridgetbody;
+		protected float _gravity = -9.8f;
+
+		public virtual float gravity
+		{
+			get { return _gravity; }
+			set { _gravity = value; }
+		}
 
 		public Vector3 velocity
 		{

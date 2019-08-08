@@ -6,14 +6,14 @@ using UnityEditor;
 using chibi.manager.collision;
 using chibi.motor;
 
-
 namespace chibi.editor.motor
 {
-
 	[CustomEditor( typeof( Motor ), true )]
 	public class Motor_editor : Chibi_behavior_editor
 	{
 		SerializedProperty current_speed;
+
+		protected bool is_going_to_draw_gravity = true;
 
 		public override void OnInspectorGUI()
 		{
@@ -28,6 +28,8 @@ namespace chibi.editor.motor
 			draw_speed_control( motor );
 
 			draw_steering( motor );
+			if ( is_going_to_draw_gravity )
+				draw_gravity( motor );
 			serializedObject.ApplyModifiedProperties();
 		}
 
@@ -69,6 +71,12 @@ namespace chibi.editor.motor
 				"current_speed", "is_steering", "steering_mass", "desire_speed",
 				"max_speed", "velocity_acceleration" };
 			return i.Union( ignore ).ToArray();
+		}
+
+		protected virtual void draw_gravity( Motor motor )
+		{
+			motor.gravity = EditorGUILayout.FloatField(
+				"gravity", motor.gravity );
 		}
 	}
 }

@@ -56,8 +56,7 @@ namespace tests.controller.motor.isometric.jump
 			{
 				yield return new WaitForSeconds( 1 );
 				float lower_point = controller.transform.position.y;
-				float expected_height = controller.GetComponent<
-					chibi.motor.Vertical_jump>().max_jump_heigh;
+				float expected_height = controller.motor_isometric.max_jump_heigh;
 				controller.jump();
 				float max_point = 0;
 				for ( int j = 0; j < 100; ++j )
@@ -66,6 +65,8 @@ namespace tests.controller.motor.isometric.jump
 					float current_point = controller.transform.position.y;
 					if ( current_point > max_point )
 						max_point = current_point;
+					if ( controller.motor.velocity.y < -0.01 )
+						controller.stop_jump();
 				}
 				diff.Add( max_point - lower_point );
 			}

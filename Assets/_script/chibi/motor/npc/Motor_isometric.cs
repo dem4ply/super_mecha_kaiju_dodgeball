@@ -1,10 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using chibi.manager.collision;
 
 namespace chibi.motor.npc
 {
 	public class Motor_isometric : Motor
 	{
+		#region variables de jump
+		protected float _max_jump_heigh = 4f;
+		protected float _min_jump_heigh = 1f;
+		protected float _jump_time = 0.4f;
+
+		protected float _max_jump_velocity;
+		protected float _min_jump_velocity;
+
 		public override Vector3 desire_direction
 		{
 			set {
@@ -12,13 +21,47 @@ namespace chibi.motor.npc
 			}
 		}
 
-		protected override void update_motion()
+		public bool try_to_jump_the_next_update = false;
+		#endregion
+
+		#region propiedades de salto
+		public virtual float max_jump_heigh
 		{
-			ridgetbody.velocity = new Vector3(
-				desire_velocity.x, ridgetbody.velocity.y,
-				desire_velocity.z );
-			current_speed = desire_velocity;
+			get { return _max_jump_heigh; }
+			set {
+				_max_jump_heigh = value;
+				update_jump_properties();
+			}
 		}
+
+		public virtual float min_jump_heigh
+		{
+			get { return _min_jump_heigh; }
+			set {
+				_min_jump_heigh = value;
+				update_jump_properties();
+			}
+		}
+
+		public virtual float jump_time
+		{
+			get { return _jump_time; }
+			set {
+				jump_time = value;
+				update_jump_properties();
+			}
+		}
+
+		public virtual float max_jump_velocity
+		{
+			get { return _max_jump_velocity; }
+		}
+
+		public virtual float min_jump_velocity
+		{
+			get { return _min_jump_velocity; }
+		}
+		#endregion
 
 		#region propiedades publicas
 		public virtual Chibi_collision_isometric collision_manager_side_scroll
@@ -67,6 +110,54 @@ namespace chibi.motor.npc
 		}
 		#endregion
 		#endregion
+
+		protected override void update_motion()
+		{
+			current_speed = desire_velocity;
+			Vector3 velocity_vector = new Vector3(
+				current_speed.x, ridgetbody.velocity.y,
+				current_speed.z );
+
+			// update_change_direction( ref velocity_vector );
+
+			_process_jump( ref velocity_vector );
+			_proccess_gravity( ref velocity_vector );
+
+			ridgetbody.velocity = velocity_vector;
+		}
+
+		protected virtual void _proccess_gravity(
+				ref Vector3 velocity_vector )
+		{
+			velocity_vector.y += ( gravity * Time.deltaTime );
+		}
+
+		protected virtual void _process_jump(ref Vector3 speed_vector)
+		{
+			if ( try_to_jump_the_next_update )
+			{
+				if ( is_grounded )
+				{
+					speed_vector.y = _max_jump_velocity;
+				}
+			}
+			else if ( speed_vector.y > _min_jump_velocity )
+				speed_vector.y = _min_jump_velocity;
+		}
+
+		protected override void _init_cache()
+		{
+			base._init_cache();
+			update_jump_properties();
+		}
+
+		protected virtual void update_jump_properties()
+		{
+			gravity = -( 2 * max_jump_heigh ) / ( jump_time * jump_time );
+			_max_jump_velocity = Math.Abs( _gravity ) * jump_time;
+			_min_jump_velocity = ( float )Math.Sqrt(
+				2.0 * Math.Abs( _gravity ) * min_jump_heigh );
+		}
 
 		public virtual void on_died()
 		{

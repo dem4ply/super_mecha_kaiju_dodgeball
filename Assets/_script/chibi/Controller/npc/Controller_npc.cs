@@ -18,6 +18,11 @@ namespace chibi.controller.npc
 			get { return motor as Motor_side_scroll; }
 		}
 
+		public virtual Motor_isometric motor_isometric
+		{
+			get { return motor as Motor_isometric; }
+		}
+
 		protected override void _init_cache()
 		{
 			base._init_cache();
@@ -28,12 +33,18 @@ namespace chibi.controller.npc
 		#region manejo de salto
 		public virtual void jump()
 		{
-			( (Motor_side_scroll)motor ).try_to_jump_the_next_update = true;
+			if ( motor_side_scroll != null )
+				motor_side_scroll.try_to_jump_the_next_update = true;
+			else if ( motor_isometric != null )
+				motor_isometric.try_to_jump_the_next_update = true;
 		}
 
 		public virtual void stop_jump()
 		{
-			( (Motor_side_scroll)motor ).try_to_jump_the_next_update = false;
+			if ( motor_side_scroll != null )
+				motor_side_scroll.try_to_jump_the_next_update = false;
+			else if ( motor_isometric != null )
+				motor_isometric.try_to_jump_the_next_update = false;
 		}
 		#endregion
 

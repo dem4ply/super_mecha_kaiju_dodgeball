@@ -16,7 +16,6 @@ namespace chibi.motor.npc
 
 		protected float _max_jump_velocity;
 		protected float _min_jump_velocity;
-		protected float _gravity = -9.8f;
 
 		public float multiplier_velocity_wall_slice = 0.8f;
 
@@ -85,11 +84,6 @@ namespace chibi.motor.npc
 				jump_time = value;
 				update_jump_properties();
 			}
-		}
-
-		public virtual float gravity
-		{
-			get { return _gravity; }
 		}
 
 		public virtual float max_jump_velocity
@@ -173,8 +167,8 @@ namespace chibi.motor.npc
 			else
 				_proccess_air_horizontal_velocity( ref velocity_vector );
 
-			_proccess_gravity( ref velocity_vector );
 			_process_jump( ref velocity_vector );
+			_proccess_gravity( ref velocity_vector );
 
 			ridgetbody.velocity = velocity_vector;
 			animator.speed = ridgetbody.velocity.z;
@@ -283,7 +277,7 @@ namespace chibi.motor.npc
 
 		protected virtual void update_jump_properties()
 		{
-			_gravity = -( 2 * max_jump_heigh ) / ( jump_time * jump_time );
+			gravity = -( 2 * max_jump_heigh ) / ( jump_time * jump_time );
 			_max_jump_velocity = Math.Abs( _gravity ) * jump_time;
 			_min_jump_velocity = ( float )Math.Sqrt(
 				2.0 * Math.Abs( _gravity ) * min_jump_heigh );
