@@ -13,21 +13,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 1
+  pool: {fileID: 0}
   current_speed: {x: 0, y: 0, z: 0}
   desire_speed: 0
   max_speed: 4
-  period_to_desice_direction:
-    _x: 0
-    _y: 0
-    _z: 0
   is_steering: 0
   steering_mass: 1
   velocity_acceleration: {x: 0, y: 0, z: 0}
+  manager_collision: {fileID: 0}
   ammo: {fileID: 0}
+  life_span: 10
+  alway_rotate_to_velocity_direction: 1
+  time_to_disable: 1
   live_time: 10
   current_live_time: 30
   max_bounce: 10
+  ignore_coliders: 0.05
   current_amount_of_bounce: 0
+  delta_current_amount_of_bounce: 0
 --- !u!1001 &6536649641307343679
 PrefabInstance:
   m_ObjectHideFlags: 0

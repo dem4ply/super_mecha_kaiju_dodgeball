@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 1359830470592594700}
   - component: {fileID: 2238620801877690898}
   - component: {fileID: 666477725944427768}
-  - component: {fileID: 780768394898340606}
-  - component: {fileID: 1213317015969613010}
   - component: {fileID: 3050522909085782204}
   - component: {fileID: 222006975561104409}
+  - component: {fileID: 5618122762037865381}
   m_Layer: 0
   m_Name: npc
   m_TagString: Untagged
@@ -67,16 +66,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   current_speed: {x: 0, y: 0, z: 0}
   desire_speed: 0
   max_speed: 4
-  period_to_desice_direction:
-    _x: 0
-    _y: 0
-    _z: 0
   is_steering: 0
   steering_mass: 1
   velocity_acceleration: {x: 0, y: 0, z: 0}
+  manager_collision: {fileID: 0}
 --- !u!114 &2238620801877690898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   motor: {fileID: 0}
   pasive_motor: 0
 --- !u!54 &666477725944427768
@@ -108,36 +106,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!114 &780768394898340606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359830470592594691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0b233b8a2538214dbab34153e0cca37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug_mode: 0
-  gravity: {x: 0, y: -9.8, z: 0}
---- !u!114 &1213317015969613010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359830470592594691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fe60c289bcaf1443ade995849ec3c08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug_mode: 0
-  max_jump_heigh: 4
-  min_jump_heigh: 1
-  jump_time: 0.4
 --- !u!114 &3050522909085782204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +119,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   sheet: {fileID: 11400000, guid: cb2083705fefa1f44a9c342e47819873, type: 2}
+  start_buffos: []
   hp:
     use_constant: 1
     _current: 1
@@ -170,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   rol: {fileID: 0}
   use_hp_from_rol: 1
   stat:
@@ -177,6 +148,20 @@ MonoBehaviour:
     _current: 0
     _max: 0
     variable: {fileID: 0}
+--- !u!114 &5618122762037865381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359830470592594691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569350f81f15b63cca948dff68c7a6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  pool: {fileID: 0}
 --- !u!1 &1359830471659977002
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +200,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1359830471659977013}
     m_Modifications:
+    - target: {fileID: 100326, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
+      propertyPath: m_Name
+      value: unitychan
+      objectReference: {fileID: 0}
     - target: {fileID: 400326, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -258,10 +247,6 @@ PrefabInstance:
     - target: {fileID: 400326, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100326, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
-      propertyPath: m_Name
-      value: unitychan
       objectReference: {fileID: 0}
     - target: {fileID: 13700020, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
       propertyPath: m_AABB.m_Center.y

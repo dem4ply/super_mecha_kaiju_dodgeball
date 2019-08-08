@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace SMKD.motor.weapons.gun.bullet
 {
@@ -13,6 +14,11 @@ namespace SMKD.motor.weapons.gun.bullet
 
 		public float current_amount_of_bounce = 0.05f;
 		public float delta_current_amount_of_bounce = 0f;
+
+		protected override IEnumerator _disable_in()
+		{
+			yield return null;
+		}
 
 		private void OnCollisionEnter( Collision collision )
 		{

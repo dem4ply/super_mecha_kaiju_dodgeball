@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2326769951513498727}
   - component: {fileID: 8793060768936231635}
   - component: {fileID: 92282259486423967}
+  - component: {fileID: 8033578614473074136}
   m_Layer: 0
   m_Name: arkanoid block
   m_TagString: scenery
@@ -124,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   rol: {fileID: 0}
   use_hp_from_rol: 0
   stat:
@@ -144,16 +146,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   current_speed: {x: 0, y: 0, z: 0}
   desire_speed: 0
   max_speed: 4
-  period_to_desice_direction:
-    _x: 0
-    _y: 0
-    _z: 0
   is_steering: 0
   steering_mass: 1
   velocity_acceleration: {x: 0, y: 0, z: 0}
+  manager_collision: {fileID: 0}
+  hp_motor: {fileID: 0}
+--- !u!114 &8033578614473074136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4694026829245549318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569350f81f15b63cca948dff68c7a6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  pool: {fileID: 0}
 --- !u!1001 &2510383744093063309
 PrefabInstance:
   m_ObjectHideFlags: 0

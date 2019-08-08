@@ -38,6 +38,7 @@ namespace SMKD.weapon.gun
 					+ transform.position;
 				bullet.transform.position = bullet_position;
 				is_load = false;
+				bullet.motor.enabled = true;
 				return bullet;
 			}
 			return null;

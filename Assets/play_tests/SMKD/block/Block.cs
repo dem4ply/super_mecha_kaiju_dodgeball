@@ -32,6 +32,7 @@ namespace tests.controller.block.SMKD
 		{
 			var bullet = gun.shot();
 			yield return new WaitForSeconds( 1 );
+			tests_tool.assert.game_object.is_not_null( bullet );
 			Assert.IsTrue( helper.game_object.comp.is_null( block_up ) );
 			Assert.IsFalse( helper.game_object.comp.is_null( block_down ) );
 		}
