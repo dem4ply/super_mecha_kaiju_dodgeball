@@ -29,7 +29,6 @@ namespace tests.controller.npc.soldier.side_scroll.actuator
 				helper.game_object.Find._<Actuator>(
 					scene, "up", "left", "right" );
 			down = helper.game_object.Find._<Assert_colision>( scene, "down" );
-
 			npc = helper.game_object.Find._<Soldier_controller>( scene, "npc" );
 		}
 

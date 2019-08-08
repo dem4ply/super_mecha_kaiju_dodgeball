@@ -51,8 +51,8 @@ namespace tests.controller.npc.isometric
 		public IEnumerator should_no_be_grounded_if_in_air()
 		{
 			ai.desire_direction = Vector3.zero;
-			yield return new WaitForSeconds( 0.05f );
 			Assert.IsFalse( motor.is_grounded );
+			yield return new WaitForSeconds( 0.05f );
 		}
 
 		[UnityTest]

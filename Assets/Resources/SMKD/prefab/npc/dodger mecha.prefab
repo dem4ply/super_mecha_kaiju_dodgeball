@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 2315376189187604158}
   - component: {fileID: 2315376189187604156}
   - component: {fileID: 5743611827204232975}
+  - component: {fileID: 3617883742581558059}
   m_Layer: 0
   m_Name: dodger mecha
   m_TagString: Untagged
@@ -114,16 +115,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   current_speed: {x: 0, y: 0, z: 0}
   desire_speed: 0
   max_speed: 4
-  period_to_desice_direction:
-    _x: 0
-    _y: 0
-    _z: 0
   is_steering: 0
   steering_mass: 1
   velocity_acceleration: {x: 0, y: 0, z: 0}
+  manager_collision: {fileID: 0}
   catch_radar:
     size: {x: 2, y: 35, z: 2}
     rotation: {x: 0, y: 0, z: 0, w: 0}
@@ -160,14 +159,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   motor: {fileID: 0}
   pasive_motor: 0
-  angle_vector_for_floor: {x: -1, y: 0, z: 0}
-  min_angle_for_floor: 20
-  max_angle_for_floor: 160
-  angle_vector_for_wall: {x: 0, y: 1, z: 0}
-  min_angle_for_wall: 70
-  max_angle_for_wall: 110
+  hp: {fileID: 0}
+  manager_collision: {fileID: 0}
   rol: {fileID: 0}
   dodger_set: {fileID: 11400000, guid: d3a8330891fff7b4186b2d406b74f99b, type: 2}
 --- !u!114 &2315376189187604158
@@ -183,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   sheet: {fileID: 11400000, guid: f4146da528b672b46a808ecd2acc81c2, type: 2}
   start_buffos: []
   hp:
@@ -216,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   rol: {fileID: 0}
   use_hp_from_rol: 1
   stat:
@@ -223,6 +221,20 @@ MonoBehaviour:
     _current: 0
     _max: 0
     variable: {fileID: 0}
+--- !u!114 &3617883742581558059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2315376189187604151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569350f81f15b63cca948dff68c7a6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  pool: {fileID: 0}
 --- !u!114 &445989261932385475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   animator: {fileID: 5564241052008441828}
   motor: {fileID: 8054652563170521084}
 --- !u!1001 &2024513207108280020
@@ -317,12 +330,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dbc5a91e28021345b41926e5d195df6, type: 3}
---- !u!1 &5564241052008441829 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5845852398087403825, guid: 6dbc5a91e28021345b41926e5d195df6,
-    type: 3}
-  m_PrefabInstance: {fileID: 2024513207108280020}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5564241052008441826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5845852398087403830, guid: 6dbc5a91e28021345b41926e5d195df6,
@@ -332,6 +339,12 @@ Transform:
 --- !u!95 &5564241052008441828 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5845852398087403824, guid: 6dbc5a91e28021345b41926e5d195df6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2024513207108280020}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5564241052008441829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5845852398087403825, guid: 6dbc5a91e28021345b41926e5d195df6,
     type: 3}
   m_PrefabInstance: {fileID: 2024513207108280020}
   m_PrefabAsset: {fileID: 0}
