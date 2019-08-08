@@ -28,6 +28,7 @@ namespace chibi.editor.motor
 			draw_speed_control( motor );
 
 			draw_steering( motor );
+			serializedObject.ApplyModifiedProperties();
 		}
 
 		public override void draw_debug_mode( Chibi_behaviour target )

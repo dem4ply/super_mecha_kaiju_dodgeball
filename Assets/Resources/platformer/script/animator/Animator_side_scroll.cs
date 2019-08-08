@@ -1,9 +1,16 @@
+using System;
 using UnityEngine;
 
 namespace chibi.animator
 {
-	public class Animator_platformer : Animator_base
+	public class Animator_side_scroll : Animator_base
 	{
+		public float speed
+		{
+			get { return animator.GetFloat( "speed" ); }
+			set { animator.SetFloat( "speed", Math.Abs( value ) ); }
+		}
+
 		public float vertical_speed
 		{
 			get { return animator.GetFloat( "vertical_speed" ); }

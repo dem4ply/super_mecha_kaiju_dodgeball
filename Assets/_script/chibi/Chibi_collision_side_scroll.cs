@@ -133,8 +133,14 @@ namespace chibi.manager.collision
 
 			var slope_angle = Vector3.Angle( contact.normal, Vector3.up );
 
-			manager_collisions.add( new manager.collision.Collision_info(
+			manager_collisions.add( new Collision_info(
 				STR_WALL, collision, slope_angle ) );
+			if ( contact.normal.z > 0 )
+				manager_collisions.add( new Collision_info(
+					STR_WALL_left, collision, slope_angle ) );
+			else if ( contact.normal.z < 0 )
+				manager_collisions.add( new Collision_info(
+					STR_WALL_right, collision, slope_angle ) );
 			return true;
 		}
 

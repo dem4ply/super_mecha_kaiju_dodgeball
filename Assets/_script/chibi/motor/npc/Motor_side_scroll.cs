@@ -7,7 +7,7 @@ namespace chibi.motor.npc
 	public class Motor_side_scroll : Motor
 	{
 		// [Header( "animator" )]
-		// public Platformer_animator_npc animator;
+		public chibi.animator.Animator_side_scroll animator;
 
 		#region variables de jump
 		protected float _max_jump_heigh = 4f;
@@ -24,9 +24,6 @@ namespace chibi.motor.npc
 		public Vector3 wall_jump_off = new Vector3( 0, 5, 8 );
 		public Vector3 wall_jump_leap = new Vector3( 0, 20, 14 );
 		#endregion
-
-		public float acceleration_time_in_ground = 0.1f;
-		public float acceleration_time_in_air = 0.2f;
 
 		public float time_to_reach_speed_in_ground = 0.1f;
 		public float time_to_reach_speed_in_air = 0.2f;
@@ -165,13 +162,9 @@ namespace chibi.motor.npc
 		protected override void update_motion()
 		{
 			current_speed = desire_velocity;
-			Vector3 velocity_vector = Vector3.zero;
-			if ( is_grounded )
-				velocity_vector = new Vector3(
-					current_speed.x, ridgetbody.velocity.y,
-					current_speed.z );
-			else
-				velocity_vector = ridgetbody.velocity;
+			Vector3 velocity_vector = new Vector3(
+				current_speed.x, ridgetbody.velocity.y,
+				current_speed.z );
 
 			update_change_direction( ref velocity_vector );
 
@@ -184,12 +177,17 @@ namespace chibi.motor.npc
 			_process_jump( ref velocity_vector );
 
 			ridgetbody.velocity = velocity_vector;
+			animator.speed = ridgetbody.velocity.z;
+			animator.vertical_speed = ridgetbody.velocity.y;
+			animator.is_grounded = is_grounded;
+			animator.is_walled = is_walled;
+			animator.direction = new Vector3( current_direction, 0, 0 );
 		}
 
 		protected virtual void _proccess_ground_horizontal_velocity(
 			ref Vector3 velocity_vector )
 		{
-			_proccess_horizontal_velocity( ref velocity_vector, acceleration_time_in_ground );
+			_proccess_horizontal_velocity( ref velocity_vector, time_to_reach_speed_in_ground);
 		}
 
 		protected virtual void _proccess_air_horizontal_velocity(
@@ -205,19 +203,19 @@ namespace chibi.motor.npc
 			}
 			else
 			{
-				_proccess_horizontal_velocity( ref velocity_vector, acceleration_time_in_air );
+				_proccess_horizontal_velocity( ref velocity_vector, time_to_reach_speed_in_air );
 			}
 		}
 
 		protected virtual void _proccess_horizontal_velocity(
-			ref Vector3 velocity_vector, float acceleration )
+			ref Vector3 velocity_vector, float time_to_reach_target )
 		{
 				float desire_horizontal_velocity = desire_direction.z * max_speed;
 				float current_horizontal_velocity = velocity_vector.z;
 
 				float final_horizontal_velocity = Mathf.SmoothDamp(
 					current_horizontal_velocity, desire_horizontal_velocity,
-					ref current_horizontal_time_smooth, acceleration );
+					ref current_horizontal_time_smooth, time_to_reach_target);
 
 				velocity_vector.z = final_horizontal_velocity;
 		}
@@ -278,6 +276,8 @@ namespace chibi.motor.npc
 		{
 			base._init_cache();
 			update_jump_properties();
+			if ( !animator )
+				debug.error( "no esta asignado el animator" );
 		}
 
 

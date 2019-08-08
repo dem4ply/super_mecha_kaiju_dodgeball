@@ -24,6 +24,7 @@ namespace chibi.editor
 
 			if ( behaviour.debug_mode )
 				draw_debug_mode( behaviour );
+			serializedObject.ApplyModifiedProperties();
 		}
 
 		public virtual void draw_debug_mode( Chibi_behaviour behaviour )
