@@ -32,7 +32,8 @@ namespace tests.controller.motor
 		public IEnumerator when_is_not_moving_his_speed_should_be_0()
 		{
 			yield return new WaitForSeconds( 1 );
-			Assert.AreEqual( 0, motor.current_speed.magnitude, 0.001f );
+			Vector3 velocity = new Vector3( motor.velocity.x, 0, motor.velocity.z );
+			Assert.AreEqual( 0, velocity.magnitude, 0.001f );
 		}
 
 		[UnityTest]

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1768364415723452434}
   - component: {fileID: 6703610102897278654}
   - component: {fileID: 3561210716130608464}
+  - component: {fileID: 2520839092378239953}
   m_Layer: 0
   m_Name: oval blue bullet
   m_TagString: Untagged
@@ -84,16 +85,14 @@ MonoBehaviour:
   current_speed: {x: 0, y: 0, z: 0}
   desire_speed: 0
   max_speed: 4
-  period_to_desice_direction:
-    _x: 0
-    _y: 0
-    _z: 0
   is_steering: 0
   steering_mass: 1
   velocity_acceleration: {x: 0, y: 0, z: 0}
+  manager_collision: {fileID: 0}
   ammo: {fileID: 11400000, guid: fb79407adc59e69a8bdfb88772fcdea2, type: 2}
   life_span: 10
   alway_rotate_to_velocity_direction: 1
+  time_to_disable: 1
   index_step: 0
   steps:
   - life_span: 1
@@ -159,6 +158,20 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
+--- !u!114 &2520839092378239953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6795797179513685633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569350f81f15b63cca948dff68c7a6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  pool: {fileID: 0}
 --- !u!1 &6874078174058799496
 GameObject:
   m_ObjectHideFlags: 0

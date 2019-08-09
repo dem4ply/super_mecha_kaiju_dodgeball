@@ -33,5 +33,13 @@ namespace danmaku.motor
 				helper.instantiate._( explotion_prefab, transform.position );
 			recycle();
 		}
+
+		protected override void _process_jump( ref Vector3 speed_vector )
+		{
+		}
+
+		protected override void _proccess_gravity( ref Vector3 velocity_vector )
+		{
+		}
 	}
 }

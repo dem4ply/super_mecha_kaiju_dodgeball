@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5193714586379861240}
   - component: {fileID: 5193714586379861247}
   - component: {fileID: 7766167848146741732}
+  - component: {fileID: 2465795902574812665}
   m_Layer: 0
   m_Name: unity-chan
   m_TagString: Untagged
@@ -85,7 +86,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   motor: {fileID: 0}
+  pasive_motor: 0
   animator: {fileID: 0}
 --- !u!114 &5193714586379861240
 MonoBehaviour:
@@ -100,13 +103,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   current_speed: {x: 0, y: 0, z: 0}
   desire_speed: 0
   max_speed: 4
-  period_to_desice_direction:
-    _x: 0
-    _y: 0
-    _z: 0
+  is_steering: 0
+  steering_mass: 1
+  velocity_acceleration: {x: 0, y: 0, z: 0}
+  manager_collision: {fileID: 0}
   emotion: 0
 --- !u!114 &5193714586379861247
 MonoBehaviour:
@@ -121,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   animator: {fileID: 5193714586379861245}
   transform_avatar: {fileID: 5193714586706967407}
   _emotion: 0
@@ -137,7 +142,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   sheet: {fileID: 11400000, guid: cb2083705fefa1f44a9c342e47819873, type: 2}
+  start_buffos: []
+  hp:
+    use_constant: 1
+    _current: 0
+    _max: 0
+    variable: {fileID: 0}
+--- !u!114 &2465795902574812665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5193714586379861235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569350f81f15b63cca948dff68c7a6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  pool: {fileID: 0}
 --- !u!1 &5193714586706967406
 GameObject:
   m_ObjectHideFlags: 0

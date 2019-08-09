@@ -26,7 +26,9 @@ namespace chibi.controller.weapon.gun.turrent
 			var bullets_controller = new List<bullet.Controller_bullet>();
 			foreach ( var gun in guns )
 			{
-				bullets_controller.Add( gun.shot() );
+				var bullet = gun.shot();
+				bullets_controller.Add( bullet );
+				bullet.ready();
 			}
 			return bullets_controller;
 		}

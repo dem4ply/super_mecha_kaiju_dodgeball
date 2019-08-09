@@ -106,8 +106,18 @@ namespace chibi.motor
 
 		protected virtual void update_motion()
 		{
-			ridgetbody.velocity = desire_velocity;
-			current_speed = desire_velocity;
+			Vector3 velocity_vector = desire_velocity;
+
+			_proccess_gravity( ref velocity_vector );
+
+			ridgetbody.velocity = velocity_vector;
+			current_speed = velocity_vector;
+		}
+
+		protected virtual void _proccess_gravity(
+				ref Vector3 velocity_vector )
+		{
+			velocity_vector.y += ( gravity * Time.deltaTime );
 		}
 
 		protected virtual void FixedUpdate()

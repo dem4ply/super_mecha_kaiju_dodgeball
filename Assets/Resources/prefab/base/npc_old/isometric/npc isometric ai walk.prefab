@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   desire_direction: {x: 0, y: 0, z: 0}
   speed: 1
   use_max_speed: 1
@@ -88,6 +89,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578308301545764686, guid: 3709efad636edb7438abdb06a0d1b989,
+        type: 3}
+      propertyPath: max_speed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2793418157475623659, guid: 3709efad636edb7438abdb06a0d1b989, type: 3}

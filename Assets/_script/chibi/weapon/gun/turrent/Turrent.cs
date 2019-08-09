@@ -47,5 +47,9 @@ namespace chibi.motor.weapons.gun.turrent
 			//entity.rigidbody.rotation = desire_rotation;
 			ridgetbody.MoveRotation( desire_rotation );
 		}
+
+		protected override void _proccess_gravity( ref Vector3 velocity_vector )
+		{
+		}
 	}
 }

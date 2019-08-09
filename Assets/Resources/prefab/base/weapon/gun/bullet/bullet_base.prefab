@@ -136,7 +136,7 @@ MonoBehaviour:
   ammo: {fileID: 11400000, guid: f153125a6fb748a4db922cc9afce2b6e, type: 2}
   life_span: 10
   alway_rotate_to_velocity_direction: 1
-  time_to_disable: 1
+  time_to_disable: 10
 --- !u!114 &6703610102897278654
 MonoBehaviour:
   m_ObjectHideFlags: 0

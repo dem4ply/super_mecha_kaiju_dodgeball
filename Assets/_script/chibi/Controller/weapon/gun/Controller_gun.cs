@@ -29,6 +29,15 @@ namespace chibi.controller.weapon.gun
 			throw new System.NotImplementedException();
 		}
 
+		public virtual List<Controller_bullet> shot( bool commit )
+		{
+			var bullets = shot();
+			if ( commit  )
+				foreach ( var bullet in bullets )
+					bullet.ready();
+			return bullets;
+		}
+
 		public virtual void start_automatic_shot()
 		{
 			throw new System.NotImplementedException();

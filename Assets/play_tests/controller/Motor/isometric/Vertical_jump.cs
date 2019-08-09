@@ -38,7 +38,7 @@ namespace tests.controller.motor.isometric.jump
 		}
 
 		[UnityTest]
-		public IEnumerator when_move_to_up_should_touch_collider_up()
+		public IEnumerator when_jump_shoult_touch_the_first_jump_assert()
 		{
 			yield return new WaitForSeconds( 2 );
 			controller.jump();

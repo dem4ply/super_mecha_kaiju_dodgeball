@@ -155,10 +155,8 @@ namespace chibi.motor.npc
 
 		protected override void update_motion()
 		{
-			current_speed = desire_velocity;
-			Vector3 velocity_vector = new Vector3(
-				current_speed.x, ridgetbody.velocity.y,
-				current_speed.z );
+			current_speed = velocity;
+			Vector3 velocity_vector = velocity;
 
 			update_change_direction( ref velocity_vector );
 
@@ -171,6 +169,7 @@ namespace chibi.motor.npc
 			_proccess_gravity( ref velocity_vector );
 
 			ridgetbody.velocity = velocity_vector;
+
 			animator.speed = ridgetbody.velocity.z;
 			animator.vertical_speed = ridgetbody.velocity.y;
 			animator.is_grounded = is_grounded;
@@ -204,14 +203,15 @@ namespace chibi.motor.npc
 		protected virtual void _proccess_horizontal_velocity(
 			ref Vector3 velocity_vector, float time_to_reach_target )
 		{
-				float desire_horizontal_velocity = desire_direction.z * max_speed;
-				float current_horizontal_velocity = velocity_vector.z;
+			float desire_horizontal_velocity =
+				desire_direction.z * Mathf.Clamp( desire_speed, 0, max_speed );
+			float current_horizontal_velocity = velocity_vector.z;
 
-				float final_horizontal_velocity = Mathf.SmoothDamp(
-					current_horizontal_velocity, desire_horizontal_velocity,
-					ref current_horizontal_time_smooth, time_to_reach_target);
+			float final_horizontal_velocity = Mathf.SmoothDamp(
+				current_horizontal_velocity, desire_horizontal_velocity,
+				ref current_horizontal_time_smooth, time_to_reach_target );
 
-				velocity_vector.z = final_horizontal_velocity;
+			velocity_vector.z = final_horizontal_velocity;
 		}
 
 		protected virtual void update_change_direction(
@@ -257,7 +257,7 @@ namespace chibi.motor.npc
 				speed_vector.y = _min_jump_velocity;
 		}
 
-		protected virtual void _proccess_gravity(
+		protected override void _proccess_gravity(
 				ref Vector3 velocity_vector )
 		{
 			velocity_vector.y += ( gravity * Time.deltaTime );

@@ -35,13 +35,13 @@ namespace tests.weapon.linerar.gun
 		public IEnumerator when_shot_should_kill_the_target()
 		{
 			gun.gun.auto_aim_target.Value = target_1.gameObject;
-			var bullet = gun.shot()[0];
+			var bullet = gun.shot( true )[0];
 			yield return new WaitForSeconds( 1.5f );
 			target_shunt_1.assert_collision_enter( bullet );
 			target_1.assert_not_collision_enter( bullet );
 
 			gun.gun.auto_aim_target.Value = target_2.gameObject;
-			bullet = gun.shot()[0];
+			bullet = gun.shot( true )[0];
 			yield return new WaitForSeconds( 1.5f );
 			target_shunt_2.assert_collision_enter( bullet );
 			target_2.assert_not_collision_enter( bullet );

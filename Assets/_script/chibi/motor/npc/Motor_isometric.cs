@@ -64,14 +64,14 @@ namespace chibi.motor.npc
 		#endregion
 
 		#region propiedades publicas
-		public virtual Chibi_collision_isometric collision_manager_side_scroll
+		public virtual Chibi_collision_isometric collision_manager_isometric
 		{
 			get { return manager_collision as Chibi_collision_isometric; }
 		}
 		#region propiedades conocer el estado de las coliciones
 		public virtual bool is_grounded
 		{
-			get { return collision_manager_side_scroll.is_grounded; }
+			get { return collision_manager_isometric.is_grounded; }
 		}
 
 		public virtual bool is_not_grounded
@@ -81,7 +81,7 @@ namespace chibi.motor.npc
 
 		public virtual bool is_walled
 		{
-			get { return collision_manager_side_scroll.is_walled; }
+			get { return collision_manager_isometric.is_walled; }
 		}
 
 		public virtual bool is_not_walled
@@ -91,12 +91,12 @@ namespace chibi.motor.npc
 
 		public virtual bool is_walled_left
 		{
-			get { return collision_manager_side_scroll.is_walled_left; }
+			get { return collision_manager_isometric.is_walled_left; }
 		}
 
 		public virtual bool is_walled_right
 		{
-			get { return collision_manager_side_scroll.is_walled_right; }
+			get { return collision_manager_isometric.is_walled_right; }
 		}
 
 		public virtual bool no_is_walled_left
@@ -126,7 +126,7 @@ namespace chibi.motor.npc
 			ridgetbody.velocity = velocity_vector;
 		}
 
-		protected virtual void _proccess_gravity(
+		protected override void _proccess_gravity(
 				ref Vector3 velocity_vector )
 		{
 			velocity_vector.y += ( gravity * Time.deltaTime );

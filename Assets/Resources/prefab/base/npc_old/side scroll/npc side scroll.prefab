@@ -16,7 +16,7 @@ MonoBehaviour:
   pool: {fileID: 0}
   current_speed: {x: 0, y: 0, z: 0}
   desire_speed: 0
-  max_speed: 4
+  max_speed: 5
   is_steering: 0
   steering_mass: 1
   velocity_acceleration: {x: 0, y: 0, z: 0}
@@ -86,11 +86,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1359830470592594691, guid: c3c052b2e1354484e9d574a44bd5eacd,
-        type: 3}
-      propertyPath: m_Name
-      value: npc side scroll
-      objectReference: {fileID: 0}
     - target: {fileID: 1359830470592594703, guid: c3c052b2e1354484e9d574a44bd5eacd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -145,6 +140,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359830470592594691, guid: c3c052b2e1354484e9d574a44bd5eacd,
+        type: 3}
+      propertyPath: m_Name
+      value: npc side scroll
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1359830470592594700, guid: c3c052b2e1354484e9d574a44bd5eacd, type: 3}

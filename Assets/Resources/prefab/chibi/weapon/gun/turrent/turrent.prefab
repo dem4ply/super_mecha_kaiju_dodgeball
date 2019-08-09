@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   turrent: {fileID: 2347954400316705480}
   hold_position: {fileID: 4649922982364466086}
 --- !u!1 &2231557116277685804
@@ -73,6 +74,7 @@ GameObject:
   - component: {fileID: 1590867999784926565}
   - component: {fileID: 7479862297107699050}
   - component: {fileID: 2347954400316705480}
+  - component: {fileID: 4926035879719042445}
   m_Layer: 0
   m_Name: turrent
   m_TagString: Untagged
@@ -125,16 +127,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   current_speed: {x: 0, y: 0, z: 0}
   desire_speed: 0
   max_speed: 4
-  period_to_desice_direction:
-    _x: 0
-    _y: 0
-    _z: 0
   is_steering: 0
   steering_mass: 1
   velocity_acceleration: {x: 0, y: 0, z: 0}
+  manager_collision: {fileID: 0}
   rotation_vector: {x: 0, y: 1, z: 0}
   max_rotation_angle: 180
   current_rotation_angle: 0
@@ -155,8 +155,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   motor: {fileID: 0}
   pasive_motor: 0
+--- !u!114 &4926035879719042445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2231557116277685804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569350f81f15b63cca948dff68c7a6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  pool: {fileID: 0}
 --- !u!1 &4154675149738977566
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,16 +209,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7205532819467106219}
     m_Modifications:
-    - target: {fileID: 1328558228578934375, guid: 3d029d538d4a72841abf4c78349ea3d2,
-        type: 3}
-      propertyPath: m_Name
-      value: linear_gun
-      objectReference: {fileID: 0}
-    - target: {fileID: 1328558228578934375, guid: 3d029d538d4a72841abf4c78349ea3d2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1328558228578934373, guid: 3d029d538d4a72841abf4c78349ea3d2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -258,6 +263,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1328558228578934375, guid: 3d029d538d4a72841abf4c78349ea3d2,
+        type: 3}
+      propertyPath: m_Name
+      value: linear_gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 1328558228578934375, guid: 3d029d538d4a72841abf4c78349ea3d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d029d538d4a72841abf4c78349ea3d2, type: 3}

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7261173817654716547}
   - component: {fileID: 3700026656635286871}
   - component: {fileID: 6616607929352875973}
+  - component: {fileID: 7398798161107528468}
   m_Layer: 0
   m_Name: touha
   m_TagString: Untagged
@@ -67,17 +68,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   current_speed: {x: 0, y: 0, z: 0}
   desire_speed: 0
   max_speed: 4
-  period_to_desice_direction:
-    _x: 0
-    _y: 0
-    _z: 0
   is_steering: 0
   steering_mass: 1
   velocity_acceleration: {x: 0, y: 0, z: 0}
+  manager_collision: {fileID: 0}
+  try_to_jump_the_next_update: 0
   hp_motor: {fileID: 0}
+  explotion_prefab: {fileID: 0}
 --- !u!114 &7261173817654716547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,14 +92,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   motor: {fileID: 0}
   pasive_motor: 0
-  angle_vector_for_floor: {x: -1, y: 0, z: 0}
-  min_angle_for_floor: 20
-  max_angle_for_floor: 160
-  angle_vector_for_wall: {x: 0, y: 1, z: 0}
-  min_angle_for_wall: 70
-  max_angle_for_wall: 110
+  hp: {fileID: 0}
+  manager_collision: {fileID: 0}
   rol: {fileID: 0}
   guns_patter_container: {fileID: 5081268647854485103}
   current_patter: {fileID: 0}
@@ -116,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   sheet: {fileID: 0}
   start_buffos: []
   hp:
@@ -136,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
+  pool: {fileID: 0}
   rol: {fileID: 0}
   use_hp_from_rol: 1
   stat:
@@ -143,6 +143,20 @@ MonoBehaviour:
     _current: 0
     _max: 0
     variable: {fileID: 0}
+--- !u!114 &7398798161107528468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396348403841840695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569350f81f15b63cca948dff68c7a6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  pool: {fileID: 0}
 --- !u!1 &3288753225862707375
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,8 +231,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
-  gun: {fileID: 0}
+  pool: {fileID: 0}
   guns: []
+  controllers_guns: []
 --- !u!1 &5081268647854485103
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,11 +272,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 852267897849714905}
     m_Modifications:
-    - target: {fileID: -7328692128102437388, guid: 46fe27c30cb16de40a716d5e1d7184e4,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 2516308796786498730, guid: 46fe27c30cb16de40a716d5e1d7184e4,
         type: 3}
       propertyPath: m_Name
@@ -321,6 +331,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7328692128102437388, guid: 46fe27c30cb16de40a716d5e1d7184e4,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46fe27c30cb16de40a716d5e1d7184e4, type: 3}

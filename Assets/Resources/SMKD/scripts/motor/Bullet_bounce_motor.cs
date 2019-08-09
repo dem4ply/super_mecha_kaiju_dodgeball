@@ -28,7 +28,7 @@ namespace SMKD.motor.weapons.gun.bullet
 			}
 			delta_current_amount_of_bounce = 0f;
 			var new_direction = Vector3.Reflect( desire_direction, collision.contacts[ 0 ].normal );
-			desire_direction = new_direction;
+			desire_direction = new Vector3( new_direction.x, 0, new_direction.z );
 
 			current_amount_of_bounce += 1;
 			if ( current_amount_of_bounce > max_bounce )

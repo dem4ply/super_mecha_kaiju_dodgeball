@@ -28,6 +28,7 @@ namespace chibi.editor.motor.npc
 			{
 				EditorUtility.SetDirty( motor );
 			}
+			serializedObject.ApplyModifiedProperties();
 		}
 
 		protected override void draw_gravity( Motor motor_old )

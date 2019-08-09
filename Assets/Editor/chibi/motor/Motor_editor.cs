@@ -18,6 +18,7 @@ namespace chibi.editor.motor
 		public override void OnInspectorGUI()
 		{
 			serializedObject.Update();
+			EditorGUI.BeginChangeCheck();
 			DrawPropertiesExcluding( serializedObject, ignore_properties() );
 
 			Motor motor = ( Motor )target;
@@ -30,6 +31,10 @@ namespace chibi.editor.motor
 			draw_steering( motor );
 			if ( is_going_to_draw_gravity )
 				draw_gravity( motor );
+			if ( EditorGUI.EndChangeCheck() )
+			{
+				EditorUtility.SetDirty( motor );
+			}
 			serializedObject.ApplyModifiedProperties();
 		}
 
