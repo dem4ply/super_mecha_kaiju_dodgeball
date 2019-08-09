@@ -168,6 +168,10 @@ namespace chibi.motor.npc
 			_process_jump( ref velocity_vector );
 			_proccess_gravity( ref velocity_vector );
 
+			if ( velocity_vector.y < 0.01 )
+				try_to_jump_the_next_update = false;
+
+
 			ridgetbody.velocity = velocity_vector;
 
 			update_animator();
@@ -251,19 +255,16 @@ namespace chibi.motor.npc
 					current_direction = -jump_direction;
 					if ( Math.Sign( desire_direction.z ) == jump_direction )
 					{
-						debug.log( "climp" );
 						speed_vector.z = -jump_direction * wall_jump_climp.z;
 						speed_vector.y = wall_jump_climp.y;
 					}
 					else if ( desire_direction.z == 0 )
 					{
-						debug.log( "off" );
 						speed_vector.z = -jump_direction * wall_jump_off.z;
 						speed_vector.y = wall_jump_off.y;
 					}
 					else
 					{
-						debug.log( "leap" );
 						speed_vector.z = -jump_direction * wall_jump_leap.z;
 						speed_vector.y = wall_jump_leap.y;
 					}
@@ -271,6 +272,10 @@ namespace chibi.motor.npc
 				else if ( is_grounded )
 				{
 					speed_vector.y = _max_jump_velocity;
+				}
+				else
+				{
+					try_to_jump_the_next_update = false;
 				}
 			}
 			else if ( speed_vector.y > _min_jump_velocity )
