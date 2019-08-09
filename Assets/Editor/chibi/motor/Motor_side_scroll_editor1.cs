@@ -67,7 +67,7 @@ namespace chibi.editor.motor.npc
 				motor.wall_jump_off = EditorGUILayout.Vector3Field(
 					"off", motor.wall_jump_off );
 				motor.wall_jump_leap = EditorGUILayout.Vector3Field(
-					"off", motor.wall_jump_leap );
+					"leap", motor.wall_jump_leap );
 				EditorGUI.indentLevel -= 1;
 			}
 		}

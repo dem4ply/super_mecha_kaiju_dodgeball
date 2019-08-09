@@ -245,21 +245,25 @@ namespace chibi.motor.npc
 		{
 			if ( try_to_jump_the_next_update )
 			{
-				if ( false && is_walled && is_not_grounded )
+				if ( is_walled && is_not_grounded )
 				{
 					int jump_direction = is_walled_left ? -1 : 1;
+					current_direction = -jump_direction;
 					if ( Math.Sign( desire_direction.z ) == jump_direction )
 					{
+						debug.log( "climp" );
 						speed_vector.z = -jump_direction * wall_jump_climp.z;
 						speed_vector.y = wall_jump_climp.y;
 					}
 					else if ( desire_direction.z == 0 )
 					{
+						debug.log( "off" );
 						speed_vector.z = -jump_direction * wall_jump_off.z;
 						speed_vector.y = wall_jump_off.y;
 					}
 					else
 					{
+						debug.log( "leap" );
 						speed_vector.z = -jump_direction * wall_jump_leap.z;
 						speed_vector.y = wall_jump_leap.y;
 					}
