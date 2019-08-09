@@ -170,10 +170,24 @@ namespace chibi.motor.npc
 
 			ridgetbody.velocity = velocity_vector;
 
+			update_animator();
+		}
+
+		protected virtual void update_animator()
+		{
 			animator.speed = ridgetbody.velocity.z;
 			animator.vertical_speed = ridgetbody.velocity.y;
 			animator.is_grounded = is_grounded;
-			animator.is_walled = is_walled;
+			if ( is_not_grounded )
+			{
+				Vector3 vector_current_direction = new Vector3( 0, 0, current_direction );
+				if ( vector_current_direction == wall_direction )
+					animator.is_walled = true;
+				else
+					animator.is_walled = false;
+			}
+			else
+				animator.is_walled = is_walled;
 			animator.direction = new Vector3( current_direction, 0, 0 );
 		}
 
@@ -193,6 +207,8 @@ namespace chibi.motor.npc
 			{
 				if ( vector_current_direction == wall_direction )
 					velocity_vector.z = 0;
+				else
+					_proccess_horizontal_velocity( ref velocity_vector, time_to_reach_speed_in_air );
 			}
 			else
 			{
