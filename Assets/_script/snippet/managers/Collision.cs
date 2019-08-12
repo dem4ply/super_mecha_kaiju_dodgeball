@@ -103,5 +103,23 @@ namespace chibi.manager.collision
 				return -1f;
 			}
 		}
+
+		public Vector3 normal( string name )
+		{
+			Dictionary<GameObject, Collision_info> result;
+			if ( collisions_by_name.TryGetValue( name, out result ) )
+			{
+				foreach ( var item in result )
+				{
+					foreach( var contact in item.Value.collision.contacts )
+						return contact.normal;
+				}
+				return Vector3.zero;
+			}
+			else
+			{
+				return Vector3.zero;
+			}
+		}
 	}
 }

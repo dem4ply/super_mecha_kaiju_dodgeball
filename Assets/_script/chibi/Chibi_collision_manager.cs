@@ -26,8 +26,11 @@ namespace chibi.manager.collision
 		{
 			if ( chibi.tag.consts.is_scenary( collision ) )
 			{
-				__validate_normal_points( collision );
-				_process_collision_scenary( collision );
+				if ( collision.contacts.Length != 0 )
+				{
+					//__validate_normal_points( collision );
+					_process_collision_scenary( collision );
+				}
 			}
 		}
 
@@ -87,6 +90,11 @@ namespace chibi.manager.collision
 		public float slope( string name )
 		{
 			return manager_collisions.slope( name );
+		}
+
+		public Vector3 normal( string name )
+		{
+			return manager_collisions.normal( name );
 		}
 	}
 }

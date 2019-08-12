@@ -197,6 +197,7 @@ namespace chibi.motor.npc
 			else if ( is_in_slope && slope_angle > 0f
 				&& slope_angle < max_slope_anlge )
 			{
+				_proccess_ground_horizontal_velocity( ref velocity_vector );
 				_proccess_slope_velocity( ref velocity_vector, slope_angle );
 				_process_jump( ref velocity_vector );
 				// _proccess_slope_gravity_gravity( ref velocity_vector );
@@ -214,8 +215,7 @@ namespace chibi.motor.npc
 				try_to_jump_the_next_update = false;
 
 			ridgetbody.velocity = velocity_vector;
-
-			debug.draw.arrow( velocity_vector, Color.magenta, duration:1f );
+			// debug.draw.arrow( velocity_vector, Color.magenta, duration:1f );
 
 			update_animator();
 		}
@@ -249,26 +249,16 @@ namespace chibi.motor.npc
 		protected virtual void _proccess_slope_velocity(
 			ref Vector3 velocity_vector, float slope_angle )
 		{
-			float desire_horizontal_velocity =
-				desire_direction.z * Mathf.Clamp( desire_speed, 0, max_speed );
+			Vector3 slope_normal = collision_manager_side_scroll.normal(
+				Chibi_collision_side_scroll.STR_SLOPE );
 
-			desire_horizontal_velocity =
-				Mathf.Cos( slope_angle * Mathf.Deg2Rad )
-				* desire_horizontal_velocity;
-
-			float desire_vertical_velocity =
-				Mathf.Sin( slope_angle * Mathf.Deg2Rad )
-				* Mathf.Abs( desire_horizontal_velocity );
-
-			float current_horizontal_velocity = velocity_vector.z;
-
-			float final_horizontal_velocity = Mathf.SmoothDamp(
-				current_horizontal_velocity, desire_horizontal_velocity,
-				ref current_horizontal_time_smooth,
-				time_to_reach_speed_in_ground );
-
-			velocity_vector.z = final_horizontal_velocity;
-			velocity_vector.y = desire_vertical_velocity;
+			if ( slope_normal != Vector3.zero
+				&& ( -0.1 > velocity_vector.z  || velocity_vector.z < 0.1 ) )
+			{
+				velocity_vector = Vector3.ProjectOnPlane( velocity_vector, slope_normal );
+				debug.draw.arrow( slope_normal, Color.yellow, duration:1f );
+				debug.draw.arrow( velocity_vector, Color.black, duration:1f );
+			}
 		}
 
 		protected virtual void _proccess_air_horizontal_velocity(

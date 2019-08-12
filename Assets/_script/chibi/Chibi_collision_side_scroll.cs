@@ -129,6 +129,8 @@ namespace chibi.manager.collision
 					STR_FLOOR, collision, slope_angle ) );
 				return true;
 			}
+			// debug.draw.arrow( contact.point, contact.normal, Color.cyan, duration:1f );
+			// Debug.Break();
 			manager_collisions.add( new manager.collision.Collision_info(
 				STR_SLOPE, collision, slope_angle ) );
 			return true;
