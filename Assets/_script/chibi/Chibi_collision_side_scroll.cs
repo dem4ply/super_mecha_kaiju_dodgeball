@@ -12,7 +12,14 @@ namespace chibi.manager.collision
 		public static string STR_WALL_left = "wall left";
 		public static string STR_WALL_right = "wall right";
 		public static string STR_FLOOR = "floor";
+		public static string STR_SLOPE = "SLOPE";
 		public static string STR_CEIL = "ceil";
+		public static string STR_SLOPE_CEIL = "slope ceil";
+
+		public float floor_anlge = 5f;
+
+		public float max_slope_floor_angle = 45f;
+		public float max_slope_ceil_angle = 45f;
 
 		public virtual bool is_grounded
 		{
@@ -22,6 +29,11 @@ namespace chibi.manager.collision
 		public virtual bool is_not_grounded
 		{
 			get { return !is_grounded; }
+		}
+
+		public virtual bool is_in_slope
+		{
+			get { return this[ STR_SLOPE ]; }
 		}
 
 		public virtual bool is_ceiled
@@ -64,8 +76,6 @@ namespace chibi.manager.collision
 			get { return !is_walled_right; }
 		}
 
-		public float max_slope_floor_angle = 45f;
-		public float max_slope_ceil_angle = 45f;
 
 		protected override void _process_collision_scenary( Collision collision )
 		{
@@ -113,14 +123,15 @@ namespace chibi.manager.collision
 				contact.point, Vector3.up, Color.magenta, 5f );
 
 			var slope_angle = Vector3.Angle( contact.normal, Vector3.up );
-			if ( slope_angle <= max_slope_floor_angle )
+			if ( -floor_anlge <= slope_angle && slope_angle <= floor_anlge )
 			{
 				manager_collisions.add( new manager.collision.Collision_info(
 					STR_FLOOR, collision, slope_angle ) );
 				return true;
 			}
-
-			return false;
+			manager_collisions.add( new manager.collision.Collision_info(
+				STR_SLOPE, collision, slope_angle ) );
+			return true;
 		}
 
 		protected virtual bool _proccess_wall(
@@ -153,13 +164,15 @@ namespace chibi.manager.collision
 				contact.point, Vector3.down, Color.magenta, 5f );
 
 			var slope_angle = Vector3.Angle( contact.normal, Vector3.down );
-			if ( slope_angle <= max_slope_ceil_angle )
+			if ( -floor_anlge <= slope_angle && slope_angle <= floor_anlge )
 			{
 				manager_collisions.add( new manager.collision.Collision_info(
-					STR_CEIL, collision, slope_angle ) );
+					STR_SLOPE_CEIL, collision, slope_angle ) );
 				return true;
 			}
-			return false;
+			manager_collisions.add( new manager.collision.Collision_info(
+				STR_CEIL, collision, slope_angle ) );
+			return true;
 		}
 	}
 }

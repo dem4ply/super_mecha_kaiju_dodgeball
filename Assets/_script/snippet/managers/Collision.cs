@@ -86,5 +86,22 @@ namespace chibi.manager.collision
 				return collisions_by_name.TryGetValue( name, out result );
 			}
 		}
+
+		public float slope( string name )
+		{
+			Dictionary<GameObject, Collision_info> result;
+			if ( collisions_by_name.TryGetValue( name, out result ) )
+			{
+				foreach ( var item in result )
+				{
+					return item.Value.slope_angle;
+				}
+				return -1f;
+			}
+			else
+			{
+				return -1f;
+			}
+		}
 	}
 }

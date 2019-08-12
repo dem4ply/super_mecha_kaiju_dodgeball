@@ -83,5 +83,10 @@ namespace chibi.manager.collision
 				return manager_collisions[ name ];
 			}
 		}
+
+		public float slope( string name )
+		{
+			return manager_collisions.slope( name );
+		}
 	}
 }

@@ -26,7 +26,7 @@ namespace chibi.pool
 
 		protected virtual void OnEnable()
 		{
-			Debug.Log( "WTF" );
+			//Debug.Log( "WTF" );
 			_pool_stack = new Stack<GameObject>();
 			if ( !container )
 			{
