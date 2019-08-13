@@ -4,7 +4,7 @@ using chibi.manager.collision;
 
 namespace chibi.motor.npc
 {
-	public class Motor_isometric : Motor
+	public class Motor_isometric : Motor_physical
 	{
 		#region variables de jump
 		protected float _max_jump_heigh = 4f;

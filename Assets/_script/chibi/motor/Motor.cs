@@ -5,7 +5,6 @@ using chibi.manager.collision;
 
 namespace chibi.motor
 {
-	[ RequireComponent( typeof( Rigidbody ) ) ]
 	public class Motor : chibi.Chibi_behaviour
 	{
 		public Vector3 current_speed = Vector3.zero;
@@ -21,8 +20,9 @@ namespace chibi.motor
 		private Vector3 _desire_direction;
 		public Chibi_collision_manager manager_collision;
 
-		protected Rigidbody ridgetbody;
+		// protected Rigidbody ridgetbody;
 		protected float _gravity = -9.8f;
+		protected Vector3 _velocity;
 
 		public virtual float gravity
 		{
@@ -30,10 +30,10 @@ namespace chibi.motor
 			set { _gravity = value; }
 		}
 
-		public Vector3 velocity
+		public virtual Vector3 velocity
 		{
 			get {
-				return ridgetbody.velocity;
+				return _velocity;
 			}
 		}
 
@@ -95,10 +95,6 @@ namespace chibi.motor
 		protected override void _init_cache()
 		{
 			base._init_cache();
-			ridgetbody = GetComponent<Rigidbody>();
-			if ( !ridgetbody )
-				debug.log( "no se encontro el ridgetbody" );
-
 			manager_collision = GetComponent<Chibi_collision_manager>();
 			if ( !manager_collision )
 				debug.error( "no se encontro el manager de las collisiones" );
@@ -110,7 +106,9 @@ namespace chibi.motor
 
 			_proccess_gravity( ref velocity_vector );
 
-			ridgetbody.velocity = velocity_vector;
+			transform.Translate( velocity_vector * Time.deltaTime );
+			_velocity = velocity_vector;
+			// ridgetbody.velocity = velocity_vector;
 			current_speed = velocity_vector;
 		}
 

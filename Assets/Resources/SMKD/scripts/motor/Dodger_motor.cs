@@ -5,7 +5,7 @@ using chibi.pomodoro;
 
 namespace SMKD.motor
 {
-	public class Dodger_motor : chibi.motor.Motor
+	public class Dodger_motor : chibi.motor.Motor_physical
 	{
 		public chibi.radar.Radar_box catch_radar;
 		public chibi.radar.Radar_box dodge_radar;

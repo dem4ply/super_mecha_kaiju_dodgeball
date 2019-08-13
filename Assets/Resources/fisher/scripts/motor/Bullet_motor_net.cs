@@ -2,6 +2,7 @@
 
 namespace fisher.motor.weapons.gun.bullet
 {
+
 	public class Bullet_motor_net : Bullet_motor_yoyo
 	{
 		public chibi.radar.Radar_box catch_radar;

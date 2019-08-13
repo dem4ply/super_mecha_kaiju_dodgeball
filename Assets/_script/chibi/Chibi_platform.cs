@@ -12,12 +12,12 @@ namespace chibi.manager.platform
 		{
 			if ( chibi.tag.consts.is_scenary( collision ) )
 				return;
-			// collision.transform.parent = transform;
+			collision.transform.parent = transform;
 		}
 
 		protected virtual void OnCollisionExit( Collision collision )
 		{
-			// collision.transform.parent = null;
+			collision.transform.parent = null;
 		}
 	}
 }

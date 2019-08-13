@@ -4,7 +4,7 @@ using chibi.manager.collision;
 
 namespace chibi.motor.npc
 {
-	public class Motor_side_scroll : Motor
+	public class Motor_side_scroll : Motor_physical
 	{
 		// [Header( "animator" )]
 		public chibi.animator.Animator_side_scroll animator;

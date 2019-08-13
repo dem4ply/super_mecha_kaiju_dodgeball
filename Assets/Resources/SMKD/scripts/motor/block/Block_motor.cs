@@ -1,6 +1,6 @@
 ﻿namespace SMKD.motor
 {
-	public class Block_motor : chibi.motor.Motor
+	public class Block_motor : chibi.motor.Motor_physical
 	{
 		public chibi.damage.motor.HP_engine hp_motor;
 

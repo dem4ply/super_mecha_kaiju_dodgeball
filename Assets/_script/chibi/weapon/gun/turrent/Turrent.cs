@@ -2,7 +2,7 @@
 
 namespace chibi.motor.weapons.gun.turrent
 {
-	public class Turrent : Motor
+	public class Turrent : Motor_physical
 	{
 		public Vector3 rotation_vector = Vector3.up;
 		public float max_rotation_angle = 180f;
