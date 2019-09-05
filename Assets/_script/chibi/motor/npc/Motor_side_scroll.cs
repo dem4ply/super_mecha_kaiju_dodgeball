@@ -166,7 +166,9 @@ namespace chibi.motor.npc
 
 		public virtual bool can_do_wall_jump
 		{
-			get { return is_walled && ( is_not_grounded || is_not_in_slope ); }
+			get {
+				return is_walled && is_not_grounded && is_not_in_slope;
+			}
 		}
 
 		public virtual bool can_do_jump
@@ -255,7 +257,8 @@ namespace chibi.motor.npc
 			if ( slope_normal != Vector3.zero
 				&& ( -0.1 > velocity_vector.z  || velocity_vector.z < 0.1 ) )
 			{
-				velocity_vector = Vector3.ProjectOnPlane( velocity_vector, slope_normal );
+				velocity_vector = Vector3.ProjectOnPlane( 
+					velocity_vector, slope_normal );
 				debug.draw.arrow( slope_normal, Color.yellow, duration:1f );
 				debug.draw.arrow( velocity_vector, Color.black, duration:1f );
 			}
@@ -266,7 +269,8 @@ namespace chibi.motor.npc
 		{
 			if ( want_to_no_move )
 				return;
-			Vector3 vector_current_direction = new Vector3( 0, 0, current_direction );
+			Vector3 vector_current_direction = new Vector3(
+				0, 0, current_direction );
 			if ( is_walled )
 			{
 				if ( vector_current_direction == wall_direction )
@@ -313,6 +317,7 @@ namespace chibi.motor.npc
 			{
 				if ( can_do_wall_jump )
 				{
+					debug.info( "wall jump" );
 					int jump_direction = is_walled_left ? -1 : 1;
 					current_direction = -jump_direction;
 					if ( Math.Sign( desire_direction.z ) == jump_direction )
@@ -333,6 +338,7 @@ namespace chibi.motor.npc
 				}
 				else if ( can_do_jump )
 				{
+					debug.info( "jump" );
 					speed_vector.y = _max_jump_velocity;
 				}
 				else
