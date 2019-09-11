@@ -31,7 +31,8 @@ namespace chibi.motor.npc
 		public float time_to_reach_speed_in_ground = 0.1f;
 		public float time_to_reach_speed_in_air = 0.2f;
 
-		public bool try_to_jump_the_next_update = false;
+		protected bool try_to_jump_the_next_update = false;
+		protected bool want_to_stop_jump = false;
 
 		public int current_direction = 0;
 
@@ -166,7 +167,7 @@ namespace chibi.motor.npc
 
 		public virtual bool can_do_wall_jump
 		{
-			get { return is_walled && ( is_not_grounded || is_not_in_slope ); }
+			get { return is_walled && is_not_grounded && is_not_in_slope; }
 		}
 
 		public virtual bool can_do_jump
@@ -209,10 +210,13 @@ namespace chibi.motor.npc
 				_proccess_air_horizontal_velocity( ref velocity_vector );
 				_process_jump( ref velocity_vector );
 				_proccess_gravity( ref velocity_vector );
+				debug.log( velocity_vector.y );
 			}
 
-			if ( velocity_vector.y < 0.01 )
-				try_to_jump_the_next_update = false;
+			if ( try_to_jump_the_next_update && velocity_vector.y < 0.01 )
+			{
+				end_jump();
+			}
 
 			ridgetbody.velocity = velocity_vector;
 			// debug.draw.arrow( velocity_vector, Color.magenta, duration:1f );
@@ -311,6 +315,7 @@ namespace chibi.motor.npc
 		{
 			if ( try_to_jump_the_next_update )
 			{
+				debug.log( can_do_jump );
 				if ( can_do_wall_jump )
 				{
 					int jump_direction = is_walled_left ? -1 : 1;
@@ -335,22 +340,29 @@ namespace chibi.motor.npc
 				{
 					speed_vector.y = _max_jump_velocity;
 				}
-				else
-				{
-					try_to_jump_the_next_update = false;
-				}
+				try_to_jump_the_next_update = false;
 			}
-			else if ( speed_vector.y > _min_jump_velocity )
+			else if ( want_to_stop_jump
+				&& speed_vector.y > _min_jump_velocity )
+			{
 				speed_vector.y = _min_jump_velocity;
+				want_to_stop_jump = false;
+			}
+			else
+			{
+				want_to_stop_jump = false;
+			}
 		}
 
 		protected override void _proccess_gravity(
 				ref Vector3 velocity_vector )
 		{
-			velocity_vector.y += ( gravity * Time.deltaTime );
 
 			if ( is_not_grounded && is_walled )
-				velocity_vector.y *= multiplier_velocity_wall_slice;
+				velocity_vector.y += gravity
+					* multiplier_velocity_wall_slice * Time.deltaTime;
+			else
+				velocity_vector.y += ( gravity * Time.deltaTime );
 		}
 
 		protected override void _init_cache()
@@ -368,6 +380,17 @@ namespace chibi.motor.npc
 			_max_jump_velocity = Math.Abs( _gravity ) * jump_time;
 			_min_jump_velocity = ( float )Math.Sqrt(
 				2.0 * Math.Abs( _gravity ) * min_jump_heigh );
+		}
+
+		public void start_jump()
+		{
+			try_to_jump_the_next_update = true;
+		}
+
+		public void end_jump()
+		{
+			try_to_jump_the_next_update = false;
+			want_to_stop_jump = true;
 		}
 	}
 }

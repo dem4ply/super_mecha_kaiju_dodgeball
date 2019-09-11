@@ -34,17 +34,17 @@ namespace chibi.controller.npc
 		public virtual void jump()
 		{
 			if ( motor_side_scroll != null )
-				motor_side_scroll.try_to_jump_the_next_update = true;
+				motor_side_scroll.start_jump();
 			else if ( motor_isometric != null )
-				motor_isometric.try_to_jump_the_next_update = true;
+				motor_isometric.start_jump();
 		}
 
 		public virtual void stop_jump()
 		{
 			if ( motor_side_scroll != null )
-				motor_side_scroll.try_to_jump_the_next_update = false;
+				motor_side_scroll.end_jump();
 			else if ( motor_isometric != null )
-				motor_isometric.try_to_jump_the_next_update = false;
+				motor_isometric.end_jump();
 		}
 		#endregion
 

@@ -21,7 +21,7 @@ namespace chibi.motor.npc
 			}
 		}
 
-		public bool try_to_jump_the_next_update = false;
+		protected bool try_to_jump_the_next_update = false;
 		#endregion
 
 		#region propiedades de salto
@@ -167,6 +167,14 @@ namespace chibi.motor.npc
 		public virtual void on_end_died()
 		{
 			debug.info( "termino de morir" );
+		}
+
+		public void start_jump()
+		{
+		}
+
+		public void end_jump()
+		{
 		}
 	}
 }
