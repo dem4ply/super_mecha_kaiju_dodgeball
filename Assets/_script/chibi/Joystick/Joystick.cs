@@ -48,6 +48,17 @@ namespace chibi.joystick
 				if ( check_action_up( action ) )
 					controller.action( action, "up" );
 			}
+			/*
+			debug.log(
+				"{0} {1}",
+				Input.GetAxis( "p1__trigger__left" ),
+				Input.GetAxis( "p1__trigger__right" ) );
+			*/
+
+			debug.log(
+				"{0} {1}",
+				Input.GetButton( "p1__bumper__left" ),
+				Input.GetButton( "p1__bumper__right" ) );
 		}
 
 		/// <summary>
