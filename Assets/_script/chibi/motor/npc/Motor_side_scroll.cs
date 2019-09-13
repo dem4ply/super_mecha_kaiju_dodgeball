@@ -322,7 +322,6 @@ namespace chibi.motor.npc
 				debug.log( can_do_jump );
 				if ( can_do_wall_jump )
 				{
-					debug.info( "wall jump" );
 					int jump_direction = is_walled_left ? -1 : 1;
 					current_direction = -jump_direction;
 					if ( Math.Sign( desire_direction.z ) == jump_direction )
@@ -343,7 +342,6 @@ namespace chibi.motor.npc
 				}
 				else if ( can_do_jump )
 				{
-					debug.info( "jump" );
 					speed_vector.y = _max_jump_velocity;
 				}
 				try_to_jump_the_next_update = false;

@@ -14,6 +14,8 @@ namespace chibi.joystick
 
 		public List<string> actions = new List<string>() {
 			"fire1", "fire2", "fire3", };
+		public List<Axis> axis_actions = new List<Axis>() {};
+		private List<bool> axis_is_up;
 		#endregion
 
 		#region public properties
@@ -48,17 +50,39 @@ namespace chibi.joystick
 				if ( check_action_up( action ) )
 					controller.action( action, "up" );
 			}
+
+			for ( int i = 0; i < axis_actions.Count; ++i )
+			{
+				var axis = axis_actions[ i ];
+				axis.update();
+				if ( axis_is_up[ i ] )
+				{
+					if ( !axis.pass_dead_zone )
+					{
+						controller.action( axis.name, "up" );
+						axis_is_up[ i ] = false;
+					}
+				}
+				else
+				{
+					if ( axis.pass_dead_zone )
+					{
+						controller.action( axis.name, "down" );
+						axis_is_up[ i ] = true;
+					}
+				}
+			}
 			/*
 			debug.log(
 				"{0} {1}",
 				Input.GetAxis( "p1__trigger__left" ),
 				Input.GetAxis( "p1__trigger__right" ) );
-			*/
 
 			debug.log(
 				"{0} {1}",
 				Input.GetButton( "p1__bumper__left" ),
 				Input.GetButton( "p1__bumper__right" ) );
+			*/
 		}
 
 		/// <summary>
@@ -72,6 +96,9 @@ namespace chibi.joystick
 			{
 				debug.error( "no hay un axis de desire_direction" );
 			}
+			axis_is_up = new List<bool>( axis_actions.Count );
+			for ( int i = 0; i < axis_actions.Count; ++i )
+				axis_is_up.Add( false );
 		}
 
 		protected virtual bool check_action_down( string action )
