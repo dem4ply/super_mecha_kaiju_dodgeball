@@ -2611,6 +2611,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2833578346261876487, guid: f531b8d744c8ded438d9bc02e52a141d,
         type: 3}
+      propertyPath: axis_actions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833578346261876487, guid: f531b8d744c8ded438d9bc02e52a141d,
+        type: 3}
       propertyPath: controller
       value: 
       objectReference: {fileID: 1225054512}
@@ -2623,6 +2628,28 @@ PrefabInstance:
     - target: {fileID: 2833578346261876487, guid: f531b8d744c8ded438d9bc02e52a141d,
         type: 3}
       propertyPath: actions.Array.data[1]
+      value: p1__bumper__left
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833578346261876487, guid: f531b8d744c8ded438d9bc02e52a141d,
+        type: 3}
+      propertyPath: axis_actions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: a5b1ca5964cb6cd43b9404200e3085a4,
+        type: 2}
+    - target: {fileID: 2833578346261876487, guid: f531b8d744c8ded438d9bc02e52a141d,
+        type: 3}
+      propertyPath: axis_actions.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b87bab3f137468498d682d5d6f533c6,
+        type: 2}
+    - target: {fileID: 2833578346261876487, guid: f531b8d744c8ded438d9bc02e52a141d,
+        type: 3}
+      propertyPath: actions.Array.data[2]
+      value: p1__bumper__right
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833578346261876487, guid: f531b8d744c8ded438d9bc02e52a141d,
+        type: 3}
+      propertyPath: actions.Array.data[0]
       value: jump
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10026,7 +10053,6 @@ MonoBehaviour:
   wall_jump_leap: {x: 0, y: 20, z: 14}
   time_to_reach_speed_in_ground: 0.1
   time_to_reach_speed_in_air: 0.2
-  try_to_jump_the_next_update: 0
   current_direction: -1
 --- !u!114 &8481671216025530360
 MonoBehaviour:
