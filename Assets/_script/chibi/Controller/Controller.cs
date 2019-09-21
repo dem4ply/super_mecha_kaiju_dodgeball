@@ -28,6 +28,22 @@ namespace chibi.controller
 			}
 		}
 
+		public virtual void direction( chibi.joystick.Axis axi )
+		{
+			direction( axi.name, axi.vector );
+		}
+
+		public virtual void direction( string name, Vector3 direction )
+		{
+			debug.info( "direction: {0} {1}", name, direction );
+			switch ( name )
+			{
+				case "desire_direction":
+					desire_direction = direction;
+					break;
+			}
+		}
+
 		public virtual void action( string name, string e )
 		{
 			Debug.Log( string.Format(

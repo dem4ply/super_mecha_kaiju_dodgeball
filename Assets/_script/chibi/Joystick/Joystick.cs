@@ -16,6 +16,8 @@ namespace chibi.joystick
 			"fire1", "fire2", "fire3", };
 		public List<Axis> axis_actions = new List<Axis>() {};
 		private List<bool> axis_is_up;
+
+		public List<Axis> axis = new List<Axis>();
 		#endregion
 
 		#region public properties
@@ -41,6 +43,13 @@ namespace chibi.joystick
 			{
 				controller.desire_direction = Vector3.zero;
 				controller.speed = 0f;
+			}
+
+			foreach ( Axis axi in axis )
+			{
+				axi.update();
+				if ( axi.pass_dead_zone )
+					controller.direction( axi );
 			}
 
 			foreach ( string action in actions )
