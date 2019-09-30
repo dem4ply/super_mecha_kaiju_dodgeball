@@ -137,6 +137,12 @@ namespace platformer.controller.player
 					else
 						action( name, e, true );
 					break;
+				case "p1__bumper__left":
+				case "p1__bumper__right":
+				case "p1__trigger__left":
+				case "p1__trigger__right":
+					platform_blender.spawn( 0 );
+					break;
 			}
 		}
 
