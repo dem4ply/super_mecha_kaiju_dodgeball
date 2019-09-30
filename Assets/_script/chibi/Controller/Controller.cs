@@ -35,7 +35,7 @@ namespace chibi.controller
 
 		public virtual void direction( string name, Vector3 direction )
 		{
-			debug.info( "direction: {0} {1}", name, direction );
+			// debug.info( "direction: {0} {1}", name, direction );
 			switch ( name )
 			{
 				case "desire_direction":

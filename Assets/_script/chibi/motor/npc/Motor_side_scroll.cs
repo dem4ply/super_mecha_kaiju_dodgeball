@@ -212,7 +212,6 @@ namespace chibi.motor.npc
 				_proccess_air_horizontal_velocity( ref velocity_vector );
 				_process_jump( ref velocity_vector );
 				_proccess_gravity( ref velocity_vector );
-				debug.log( velocity_vector.y );
 			}
 
 			if ( try_to_jump_the_next_update && velocity_vector.y < 0.01 )

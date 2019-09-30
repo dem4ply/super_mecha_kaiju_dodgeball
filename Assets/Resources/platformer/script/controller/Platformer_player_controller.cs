@@ -1,12 +1,14 @@
 using UnityEngine;
 using chibi.controller.npc;
 using System.Collections.Generic;
+using platformer.controller.platform;
 
 namespace platformer.controller.player
 {
 	public class Platformer_player_controller : chibi.controller.Controller
 	{
 		public Controller_npc player;
+		public Spawn_platform_radial platform_blender;
 		public chibi.pomodoro.Pomodoro_obj jump_buffer_time =
 			new chibi.pomodoro.Pomodoro_obj( 0.25f );
 
@@ -89,6 +91,8 @@ namespace platformer.controller.player
 			base._init_cache();
 			if ( !player )
 				debug.error( "no esta asignado el player controller" );
+			if ( !platform_blender )
+				debug.error( "no esta asignado el platform bender" );
 			buffer_actions = new Dictionary<string, string>();
 		}
 
@@ -154,6 +158,17 @@ namespace platformer.controller.player
 				jump_buffer_time.is_enable = true;
 			}
 			buffer_desire_direction = desire_direction;
+		}
+
+		public override void direction( string name, Vector3 direction )
+		{
+			base.direction( name, direction );
+			switch ( name )
+			{
+				case "p1__aim":
+					platform_blender.desire_direction = direction;
+					break;
+			}
 		}
 	}
 }
