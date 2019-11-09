@@ -106,7 +106,9 @@ namespace chibi.motor
 
 			_proccess_gravity( ref velocity_vector );
 
-			transform.Translate( velocity_vector * Time.deltaTime );
+			//transform.Translate( velocity_vector * Time.deltaTime );
+			transform.position += velocity_vector * Time.deltaTime;
+			debug.draw.arrow( velocity_vector * Time.deltaTime, Color.magenta );
 			_velocity = velocity_vector;
 			// ridgetbody.velocity = velocity_vector;
 			current_speed = velocity_vector;

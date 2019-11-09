@@ -9,17 +9,40 @@ namespace platformer.controller.platform
 	public class Platform_controller : chibi.controller.Controller
 	{
 		public motor.platform.Platform_motor motor;
+		public chibi.controller.Controller_motor controller;
+
+		public chibi.controller.steering.Steering steering
+		{
+			get {
+				var steering = controller.GetComponent<
+					chibi.controller.steering.Steering>();
+				if ( !steering )
+				{
+					steering = controller.gameObject.AddComponent<
+						chibi.controller.steering.Steering>();
+					steering.controller = controller;
+				}
+				return steering;
+			}
+		}
 
 		protected override void _init_cache()
 		{
 			base._init_cache();
+		}
+
+		public virtual void prepare_motor()
+		{
 			if ( !motor )
 				motor = find_child_platforms();
 			if ( !motor )
 				debug.warning( "no tiene un platform motor" );
+			else
+				controller = motor.GetComponent<
+					chibi.controller.Controller_motor>();
 		}
 
-		protected virtual Platform_motor find_child_platforms()
+		public virtual Platform_motor find_child_platforms()
 		{
 			Platform_motor motor = null;
 
@@ -33,6 +56,16 @@ namespace platformer.controller.platform
 				motor = platform.GetComponent< Platform_motor >();
 			}
 			return motor;
+		}
+
+		public void seek( Transform target )
+		{
+			var seek = chibi.controller.steering.behavior.Seek.CreateInstance<
+				chibi.controller.steering.behavior.Seek>();
+			steering.target = target;
+			steering.behaviors.Clear();
+			steering.behaviors.Add( seek );
+			steering.reload();
 		}
 	}
 }
