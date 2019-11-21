@@ -55,6 +55,7 @@ namespace chibi.controller.steering
 		private void Update()
 		{
 			Vector3 desire_direction = Vector3.zero;
+			float desire_speed = 1f;
 			behavior.Behavior behavior;
 			Steering_properties properties;
 
@@ -69,11 +70,14 @@ namespace chibi.controller.steering
 				if ( behavior_direction == Vector3.zero )
 					continue;
 				behavior_direction *= behavior.weight;
+				desire_speed = behavior.desire_speed(
+					this, target, properties );
 				//entity.sterring.debug.draw.arrow( behavior_direction, Color.black );
 				desire_direction += behavior_direction;
 			}
 			debug.draw.arrow( desire_direction, Color.black );
 			controller.desire_direction = desire_direction;
+			controller.speed = controller.max_speed * desire_speed;
 		}
 	}
 }

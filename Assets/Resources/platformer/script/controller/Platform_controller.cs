@@ -60,8 +60,8 @@ namespace platformer.controller.platform
 
 		public void seek( Transform target )
 		{
-			var seek = chibi.controller.steering.behavior.Seek.CreateInstance<
-				chibi.controller.steering.behavior.Seek>();
+			var seek = chibi.controller.steering.behavior.Arrive.CreateInstance<
+				chibi.controller.steering.behavior.Arrive>();
 			steering.target = target;
 			steering.behaviors.Clear();
 			steering.behaviors.Add( seek );
