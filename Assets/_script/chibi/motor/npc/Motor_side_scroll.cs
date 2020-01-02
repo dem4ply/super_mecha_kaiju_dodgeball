@@ -16,6 +16,9 @@ namespace chibi.motor.npc
 		protected float _min_jump_heigh = 1f;
 		protected float _jump_time = 0.4f;
 
+		protected float _falling_time = 0.4f;
+		protected float _gravity_when_fall = -10f;
+
 		public float slope_gravity = -10f;
 
 		protected float _max_jump_velocity;
@@ -86,8 +89,25 @@ namespace chibi.motor.npc
 		{
 			get { return _jump_time; }
 			set {
-				jump_time = value;
+				_jump_time = value;
 				update_jump_properties();
+			}
+		}
+
+		public virtual float falling_time
+		{
+			get { return _falling_time; }
+			set {
+				_falling_time = value;
+				update_jump_properties();
+			}
+		}
+
+		public virtual float gravity_when_fall
+		{
+			get { return _gravity_when_fall; }
+			set {
+				_gravity_when_fall = value;
 			}
 		}
 
@@ -365,7 +385,10 @@ namespace chibi.motor.npc
 				velocity_vector.y += gravity
 					* multiplier_velocity_wall_slice * Time.deltaTime;
 			else
-				velocity_vector.y += ( gravity * Time.deltaTime );
+				if ( velocity_vector.y > 0 )
+					velocity_vector.y += ( gravity * Time.deltaTime );
+				else
+					velocity_vector.y += ( gravity_when_fall * Time.deltaTime );
 		}
 
 		protected override void _init_cache()
@@ -380,6 +403,7 @@ namespace chibi.motor.npc
 		protected virtual void update_jump_properties()
 		{
 			gravity = -( 2 * max_jump_heigh ) / ( jump_time * jump_time );
+			gravity_when_fall = -( 2 * max_jump_heigh ) / ( falling_time * falling_time );
 			_max_jump_velocity = Math.Abs( _gravity ) * jump_time;
 			_min_jump_velocity = ( float )Math.Sqrt(
 				2.0 * Math.Abs( _gravity ) * min_jump_heigh );

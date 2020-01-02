@@ -30,14 +30,21 @@ namespace chibi.editor.motor.npc
 		{
 			Motor_side_scroll motor = ( Motor_side_scroll )motor_old;
 			var old_width = EditorGUIUtility.labelWidth;
-			EditorGUIUtility.labelWidth = 70f;
-			EditorGUILayout.BeginHorizontal();
+			//EditorGUIUtility.labelWidth = 70f;
+			//EditorGUILayout.BeginHorizontal();
 			EditorGUILayout.LabelField( "gravity:", motor.gravity.ToString() );
+			EditorGUILayout.LabelField(
+				"gravity when fall:", motor.gravity_when_fall.ToString() );
+			EditorGUILayout.LabelField(
+				"gravity in wall:",
+				( motor.gravity * motor.multiplier_velocity_wall_slice ).ToString() );
+			EditorGUILayout.LabelField(
+				"gravity slope:", motor.slope_gravity.ToString() );
 			EditorGUILayout.LabelField(
 				"max jump:", motor.max_jump_velocity.ToString() );
 			EditorGUILayout.LabelField(
 				"min jump:", motor.min_jump_heigh.ToString() );
-			EditorGUILayout.EndHorizontal();
+			//EditorGUILayout.EndHorizontal();
 			EditorGUIUtility.labelWidth = old_width;
 		}
 
@@ -47,14 +54,19 @@ namespace chibi.editor.motor.npc
 			EditorGUILayout.LabelField( "jump", EditorStyles.boldLabel );
 			draw_gravity( motor );
 
-			EditorGUILayout.BeginHorizontal();
+			//EditorGUILayout.BeginHorizontal();
+			motor.jump_time = EditorGUILayout.FloatField(
+				"jump time", motor.jump_time );
+			motor.falling_time = EditorGUILayout.FloatField(
+				"falling time", motor.falling_time );
+
 			motor.max_jump_heigh = EditorGUILayout.FloatField(
 				"max jump height", motor.max_jump_heigh );
 			motor.min_jump_heigh = EditorGUILayout.FloatField(
 				"min jump height", motor.min_jump_heigh );
-			EditorGUILayout.EndHorizontal();
+			//EditorGUILayout.EndHorizontal();
 			motor.multiplier_velocity_wall_slice = EditorGUILayout.Slider(
-				"multiplier of gravity on wall",
+				"grabity in wall",
 				motor.multiplier_velocity_wall_slice, 0, 1 );
 
 			show_jump_forces = EditorGUILayout.Foldout(
@@ -77,7 +89,7 @@ namespace chibi.editor.motor.npc
 			var ignore = base.ignore_properties();
 			string[] ignore_2 = new string[] {
 				"gravity", "multiplier_velocity_wall_slice", "wall_jump_climp",
-				"wall_jump_off", "wall_jump_leap" };
+				"wall_jump_off", "wall_jump_leap", "slope_gravity" };
 			return ignore.Union( ignore_2 ).ToArray();
 		}
 	}
