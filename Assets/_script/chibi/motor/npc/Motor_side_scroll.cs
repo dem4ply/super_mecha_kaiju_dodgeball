@@ -14,9 +14,12 @@ namespace chibi.motor.npc
 		#region variables de jump
 		protected float _max_jump_heigh = 4f;
 		protected float _min_jump_heigh = 1f;
-		protected float _jump_time = 0.4f;
 
+		[SerializeField]
+		protected float _jump_time = 0.4f;
+		[SerializeField]
 		protected float _falling_time = 0.4f;
+		[SerializeField]
 		protected float _gravity_when_fall = -10f;
 
 		public float slope_gravity = -10f;
@@ -398,7 +401,6 @@ namespace chibi.motor.npc
 			if ( !animator )
 				debug.error( "no esta asignado el animator" );
 		}
-
 
 		protected virtual void update_jump_properties()
 		{
