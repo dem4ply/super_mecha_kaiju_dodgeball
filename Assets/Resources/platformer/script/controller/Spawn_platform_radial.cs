@@ -17,7 +17,7 @@ namespace platformer.controller.platform
 
 			set {
 				base.desire_direction = new Vector3( value.y, value.z, value.x );
-				debug.draw.sphere( position, Color.green, 0.2f, 1f );
+				debug.draw.sphere( position, Color.green, 0.2f, 0.2f );
 			}
 		}
 

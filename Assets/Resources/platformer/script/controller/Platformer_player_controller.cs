@@ -141,7 +141,12 @@ namespace platformer.controller.player
 				case "p1__bumper__right":
 				case "p1__trigger__left":
 				case "p1__trigger__right":
-					platform_blender.spawn( 0 );
+					switch ( e )
+					{
+						case chibi.joystick.events.down:
+							platform_blender.spawn( 0 );
+							break;
+					}
 					break;
 			}
 		}
