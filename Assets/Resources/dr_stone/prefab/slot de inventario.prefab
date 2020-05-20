@@ -85,8 +85,9 @@ GameObject:
   - component: {fileID: 5829039280597134098}
   - component: {fileID: 124304152605248711}
   - component: {fileID: 3131586433314311619}
+  - component: {fileID: 8184950885749659299}
   m_Layer: 5
-  m_Name: slot
+  m_Name: slot de inventario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,3 +150,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 25
+--- !u!114 &8184950885749659299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6897680502477041926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b77b714a0f879404ca8620868685a8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  pool: {fileID: 0}
+  item: {fileID: 0}
+  item_property:
+    item: {fileID: 0}
+    amount: 0
+  sprite: {fileID: 0}

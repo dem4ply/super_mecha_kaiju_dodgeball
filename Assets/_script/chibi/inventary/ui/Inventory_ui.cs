@@ -32,6 +32,7 @@ namespace chibi.inventory.ui
 	public class Inventory_ui : chibi.Chibi_behaviour
 	{
 		public Dictionary<item.Item, List<items_properties>> items;
+		public Item_slot[] slots;
 
 		public void add( item.Item item )
 		{
@@ -50,12 +51,14 @@ namespace chibi.inventory.ui
 			}
 			add_item_to_stack( item, stacks, amount );
 			debug.info( "stacks count {0}", stacks.Count );
+			redraw_slots();
 		}
 
 		protected override void _init_cache()
 		{
 			base._init_cache();
 			items = new Dictionary<item.Item, List<items_properties>>();
+			find_all_slots();
 		}
 
 		protected items_properties build_item_property( item.Item item )
@@ -80,6 +83,40 @@ namespace chibi.inventory.ui
 				stacks.Add( stack );
 				amount = stack.add_amount( amount );
 			}
+		}
+
+		public IEnumerable<items_properties> stacks
+		{
+			get {
+				foreach ( var stacks in items.Values )
+					foreach ( var stack in stacks )
+						yield return stack;
+			}
+		}
+
+		public void redraw_slots()
+		{
+			if ( slots.Length == 0 )
+			{
+				return;
+			}
+			foreach ( var slot in slots )
+			{
+				slot.item_property = null;
+			}
+
+			var slots_with_stacks = slots.Zip( stacks, ( slot, stack ) => ( slot, stack ) );
+			foreach ( var ( slot, stack ) in slots_with_stacks )
+			{
+				debug.warning( slot );
+				debug.warning( stack );
+				slot.item_property = stack;
+			}
+		}
+
+		protected void find_all_slots()
+		{
+			slots = GetComponentsInChildren<Item_slot>();
 		}
 	}
 }
