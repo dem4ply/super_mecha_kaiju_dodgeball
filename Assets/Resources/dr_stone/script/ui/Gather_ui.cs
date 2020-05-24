@@ -104,6 +104,7 @@ namespace dr_stone.ui
 
 		protected void redraw()
 		{
+			debug.log( "redraw del gather ui" );
 			while ( items.Count > slots.Count )
 				slots.Add( build_new_slot() );
 			var valid_items = items.Zip( slots, ( item, slot ) => ( item, slot ) );
@@ -138,6 +139,7 @@ namespace dr_stone.ui
 				slots = new List<Gather_slot_ui>();
 
 			var current_gathers_slots = container.GetComponentsInChildren<Gather_slot_ui>();
+			slots.Clear();
 			slots.AddRange( current_gathers_slots );
 			foreach ( var slot in slots )
 				slot.gather_ui = this;
