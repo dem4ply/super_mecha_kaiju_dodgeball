@@ -29,7 +29,7 @@ namespace chibi.inventory.ui
 		}
 	}
 
-	public class Inventory_ui : chibi.Chibi_behaviour
+	public class Inventory_ui : chibi.Chibi_ui
 	{
 		public Dictionary<item.Item, List<items_properties>> items;
 		public Item_slot[] slots;
