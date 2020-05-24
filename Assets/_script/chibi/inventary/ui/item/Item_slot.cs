@@ -9,6 +9,7 @@ namespace chibi.inventory.ui
 	{
 		protected chibi.inventory.ui.items_properties _item_property;
 		public UnityEngine.UI.Image sprite;
+		public TMPro.TextMeshProUGUI amount;
 
 		public items_properties item_property
 		{
@@ -27,9 +28,13 @@ namespace chibi.inventory.ui
 			{
 				sprite.sprite = item_property.item.image;
 				sprite.enabled = true;
+				amount.text = item_property.amount.ToString();
 			}
 			else
+			{
 				sprite.enabled = false;
+				amount.text = "";
+			}
 		}
 
 		protected override void _init_cache()
@@ -45,6 +50,17 @@ namespace chibi.inventory.ui
 			}
 			if ( !sprite )
 				debug.error( "no esta asignado el sprite para el item" );
+
+			if ( !amount )
+			{
+				var obj_amount = transform.Find( "amount" );
+				if ( obj_amount )
+					amount = obj_amount.GetComponent<TMPro.TextMeshProUGUI>();
+				else
+					debug.error( "no se encontro el gameobject amount" );
+			}
+			if ( !amount )
+				debug.error( "no se encontro el text para el amount" );
 		}
 	}
 }
