@@ -76,12 +76,19 @@ namespace chibi.inventory.ui
 			{
 				amount = stack.add_amount( amount );
 			}
+			int whiles = 0;
 			while ( amount > 0 )
 			{
 				debug.info( "agregando mas stacks amount: {0}", amount );
 				var stack = build_item_property( item );
 				stacks.Add( stack );
 				amount = stack.add_amount( amount );
+				whiles += 1;
+				if ( whiles > 100 )
+				{
+					debug.error( "esta vaina parecia entrar a un while infinito {0}", amount );
+					break;
+				}
 			}
 		}
 

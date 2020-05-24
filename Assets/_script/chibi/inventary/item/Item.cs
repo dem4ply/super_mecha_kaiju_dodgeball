@@ -10,7 +10,7 @@ namespace chibi.inventory.item
 		public Sprite image;
 		public string description;
 		public chibi.inventory.Item prefab;
-		public int max_stack_amount;
+		public int max_stack_amount = 1;
 
 		public virtual bool is_stackable
 		{

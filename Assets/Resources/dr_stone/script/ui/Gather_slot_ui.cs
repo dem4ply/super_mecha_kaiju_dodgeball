@@ -10,18 +10,29 @@ namespace dr_stone.ui
 		public UnityEngine.UI.Image sprite;
 		public TMPro.TextMeshProUGUI text;
 
+		public Gather_ui gather_ui;
+
 		protected void Update()
 		{
 			if ( item )
 			{
 				sprite.sprite = item.image;
 				text.text = item.name;
+				sprite.enabled = true;
 			}
 			else
 			{
-				sprite.sprite = null;
+				sprite.enabled = false;
 				text.text = "";
 			}
+		}
+
+		public void activate()
+		{
+			if ( item )
+				gather_ui.gather( item );
+			else
+				debug.warning( "fue activado cuando estaba desabilitado" );
 		}
 
 		protected override void _init_cache()

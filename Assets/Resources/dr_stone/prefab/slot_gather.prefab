@@ -350,7 +350,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3131586433314311619}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4155005658464361965}
+        m_MethodName: activate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4155005658464361965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,3 +379,4 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: 3e2566349203865419fc68ba5d583fab, type: 2}
   sprite: {fileID: 0}
   text: {fileID: 0}
+  gather_ui: {fileID: 0}

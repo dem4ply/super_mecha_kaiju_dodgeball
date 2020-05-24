@@ -15,4 +15,4 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: f32a9ffde7ca83d4f8f4d9dffa8f8267, type: 3}
   description: 
   prefab: {fileID: 0}
-  max_stack_amount: 0
+  max_stack_amount: 1
