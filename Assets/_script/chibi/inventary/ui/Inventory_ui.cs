@@ -15,7 +15,6 @@ namespace chibi.inventory.ui
 		public int add_amount( int amount )
 		{
 			int max_amount_can_be_add = item.max_stack_amount - this.amount;
-			Debug.Log( max_amount_can_be_add );
 			if ( amount > max_amount_can_be_add )
 			{
 				this.amount = item.max_stack_amount;
@@ -24,6 +23,22 @@ namespace chibi.inventory.ui
 			else
 			{
 				this.amount += amount;
+				return 0;
+			}
+		}
+
+		public int remove_amount( int amount )
+		{
+			int max_amount_can_be_add = this.amount;
+			if ( amount > this.amount )
+			{
+				var result = amount - this.amount;
+				this.amount = 0;
+				return result;
+			}
+			else
+			{
+				this.amount -= amount;
 				return 0;
 			}
 		}
@@ -52,6 +67,21 @@ namespace chibi.inventory.ui
 			add_item_to_stack( item, stacks, amount );
 			debug.info( "stacks count {0}", stacks.Count );
 			redraw_slots();
+		}
+
+		public void remove( item.Item item, int amount )
+		{
+			List<items_properties> stacks = new List<items_properties>();
+			if ( items.TryGetValue( item, out stacks ) )
+			{
+				debug.info( "eliminando el item: {0} con cantidad {1}", item.name, amount );
+				remove_item_to_stack( item, stacks, amount );
+				redraw_slots();
+			}
+			else
+			{
+				debug.warning( "el inventario no tiene los stacks para {0}", item.name );
+			}
 		}
 
 		protected override void _init_cache()
@@ -90,6 +120,18 @@ namespace chibi.inventory.ui
 					break;
 				}
 			}
+		}
+
+		protected void remove_item_to_stack(
+			item.Item item, List<items_properties> stacks, int amount )
+		{
+			foreach ( items_properties stack in stacks )
+			{
+				amount = stack.remove_amount( amount );
+			}
+			stacks.RemoveAll( ( stack ) => stack.amount < 1 );
+			if ( amount > 0 )
+				debug.error( "se elimno items del stack y sobro {0}", amount );
 		}
 
 		public IEnumerable<items_properties> stacks

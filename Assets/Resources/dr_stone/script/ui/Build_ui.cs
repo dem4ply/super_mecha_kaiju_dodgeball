@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using chibi.inventory.item;
+using chibi.inventory;
 using UnityEngine;
 using System.Linq;
 
 namespace dr_stone.ui
 {
-	public class Gather_ui :
-		chibi.Chibi_ui, IList< chibi.inventory.item.Item >
+	public class Build_ui:
+		chibi.Chibi_ui, IList< Recepie >
 	{
-		public List<chibi.inventory.item.Item> items;
-		protected List<Gather_slot_ui> slots;
+		public List<chibi.inventory.Recepie> recepies;
+		protected List<Build_slot_ui> slots;
 		public GameObject slot_prefab;
 		public GameObject container;
 		public chibi.inventory.ui.Inventory_ui inventory;
@@ -29,7 +29,7 @@ namespace dr_stone.ui
 			}
 		}
 
-		public Item this[ int index ]
+		public Recepie this[ int index ]
 		{
 			get {
 				throw new System.NotImplementedException();
@@ -40,12 +40,12 @@ namespace dr_stone.ui
 			}
 		}
 
-		public int IndexOf( Item item )
+		public int IndexOf( Recepie item )
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public void Insert( int index, Item item )
+		public void Insert( int index, Recepie item )
 		{
 			throw new System.NotImplementedException();
 		}
@@ -55,10 +55,10 @@ namespace dr_stone.ui
 			throw new System.NotImplementedException();
 		}
 
-		public void Add( Item item )
+		public void Add( Recepie item )
 		{
-			if ( !items.Contains( item ) )
-				items.Add( item );
+			if ( !recepies.Contains( item ) )
+				recepies.Add( item );
 			redraw();
 		}
 
@@ -67,22 +67,22 @@ namespace dr_stone.ui
 			throw new System.NotImplementedException();
 		}
 
-		public bool Contains( Item item )
+		public bool Contains( Recepie item )
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public void CopyTo( Item[] array, int arrayIndex )
+		public void CopyTo( Recepie[] array, int arrayIndex )
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public bool Remove( Item item )
+		public bool Remove( Recepie item )
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public IEnumerator<Item> GetEnumerator()
+		public IEnumerator<Recepie> GetEnumerator()
 		{
 			throw new System.NotImplementedException();
 		}
@@ -94,26 +94,56 @@ namespace dr_stone.ui
 
 		protected void redraw()
 		{
-			debug.log( "redraw del gather ui" );
-			while ( items.Count > slots.Count )
+			debug.log( "redraw del build ui" );
+			while ( recepies.Count > slots.Count )
 				slots.Add( build_new_slot() );
-			var valid_items = items.Zip( slots, ( item, slot ) => ( item, slot ) );
-			var null_slots = slots.Skip( items.Count );
+			var valid_items = recepies.Zip( slots, ( item, slot ) => ( item, slot ) );
+			var null_slots = slots.Skip( recepies.Count );
 			foreach ( var ( item, slot ) in valid_items )
-				slot.item = item;
+				slot.recepie = item;
 			foreach ( var slot in null_slots )
 			{
-				slot.item = null;
+				slot.recepie = null;
 			}
 		}
 
-		protected Gather_slot_ui build_new_slot()
+		protected Build_slot_ui build_new_slot()
 		{
 			throw new System.NotImplementedException();
 		}
-		public void gather( Item item )
+
+		public void build( Recepie recepie )
 		{
-			inventory.add( item );
+			if ( can_be_builded( recepie ) )
+			{
+				foreach ( var item in recepie.items )
+				{
+					inventory.remove( item.item, item.amount );
+				}
+				inventory.add( recepie.output.item, recepie.output.amount );
+			}
+			else
+				debug.error( "la receta {0} no se puede contruir", recepie.name );
+		}
+
+		public bool can_be_builded( Recepie recepie )
+		{
+			List<chibi.inventory.ui.items_properties> stacks;
+
+			foreach ( var item in recepie.items )
+			{
+				if ( inventory.items.TryGetValue( item.item, out stacks ) )
+				{
+					int total_amount = 0;
+					foreach ( var stack_item in stacks )
+						total_amount += stack_item.amount;
+					if ( total_amount < item.amount )
+						return false;
+				}
+				else
+					return false;
+			}
+			return true;
 		}
 
 		protected override void _init_cache()
@@ -126,13 +156,13 @@ namespace dr_stone.ui
 			if ( !inventory )
 				debug.error( "no esta asignado el inventario" );
 			if ( slots == null )
-				slots = new List<Gather_slot_ui>();
+				slots = new List<Build_slot_ui>();
 
-			var current_gathers_slots = container.GetComponentsInChildren<Gather_slot_ui>();
+			var current_slots = container.GetComponentsInChildren<Build_slot_ui>();
 			slots.Clear();
-			slots.AddRange( current_gathers_slots );
+			slots.AddRange( current_slots );
 			foreach ( var slot in slots )
-				slot.gather_ui = this;
+				slot.build_ui = this;
 			redraw();
 		}
 	}

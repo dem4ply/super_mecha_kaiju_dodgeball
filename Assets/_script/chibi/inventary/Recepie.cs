@@ -8,6 +8,8 @@ namespace chibi.inventory
 	[System.Serializable]
 	public class Recepie_item
 	{
+		public item.Item item;
+		public int amount;
 	}
 
 	[ CreateAssetMenu( menuName="chibi/inventary/recepie/base" ) ]
@@ -16,5 +18,7 @@ namespace chibi.inventory
 		public List<Recepie_item> items;
 		public List<Recepie_item> tools;
 		public List<Recepie_item> machines;
+
+		public Recepie_item output;
 	}
 }
