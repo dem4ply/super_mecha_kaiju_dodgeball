@@ -4,17 +4,17 @@ namespace chibi
 {
 	public class Chibi_ui : Chibi_behaviour
 	{
-		public void hide()
+		public virtual void hide()
 		{
 			gameObject.SetActive( false );
 		}
 
-		public void show()
+		public virtual void show()
 		{
 			gameObject.SetActive( true );
 		}
 
-		public void toggle()
+		public virtual void toggle()
 		{
 			gameObject.SetActive( !gameObject.activeSelf );
 		}

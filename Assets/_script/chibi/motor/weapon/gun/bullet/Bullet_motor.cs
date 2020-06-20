@@ -67,9 +67,12 @@ namespace chibi.motor.weapons.gun.bullet
 
 		protected override void update_motion()
 		{
-			fixed_update_life_span();
-			if ( !stop_steps )
-				step();
+			if ( steps.Count != 0 )
+			{
+				fixed_update_life_span();
+				if ( !stop_steps )
+					step();
+			}
 			base.update_motion();
 		}
 
@@ -108,7 +111,8 @@ namespace chibi.motor.weapons.gun.bullet
 				step.reset();
 				step.prepare( this );
 			}
-			steps[ 0 ].start( this );
+			if ( steps.Count > 0 )
+				steps[ 0 ].start( this );
 			base.reset();
 		}
 	}

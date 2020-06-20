@@ -6,28 +6,28 @@ using UnityEngine.UI;
 
 public class Textinput : MonoBehaviour
 {
-    InputField input;
-    InputField.SubmitEvent se;
-    public Textinput output;
+	InputField input;
+	InputField.SubmitEvent se;
+	public Textinput output;
 
 
 
 
-    void Start()
-    {
-        input = gameObject.GetComponent<InputField>();
-        se = new InputField.SubmitEvent();
-        se.AddListener(SubmitInput);
-        input.onEndEdit = se;
+	void Start()
+	{
+		input = gameObject.GetComponent<InputField>();
+		se = new InputField.SubmitEvent();
+		se.AddListener( SubmitInput );
+		input.onEndEdit = se;
 
-    }
+	}
 
-    private void SubmitInput(string arg0)
-    {
-        string currentText = Output.text; //maybe add ToString()?
-        string newText = currentText + "/n" + arg0;
-        Output.text = newText;
-        input.ActivateInputField();
-    }
+	private void SubmitInput( string arg0 )
+	{
+		// string currentText = output.text; //maybe add ToString()?
+		// string newText = currentText + "/n" + arg0;
+		// output.text = newText;
+		// input.ActivateInputField();
+	}
 }
 

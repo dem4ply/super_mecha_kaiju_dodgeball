@@ -18,6 +18,22 @@ MonoBehaviour:
   pasive_motor: 0
   hp: {fileID: 0}
   manager_collision: {fileID: 0}
+--- !u!114 &2968920530255825311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3101304874380377082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16cc6985ec348b64bb3503f61aac9c50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  pool: {fileID: 0}
+  max_slope_floor_angle: 45
+  max_slope_ceil_angle: 45
 --- !u!114 &5578308301545764686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,23 +55,6 @@ MonoBehaviour:
   steering_mass: 1
   velocity_acceleration: {x: 0, y: 0, z: 0}
   manager_collision: {fileID: 0}
-  try_to_jump_the_next_update: 0
---- !u!114 &2968920530255825311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3101304874380377082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16cc6985ec348b64bb3503f61aac9c50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug_mode: 0
-  pool: {fileID: 0}
-  max_slope_floor_angle: 45
-  max_slope_ceil_angle: 45
 --- !u!1001 &4167266449314658553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127,6 +126,7 @@ PrefabInstance:
     - {fileID: 1359830470592594700, guid: c3c052b2e1354484e9d574a44bd5eacd, type: 3}
     - {fileID: 1359830470592594702, guid: c3c052b2e1354484e9d574a44bd5eacd, type: 3}
     - {fileID: 5618122762037865381, guid: c3c052b2e1354484e9d574a44bd5eacd, type: 3}
+    - {fileID: 2238620801877690898, guid: c3c052b2e1354484e9d574a44bd5eacd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c3c052b2e1354484e9d574a44bd5eacd, type: 3}
 --- !u!1 &3101304874380377082 stripped
 GameObject:

@@ -18,6 +18,8 @@ namespace chibi.dialog
 		public List<Transform> place_of_actors;
 		protected List<Controller_avatar> _instanciate_actors;
 
+		public obj.Incremental_text text;
+
 		public string current_text
 		{
 			get {
@@ -80,12 +82,14 @@ namespace chibi.dialog
 		{
 			put_texy = true;
 			dialogue_box.text = "";
+			text.reset();
 			set_actors_in_place();
 		}
 
 		public void pull_all_text()
 		{
 			dialogue_box.text = current_text;
+			text.fill_elapse_time();
 			put_texy = false;
 		}
 
@@ -182,6 +186,14 @@ namespace chibi.dialog
 		{
 			if ( put_texy )
 			{
+				text.text = current_text;
+				text.tick( Time.deltaTime );
+				dialogue_box.text = text.current_text;
+			}
+
+			/*
+			if ( put_texy )
+			{
 				total_delta_time += Time.deltaTime;
 				float total_of_letters = ( letters_by_second * total_delta_time );
 
@@ -195,6 +207,7 @@ namespace chibi.dialog
 					dialogue_box.text = current_text.Substring(
 						0, Mathf.RoundToInt( total_of_letters ) );
 			}
+			*/
 		}
 	}
 }

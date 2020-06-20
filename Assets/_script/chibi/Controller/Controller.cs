@@ -6,6 +6,7 @@ namespace chibi.controller
 	{
 		protected Vector3 _desire_direction;
 		protected float _speed;
+		public bool is_block = false;
 
 		public virtual Vector3 desire_direction
 		{
@@ -14,7 +15,8 @@ namespace chibi.controller
 			}
 
 			set {
-				_desire_direction = value;
+				if ( !is_block )
+					_desire_direction = value;
 			}
 		}
 
@@ -24,7 +26,8 @@ namespace chibi.controller
 			}
 
 			set {
-				_speed = value;
+				if ( !is_block )
+					_speed = value;
 			}
 		}
 
@@ -50,6 +53,18 @@ namespace chibi.controller
 				"[{0}] action '{1}' with the event '{2}'",
 				helper.game_object.name.full( this ), name, e
 			) );
+		}
+
+		public virtual void block()
+		{
+			is_block = false;
+			desire_direction = Vector3.zero;
+			speed = 0f;
+		}
+
+		public virtual void unblock()
+		{
+			is_block = true;
 		}
 	}
 }
