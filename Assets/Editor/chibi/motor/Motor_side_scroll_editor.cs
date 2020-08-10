@@ -25,7 +25,6 @@ namespace chibi.editor.motor.npc
 			draw_jump_control( motor );
 			if ( EditorGUI.EndChangeCheck() )
 			{
-				Debug.Log( "dirt" );
 				EditorUtility.SetDirty( motor );
 				serializedObject.Update();
 				serializedObject.ApplyModifiedProperties();
