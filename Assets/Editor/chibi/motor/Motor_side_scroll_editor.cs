@@ -121,6 +121,10 @@ namespace chibi.editor.motor.npc
 				"grabity in wall",
 				motor.multiplier_velocity_wall_slice, 0, 1 );
 
+			motor.multiplier_velocity_climp_jump = EditorGUILayout.Slider(
+				"multiplayer of max speed after climp jump",
+				motor.multiplier_velocity_climp_jump, 0, 1 );
+
 			show_jump_forces = EditorGUILayout.Foldout(
 				show_jump_forces, "jump vectors", true, EditorStyles.boldLabel );
 			if ( show_jump_forces )

@@ -8,7 +8,7 @@ namespace chibi.motor
 	public class Motor : chibi.Chibi_behaviour
 	{
 		public Vector3 current_speed = Vector3.zero;
-		public float desire_speed;
+		protected float _desire_speed;
 		public float max_speed = 4f;
 
 		public bool is_steering = false;
@@ -23,6 +23,9 @@ namespace chibi.motor
 		// protected Rigidbody ridgetbody;
 		protected float _gravity = -9.8f;
 		protected Vector3 _velocity;
+
+		protected IEnumerator courutine_ignore_input;
+		protected bool ignore_input;
 
 		public virtual float gravity
 		{
@@ -77,7 +80,20 @@ namespace chibi.motor
 			}
 
 			set {
-				_desire_direction = value;
+				if ( !ignore_input )
+					_desire_direction = value;
+			}
+		}
+
+		public float desire_speed
+		{
+			get {
+				return _desire_speed;
+			}
+
+			set {
+				if ( !ignore_input )
+					_desire_speed = value;
 			}
 		}
 
@@ -123,6 +139,31 @@ namespace chibi.motor
 		protected virtual void FixedUpdate()
 		{
 			update_motion();
+		}
+
+		protected virtual void start_to_ignore_input( float time )
+		{
+			stop_to_ignore_input();
+			debug.log( "start ignore input por {0}", time );
+			courutine_ignore_input = wait_for_ignore_input( time );
+			StartCoroutine( courutine_ignore_input );
+			ignore_input = true;
+		}
+		protected virtual void stop_to_ignore_input()
+		{
+			if ( courutine_ignore_input != null )
+			{
+				debug.log( "stop ignore input por" );
+				StopCoroutine( courutine_ignore_input );
+			}
+			ignore_input = false;
+			courutine_ignore_input = null;
+		}
+
+		protected virtual IEnumerator wait_for_ignore_input( float time )
+		{
+			yield return new WaitForSeconds( time );
+			ignore_input = false;
 		}
 	}
 }

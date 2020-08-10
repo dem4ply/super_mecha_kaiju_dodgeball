@@ -26,9 +26,11 @@ namespace chibi.motor.npc
 		[SerializeField]
 		protected float _gravity_when_fall = -10f;
 		[SerializeField]
-		protected float _jump_time_wall_climp= 0.4f;
+		protected float _jump_time_wall_climp = 0.4f;
 
 		protected bool do_wall_jump_climp = false;
+		public float climp_wall_jump_ignore_input = 1f;
+		public float wall_jump_off_ignore_input = 1f;
 
 		public float grabity_after_wall_jump_climp = -10f;
 		public float slope_gravity = -10f;
@@ -38,6 +40,7 @@ namespace chibi.motor.npc
 		protected float _climp_wall_jump_velocity;
 
 		public float multiplier_velocity_wall_slice = 0.8f;
+		public float multiplier_velocity_climp_jump = 0.8f;
 
 		public Vector3 wall_jump_climp = new Vector3( 0, 14, 14 );
 		public Vector3 wall_jump_off = new Vector3( 0, 5, 8 );
@@ -340,13 +343,28 @@ namespace chibi.motor.npc
 			}
 			else
 			{
-				_proccess_horizontal_velocity(
-					ref velocity_vector, time_to_reach_speed_in_air );
+				if ( do_wall_jump_climp )
+					_proccess_horizontal_velocity(
+						ref velocity_vector,
+						this.desire_speed * multiplier_velocity_climp_jump,
+						this.max_speed, time_to_reach_speed_in_air );
+				else
+					_proccess_horizontal_velocity(
+						ref velocity_vector, time_to_reach_speed_in_air );
 			}
 		}
 
 		protected virtual void _proccess_horizontal_velocity(
 			ref Vector3 velocity_vector, float time_to_reach_target )
+		{
+			_proccess_horizontal_velocity(
+				ref velocity_vector, this.desire_speed, this.max_speed,
+				time_to_reach_target );
+		}
+
+		protected virtual void _proccess_horizontal_velocity(
+			ref Vector3 velocity_vector, float desire_speed,
+			float max_speed, float time_to_reach_target )
 		{
 			float desire_horizontal_velocity =
 				desire_direction.z * Mathf.Clamp( desire_speed, 0, max_speed );
@@ -374,7 +392,6 @@ namespace chibi.motor.npc
 		{
 			if ( try_to_jump_the_next_update )
 			{
-				debug.log( can_do_jump );
 				if ( can_do_wall_jump )
 				{
 					int jump_direction = is_walled_left ? -1 : 1;
@@ -382,16 +399,24 @@ namespace chibi.motor.npc
 					if ( Math.Sign( desire_direction.z ) == jump_direction )
 					{
 						do_wall_jump_climp = true;
+						desire_direction = -desire_direction;
+						start_to_ignore_input( climp_wall_jump_ignore_input );
 						speed_vector.z = -jump_direction * wall_jump_climp.z;
 						speed_vector.y = climp_wall_jump_velocity;
 					}
 					else if ( desire_direction.z == 0 )
 					{
+						desire_direction = Vector3.zero;
+						desire_speed = 0f;
+						start_to_ignore_input( wall_jump_off_ignore_input );
 						speed_vector.z = -jump_direction * wall_jump_off.z;
 						speed_vector.y = wall_jump_off.y;
 					}
 					else
 					{
+						desire_direction = Vector3.zero;
+						desire_speed = 0f;
+						start_to_ignore_input( wall_jump_off_ignore_input );
 						speed_vector.z = -jump_direction * wall_jump_leap.z;
 						speed_vector.y = wall_jump_leap.y;
 					}
@@ -433,6 +458,7 @@ namespace chibi.motor.npc
 				{
 					velocity_vector.y += ( gravity_when_fall * Time.deltaTime );
 					do_wall_jump_climp = false;
+					stop_to_ignore_input();
 				}
 			}
 		}
