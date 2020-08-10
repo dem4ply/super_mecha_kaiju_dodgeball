@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using chibi.manager.collision;
 using chibi.motor;
 
@@ -34,6 +35,7 @@ namespace chibi.editor.motor
 			if ( EditorGUI.EndChangeCheck() )
 			{
 				EditorUtility.SetDirty( motor );
+				//EditorSceneManager.MarkSceneDirty( EditorSceneManager.GetActiveScene() );
 			}
 			serializedObject.ApplyModifiedProperties();
 		}

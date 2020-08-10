@@ -12,7 +12,9 @@ namespace chibi.motor.npc
 		public float max_slope_anlge = 45f;
 
 		#region variables de jump
+		[SerializeField]
 		protected float _max_jump_heigh = 4f;
+		[SerializeField]
 		protected float _min_jump_heigh = 1f;
 
 		[SerializeField]
@@ -364,7 +366,7 @@ namespace chibi.motor.npc
 				}
 				else if ( can_do_jump )
 				{
-					speed_vector.y = _max_jump_velocity;
+					speed_vector.y = max_jump_velocity;
 				}
 				try_to_jump_the_next_update = false;
 			}

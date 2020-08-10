@@ -19,11 +19,17 @@ namespace chibi.editor.motor.npc
 		{
 			is_going_to_draw_gravity = false;
 			base.OnInspectorGUI();
+			EditorGUI.BeginChangeCheck();
 			Motor_side_scroll motor = ( Motor_side_scroll )target;
 
 			draw_jump_control( motor );
-			serializedObject.Update();
-			serializedObject.ApplyModifiedProperties();
+			if ( EditorGUI.EndChangeCheck() )
+			{
+				Debug.Log( "dirt" );
+				EditorUtility.SetDirty( motor );
+				serializedObject.Update();
+				serializedObject.ApplyModifiedProperties();
+			}
 		}
 
 		protected override void draw_gravity( Motor motor_old )
@@ -43,7 +49,7 @@ namespace chibi.editor.motor.npc
 			EditorGUILayout.LabelField(
 				"max jump:", motor.max_jump_velocity.ToString() );
 			EditorGUILayout.LabelField(
-				"min jump:", motor.min_jump_heigh.ToString() );
+				"min jump:", motor.min_jump_velocity.ToString() );
 			//EditorGUILayout.EndHorizontal();
 			EditorGUIUtility.labelWidth = old_width;
 		}
@@ -71,16 +77,21 @@ namespace chibi.editor.motor.npc
 				Undo.RecordObject( motor, "change falling time" );
 			}
 
-
 			var max_jump_heigh = EditorGUILayout.FloatField(
 				"max jump height", motor.max_jump_heigh );
 			if ( max_jump_heigh != motor.max_jump_heigh )
+			{
 				motor.max_jump_heigh = max_jump_heigh;
+				Undo.RecordObject( motor, "change max jummp heigh" );
+			}
 
 			var min_jump_heigh = EditorGUILayout.FloatField(
 				"min jump height", motor.min_jump_heigh );
 			if ( min_jump_heigh != motor.min_jump_heigh )
+			{
 				motor.min_jump_heigh = min_jump_heigh;
+				Undo.RecordObject( motor, "change min jmmp heigh" );
+			}
 			//EditorGUILayout.EndHorizontal();
 			motor.multiplier_velocity_wall_slice = EditorGUILayout.Slider(
 				"grabity in wall",
@@ -107,7 +118,7 @@ namespace chibi.editor.motor.npc
 			string[] ignore_2 = new string[] {
 				"gravity", "multiplier_velocity_wall_slice", "wall_jump_climp",
 				"wall_jump_off", "wall_jump_leap", "slope_gravity", "_jump_time",
-				"_falling_time", "_gravity_when_fall" };
+				"_falling_time", "_gravity_when_fall", "_max_jump_heigh" , "_min_jump_heigh" };
 			return ignore.Union( ignore_2 ).ToArray();
 		}
 	}
