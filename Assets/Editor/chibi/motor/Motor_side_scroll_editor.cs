@@ -46,9 +46,16 @@ namespace chibi.editor.motor.npc
 			EditorGUILayout.LabelField(
 				"gravity slope:", motor.slope_gravity.ToString() );
 			EditorGUILayout.LabelField(
+				"gravity wall climp jump:",
+				motor.grabity_after_wall_jump_climp.ToString() );
+
+			EditorGUILayout.LabelField(
 				"max jump:", motor.max_jump_velocity.ToString() );
 			EditorGUILayout.LabelField(
 				"min jump:", motor.min_jump_velocity.ToString() );
+			EditorGUILayout.LabelField(
+				"climp wall jump:", motor.climp_wall_jump_velocity.ToString() );
+
 			//EditorGUILayout.EndHorizontal();
 			EditorGUIUtility.labelWidth = old_width;
 		}
@@ -76,6 +83,15 @@ namespace chibi.editor.motor.npc
 				Undo.RecordObject( motor, "change falling time" );
 			}
 
+			var jump_time_wall_heigh = EditorGUILayout.FloatField(
+				"jump time wall climp heigh", motor.jump_time_wall_climp );
+			if ( jump_time_wall_heigh != motor.jump_time_wall_climp )
+			{
+				motor.jump_time_wall_climp = jump_time_wall_heigh;
+				Undo.RecordObject(
+					motor, "change jump time when do a climp wall" );
+			}
+
 			var max_jump_heigh = EditorGUILayout.FloatField(
 				"max jump height", motor.max_jump_heigh );
 			if ( max_jump_heigh != motor.max_jump_heigh )
@@ -91,6 +107,15 @@ namespace chibi.editor.motor.npc
 				motor.min_jump_heigh = min_jump_heigh;
 				Undo.RecordObject( motor, "change min jmmp heigh" );
 			}
+
+			var wall_climp_jump_heigh = EditorGUILayout.FloatField(
+				"wall climp jump heigh", motor.wall_climp_jump_heigh );
+			if ( wall_climp_jump_heigh != motor.wall_climp_jump_heigh )
+			{
+				motor.wall_climp_jump_heigh = wall_climp_jump_heigh;
+				Undo.RecordObject( motor, "wall climp jump heght change" );
+			}
+
 			//EditorGUILayout.EndHorizontal();
 			motor.multiplier_velocity_wall_slice = EditorGUILayout.Slider(
 				"grabity in wall",

@@ -16,6 +16,8 @@ namespace chibi.motor.npc
 		protected float _max_jump_heigh = 4f;
 		[SerializeField]
 		protected float _min_jump_heigh = 1f;
+		[SerializeField]
+		protected float _wall_climp_jump_heigh = 3f;
 
 		[SerializeField]
 		protected float _jump_time = 0.4f;
@@ -23,11 +25,17 @@ namespace chibi.motor.npc
 		protected float _falling_time = 0.4f;
 		[SerializeField]
 		protected float _gravity_when_fall = -10f;
+		[SerializeField]
+		protected float _jump_time_wall_climp= 0.4f;
 
+		protected bool do_wall_jump_climp = false;
+
+		public float grabity_after_wall_jump_climp = -10f;
 		public float slope_gravity = -10f;
 
 		protected float _max_jump_velocity;
 		protected float _min_jump_velocity;
+		protected float _climp_wall_jump_velocity;
 
 		public float multiplier_velocity_wall_slice = 0.8f;
 
@@ -90,11 +98,29 @@ namespace chibi.motor.npc
 			}
 		}
 
+		public virtual float wall_climp_jump_heigh
+		{
+			get { return _wall_climp_jump_heigh; }
+			set {
+				_wall_climp_jump_heigh = value;
+				update_jump_properties();
+			}
+		}
+
 		public virtual float jump_time
 		{
 			get { return _jump_time; }
 			set {
 				_jump_time = value;
+				update_jump_properties();
+			}
+		}
+
+		public virtual float jump_time_wall_climp
+		{
+			get { return _jump_time_wall_climp; }
+			set {
+				_jump_time_wall_climp = value;
 				update_jump_properties();
 			}
 		}
@@ -124,6 +150,11 @@ namespace chibi.motor.npc
 		public virtual float min_jump_velocity
 		{
 			get { return _min_jump_velocity; }
+		}
+
+		public virtual float climp_wall_jump_velocity
+		{
+			get { return _climp_wall_jump_velocity; }
 		}
 		#endregion
 
@@ -350,8 +381,9 @@ namespace chibi.motor.npc
 					current_direction = -jump_direction;
 					if ( Math.Sign( desire_direction.z ) == jump_direction )
 					{
+						do_wall_jump_climp = true;
 						speed_vector.z = -jump_direction * wall_jump_climp.z;
-						speed_vector.y = wall_jump_climp.y;
+						speed_vector.y = climp_wall_jump_velocity;
 					}
 					else if ( desire_direction.z == 0 )
 					{
@@ -390,10 +422,19 @@ namespace chibi.motor.npc
 				velocity_vector.y += gravity
 					* multiplier_velocity_wall_slice * Time.deltaTime;
 			else
+			{
 				if ( velocity_vector.y > 0 )
-					velocity_vector.y += ( gravity * Time.deltaTime );
+					if ( do_wall_jump_climp )
+						velocity_vector.y +=
+							grabity_after_wall_jump_climp * Time.deltaTime;
+					else
+						velocity_vector.y += ( gravity * Time.deltaTime );
 				else
+				{
 					velocity_vector.y += ( gravity_when_fall * Time.deltaTime );
+					do_wall_jump_climp = false;
+				}
+			}
 		}
 
 		protected override void _init_cache()
@@ -408,9 +449,15 @@ namespace chibi.motor.npc
 		{
 			gravity = -( 2 * max_jump_heigh ) / ( jump_time * jump_time );
 			gravity_when_fall = -( 2 * max_jump_heigh ) / ( falling_time * falling_time );
+			grabity_after_wall_jump_climp  =
+				-( 2 * wall_climp_jump_heigh )
+				/ ( jump_time_wall_climp * jump_time_wall_climp );
+
 			_max_jump_velocity = Math.Abs( _gravity ) * jump_time;
 			_min_jump_velocity = ( float )Math.Sqrt(
 				2.0 * Math.Abs( _gravity ) * min_jump_heigh );
+			_climp_wall_jump_velocity =
+				Math.Abs( grabity_after_wall_jump_climp ) * jump_time_wall_climp;
 		}
 
 		public void start_jump()
