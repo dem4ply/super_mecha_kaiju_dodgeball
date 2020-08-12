@@ -37,8 +37,8 @@ namespace chibi
 		}
 
 		public void extert_init_cache() {
-			debug.warning( "se esta llamando el extern_init_cache" );
 			_init_cache();
+			debug.warning( "se esta llamando el extern_init_cache" );
 		}
 
 		public virtual void reset()
