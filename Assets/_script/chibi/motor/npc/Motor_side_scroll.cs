@@ -302,7 +302,7 @@ namespace chibi.motor.npc
 			_proccess_slope_velocity( ref velocity_vector );
 			_process_jump( ref velocity_vector );
 			// _proccess_slope_gravity_gravity( ref velocity_vector );
-			if ( -0.001 > velocity_vector.z && velocity_vector.z > 0.01f )
+			if ( should_calcutate_gravity_in_slope( velocity_vector ) )
 				_proccess_gravity( ref velocity_vector );
 			return velocity_vector;
 		}
@@ -604,6 +604,11 @@ namespace chibi.motor.npc
 		public virtual bool should_wall_in_slope( Vector3 velocity_vector, Vector3 slope_normal )
 		{
 			return slope_normal != Vector3.zero && ( -0.1 > velocity_vector.z || velocity_vector.z < 0.1 );
+		}
+
+		public virtual bool should_calcutate_gravity_in_slope( Vector3 velocity_vector )
+		{
+			return -0.001 > velocity_vector.z && velocity_vector.z > 0.01f;
 		}
 	}
 }
