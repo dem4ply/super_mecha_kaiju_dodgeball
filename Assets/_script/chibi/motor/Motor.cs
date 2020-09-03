@@ -119,15 +119,27 @@ namespace chibi.motor
 		protected virtual void update_motion()
 		{
 			Vector3 velocity_vector = desire_velocity;
+			calculate_motion( ref velocity_vector );
 
-			_proccess_gravity( ref velocity_vector );
-
+			//_proccess_gravity( ref velocity_vector );
 			//transform.Translate( velocity_vector * Time.deltaTime );
+			// ridgetbody.velocity = velocity_vector;
 			transform.position += velocity_vector * Time.deltaTime;
 			debug.draw.arrow( velocity_vector * Time.deltaTime, Color.magenta );
 			_velocity = velocity_vector;
-			// ridgetbody.velocity = velocity_vector;
 			current_speed = velocity_vector;
+		}
+
+		public virtual Vector3 calculate_motion( ref Vector3 velocity_vector )
+		{
+			_proccess_gravity( ref velocity_vector );
+			//transform.Translate( velocity_vector * Time.deltaTime );
+			//transform.position += velocity_vector * Time.deltaTime;
+			//debug.draw.arrow( velocity_vector * Time.deltaTime, Color.magenta );
+			//_velocity = velocity_vector;
+			// ridgetbody.velocity = velocity_vector;
+			//current_speed = velocity_vector;
+			return velocity_vector;
 		}
 
 		protected virtual void _proccess_gravity(

@@ -247,6 +247,22 @@ namespace chibi.motor.npc
 
 			update_change_direction( ref velocity_vector );
 
+			calculate_motion( ref velocity_vector );
+
+
+			if ( try_to_jump_the_next_update && velocity_vector.y < 0.01 )
+			{
+				end_jump();
+			}
+
+			ridgetbody.velocity = velocity_vector;
+			// debug.draw.arrow( velocity_vector, Color.magenta, duration:1f );
+
+			update_animator();
+		}
+
+		public override Vector3 calculate_motion( ref Vector3 velocity_vector )
+		{
 			float slope_angle = collision_manager_side_scroll.slope(
 				Chibi_collision_side_scroll.STR_SLOPE );
 
@@ -273,15 +289,7 @@ namespace chibi.motor.npc
 				_proccess_gravity( ref velocity_vector );
 			}
 
-			if ( try_to_jump_the_next_update && velocity_vector.y < 0.01 )
-			{
-				end_jump();
-			}
-
-			ridgetbody.velocity = velocity_vector;
-			// debug.draw.arrow( velocity_vector, Color.magenta, duration:1f );
-
-			update_animator();
+			return velocity_vector;
 		}
 
 		protected virtual void update_animator()
