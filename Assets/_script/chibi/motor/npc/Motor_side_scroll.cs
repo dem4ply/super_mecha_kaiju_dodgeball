@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using chibi.manager.collision;
+using System.Collections.Generic;
 
 namespace chibi.motor.npc
 {
@@ -264,7 +265,7 @@ namespace chibi.motor.npc
 
 			update_change_direction( ref velocity_vector );
 
-			calculate_motion( ref velocity_vector );
+			process_motion( ref velocity_vector );
 
 			if ( should_finish_jump( velocity_vector ) )
 				end_jump();
@@ -275,31 +276,68 @@ namespace chibi.motor.npc
 			update_animator();
 		}
 
-		public override Vector3 calculate_motion( ref Vector3 velocity_vector )
+		public List<Vector3> calculate_motion( float delta_time, int steps, ref List<Vector3> result )
 		{
+			//List<Vector3> result = new List<Vector3>();
+			result.Clear();
+			Vector3 current_position = transform.position;
+			result.Add( current_position );
+			Vector3 velocity_vector = velocity;
+			for ( int i = 0; i < steps; ++i )
+			{
+				calculate_motion( ref velocity_vector, delta_time );
+				current_position = current_position + ( velocity_vector * delta_time );
+				result.Add( current_position );
+			}
+			return result;
+		}
 
+		public override Vector3 process_motion( ref Vector3 velocity_vector )
+		{
 			if ( is_grounded )
-				calculate_motion_ground( ref velocity_vector );
+				process_motion_ground( ref velocity_vector );
 			else if ( should_do_slope_motion )
-				calculate_motion_slope( ref velocity_vector );
+				process_motion_slope( ref velocity_vector );
 			else
-				calculate_motion_air( ref velocity_vector );
+				process_motion_air( ref velocity_vector );
 
 			return velocity_vector;
 		}
 
-		public Vector3 calculate_motion_ground( ref Vector3 velocity_vector )
+		public virtual Vector3 calculate_motion(
+			ref Vector3 velocity_vector, float delta_time )
 		{
-			_proccess_ground_horizontal_velocity( ref velocity_vector );
+
+			if ( is_grounded )
+				calculate_motion_ground( ref velocity_vector, delta_time );
+			else if ( should_do_slope_motion )
+				calculate_motion_slope( ref velocity_vector, delta_time );
+			else
+				calculate_motion_air( ref velocity_vector, delta_time );
+
+			return velocity_vector;
+		}
+
+		public Vector3 process_motion_ground( ref Vector3 velocity_vector )
+		{
+			calculate_ground_horizontal_velocity( ref velocity_vector );
 			_process_jump( ref velocity_vector );
 			_proccess_gravity( ref velocity_vector );
 			return velocity_vector;
 		}
 
-		public Vector3 calculate_motion_slope( ref Vector3 velocity_vector )
+		public Vector3 calculate_motion_ground(
+			ref Vector3 velocity_vector, float delta_time )
 		{
-			_proccess_ground_horizontal_velocity( ref velocity_vector );
-			_proccess_slope_velocity( ref velocity_vector );
+			calculate_ground_horizontal_velocity( ref velocity_vector );
+			calculate_gravity( ref velocity_vector, delta_time );
+			return velocity_vector;
+		}
+
+		public Vector3 process_motion_slope( ref Vector3 velocity_vector )
+		{
+			calculate_ground_horizontal_velocity( ref velocity_vector );
+			calculate_slope_velocity( ref velocity_vector );
 			_process_jump( ref velocity_vector );
 			// _proccess_slope_gravity_gravity( ref velocity_vector );
 			if ( should_calcutate_gravity_in_slope( velocity_vector ) )
@@ -307,11 +345,28 @@ namespace chibi.motor.npc
 			return velocity_vector;
 		}
 
-		public Vector3 calculate_motion_air( ref Vector3 velocity_vector )
+		public Vector3 calculate_motion_slope(
+			ref Vector3 velocity_vector, float delta_time )
 		{
-			_proccess_air_horizontal_velocity( ref velocity_vector );
+			calculate_ground_horizontal_velocity( ref velocity_vector );
+			calculate_slope_velocity( ref velocity_vector );
+			if ( should_calcutate_gravity_in_slope( velocity_vector ) )
+				calculate_gravity( ref velocity_vector, delta_time );
+			return velocity_vector;
+		}
+
+		public Vector3 process_motion_air( ref Vector3 velocity_vector )
+		{
+			calculate_air_horizontal_velocity( ref velocity_vector );
 			_process_jump( ref velocity_vector );
 			_proccess_gravity( ref velocity_vector );
+			return velocity_vector;
+		}
+
+		public Vector3 calculate_motion_air( ref Vector3 velocity_vector, float delta_time )
+		{
+			calculate_air_horizontal_velocity( ref velocity_vector );
+			calculate_gravity( ref velocity_vector, delta_time );
 			return velocity_vector;
 		}
 
@@ -333,14 +388,14 @@ namespace chibi.motor.npc
 			animator.direction = new Vector3( current_direction, 0, 0 );
 		}
 
-		protected virtual void _proccess_ground_horizontal_velocity(
+		protected virtual void calculate_ground_horizontal_velocity(
 			ref Vector3 velocity_vector )
 		{
-			_proccess_horizontal_velocity(
+			calculate_horizontal_velocity(
 				ref velocity_vector, time_to_reach_speed_in_ground );
 		}
 
-		protected virtual void _proccess_slope_velocity( ref Vector3 velocity_vector )
+		protected virtual void calculate_slope_velocity( ref Vector3 velocity_vector )
 		{
 			Vector3 slope_normal = collision_manager_side_scroll.normal(
 				Chibi_collision_side_scroll.STR_SLOPE );
@@ -360,7 +415,7 @@ namespace chibi.motor.npc
 			return velocity_vector;
 		}
 
-		protected virtual void _proccess_air_horizontal_velocity( ref Vector3 velocity_vector )
+		protected virtual void calculate_air_horizontal_velocity( ref Vector3 velocity_vector )
 		{
 			if ( want_to_no_move )
 				return;
@@ -370,31 +425,31 @@ namespace chibi.motor.npc
 				if ( vector_current_direction == wall_direction )
 					velocity_vector.z = 0;
 				else
-					_proccess_horizontal_velocity(
+					calculate_horizontal_velocity(
 						ref velocity_vector, time_to_reach_speed_in_air );
 			}
 			else
 			{
 				if ( doing_wall_jump_climp )
-					_proccess_horizontal_velocity(
+					calculate_horizontal_velocity(
 						ref velocity_vector,
 						this.desire_speed * multiplier_velocity_climp_jump,
 						this.max_speed, time_to_reach_speed_in_air );
 				else
-					_proccess_horizontal_velocity(
+					calculate_horizontal_velocity(
 						ref velocity_vector, time_to_reach_speed_in_air );
 			}
 		}
 
-		protected virtual void _proccess_horizontal_velocity(
+		protected virtual void calculate_horizontal_velocity(
 			ref Vector3 velocity_vector, float time_to_reach_target )
 		{
-			_proccess_horizontal_velocity(
+			calculate_horizontal_velocity(
 				ref velocity_vector, this.desire_speed, this.max_speed,
 				time_to_reach_target );
 		}
 
-		protected virtual void _proccess_horizontal_velocity(
+		protected virtual void calculate_horizontal_velocity(
 			ref Vector3 velocity_vector, float desire_speed,
 			float max_speed, float time_to_reach_target )
 		{
@@ -455,7 +510,8 @@ namespace chibi.motor.npc
 				}
 				else if ( can_do_jump )
 				{
-					speed_vector.y = max_jump_velocity;
+					calculate_regular_jump( ref speed_vector );
+					//speed_vector.y = max_jump_velocity;
 				}
 				try_to_jump_the_next_update = false;
 			}
@@ -504,46 +560,74 @@ namespace chibi.motor.npc
 		{
 
 			if ( is_not_grounded && is_walled )
-				calculate_gravity_when_wall_slice( ref velocity_vector );
+				calculate_gravity_when_wall_slice( ref velocity_vector, Time.deltaTime );
 			else
 			{
 				if ( velocity_vector.y > 0 )
 					if ( doing_wall_jump_climp )
-						calculate_gravity_after_wall_jump_climp( ref velocity_vector );
+						calculate_gravity_after_wall_jump_climp( ref velocity_vector, Time.deltaTime );
 					else
-						calculate_upper_gravity( ref velocity_vector );
+						calculate_normal_gravity( ref velocity_vector, Time.deltaTime );
 				else
 				{
-					calculate_falling_gravity( ref velocity_vector );
+					calculate_falling_gravity( ref velocity_vector, Time.deltaTime );
 					doing_wall_jump_climp = false;
 					stop_to_ignore_input();
 				}
 			}
 		}
-		public virtual Vector3 calculate_upper_gravity(
-			ref Vector3 velocity_vector )
+
+		public virtual void calculate_gravity(
+			ref Vector3 velocity_vector, float delta_time )
 		{
-			velocity_vector.y += gravity * Time.deltaTime;
+
+			if ( is_not_grounded && is_walled )
+				calculate_gravity_when_wall_slice( ref velocity_vector, delta_time );
+			else
+			{
+				if ( velocity_vector.y > 0 )
+					if ( doing_wall_jump_climp )
+						calculate_gravity_after_wall_jump_climp( ref velocity_vector, delta_time );
+					else
+						calculate_normal_gravity( ref velocity_vector, delta_time );
+				else
+				{
+					calculate_falling_gravity( ref velocity_vector, delta_time );
+					stop_to_ignore_input();
+				}
+			}
+		}
+
+		/// <summary>
+		/// gravedad normal se calcula cuando esta saltando
+		/// </summary>
+		/// <param name="velocity_vector"></param>
+		/// <returns></returns>
+		public virtual Vector3 calculate_normal_gravity(
+			ref Vector3 velocity_vector, float delta_time )
+		{
+			velocity_vector.y += gravity * delta_time;
 			return velocity_vector;
 		}
 
 		public virtual Vector3 calculate_gravity_after_wall_jump_climp(
-			ref Vector3 velocity_vector )
+			ref Vector3 velocity_vector, float delta_time )
 		{
-			velocity_vector.y += grabity_after_wall_jump_climp * Time.deltaTime;
+			velocity_vector.y += grabity_after_wall_jump_climp * delta_time;
 			return velocity_vector;
 		}
 
 		public virtual Vector3 calculate_gravity_when_wall_slice(
-			ref Vector3 velocity_vector )
+			ref Vector3 velocity_vector, float delta_time )
 		{
-			velocity_vector.y += gravity * multiplier_velocity_wall_slice * Time.deltaTime;
+			velocity_vector.y += gravity * multiplier_velocity_wall_slice * delta_time;
 			return velocity_vector;
 		}
 
-		public virtual Vector3 calculate_falling_gravity( ref Vector3 velocity_vector )
+		public virtual Vector3 calculate_falling_gravity(
+			ref Vector3 velocity_vector, float delta_time )
 		{
-			velocity_vector.y += gravity_when_fall * Time.deltaTime;
+			velocity_vector.y += gravity_when_fall * delta_time;
 			return velocity_vector;
 		}
 

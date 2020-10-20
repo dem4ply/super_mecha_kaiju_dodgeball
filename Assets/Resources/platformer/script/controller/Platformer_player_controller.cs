@@ -15,6 +15,8 @@ namespace platformer.controller.player
 		protected Dictionary<string, string> buffer_actions;
 		protected Vector3 buffer_desire_direction;
 
+		protected List<Vector3> air_postions_prediction;
+
 		public override Vector3 desire_direction
 		{
 			get {
@@ -84,6 +86,17 @@ namespace platformer.controller.player
 				jump_buffer_time.reset();
 				jump_buffer_time.is_enable = false;
 			}
+
+			chibi.motor.npc.Motor_side_scroll motor = player.motor_side_scroll;
+			if ( motor && motor.is_not_grounded )
+			{
+				motor.calculate_motion( 0.1f, 10, ref air_postions_prediction );
+				debug.log( "{0}", air_postions_prediction.Count );
+				foreach ( Vector3 step in air_postions_prediction )
+				{
+					debug.draw.sphere( step, Color.black, 0.1f );
+				}
+			}
 		}
 
 		protected override void _init_cache()
@@ -94,6 +107,8 @@ namespace platformer.controller.player
 			if ( !platform_blender )
 				debug.error( "no esta asignado el platform bender" );
 			buffer_actions = new Dictionary<string, string>();
+
+			air_postions_prediction = new List<Vector3>();
 		}
 
 		public virtual void action( string name, string e, bool buffer )

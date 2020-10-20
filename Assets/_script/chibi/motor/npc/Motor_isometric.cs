@@ -118,7 +118,7 @@ namespace chibi.motor.npc
 				current_speed.x, ridgetbody.velocity.y,
 				current_speed.z );
 
-			calculate_motion( ref velocity_vector );
+			process_motion( ref velocity_vector );
 			// update_change_direction( ref velocity_vector );
 
 			//_process_jump( ref velocity_vector );
@@ -127,7 +127,7 @@ namespace chibi.motor.npc
 			ridgetbody.velocity = velocity_vector;
 		}
 
-		public override Vector3 calculate_motion( ref Vector3 velocity_vector )
+		public override Vector3 process_motion( ref Vector3 velocity_vector )
 		{
 			_process_jump( ref velocity_vector );
 			_proccess_gravity( ref velocity_vector );

@@ -119,7 +119,7 @@ namespace chibi.motor
 		protected virtual void update_motion()
 		{
 			Vector3 velocity_vector = desire_velocity;
-			calculate_motion( ref velocity_vector );
+			process_motion( ref velocity_vector );
 
 			//_proccess_gravity( ref velocity_vector );
 			//transform.Translate( velocity_vector * Time.deltaTime );
@@ -130,7 +130,7 @@ namespace chibi.motor
 			current_speed = velocity_vector;
 		}
 
-		public virtual Vector3 calculate_motion( ref Vector3 velocity_vector )
+		public virtual Vector3 process_motion( ref Vector3 velocity_vector )
 		{
 			_proccess_gravity( ref velocity_vector );
 			//transform.Translate( velocity_vector * Time.deltaTime );
