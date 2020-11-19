@@ -8,7 +8,7 @@ namespace platformer.controller.player
 	public class Platformer_player_controller : chibi.controller.Controller
 	{
 		public Controller_npc player;
-		public Spawn_platform_radial platform_blender;
+		public Platform_bender_controller platform_blender;
 		public chibi.pomodoro.Pomodoro_obj jump_buffer_time =
 			new chibi.pomodoro.Pomodoro_obj( 0.25f );
 
@@ -87,16 +87,6 @@ namespace platformer.controller.player
 				jump_buffer_time.is_enable = false;
 			}
 
-			chibi.motor.npc.Motor_side_scroll motor = player.motor_side_scroll;
-			if ( motor && motor.is_not_grounded )
-			{
-				motor.calculate_motion( 0.1f, 10, ref air_postions_prediction );
-				debug.log( "{0}", air_postions_prediction.Count );
-				foreach ( Vector3 step in air_postions_prediction )
-				{
-					debug.draw.sphere( step, Color.black, 0.1f );
-				}
-			}
 		}
 
 		protected override void _init_cache()
@@ -154,12 +144,19 @@ namespace platformer.controller.player
 					break;
 				case "p1__bumper__left":
 				case "p1__bumper__right":
+					switch ( e )
+					{
+						case chibi.joystick.events.down:
+							platform_blender.spawn_horizontal();
+							break;
+					}
+					break;
 				case "p1__trigger__left":
 				case "p1__trigger__right":
 					switch ( e )
 					{
 						case chibi.joystick.events.down:
-							platform_blender.spawn( 0 );
+							platform_blender.spawn_vertical();
 							break;
 					}
 					break;
@@ -192,7 +189,7 @@ namespace platformer.controller.player
 			switch ( name )
 			{
 				case "p1__aim":
-					platform_blender.desire_direction = direction;
+					//platform_blender.desire_direction = direction;
 					break;
 			}
 		}

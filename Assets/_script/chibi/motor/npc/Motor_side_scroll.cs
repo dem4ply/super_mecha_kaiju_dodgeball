@@ -276,17 +276,65 @@ namespace chibi.motor.npc
 			update_animator();
 		}
 
-		public List<Vector3> calculate_motion( float delta_time, int steps, ref List<Vector3> result )
+		public List<Vector3> calculate_motion(
+			float delta_time, int steps, ref List<Vector3> result,
+			Vector3 desire_direction, ref float smooth_time )
 		{
 			//List<Vector3> result = new List<Vector3>();
+			Vector3 velocity_vector = velocity;
+			return calculate_motion(
+				delta_time, steps, ref result, current_direction, velocity_vector,
+				desire_direction, ref smooth_time );
+		}
+
+		public List<Vector3> calculate_motion(
+			float delta_time, int steps, ref List<Vector3> result, int direction,
+			Vector3 desire_direction, ref float smooth_time )
+		{
+			//List<Vector3> result = new List<Vector3>();
+			Vector3 velocity_vector = velocity;
+			return calculate_motion(
+				delta_time, steps, ref result, direction, velocity_vector,
+				desire_direction, ref smooth_time );
+		}
+
+		public List<Vector3> calculate_motion(
+			float delta_time, int steps, ref List<Vector3> result,
+			int direction, Vector3 initial_velocity, Vector3 desire_direction,
+			ref float smooth_time )
+		{
 			result.Clear();
 			Vector3 current_position = transform.position;
 			result.Add( current_position );
-			Vector3 velocity_vector = velocity;
+
+			Vector3 velocity_vector = initial_velocity;
 			for ( int i = 0; i < steps; ++i )
 			{
-				calculate_motion( ref velocity_vector, delta_time );
+				calculate_motion(
+					ref velocity_vector, delta_time, direction, desire_direction,
+					ref smooth_time );
 				current_position = current_position + ( velocity_vector * delta_time );
+				result.Add( current_position );
+			}
+			return result;
+		}
+
+		public List<Vector3> calculate_motion(
+			float delta_time, int steps, ref List<Vector3> result,
+			int direction, Vector3 initial_velocity, float desire_speed,
+			Vector3 desire_direction, bool is_walled, ref float smooth_time )
+		{
+			result.Clear();
+			Vector3 current_position = transform.position;
+			result.Add( current_position );
+
+			Vector3 velocity_vector = initial_velocity;
+			for ( int i = 0; i < steps; ++i )
+			{
+				calculate_motion(
+					ref velocity_vector, delta_time, direction, desire_speed,
+					desire_direction, is_walled, ref smooth_time );
+				current_position += velocity_vector * delta_time;
 				result.Add( current_position );
 			}
 			return result;
@@ -297,46 +345,75 @@ namespace chibi.motor.npc
 			if ( is_grounded )
 				process_motion_ground( ref velocity_vector );
 			else if ( should_do_slope_motion )
-				process_motion_slope( ref velocity_vector );
+				process_motion_slope( ref velocity_vector, desire_direction );
 			else
 				process_motion_air( ref velocity_vector );
 
 			return velocity_vector;
 		}
+		public virtual Vector3 calculate_motion(
+			ref Vector3 velocity_vector, float delta_time, int direction,
+			Vector3 desire_direction, ref float smooth_time )
+		{
+			if ( is_grounded )
+				calculate_motion_ground(
+					ref velocity_vector, desire_direction, delta_time );
+			else if ( should_do_slope_motion )
+				calculate_motion_slope(
+					ref velocity_vector, desire_direction, delta_time );
+			else
+				calculate_motion_air(
+					ref velocity_vector, delta_time, direction, desire_direction,
+					ref smooth_time );
+
+			return velocity_vector;
+		}
 
 		public virtual Vector3 calculate_motion(
-			ref Vector3 velocity_vector, float delta_time )
+			ref Vector3 velocity_vector, float delta_time, int direction,
+			float desire_speed, Vector3 desire_direction, bool is_walled,
+			ref float smooth_time )
 		{
-
 			if ( is_grounded )
-				calculate_motion_ground( ref velocity_vector, delta_time );
+				calculate_motion_ground(
+					ref velocity_vector, desire_direction, delta_time );
 			else if ( should_do_slope_motion )
-				calculate_motion_slope( ref velocity_vector, delta_time );
+				calculate_motion_slope(
+					ref velocity_vector, desire_direction, delta_time );
 			else
-				calculate_motion_air( ref velocity_vector, delta_time );
+			{
+				calculate_motion_air(
+					ref velocity_vector, delta_time, direction, desire_speed,
+					desire_direction, is_walled, ref smooth_time );
+			}
 
 			return velocity_vector;
 		}
 
 		public Vector3 process_motion_ground( ref Vector3 velocity_vector )
 		{
-			calculate_ground_horizontal_velocity( ref velocity_vector );
+			calculate_ground_horizontal_velocity(
+				ref velocity_vector, desire_direction );
 			_process_jump( ref velocity_vector );
 			_proccess_gravity( ref velocity_vector );
 			return velocity_vector;
 		}
 
 		public Vector3 calculate_motion_ground(
-			ref Vector3 velocity_vector, float delta_time )
+			ref Vector3 velocity_vector, Vector3 desire_direction,
+			float delta_time )
 		{
-			calculate_ground_horizontal_velocity( ref velocity_vector );
+			calculate_ground_horizontal_velocity(
+				ref velocity_vector, desire_direction );
 			calculate_gravity( ref velocity_vector, delta_time );
 			return velocity_vector;
 		}
 
-		public Vector3 process_motion_slope( ref Vector3 velocity_vector )
+		public Vector3 process_motion_slope(
+			ref Vector3 velocity_vector, Vector3 desire_direction )
 		{
-			calculate_ground_horizontal_velocity( ref velocity_vector );
+			calculate_ground_horizontal_velocity(
+				ref velocity_vector, desire_direction );
 			calculate_slope_velocity( ref velocity_vector );
 			_process_jump( ref velocity_vector );
 			// _proccess_slope_gravity_gravity( ref velocity_vector );
@@ -346,9 +423,9 @@ namespace chibi.motor.npc
 		}
 
 		public Vector3 calculate_motion_slope(
-			ref Vector3 velocity_vector, float delta_time )
+			ref Vector3 velocity_vector, Vector3 desire_direction, float delta_time )
 		{
-			calculate_ground_horizontal_velocity( ref velocity_vector );
+			calculate_ground_horizontal_velocity( ref velocity_vector, desire_direction );
 			calculate_slope_velocity( ref velocity_vector );
 			if ( should_calcutate_gravity_in_slope( velocity_vector ) )
 				calculate_gravity( ref velocity_vector, delta_time );
@@ -357,15 +434,43 @@ namespace chibi.motor.npc
 
 		public Vector3 process_motion_air( ref Vector3 velocity_vector )
 		{
-			calculate_air_horizontal_velocity( ref velocity_vector );
+			if ( want_to_move )
+				calculate_air_horizontal_velocity(
+					ref velocity_vector, current_direction,
+					desire_direction, ref current_horizontal_time_smooth );
 			_process_jump( ref velocity_vector );
 			_proccess_gravity( ref velocity_vector );
 			return velocity_vector;
 		}
 
-		public Vector3 calculate_motion_air( ref Vector3 velocity_vector, float delta_time )
+		public Vector3 calculate_motion_air(
+			ref Vector3 velocity_vector, float delta_time, int direction,
+			Vector3 desire_direction, ref float smooth_time )
 		{
-			calculate_air_horizontal_velocity( ref velocity_vector );
+			if ( calcualte_want_to_move( desire_direction ) )
+			{
+				calculate_air_horizontal_velocity(
+					ref velocity_vector, direction, desire_direction, ref smooth_time );
+			}
+			calculate_gravity( ref velocity_vector, delta_time );
+			return velocity_vector;
+		}
+
+		public Vector3 calculate_motion_air(
+			ref Vector3 velocity_vector, float delta_time, int direction,
+			float desire_speed, Vector3 desire_direction, bool is_walled,
+			ref float smooth_time )
+		{
+			if ( calcualte_want_to_move( desire_direction ) )
+			{
+				if ( is_walled )
+					calculate_air_horizontal_velocity_on_wall(
+						ref velocity_vector, direction, desire_direction );
+				else
+					calculate_air_horizontal_velocity_not_on_wall(
+						ref velocity_vector, direction, desire_speed,
+						desire_direction, ref smooth_time );
+			}
 			calculate_gravity( ref velocity_vector, delta_time );
 			return velocity_vector;
 		}
@@ -389,10 +494,10 @@ namespace chibi.motor.npc
 		}
 
 		protected virtual void calculate_ground_horizontal_velocity(
-			ref Vector3 velocity_vector )
+			ref Vector3 velocity_vector, Vector3 desire_direction )
 		{
 			calculate_horizontal_velocity(
-				ref velocity_vector, time_to_reach_speed_in_ground );
+				ref velocity_vector, time_to_reach_speed_in_ground, desire_direction );
 		}
 
 		protected virtual void calculate_slope_velocity( ref Vector3 velocity_vector )
@@ -415,43 +520,90 @@ namespace chibi.motor.npc
 			return velocity_vector;
 		}
 
-		protected virtual void calculate_air_horizontal_velocity( ref Vector3 velocity_vector )
+		protected virtual void calculate_air_horizontal_velocity( 
+			ref Vector3 velocity_vector, int direction, Vector3 desire_direction,
+			ref float smooth_time )
 		{
-			if ( want_to_no_move )
-				return;
-			Vector3 vector_current_direction = new Vector3( 0, 0, current_direction );
+			calculate_air_horizontal_velocity(
+				ref velocity_vector, direction, desire_speed, desire_direction,
+				ref smooth_time );
+		}
+
+		protected virtual void calculate_air_horizontal_velocity( 
+			ref Vector3 velocity_vector, int direction, float desire_speed,
+			Vector3 desire_direction, ref float time_smooth )
+		{
 			if ( is_walled )
-			{
-				if ( vector_current_direction == wall_direction )
-					velocity_vector.z = 0;
-				else
-					calculate_horizontal_velocity(
-						ref velocity_vector, time_to_reach_speed_in_air );
-			}
+				calculate_air_horizontal_velocity_on_wall(
+					ref velocity_vector, direction, desire_direction );
 			else
-			{
-				if ( doing_wall_jump_climp )
-					calculate_horizontal_velocity(
-						ref velocity_vector,
-						this.desire_speed * multiplier_velocity_climp_jump,
-						this.max_speed, time_to_reach_speed_in_air );
-				else
-					calculate_horizontal_velocity(
-						ref velocity_vector, time_to_reach_speed_in_air );
-			}
+				calculate_air_horizontal_velocity_not_on_wall(
+					ref velocity_vector, direction, desire_speed,
+					desire_direction, ref time_smooth );
+		}
+
+		protected virtual void calculate_air_horizontal_velocity_not_on_wall( 
+			ref Vector3 velocity_vector, int direction, float desire_speed,
+			Vector3 desire_direction, ref float time_smooth )
+		{
+			Vector3 vector_current_direction = new Vector3( 0, 0, direction );
+			if ( doing_wall_jump_climp )
+				calculate_horizontal_velocity(
+					ref velocity_vector,
+					desire_speed * multiplier_velocity_climp_jump,
+					this.max_speed, time_to_reach_speed_in_air, desire_direction,
+					ref time_smooth );
+			else
+				calculate_horizontal_velocity(
+					ref velocity_vector, desire_speed, this.max_speed,
+					time_to_reach_speed_in_air, desire_direction, ref time_smooth );
+		}
+
+		protected virtual void calculate_air_horizontal_velocity_on_wall( 
+			ref Vector3 velocity_vector, int direction, Vector3 desire_direction )
+		{
+			Vector3 vector_current_direction = new Vector3( 0, 0, direction );
+			if ( vector_current_direction == wall_direction )
+				velocity_vector.z = 0;
+			else
+				calculate_horizontal_velocity(
+					ref velocity_vector, time_to_reach_speed_in_air,
+					desire_direction );
 		}
 
 		protected virtual void calculate_horizontal_velocity(
-			ref Vector3 velocity_vector, float time_to_reach_target )
+			ref Vector3 velocity_vector, float time_to_reach_target,
+			Vector3 desire_direction )
 		{
 			calculate_horizontal_velocity(
 				ref velocity_vector, this.desire_speed, this.max_speed,
-				time_to_reach_target );
+				desire_direction, time_to_reach_target );
 		}
 
 		protected virtual void calculate_horizontal_velocity(
 			ref Vector3 velocity_vector, float desire_speed,
-			float max_speed, float time_to_reach_target )
+			Vector3 desire_direction, float time_to_reach_target )
+		{
+			calculate_horizontal_velocity(
+				ref velocity_vector, desire_speed, this.max_speed,
+				desire_direction, time_to_reach_target );
+		}
+
+
+		protected virtual void calculate_horizontal_velocity(
+			ref Vector3 velocity_vector, float desire_speed,
+			float max_speed, Vector3 desire_direction, float time_to_reach_target )
+		{
+			calculate_horizontal_velocity(
+				ref velocity_vector, desire_speed, max_speed,
+				time_to_reach_target, desire_direction,
+				ref current_horizontal_time_smooth );
+		}
+
+		protected virtual void calculate_horizontal_velocity(
+			ref Vector3 velocity_vector, float desire_speed,
+			float max_speed, float time_to_reach_target,
+			Vector3 desire_direction, ref float time_smooth )
 		{
 			float desire_horizontal_velocity =
 				desire_direction.z * Mathf.Clamp( desire_speed, 0, max_speed );
@@ -459,7 +611,7 @@ namespace chibi.motor.npc
 
 			float final_horizontal_velocity = Mathf.SmoothDamp(
 				current_horizontal_velocity, desire_horizontal_velocity,
-				ref current_horizontal_time_smooth, time_to_reach_target );
+				ref time_smooth, time_to_reach_target );
 
 			velocity_vector.z = final_horizontal_velocity;
 		}
@@ -475,6 +627,31 @@ namespace chibi.motor.npc
 			}
 		}
 
+		public int calcualte_jump_direction()
+		{
+			int wall_direction = is_walled_left ? -1 : 1;
+			var jump_direction = -wall_direction;
+			return jump_direction;
+		}
+
+		public Vector3 calculate_wall_jump( ref Vector3 velocity_vector )
+		{
+			int jump_direction = calcualte_jump_direction();
+			if ( should_do_wall_jump_climp( jump_direction ) )
+			{
+				calculate_wall_jump_climp( ref velocity_vector, -jump_direction );
+			}
+			else if ( should_do_wall_jump_off() )
+			{
+				calculate_wall_jump_off( ref velocity_vector, -jump_direction );
+			}
+			else
+			{
+				calculate_wall_jump_leap( ref velocity_vector, -jump_direction );
+			}
+			return velocity_vector;
+		}
+
 		protected virtual void _process_jump( ref Vector3 speed_vector )
 		{
 			if ( try_to_jump_the_next_update )
@@ -483,7 +660,6 @@ namespace chibi.motor.npc
 				{
 					int jump_direction = is_walled_left ? -1 : 1;
 					current_direction = -jump_direction;
-					//if ( Math.Sign( desire_direction.z ) == jump_direction )
 					if ( should_do_wall_jump_climp( jump_direction ) )
 					{
 						doing_wall_jump_climp = true;
@@ -540,6 +716,15 @@ namespace chibi.motor.npc
 			return velocity_vector;
 		}
 
+		public virtual Vector3 calculate_wall_jump_climp(
+			ref Vector3 velocity_vector )
+		{
+			int jump_direction = calcualte_jump_direction();
+			velocity_vector.z = jump_direction * wall_jump_climp.z;
+			velocity_vector.y = climp_wall_jump_velocity;
+			return velocity_vector;
+		}
+
 		public virtual Vector3 calculate_wall_jump_off(
 			ref Vector3 velocity_vector, int jump_direction )
 		{
@@ -548,10 +733,27 @@ namespace chibi.motor.npc
 			return velocity_vector;
 		}
 
+		public virtual Vector3 calculate_wall_jump_off(
+			ref Vector3 velocity_vector )
+		{
+			int jump_direction = calcualte_jump_direction();
+			velocity_vector.z = jump_direction * wall_jump_off.z;
+			velocity_vector.y = wall_jump_off.y;
+			return velocity_vector;
+		}
+
 		public virtual Vector3 calculate_wall_jump_leap(
 			ref Vector3 velocity_vector, int jump_direction )
 		{
 			velocity_vector.z = -jump_direction * wall_jump_leap.z;
+			velocity_vector.y = wall_jump_leap.y;
+			return velocity_vector;
+		}
+		public virtual Vector3 calculate_wall_jump_leap(
+			ref Vector3 velocity_vector )
+		{
+			int jump_direction = calcualte_jump_direction();
+			velocity_vector.z = jump_direction * wall_jump_leap.z;
 			velocity_vector.y = wall_jump_leap.y;
 			return velocity_vector;
 		}
@@ -572,7 +774,7 @@ namespace chibi.motor.npc
 				{
 					calculate_falling_gravity( ref velocity_vector, Time.deltaTime );
 					doing_wall_jump_climp = false;
-					stop_to_ignore_input();
+					//stop_to_ignore_input();
 				}
 			}
 		}
@@ -593,7 +795,6 @@ namespace chibi.motor.npc
 				else
 				{
 					calculate_falling_gravity( ref velocity_vector, delta_time );
-					stop_to_ignore_input();
 				}
 			}
 		}
@@ -693,6 +894,11 @@ namespace chibi.motor.npc
 		public virtual bool should_calcutate_gravity_in_slope( Vector3 velocity_vector )
 		{
 			return -0.001 > velocity_vector.z && velocity_vector.z > 0.01f;
+		}
+
+		public virtual bool calcualte_want_to_move( Vector3 desire_direction )
+		{
+			return desire_direction.z > 0.01 || desire_direction.z < -0.01;
 		}
 	}
 }
