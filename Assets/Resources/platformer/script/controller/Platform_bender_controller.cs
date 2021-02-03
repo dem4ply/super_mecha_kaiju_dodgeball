@@ -1,6 +1,7 @@
 using UnityEngine;
 using chibi.controller.npc;
 using System.Collections.Generic;
+using platformer.motor.platform;
 
 namespace platformer.controller.platform
 {
@@ -9,11 +10,11 @@ namespace platformer.controller.platform
 		public Transform default_vertical_position;
 		public Transform default_horizontal_position;
 
-		public GameObject vertical_platform;
-		public GameObject horizontal_platform;
+		public Platform_motor vertical_platform;
+		public Platform_motor horizontal_platform;
 
 		public float size_of_the_delta_time = 0.1f;
-		public int steps = 10;
+		public int steps = 3;
 
 		public chibi.motor.npc.Motor_side_scroll motor;
 
@@ -105,21 +106,46 @@ namespace platformer.controller.platform
 					instanciate_vertical_platform( position );
 				}
 			}
+			else
+			{
+				debug.info( "no vertical spwan" );
+			}
 		}
 
 		public void spawn_horizontal()
 		{
 			debug.info( "spawn horizontal" );
+			if ( motor.is_not_grounded )
+			{
+				if ( motor.is_not_walled )
+				{
+					var position = postion_when_is_in_air();
+					instanciate_horizontal_platform( position );
+				}
+				else
+				{
+					var position = position_when_wall_jump();
+					instanciate_horizontal_platform( position );
+				}
+			}
+			else
+			{
+				debug.info( "no horizontal spwan" );
+			}
 		}
 
 		public void instanciate_vertical_platform( Vector3 position )
 		{
-			helper.instantiate._( vertical_platform, position );
+			var platform = helper.instantiate._<Platform_motor>(
+				vertical_platform, position );
+			platform.owner = motor.gameObject;
 		}
 
 		public void instanciate_horizontal_platform( Vector3 position )
 		{
-			helper.instantiate._( horizontal_platform, position );
+			var platform = helper.instantiate._<Platform_motor>(
+				horizontal_platform, position );
+			platform.owner = motor.gameObject;
 		}
 
 		protected override void _init_cache()
