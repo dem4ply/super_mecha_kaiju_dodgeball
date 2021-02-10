@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using chibi.controller;
+using UnityEngine.InputSystem;
+
 
 namespace chibi.joystick
 {
@@ -29,6 +31,15 @@ namespace chibi.joystick
 			desire_direction.update();
 		}
 		#endregion
+
+		public void on_move( InputAction.CallbackContext context )
+		{
+			controller.desire_direction = context.ReadValue<Vector2>();
+			if ( 0.1f < controller.desire_direction.magnitude )
+				controller.speed = 1f;
+			else
+				controller.speed = 0f;
+		}
 
 		#region funciones protegdas
 		protected void Update()

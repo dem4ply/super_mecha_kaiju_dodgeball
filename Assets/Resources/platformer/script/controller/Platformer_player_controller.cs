@@ -2,6 +2,7 @@ using UnityEngine;
 using chibi.controller.npc;
 using System.Collections.Generic;
 using platformer.controller.platform;
+using UnityEngine.InputSystem;
 
 namespace platformer.controller.player
 {
@@ -192,6 +193,47 @@ namespace platformer.controller.player
 					//platform_blender.desire_direction = direction;
 					break;
 			}
+		}
+
+		public void on_move( InputAction.CallbackContext context )
+		{
+			var vector = context.ReadValue<Vector2>();
+			desire_direction = new Vector3( vector.y, 0, vector.x );
+			if ( vector.magnitude > 0.1f )
+				speed = player.max_speed;
+			else
+				speed = 0f;
+		}
+
+		public void on_jump( InputAction.CallbackContext context )
+		{
+			if ( context.started )
+			{
+				player.jump();
+				if ( buffer_jump )
+					buffer_action( "jump", chibi.joystick.events.down );
+				else
+					player.jump();
+			}
+			else if ( context.canceled )
+			{
+				if ( buffer_jump )
+					buffer_action( "jump", chibi.joystick.events.up );
+				else
+					player.stop_jump();
+			}
+		}
+
+		public void on_horizontal_spawn( InputAction.CallbackContext context )
+		{
+			if ( context.started )
+				platform_blender.spawn_horizontal();
+		}
+
+		public void on_vertical_spawn( InputAction.CallbackContext context )
+		{
+			if ( context.started )
+				platform_blender.spawn_vertical();
 		}
 	}
 }
