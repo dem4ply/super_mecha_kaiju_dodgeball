@@ -18,7 +18,6 @@ public class Textinput : MonoBehaviour
 		input = gameObject.GetComponent<InputField>();
 		se = new InputField.SubmitEvent();
 		se.AddListener( SubmitInput );
-		input.onEndEdit = se;
 
 	}
 
