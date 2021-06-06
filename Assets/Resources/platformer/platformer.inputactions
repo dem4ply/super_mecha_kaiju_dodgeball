@@ -69,7 +69,7 @@
                 {
                     "name": "ESDF",
                     "id": "00ca640b-d935-4593-8157-c05846ea39b3",
-                    "path": "Dpad",
+                    "path": "Dpad(mode=1)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -299,6 +299,17 @@
                 },
                 {
                     "name": "",
+                    "id": "90aa3a88-d3a4-4452-8ad0-a7bcee6a86ed",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9a72561f-377f-4926-99f9-a910b9b821bf",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
@@ -321,6 +332,17 @@
                 },
                 {
                     "name": "",
+                    "id": "d8dc753b-be13-41af-af45-6df9f8543a27",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "spawn_horizontal_platformer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d371f898-a651-49e8-b6a5-13e32d181c06",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
@@ -337,6 +359,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "spawn_vertical_platformer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "880d6f7f-e93a-459c-ab21-9cb0c76328f5",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "spawn_vertical_platformer",
                     "isComposite": false,
                     "isPartOfComposite": false

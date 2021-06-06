@@ -209,7 +209,6 @@ namespace platformer.controller.player
 		{
 			if ( context.started )
 			{
-				player.jump();
 				if ( buffer_jump )
 					buffer_action( "jump", chibi.joystick.events.down );
 				else
