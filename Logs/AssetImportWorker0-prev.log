@@ -1,0 +1,413 @@
+Using pre-set license
+
+ COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/2021.1.10f1/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/Users/cesargarcia/Documents/GitHub/super_mecha_kaiju_dodgeball
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+49471
+Successfully changed project path to: /Users/cesargarcia/Documents/GitHub/super_mecha_kaiju_dodgeball
+/Users/cesargarcia/Documents/GitHub/super_mecha_kaiju_dodgeball
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 83.48 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.1.10f1 (b15f561b2cef)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2021.1.10f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/cesargarcia/Documents/GitHub/super_mecha_kaiju_dodgeball/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+2021-06-20 02:30:27.015 Unity[2048:79914] Color LCD preferred device: Intel(R) Iris(TM) Plus Graphics 645 (low power)
+2021-06-20 02:30:27.015 Unity[2048:79914] Metal devices available: 1
+2021-06-20 02:30:27.016 Unity[2048:79914] 0: Intel(R) Iris(TM) Plus Graphics 645 (low power)
+2021-06-20 02:30:27.017 Unity[2048:79914] Using device Intel(R) Iris(TM) Plus Graphics 645 (low power)
+Initializing Metal device caps: Intel(R) Iris(TM) Plus Graphics 645
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/2021.1.10f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/2021.1.10f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = '/Applications/Unity/Hub/Editor/2021.1.10f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56048
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/2021.1.10f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/2021.1.10f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Registered in 0.003359 seconds.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 75.38 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.919 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3919ms)
+		BeginReloadAssembly (62ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (620ms)
+			LoadAssemblies (62ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (261ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (42ms)
+			SetupLoadedEditorAssemblies (262ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (8ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (75ms)
+				BeforeProcessingInitializeOnLoad (2ms)
+				ProcessInitializeOnLoadAttributes (141ms)
+				ProcessInitializeOnLoadMethodAttributes (36ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.014652 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 77.32 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.Reflection.ReflectionTypeLoadException: Exception of type 'System.Reflection.ReflectionTypeLoadException' was thrown.
+  at (wrapper managed-to-native) System.Reflection.Assembly.GetTypes(System.Reflection.Assembly,bool)
+  at System.Reflection.Assembly.GetTypes () [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at AssetIcons.Editors.AssetIconTools.BuildIconDatabase () [0x0001b] in /Users/cesargarcia/Documents/GitHub/super_mecha_kaiju_dodgeball/Assets/Store/AssetIcons/Scripts/Editor/AssetIconTools.cs:248 
+  at AssetIcons.Editors.AssetIconTools..cctor () [0x00029] in /Users/cesargarcia/Documents/GitHub/super_mecha_kaiju_dodgeball/Assets/Store/AssetIcons/Scripts/Editor/AssetIconTools.cs:84 
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/buildslave/unity/build/Editor/Mono/EditorAssemblies.cs:138)
+
+(Filename: /Users/bokken/buildslave/unity/build/Editor/Mono/EditorAssemblies.cs Line: 138)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.449 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2450ms)
+		BeginReloadAssembly (191ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (41ms)
+		EndReloadAssembly (2183ms)
+			LoadAssemblies (146ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (478ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (90ms)
+			SetupLoadedEditorAssemblies (1326ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (77ms)
+				BeforeProcessingInitializeOnLoad (60ms)
+				ProcessInitializeOnLoadAttributes (1143ms)
+				ProcessInitializeOnLoadMethodAttributes (39ms)
+				AfterProcessingInitializeOnLoad (1ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launching external process: /Applications/Unity/Hub/Editor/2021.1.10f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.99 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2785 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 214.2 MB.
+System memory in use after: 214.4 MB.
+
+Unloading 61 unused Assets to reduce memory usage. Loaded Objects now: 3209.
+Total: 5.829325 ms (FindLiveObjects: 0.217481 ms CreateObjectMapping: 0.111257 ms MarkObjects: 5.422606 ms  DeleteObjects: 0.077065 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: b23960f63f64bdc6ff669e2cdcee2391 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Resources/platformer/scene/prueba de saltos 1.unity
+  artifactKey: Guid(612f4da93586a493a8bbe01a3e170335) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/platformer/scene/prueba de saltos 1.unity using Guid(612f4da93586a493a8bbe01a3e170335) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b9cb73b21dc9ca32321c73dfe58da3a') in 0.013482 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 31.632156 seconds.
+  path: Assets/Resources/platformer/scene/test level.unity
+  artifactKey: Guid(d02b0762240bf3749a2577ac8cf24120) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/platformer/scene/test level.unity using Guid(d02b0762240bf3749a2577ac8cf24120) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9cc0f1d06bd5ec14ebd11f08476fc33') in 0.002141 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010040 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.11 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.Reflection.ReflectionTypeLoadException: Exception of type 'System.Reflection.ReflectionTypeLoadException' was thrown.
+  at (wrapper managed-to-native) System.Reflection.Assembly.GetTypes(System.Reflection.Assembly,bool)
+  at System.Reflection.Assembly.GetTypes () [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at AssetIcons.Editors.AssetIconTools.BuildIconDatabase () [0x0001b] in /Users/cesargarcia/Documents/GitHub/super_mecha_kaiju_dodgeball/Assets/Store/AssetIcons/Scripts/Editor/AssetIconTools.cs:248 
+  at AssetIcons.Editors.AssetIconTools..cctor () [0x00029] in /Users/cesargarcia/Documents/GitHub/super_mecha_kaiju_dodgeball/Assets/Store/AssetIcons/Scripts/Editor/AssetIconTools.cs:84 
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/buildslave/unity/build/Editor/Mono/EditorAssemblies.cs:138)
+
+(Filename: /Users/bokken/buildslave/unity/build/Editor/Mono/EditorAssemblies.cs Line: 138)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.451 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2451ms)
+		BeginReloadAssembly (345ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (16ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (5ms)
+			CreateAndSetChildDomain (219ms)
+		EndReloadAssembly (2020ms)
+			LoadAssemblies (145ms)
+			RebuildTransferFunctionScriptingTraits (1ms)
+			SetupTypeCache (484ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (64ms)
+			SetupLoadedEditorAssemblies (1173ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (43ms)
+				ProcessInitializeOnLoadAttributes (1080ms)
+				ProcessInitializeOnLoadMethodAttributes (39ms)
+				AfterProcessingInitializeOnLoad (1ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (10ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.28 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2754 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 213.7 MB.
+System memory in use after: 214.0 MB.
+
+Unloading 50 unused Assets to reduce memory usage. Loaded Objects now: 3212.
+Total: 6.152546 ms (FindLiveObjects: 0.329578 ms CreateObjectMapping: 0.133518 ms MarkObjects: 5.636438 ms  DeleteObjects: 0.051000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: b23960f63f64bdc6ff669e2cdcee2391 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 66233.971628 seconds.
+  path: Assets/Resources/platformer/scene/test level.unity
+  artifactKey: Guid(d02b0762240bf3749a2577ac8cf24120) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/platformer/scene/test level.unity using Guid(d02b0762240bf3749a2577ac8cf24120) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40899352c96be4e3870ca14e0df6405c') in 0.015308 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.018136 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.07 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.Reflection.ReflectionTypeLoadException: Exception of type 'System.Reflection.ReflectionTypeLoadException' was thrown.
+  at (wrapper managed-to-native) System.Reflection.Assembly.GetTypes(System.Reflection.Assembly,bool)
+  at System.Reflection.Assembly.GetTypes () [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at AssetIcons.Editors.AssetIconTools.BuildIconDatabase () [0x0001b] in /Users/cesargarcia/Documents/GitHub/super_mecha_kaiju_dodgeball/Assets/Store/AssetIcons/Scripts/Editor/AssetIconTools.cs:248 
+  at AssetIcons.Editors.AssetIconTools..cctor () [0x00029] in /Users/cesargarcia/Documents/GitHub/super_mecha_kaiju_dodgeball/Assets/Store/AssetIcons/Scripts/Editor/AssetIconTools.cs:84 
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/buildslave/unity/build/Editor/Mono/EditorAssemblies.cs:138)
+
+(Filename: /Users/bokken/buildslave/unity/build/Editor/Mono/EditorAssemblies.cs Line: 138)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.313 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2313ms)
+		BeginReloadAssembly (270ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (16ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (161ms)
+		EndReloadAssembly (1962ms)
+			LoadAssemblies (137ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (464ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (63ms)
+			SetupLoadedEditorAssemblies (1140ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (44ms)
+				ProcessInitializeOnLoadAttributes (1047ms)
+				ProcessInitializeOnLoadMethodAttributes (39ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.02 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2754 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 214.0 MB.
+System memory in use after: 214.3 MB.
+
+Unloading 50 unused Assets to reduce memory usage. Loaded Objects now: 3215.
+Total: 6.307243 ms (FindLiveObjects: 0.271491 ms CreateObjectMapping: 0.112505 ms MarkObjects: 5.871054 ms  DeleteObjects: 0.051129 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: b23960f63f64bdc6ff669e2cdcee2391 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 228.247813 seconds.
+  path: Assets/Resources/platformer/scene/test level.unity
+  artifactKey: Guid(d02b0762240bf3749a2577ac8cf24120) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/platformer/scene/test level.unity using Guid(d02b0762240bf3749a2577ac8cf24120) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c204f40e86784e8780b5b85a6bd28bf1') in 0.015105 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.464709 seconds.
+  path: Assets/Resources/platformer/prefab/npc/player.prefab
+  artifactKey: Guid(868ac85dbc2aab0a6b81927936d55cf8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/platformer/prefab/npc/player.prefab using Guid(868ac85dbc2aab0a6b81927936d55cf8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '081956f4c83af468ec4e60a82d2b55ff') in 1.985765 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000211 seconds.
+  path: Assets/Resources/platformer/prefab/npc/player_npc.prefab
+  artifactKey: Guid(19765fbb7547f4342ab4d3ee7b6f1346) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/platformer/prefab/npc/player_npc.prefab using Guid(19765fbb7547f4342ab4d3ee7b6f1346) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2660cb3306af5f228a639dc4741dd055') in 0.088295 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000251 seconds.
+  path: Assets/Resources/platformer/prefab/platforms/wagon.prefab
+  artifactKey: Guid(547e9191bd2e80f4292e861997cb8722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/platformer/prefab/platforms/wagon.prefab using Guid(547e9191bd2e80f4292e861997cb8722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '374cf7ef68c92dc39960db8dc1e2a9e9') in 0.036347 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000310 seconds.
+  path: Assets/Resources/platformer/prefab/platforms/platform bender horizontal.prefab
+  artifactKey: Guid(898c3c03364d21b4a96e709d6f87376e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/platformer/prefab/platforms/platform bender horizontal.prefab using Guid(898c3c03364d21b4a96e709d6f87376e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d6cecfe9bc23acbc9960b19f7f245dd') in 0.016977 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000231 seconds.
+  path: Assets/Resources/platformer/prefab/platforms/platform bender vertical.prefab
+  artifactKey: Guid(a03ae8c4d94dc744b9d433bc4e3c7731) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/platformer/prefab/platforms/platform bender vertical.prefab using Guid(a03ae8c4d94dc744b9d433bc4e3c7731) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b1ec685f9da5236ff2cf8f70369524da') in 0.008879 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000230 seconds.
+  path: Assets/Resources/platformer/prefab/platforms/platform base.prefab
+  artifactKey: Guid(ca59b904ef4caef4e9949a05ca799bf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/platformer/prefab/platforms/platform base.prefab using Guid(ca59b904ef4caef4e9949a05ca799bf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b39ae6372e5333a742af292ce54321e') in 0.019169 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011545 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.10 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+System.Reflection.ReflectionTypeLoadException: Exception of type 'System.Reflection.ReflectionTypeLoadException' was thrown.
+  at (wrapper managed-to-native) System.Reflection.Assembly.GetTypes(System.Reflection.Assembly,bool)
+  at System.Reflection.Assembly.GetTypes () [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at AssetIcons.Editors.AssetIconTools.BuildIconDatabase () [0x0001b] in /Users/cesargarcia/Documents/GitHub/super_mecha_kaiju_dodgeball/Assets/Store/AssetIcons/Scripts/Editor/AssetIconTools.cs:248 
+  at AssetIcons.Editors.AssetIconTools..cctor () [0x00029] in /Users/cesargarcia/Documents/GitHub/super_mecha_kaiju_dodgeball/Assets/Store/AssetIcons/Scripts/Editor/AssetIconTools.cs:84 
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[]) (at /Users/bokken/buildslave/unity/build/Editor/Mono/EditorAssemblies.cs:138)
+
+(Filename: /Users/bokken/buildslave/unity/build/Editor/Mono/EditorAssemblies.cs Line: 138)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.373 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2374ms)
+		BeginReloadAssembly (284ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (18ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (175ms)
+		EndReloadAssembly (2005ms)
+			LoadAssemblies (143ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (490ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (67ms)
+			SetupLoadedEditorAssemblies (1142ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (46ms)
+				ProcessInitializeOnLoadAttributes (1049ms)
+				ProcessInitializeOnLoadMethodAttributes (36ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.03 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2754 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 237.8 MB.
+System memory in use after: 238.0 MB.
+
+Unloading 50 unused Assets to reduce memory usage. Loaded Objects now: 3227.
+Total: 5.949230 ms (FindLiveObjects: 0.265178 ms CreateObjectMapping: 0.118910 ms MarkObjects: 5.505816 ms  DeleteObjects: 0.058291 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: b23960f63f64bdc6ff669e2cdcee2391 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
