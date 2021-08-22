@@ -264,7 +264,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: New Float
+  - m_Name: vertical
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -274,7 +274,7 @@ AnimatorController:
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
+    m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: is_walled
     m_Type: 4
@@ -713,9 +713,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.7692307
+  m_TransitionDuration: 0.75167215
+  m_TransitionOffset: 0.2744788
+  m_ExitTime: 0.6588856
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
