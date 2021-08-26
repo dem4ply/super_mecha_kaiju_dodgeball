@@ -62,3 +62,5 @@ $RECYCLE.BIN/
 *.lnk
 Packages
 *.log
+Logs/shadercompiler-AssetImportWorker0.log
+Logs/AssetImportWorker0.log
