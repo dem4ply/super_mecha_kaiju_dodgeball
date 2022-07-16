@@ -356,5 +356,6 @@ namespace tactic.board
 			if ( !box )
 				debug.error( "no se encontro un box collider" );
 		}
+
 	}
 }
