@@ -14,6 +14,12 @@ namespace chibi.rol_sheet
 		protected List<Buff_attacher> buffos_are_going_to_remove;
 		public chibi.tool.reference.Stat_reference hp;
 
+
+#if UNITY_EDITOR
+		[HideInInspector]
+		public bool show_attributes_editor = false;
+ #endif
+
 		public void attach_buff( Buff buff )
 		{
 			Buff_attacher buff_attacher;
