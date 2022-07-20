@@ -14,11 +14,25 @@ namespace chibi.rol_sheet
 		protected List<Buff_attacher> buffos_are_going_to_remove;
 		public chibi.tool.reference.Stat_reference hp;
 
+		public chibi.rol_sheet.rpg.Attributes attributes;
+
 
 #if UNITY_EDITOR
 		[HideInInspector]
 		public bool show_attributes_editor = false;
  #endif
+
+		public chibi.damage.motor.HP_engine hp_engine
+		{
+			get {
+				var hp_engine = GetComponent<chibi.damage.motor.HP_engine>();
+				if ( !hp_engine )
+				{
+					debug.error( "no tiene hp_engine" );
+				}
+				return hp_engine;
+			}
+		}
 
 		public void attach_buff( Buff buff )
 		{

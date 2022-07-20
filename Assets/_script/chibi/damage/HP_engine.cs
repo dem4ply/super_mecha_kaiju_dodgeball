@@ -82,7 +82,19 @@ namespace chibi.damage
 
 			public virtual void take_damage( Damage damage )
 			{
-				stat.current -= damage.amount;
+				take_damage( damage.damage, (int)damage.amount, damage.owner );
+			}
+
+			public virtual void take_damage(
+				damage.Damage damage, int amount, rol_sheet.Rol_sheet owner )
+			{
+				debug.info( "recibio {0} danno de parte de {1}", amount, owner );
+				if ( is_dead )
+				{
+					debug.info( "ya estaba muerto, ignorando logica de danno" );
+					return;
+				}
+				stat.current -= amount;
 				if ( is_dead )
 				{
 					died( true );
@@ -103,9 +115,9 @@ namespace chibi.damage
 					on_died();
 				else
 				{
-					Debug.Log( string.Format(
-						"[HP_engine] murio: '{0}'",
-						helper.game_object.name.full( this ) ) );
+					debug.log(
+						"murio, {0}",
+						helper.game_object.name.full( this ) );
 				}
 			}
 		}

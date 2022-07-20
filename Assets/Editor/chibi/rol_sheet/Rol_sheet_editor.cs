@@ -33,6 +33,7 @@ namespace chibi.editor.rol_sheet
 			//EditorGUILayout.BeginHorizontal();
 			//EditorGUILayout.EndHorizontal();
 
+			/*
 			rol_sheet.show_attributes_editor = EditorGUILayout.Foldout(
 				rol_sheet.show_attributes_editor, "Attributos", true );
 			if ( rol_sheet.show_attributes_editor )
@@ -42,6 +43,7 @@ namespace chibi.editor.rol_sheet
 				EditorGUILayout.IntField( "Percepcion", 10 );
 				EditorGUILayout.IntField( "Inteligencia", 10 );
 			}
+			*/
 		}
 
 		protected override string[] ignore_properties()
