@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: edd51f298e7994c498b99bd24c098f52
 ModelImporter:
-  serializedVersion: 23
+  serializedVersion: 19
   fileIDToRecycleName:
     100000: Character1_Head
     100002: Character1_Hips
@@ -145,6 +145,34 @@ ModelImporter:
     100278: J_R_SusoSide_00
     100280: J_R_SusoSide_01
     100282: //RootNode
+    100284: ambientLight1
+    100286: ambientLight2
+    100288: BLW_DEF
+    100290: button
+    100292: Character1_Ctrl_Reference
+    100294: cheek
+    100296: EL_DEF
+    100298: eye_base_old
+    100300: EYE_DEF
+    100302: eye_L_old
+    100304: eye_R_old
+    100306: hair_accce
+    100308: hair_front
+    100310: hair_frontside
+    100312: hairband
+    100314: head_back
+    100316: kutu
+    100318: mesh_root
+    100320: MTH_DEF
+    100322: Shirts
+    100324: shirts_sode
+    100326: shirts_sode_BK
+    100328: skin
+    100330: tail
+    100332: tail_bottom
+    100334: uwagi
+    100336: uwagi_BK
+    100338: uwagi_perker
     400000: Character1_Head
     400002: Character1_Hips
     400004: Character1_LeftArm
@@ -287,57 +315,126 @@ ModelImporter:
     400278: J_R_SusoSide_00
     400280: J_R_SusoSide_01
     400282: //RootNode
-    7400000: POSE13
-    7400002: POSE14
-    7400004: POSE15
-    7400006: POSE16
-    7400008: POSE17
+    400284: ambientLight1
+    400286: ambientLight2
+    400288: BLW_DEF
+    400290: button
+    400292: Character1_Ctrl_Reference
+    400294: cheek
+    400296: EL_DEF
+    400298: eye_base_old
+    400300: EYE_DEF
+    400302: eye_L_old
+    400304: eye_R_old
+    400306: hair_accce
+    400308: hair_front
+    400310: hair_frontside
+    400312: hairband
+    400314: head_back
+    400316: kutu
+    400318: mesh_root
+    400320: MTH_DEF
+    400322: Shirts
+    400324: shirts_sode
+    400326: shirts_sode_BK
+    400328: skin
+    400330: tail
+    400332: tail_bottom
+    400334: uwagi
+    400336: uwagi_BK
+    400338: uwagi_perker
+    2300000: eye_base_old
+    2300002: eye_L_old
+    2300004: eye_R_old
+    2300006: head_back
+    3300000: eye_base_old
+    3300002: eye_L_old
+    3300004: eye_R_old
+    3300006: head_back
+    4300000: head_back
+    4300002: eye_base_old
+    4300004: eye_L_old
+    4300006: eye_R_old
+    4300008: MTH_DEF
+    4300010: EYE_DEF
+    4300012: EL_DEF
+    4300014: BLW_DEF
+    4300016: tail
+    4300018: hair_frontside
+    4300020: hair_front
+    4300022: tail_bottom
+    4300024: hair_accce
+    4300026: skin
+    4300028: kutu
+    4300030: uwagi
+    4300032: uwagi_BK
+    4300034: uwagi_perker
+    4300036: Shirts
+    4300038: shirts_sode
+    4300040: shirts_sode_BK
+    4300042: button
+    4300044: hairband
+    4300046: cheek
+    7400000: POSE23
+    7400002: POSE24
+    7400004: POSE25
+    7400006: POSE26
+    7400008: POSE27
     7400010: POSE18
     7400012: POSE19
     7400014: POSE20
     7400016: POSE21
     7400018: POSE22
-    7400020: POSE23
-    7400022: POSE24
-    7400024: POSE25
-    7400026: POSE26
-    7400028: POSE27
+    7400020: POSE13
+    7400022: POSE14
+    7400024: POSE15
+    7400026: POSE16
+    7400028: POSE17
     7400030: POSE28
     7400032: POSE29
     7400034: POSE30
     7400036: POSE31
     9500000: //RootNode
-    2186277476908879412: ImportLogs
-  externalObjects: {}
+    13700000: BLW_DEF
+    13700002: button
+    13700004: cheek
+    13700006: EL_DEF
+    13700008: EYE_DEF
+    13700010: hair_accce
+    13700012: hair_front
+    13700014: hair_frontside
+    13700016: hairband
+    13700018: kutu
+    13700020: MTH_DEF
+    13700022: Shirts
+    13700024: shirts_sode
+    13700026: shirts_sode_BK
+    13700028: skin
+    13700030: tail
+    13700032: tail_bottom
+    13700034: uwagi
+    13700036: uwagi_BK
+    13700038: uwagi_perker
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
-      improve retargeting quality.\n\t'Character1_Spine' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 0
-    importConstraints: 0
     animationCompression: 0
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: POSE13
@@ -6273,34 +6370,22 @@ ModelImporter:
     globalScale: 0.01
     meshCompression: 0
     addColliders: 0
-    useSRGBMaterialColor: 1
-    importVisibility: 0
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
-    preserveHierarchy: 0
-    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 0
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 1
     tangentImportMode: 4
-    normalCalculationMode: 0
-    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
-    blendShapeNormalImportMode: 1
-    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -7584,6 +7669,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: Character1_Reference
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
