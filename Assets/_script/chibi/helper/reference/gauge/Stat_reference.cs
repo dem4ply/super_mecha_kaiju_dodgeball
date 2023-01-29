@@ -50,5 +50,12 @@ namespace chibi.tool.reference
 					variable.max = value;
 			}
 		}
+
+		public float ratio
+		{
+			get {
+				return current / max;
+			}
+		}
 	}
 }

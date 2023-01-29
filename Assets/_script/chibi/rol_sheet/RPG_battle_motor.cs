@@ -18,12 +18,19 @@ namespace chibi.rol_sheet.motor
 			prepare_equipment();
 		}
 
+		public inventory.item.Weapon attack_weapon
+		{
+			get {
+				return equipment.right_arm;
+			}
+		}
+
 		public List<Damage_struct> get_attack_damage()
 		{
 			List<Damage_struct> result = new List<Damage_struct>();
 			List<Damage_struct> damages;
 
-			var weapon = equipment.right_arm;
+			var weapon = attack_weapon;
 			if ( weapon.damages == null || weapon.damages.Count == 0 )
 			{
 				debug.log( "weapon {0} no tiene damages usando default", weapon );
@@ -53,7 +60,7 @@ namespace chibi.rol_sheet.motor
 			return result;
 		}
 
-		public void take_damage( List<Damage_struct> damages )
+		public virtual void take_damage( List<Damage_struct> damages )
 		{
 			var hp_engine = rol_sheet.hp_engine;
 			foreach ( var damage_struct in damages )
@@ -70,7 +77,7 @@ namespace chibi.rol_sheet.motor
 			{
 				debug.warning(
 					"no tiene asignado el rol_sheet, se buscara en el padre "
-					+ "gameobject uno" );
+					+ "{0}", transform.parent );
 				rol_sheet = transform.parent.GetComponent< Rol_sheet >();
 			}
 			if ( !rol_sheet )
@@ -85,7 +92,7 @@ namespace chibi.rol_sheet.motor
 			{
 				debug.warning(
 					"no tiene asignado el equipment, se buscara en el padre "
-					+ "gameobject uno" );
+					+ "{0}", transform.parent );
 				equipment = transform.parent.GetComponentInChildren< Equipment >();
 			}
 			if ( !equipment )
