@@ -18,7 +18,9 @@ namespace tactic.grid.obj
 		public Vector3 origin;
 		public TextMesh[,] debug_text;
 
-		public Grid( int width, int height, float size, Vector3 origin )
+		public Grid(
+			int width, int height, float size, Vector3 origin,
+			System.Func<Grid<T>, int, int, T > create_grid_object )
 		{
 			this.width = width;
 			this.height = height;
@@ -27,7 +29,15 @@ namespace tactic.grid.obj
 
 			grid = new T[ width, height ];
 			debug_text = new TextMesh[ width, height ];
+			for ( int x = 0; x < width; ++x )
+				for ( int y = 0; y < height; ++y )
+					grid[ x, y ] = create_grid_object( this, x, y );
 
+			show_debug();
+		}
+
+		public virtual void show_debug()
+		{
 			var rotation = Quaternion.Euler( 90f, 0, 0 );
 			var position_w = get_world_position( width, 0 );
 			var position_h = get_world_position( 0, height );
@@ -38,12 +48,13 @@ namespace tactic.grid.obj
 			// linea horizontal final
 			Debug.DrawLine( position_h, position_y_1, Color.white, 100f );
 			for ( int x = 0; x < width; ++x )
-				for ( int y = 0; y < width; ++y )
+				for ( int y = 0; y < height; ++y )
 				{
 					debug_text[ x, y ] = helper.text._(
 						build_debug_text( x, y ), null,
 						get_world_position( x, y ) + new Vector3( size, 0, size ) * 0.5f,
-						rotation );
+						rotation, anchor:TextAnchor.MiddleCenter );
+
 					var position = get_world_position( x, y );
 					position_x_1 = get_world_position( x + 1, y );
 					position_y_1 = get_world_position( x, y + 1 );
@@ -53,17 +64,17 @@ namespace tactic.grid.obj
 				}
 		}
 
-		public string build_debug_text( int x, int y )
+		public virtual string build_debug_text( int x, int y )
 		{
 			return string.Format( "{0}, {1} = {2}", x, y, grid[ x, y ] );
 		}
 
-		public Vector3 get_world_position( int x, int y )
+		public virtual Vector3 get_world_position( int x, int y )
 		{
 			return new Vector3( x, 0, y ) * size + origin;
 		}
 
-		public void get_x_y_from_world( Vector3 vector, out int x, out int y )
+		public virtual void get_x_y_from_world( Vector3 vector, out int x, out int y )
 		{
 			x = Mathf.FloorToInt( ( vector.x - origin.x ) / size );
 			y = Mathf.FloorToInt( ( vector.z - origin.z ) / size );

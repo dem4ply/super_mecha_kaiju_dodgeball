@@ -29,7 +29,7 @@ namespace chibi.animator
 			set { animator.SetBool ( "is_walled", value ); }
 		}
 
-		public Vector3 direction
+		public virtual Vector3 direction
 		{
 			get {
 				var x = animator.GetFloat( "horizontal" );
@@ -37,7 +37,7 @@ namespace chibi.animator
 				return new Vector3( x, 0, z );
 			}
 			set {
-				var dir = new Vector3( value.x, value.z, 0 );
+				var dir = new Vector3( value.x, value.y, 0 );
 				animator.SetFloat( "horizontal", dir.x );
 				animator.SetFloat( "vertical", dir.y );
 			}

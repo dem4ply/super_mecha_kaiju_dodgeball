@@ -10,6 +10,13 @@
 					return "__stuff";
 				}
 			}
+
+			public static string main_camera
+			{
+				get {
+					return "Main Camera";
+				}
+			}
 		}
 	}
 }

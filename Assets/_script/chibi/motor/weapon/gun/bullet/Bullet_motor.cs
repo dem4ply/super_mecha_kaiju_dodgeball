@@ -6,7 +6,7 @@ using chibi.pomodoro;
 
 namespace chibi.motor.weapons.gun.bullet
 {
-	public class Bullet_motor : Motor_physical
+	public class Bullet_motor : Motor
 	{
 		public Ammo ammo;
 		public float life_span;
@@ -30,7 +30,8 @@ namespace chibi.motor.weapons.gun.bullet
 		{
 			__life_span = recicle_when_life_span_end();
 			StartCoroutine( __life_span );
-			StartCoroutine( "_disable_in" );
+			// esto solo funcionaria si el motor es de fisicas
+			//StartCoroutine( "_disable_in" );
 		}
 
 		protected virtual IEnumerator recicle_when_life_span_end()

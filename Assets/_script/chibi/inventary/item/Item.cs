@@ -23,5 +23,11 @@ namespace chibi.inventory.item
 		{
 			throw new System.NotImplementedException();
 		}
+
+		public virtual chibi.inventory.Item instantiate()
+		{
+			var gameobject_item = helper.instantiate.inactive._<chibi.inventory.Item>( prefab );
+			return gameobject_item;
+		}
 	}
 }

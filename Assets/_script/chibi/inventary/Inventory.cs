@@ -7,11 +7,14 @@ namespace chibi.inventory
 	public class Inventory : chibi.Chibi_behaviour
 	{
 		public Transform container;
+		public chibi.inventory.obj.Inventory inventory;
 		public Dictionary<item.Item, List<Item>> items;
 
 		public void add( item.Item item )
 		{
-			throw new System.NotImplementedException();
+			//throw new System.NotImplementedException();
+			var gameobject_item = item.instantiate();
+			add( gameobject_item );
 		}
 
 		public void add( Item item, int amount=-1 )
@@ -28,6 +31,7 @@ namespace chibi.inventory
 			}
 			if ( amount < 0 )
 			{
+				inventory.add( item.item, 1 );
 				list_items.Add( item );
 				add_single_item( item );
 			}
@@ -52,9 +56,7 @@ namespace chibi.inventory
 			base._init_cache();
 			items = new Dictionary<item.Item, List<Item>>();
 			if ( !container )
-				Debug.LogError( string.Format(
-					"no esta asignado el contenedor de los items en '{0}'",
-					helper.game_object.name.full( this ) ) );
+				debug.error( "no esta asignado el contenedor de los items" );
 		}
 	}
 }

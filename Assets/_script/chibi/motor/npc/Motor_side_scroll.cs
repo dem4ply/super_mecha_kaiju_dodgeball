@@ -62,7 +62,7 @@ namespace chibi.motor.npc
 		public override Vector3 desire_direction
 		{
 			set {
-				base.desire_direction = new Vector3( 0, 0, value.z );
+				base.desire_direction = new Vector3( 0, value.x, value.z );
 			}
 		}
 
@@ -490,7 +490,7 @@ namespace chibi.motor.npc
 			}
 			else
 				animator.is_walled = is_walled;
-			animator.direction = new Vector3( current_direction, 0, 0 );
+			animator.direction = new Vector3( current_direction, desire_direction.y, 0 );
 		}
 
 		protected virtual void calculate_ground_horizontal_velocity(

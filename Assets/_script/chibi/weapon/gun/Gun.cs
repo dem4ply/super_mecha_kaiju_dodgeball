@@ -97,10 +97,20 @@ namespace chibi.weapon.gun
 		}
 
 		public abstract Controller_bullet shot();
+		public abstract Controller_bullet shot( Controller_bullet bullet );
+
 
 		public Controller_bullet shot( bool commit )
 		{
 			var bullet = shot();
+			if ( commit )
+				bullet.ready();
+			return bullet;
+		}
+
+		public Controller_bullet shot( Controller_bullet bullet, bool commit )
+		{
+			shot( bullet );
 			if ( commit )
 				bullet.ready();
 			return bullet;

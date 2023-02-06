@@ -41,7 +41,8 @@ namespace helper
 		/// </summary>
 		public static Vector2 axis {
 			get {
-				return new Vector2( axis_x, axis_y );
+				return UnityEngine.InputSystem.Mouse.current.position.ReadValue();
+				//return new Vector2( axis_x, axis_y );
 			}
 		}
 
@@ -74,13 +75,16 @@ namespace helper
 
 		public static bool LB_down{
 			get{
-				return Input.GetMouseButtonDown(0);
+				return UnityEngine.InputSystem.Mouse.current.leftButton.wasPressedThisFrame;
+				//return UnityEngine.InputSystem.Mouse.current.leftButton.isPressed;
+				//return Input.GetMouseButtonDown(0);
 			}
 		}
 		
 		public static bool LB_up{
 			get{
-				return Input.GetMouseButtonUp(0);
+				return UnityEngine.InputSystem.Mouse.current.leftButton.wasReleasedThisFrame;
+				//return Input.GetMouseButtonUp(0);
 			}
 		}
 

@@ -52,6 +52,11 @@ namespace chibi.controller
 			//debug.log( "action '{0}' with the event '{1}'", name, e );
 		}
 
+		public virtual void debug_action( string name, string e )
+		{
+			debug.log( "action '{0}' with the event '{1}'", name, e );
+		}
+
 		public virtual void block()
 		{
 			is_block = false;

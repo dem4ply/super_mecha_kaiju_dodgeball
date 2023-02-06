@@ -6,60 +6,22 @@ using System.Linq;
 namespace chibi.inventory.obj
 {
 	[System.Serializable]
-	public class items_properties
-	{
-		[SerializeField]
-		public item.Item item;
-		public int amount = 0;
-
-		public int add_amount( int amount )
-		{
-			int max_amount_can_be_add = item.max_stack_amount - this.amount;
-			if ( amount > max_amount_can_be_add )
-			{
-				this.amount = item.max_stack_amount;
-				return amount - max_amount_can_be_add;
-			}
-			else
-			{
-				this.amount += amount;
-				return 0;
-			}
-		}
-
-		public int remove_amount( int amount )
-		{
-			int max_amount_can_be_add = this.amount;
-			if ( amount > this.amount )
-			{
-				var result = amount - this.amount;
-				this.amount = 0;
-				return result;
-			}
-			else
-			{
-				this.amount -= amount;
-				return 0;
-			}
-		}
-	}
-
-	[System.Serializable]
-	public class Inventory
+	public class Inventory : Inventory_base
 	{
 		public Dictionary<item.Item, List<items_properties>> items;
+		public List<items_properties> all_lists;
 
 		public Inventory()
 		{
 			items = new Dictionary<item.Item, List<items_properties>>();
 		}
 
-		public void add( item.Item item )
+		public override void add( item.Item item )
 		{
 			add( item, 1 );
 		}
 
-		public void add( item.Item item, int amount )
+		public override void add( item.Item item, int amount )
 		{
 			List<items_properties> stacks = new List<items_properties>();
 			if ( !items.TryGetValue( item, out stacks ) )
@@ -70,7 +32,7 @@ namespace chibi.inventory.obj
 			add_item_to_stack( item, stacks, amount );
 		}
 
-		public void remove( item.Item item, int amount )
+		public override void remove( item.Item item, int amount )
 		{
 			List<items_properties> stacks = new List<items_properties>();
 			if ( items.TryGetValue( item, out stacks ) )
@@ -79,7 +41,7 @@ namespace chibi.inventory.obj
 			}
 		}
 
-		protected items_properties build_item_property( item.Item item )
+		protected override items_properties build_item_property( item.Item item )
 		{
 			var item_prop = new items_properties();
 			item_prop.item = item;
@@ -109,6 +71,9 @@ namespace chibi.inventory.obj
 					break;
 				}
 			}
+
+			//all_lists = items.Values.ToList();
+			all_lists = this.stacks.ToList();
 		}
 
 		protected void remove_item_to_stack(
@@ -119,6 +84,8 @@ namespace chibi.inventory.obj
 				amount = stack.remove_amount( amount );
 			}
 			stacks.RemoveAll( ( stack ) => stack.amount < 1 );
+			//all_lists = items.Values.ToList();
+			all_lists = this.stacks.ToList();
 		}
 
 		public IEnumerable<items_properties> stacks

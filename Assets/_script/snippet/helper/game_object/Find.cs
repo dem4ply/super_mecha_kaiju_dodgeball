@@ -23,6 +23,22 @@ namespace helper
 				return null;
 			}
 
+			/// <summary>
+			/// busca un gameobject con el nombre en toda la escena
+			/// </summary>
+			/// <param name="name">nombre del gameobject</param>
+			/// <returns></returns>
+			public static GameObject _( string name )
+			{
+				return GameObject.Find( name );
+			}
+
+			public static T _<T>( string name )
+			{
+				var obj = _( name );
+				return obj.GetComponent<T>();
+			}
+
 			public static List<GameObject> regex( GameObject obj, string string_regex )
 			{
 				var r = new Regex( string_regex, RegexOptions.Compiled );

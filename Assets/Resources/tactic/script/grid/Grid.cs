@@ -14,7 +14,9 @@ namespace tactic.grid
 		protected override void _init_cache()
 		{
 			base._init_cache();
-			grid = new obj.Grid<bool>( 3, 3, 10, transform.position );
+			grid = new obj.Grid<bool>(
+				3, 3, 10, transform.position,
+				( obj.Grid<bool> g, int x, int y ) => true );
 
 			//grid[ 1, 1 ] = 33;
 		}
