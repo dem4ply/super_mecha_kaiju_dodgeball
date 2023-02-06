@@ -60,7 +60,11 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-Packages
+Packages/*
 *.log
 Logs/shadercompiler-AssetImportWorker0.log
 Logs/AssetImportWorker0.log
+
+UserSettings
+UserSettings/Layouts/default-2022.dwlt
+UserSettings/EditorUserSettings.asset

@@ -48,6 +48,7 @@ namespace danmaku.game_manager
 			player_reference.Value = new_player;
 			var hp = new_player.GetComponent<HP_engine>();
 			hp.on_died += on_player_died;
+			player_controller.enabled = true;
 			joystick.enabled = true;
 		}
 
@@ -55,6 +56,7 @@ namespace danmaku.game_manager
 		{
 			debug.log( "player murio" );
 			joystick.enabled = false;
+			player_controller.enabled = false;
 			__respawn_player = respawn_player();
 			StartCoroutine( __respawn_player );
 		}

@@ -14,7 +14,7 @@ namespace danmaku.controller.player
 			}
 			set
 			{
-				touha_controller.desire_direction = value;
+				touha_controller.desire_direction = new Vector3( value.z, value.y, value.x );
 			}
 		}
 

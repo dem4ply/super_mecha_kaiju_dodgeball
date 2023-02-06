@@ -77,7 +77,7 @@ namespace chibi.controller.steering
 			}
 			debug.draw.arrow( desire_direction, Color.black );
 			controller.desire_direction = desire_direction;
-			controller.speed = controller.max_speed * desire_speed;
+			//controller.speed = controller.max_speed * desire_speed;
 		}
 	}
 }

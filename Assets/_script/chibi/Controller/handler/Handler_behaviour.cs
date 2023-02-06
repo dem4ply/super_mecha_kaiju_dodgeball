@@ -17,6 +17,7 @@ namespace chibi.controller.handler
 			{
 				foreach ( var handler in handlers )
 				{
+					debug.log( "{0} afectando a {1}", handler, controller );
 					handler.action( controller );
 				}
 			}
