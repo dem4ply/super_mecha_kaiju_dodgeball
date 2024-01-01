@@ -17,8 +17,10 @@ namespace school.alchemist.main
 		public Element prefab_elements;
 
 		public List<Element> elements;
+		public Dictionary<string, Element> elements_by_symbol;
 
-		protected Regex re_elements = new Regex( @"[A-Z][a-z]?\d*" );
+		protected Regex re_elements_with_number = new Regex( @"[A-Z][a-z]?\d*" );
+		protected Regex re_elements = new Regex( @"[A-Z][a-z]?" );
 
 		protected override void _init_cache()
 		{
@@ -38,12 +40,14 @@ namespace school.alchemist.main
 
 				var _elements_list = JsonUtility.FromJson<Element_list>( file.text );
 				elements = new List<Element>();
+				elements_by_symbol = new Dictionary<string, Element>();
 				foreach ( var element in _elements_list.elements )
 				{
 					Element element_inst  = helper.instantiate.parent<Element>(
 						prefab_elements, element_grid );
 					element_inst.element = element;
 					elements.Add( element_inst );
+					elements_by_symbol.Add( element_inst.symbol, element_inst );
 				}
 			}
 		}
@@ -57,13 +61,34 @@ namespace school.alchemist.main
 		{
 			if ( string.IsNullOrEmpty( text ) )
 				text = molecule_text.text;
+			if ( string.IsNullOrEmpty( text ) )
+			{
+				show_all_elements();
+				return;
+			}
+
 			MatchCollection elements_find = re_elements.Matches( text );
-			List<string> elements = new List<string>();
+			hide_all_elements();
+			Element element;
 
 			foreach ( Match match in elements_find )
-				elements.Add( match.Value );
-			string str_elements = string.Join( ", ", elements );
-			debug.info( str_elements );
+			{
+				elements_by_symbol.TryGetValue( match.Value, out element );
+				if ( element )
+					element.show();
+			}
+		}
+
+		public void hide_all_elements()
+		{
+			foreach( Element element in elements )
+				element.hide();
+		}
+
+		public void show_all_elements()
+		{
+			foreach( Element element in elements )
+				element.show();
 		}
 	}
 }

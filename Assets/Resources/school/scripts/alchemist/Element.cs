@@ -8,18 +8,29 @@ using UnityEngine;
 
 namespace school.alchemist.elements
 {
-	public class Element: chibi.Chibi_behaviour
+	public class Element: chibi.Chibi_ui
 	{
-		public TMPro.TMP_Text name;
-		public TMPro.TMP_Text atomic_mass;
-		public TMPro.TMP_Text symbol;
-		public TMPro.TMP_Text number;
+		public TMPro.TMP_Text _name;
+		public TMPro.TMP_Text _atomic_mass;
+		public TMPro.TMP_Text _symbol;
+		public TMPro.TMP_Text _number;
 
 		protected Element_obj _element_obj;
+
+		public string name
+		{
+			get{ return element.name; }
+		}
+
+		public string symbol
+		{
+			get{ return element.symbol; }
+		}
 
 
 		public Element_obj element
 		{
+			get { return _element_obj; }
 			set
 			{
 				_element_obj = value;
@@ -29,38 +40,34 @@ namespace school.alchemist.elements
 
 		public void update_text()
 		{
-			name.text = _element_obj.name;
-			atomic_mass.text = _element_obj.atomic_mass.ToString();
-			symbol.text = _element_obj.symbol;
-			number.text = _element_obj.number.ToString();
+			_name.text = _element_obj.name;
+			_atomic_mass.text = _element_obj.atomic_mass.ToString();
+			_symbol.text = _element_obj.symbol;
+			_number.text = _element_obj.number.ToString();
 		}
 
 		protected override void _init_cache()
 		{
 			base._init_cache();
-			if ( !name )
+			if ( !_name )
 			{
 				debug.error( "el text de name no fue asignado" );
 			}
 
-			if ( !atomic_mass)
+			if ( !_atomic_mass)
 			{
 				debug.error( "el text de atomic_mass no fue asignado" );
 			}
 
-			if ( !symbol )
+			if ( !_symbol )
 			{
 				debug.error( "el text de symbol no fue asignado" );
 			}
 
-			if ( !number )
+			if ( !_number )
 			{
 				debug.error( "el text de number no fue asignado" );
 			}
-		}
-
-		public void Update()
-		{
 		}
 	}
 }

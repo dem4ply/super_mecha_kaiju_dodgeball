@@ -365,10 +365,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug_mode: 0
   pool: {fileID: 0}
-  name: {fileID: 1292532254282330215}
-  atomic_mass: {fileID: 4289638133891710269}
-  symbol: {fileID: 7997856492770366298}
-  number: {fileID: 274233450573619695}
+  _name: {fileID: 1292532254282330215}
+  _atomic_mass: {fileID: 4289638133891710269}
+  _symbol: {fileID: 7997856492770366298}
+  _number: {fileID: 274233450573619695}
 --- !u!1 &4525200778577531796
 GameObject:
   m_ObjectHideFlags: 0
