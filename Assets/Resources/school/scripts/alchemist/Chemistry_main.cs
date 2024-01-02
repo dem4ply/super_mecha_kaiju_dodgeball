@@ -20,13 +20,20 @@ namespace school.alchemist.main
 		public Transform lewis_grid;
 		public Lewis prefab_lewis;
 
+		public Transform lewis_molecule_grid;
+		public Lewis prefab_lewis_molecule;
+
+		public List<Element_obj> list_elements_obj;
 		public List<Element> elements;
 		public Dictionary<string, Element> elements_by_symbol;
 
 		public List<Lewis> lewis;
 		public Dictionary<string, Lewis> lewis_by_symbol;
 
-		protected Regex re_elements_with_number = new Regex( @"[A-Z][a-z]?\d*" );
+		public Molecule_panel molecule_panel;
+
+		protected Regex re_elements_with_number = new Regex(
+			@"([A-Z][a-z]?)(\d*)" );
 		protected Regex re_elements = new Regex( @"[A-Z][a-z]?" );
 
 		protected override void _init_cache()
@@ -37,6 +44,11 @@ namespace school.alchemist.main
 				debug.error( "no tiene asignado el texto de las moleculas" );
 			}
 
+			if ( !molecule_panel )
+			{
+				debug.error( "no tiene asignado panel de molecula" );
+			}
+
 			if ( string.IsNullOrEmpty( peridict_table_path ) )
 			{
 				debug.error( "no asigno el path para la tabla peridica" );
@@ -45,9 +57,14 @@ namespace school.alchemist.main
 			{
 				TextAsset file = Resources.Load<TextAsset>( peridict_table_path );
 
-				var _elements_list = JsonUtility.FromJson<Element_list>( file.text );
+				var _elements_list = JsonUtility.FromJson<Element_list>(
+					file.text );
 				elements = new List<Element>();
 				elements_by_symbol = new Dictionary<string, Element>();
+				list_elements_obj = _elements_list.elements;
+
+				molecule_panel.elements = list_elements_obj;
+				molecule_panel.update_map();
 
 				lewis = new List<Lewis>();
 				lewis_by_symbol = new Dictionary<string, Lewis>();
@@ -86,19 +103,31 @@ namespace school.alchemist.main
 
 			MatchCollection elements_find = re_elements.Matches( text );
 			hide_all_elements();
-			Element element;
-			Lewis lewin;
 
 			foreach ( Match match in elements_find )
 			{
-				elements_by_symbol.TryGetValue( match.Value, out element );
-				if ( element )
-					element.show();
-
-				lewis_by_symbol.TryGetValue( match.Value, out lewin );
-				if ( lewin )
-					lewin.show();
+				show_element( match.Value );
 			}
+			proccess_molecule_grid( text );
+		}
+
+		public void proccess_molecule_grid( string molecule_str )
+		{
+			molecule_panel.molecule_str = molecule_str;
+		}
+
+		public void show_element( string symbol )
+		{
+			Element element;
+			Lewis lewin;
+
+			elements_by_symbol.TryGetValue( symbol , out element );
+			if ( element )
+				element.show();
+
+			lewis_by_symbol.TryGetValue( symbol, out lewin );
+			if ( lewin )
+				lewin.show();
 		}
 
 		public void hide_all_elements()
