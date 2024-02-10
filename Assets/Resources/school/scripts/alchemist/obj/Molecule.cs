@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -77,6 +78,43 @@ namespace school.alchemist.obj
 			Element_obj element;
 			elements_by_symbol.TryGetValue( symbol , out element );
 			return element;
+		}
+
+		public Element_obj find_center_atom()
+		{
+			var elements = new List<Element_obj>( this.elements.Keys );
+			var hidrogen = elements.SingleOrDefault( e => e.symbol == "H" );
+			if ( hidrogen != null )
+			{
+				elements.Remove( hidrogen );
+				if ( !elements.Any() )
+					return hidrogen;
+			}
+			Element_obj center = elements[0];
+			for( int i = 1; i < elements.Count; ++i )
+			{
+				var element = elements[i];
+				if ( element.symbol == "H" )
+					continue;
+				if ( element.electronegativity_pauling
+						< center.electronegativity_pauling )
+					center = elements[i];
+			}
+			return center;
+		}
+
+		public List<Element_obj> find_adjacent_atoms()
+		{
+			var center = this.find_center_atom();
+			var elements = new List<Element_obj>();
+
+			foreach( var element in this.elements.Keys )
+			{
+				for ( int i = 0; i < this.elements[ element ]; ++i )
+					elements.Add( element );
+			}
+			elements.Remove( center );
+			return elements;
 		}
 	}
 }

@@ -13,35 +13,37 @@ namespace school.alchemist.obj
 		public int number;
 		public string electron_configuration_semantic;
 		// "[Xe] 4f12 6s2",
+		public float electronegativity_pauling;
 
+		protected Electron_orbit_obj _electron_orbit;
 		protected Regex re_electrons_config = new Regex( @"\d[A-Za-z](\d+)" );
+
+		public Electron_orbit_obj electron_orbit
+		{
+			get
+			{
+				if ( _electron_orbit == null )
+					_electron_orbit = new Electron_orbit_obj(
+						electron_configuration_semantic );
+				return _electron_orbit;
+			}
+		}
 
 		public Element_obj()
 		{
 			re_electrons_config = new Regex( @"\d[A-Za-z](\d+)" );
 		}
 
-		public Element_obj(
-			string name, string symbol, float atomic_mass, int number ): this()
-		{
-			this.name = name;
-			this.symbol = symbol;
-			this.atomic_mass = atomic_mass;
-			this.number = number;
-		}
-
 		public int valence_shell
 		{
 			get{
-				int result = 0;
-				MatchCollection electrons_find =
-					re_electrons_config.Matches( electron_configuration_semantic );
-				foreach ( Match match in electrons_find )
-				{
-					result += int.Parse( match.Groups[1].ToString() );
-				}
-				return result;
+				return electron_orbit.valence_shell;
 			}
+		}
+
+		public override string ToString()
+		{
+			return string.Format( "[{0}]", symbol );
 		}
 	}
 }
