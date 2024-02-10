@@ -61,6 +61,18 @@ namespace metroidvania.joystick
 			}
 		}
 
+		public void on_fire( InputAction.CallbackContext context )
+		{
+			if ( context.started )
+			{
+				controller.action( "fire", chibi.joystick.events.down );
+			}
+			else if ( context.canceled )
+			{
+				controller.action( "fire", chibi.joystick.events.up );
+			}
+		}
+
 		#region funciones protegdas
 		protected void Update()
 		{
@@ -86,6 +98,10 @@ namespace metroidvania.joystick
 			control.Player.jump.performed += on_jump;
 			control.Player.jump.canceled += on_jump;
 			control.Player.jump.started += on_jump;
+
+			control.Player.fire1.performed += on_fire;
+			control.Player.fire1.canceled += on_fire;
+			control.Player.fire1.started += on_fire;
 		}
 
 		protected override void _dispose_cache()
@@ -99,6 +115,10 @@ namespace metroidvania.joystick
 			control.Player.jump.performed -= on_jump;
 			control.Player.jump.canceled -= on_jump;
 			control.Player.jump.started -= on_jump;
+
+			control.Player.fire1.performed -= on_fire;
+			control.Player.fire1.canceled -= on_fire;
+			control.Player.fire1.started -= on_fire;
 		}
 
 		protected virtual bool check_action_down( string action )
