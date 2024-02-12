@@ -4,18 +4,18 @@ namespace helper
 {
 	public static class text
 	{
-		public static TextMesh _( string text, Transform parent, Vector3 position )
+		public static TextMesh _( string text, Transform parent, Vector3 position, int size )
 		{
-			return _( text, parent, position, Quaternion.identity );
+			return _( text, parent, position, size, Quaternion.identity );
 		}
 
-		public static TextMesh _( string text, Transform parent, Vector3 position, Quaternion rotation )
+		public static TextMesh _( string text, Transform parent, Vector3 position, int size, Quaternion rotation )
 		{
-			return _( text, parent, position, rotation, TextAnchor.UpperLeft );
+			return _( text, parent, position, size, rotation, TextAnchor.UpperLeft );
 		}
 
 		public static TextMesh _(
-			string text, Transform parent, Vector3 position, Quaternion rotation,
+			string text, Transform parent, Vector3 position, int size, Quaternion rotation,
 			TextAnchor anchor=TextAnchor.UpperLeft )
 		{
 			GameObject obj = new GameObject( string.Format( "text {0}", text ), typeof( TextMesh ) );
@@ -25,6 +25,7 @@ namespace helper
 			TextMesh text_mesh = obj.GetComponent<TextMesh>();
 			text_mesh.text = text;
 			text_mesh.anchor = anchor;
+			text_mesh.fontSize = size;
 			return text_mesh;
 		}
 	}

@@ -1,44 +1,50 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+using System;
+using helper;
 using UnityEngine;
-using System.Text.RegularExpressions;
-using System.Linq;
+using UnityEngine.PlayerLoop;
 
-namespace tactic.grid.obj
+namespace metroidvania.grid
 {
 	[System.Serializable]
-	public class Grid<T>
+	public class Chibi_grid<T>
 	{
 		public int width;
 		public int height;
 
-		public float size;
-
-		public T[,] grid;
-		public Vector3 origin;
+		public Transform origin;
+		public int size;
 		public TextMesh[,] debug_text;
 
-		public Grid(
-			int width, int height, float size, Vector3 origin,
-			System.Func<Grid<T>, int, int, T > create_grid_object )
+		protected T[,] grid_array;
+
+		public Chibi_grid()
+		{
+			grid_array = new T[ this.width, this.height ];
+		}
+
+		public Chibi_grid( int width, int height )
 		{
 			this.width = width;
 			this.height = height;
-			this.size = size;
-			this.origin = origin;
 
-			grid = new T[ width, height ];
-			debug_text = new TextMesh[ width, height ];
-			for ( int x = 0; x < width; ++x )
-				for ( int y = 0; y < height; ++y )
-					grid[ x, y ] = create_grid_object( this, x, y );
+			grid_array = new T[ this.width, this.height ];
+			debug_text = new TextMesh[ this.width, this.height ];
+		}
 
-			show_debug();
+		public void init()
+		{
+			grid_array = new T[ this.width, this.height ];
+			debug_text = new TextMesh[ this.width, this.height ];
+		}
+
+		public void debug()
+		{
+			UnityEngine.Debug.Log( string.Format( "Grid shape: {0}, {1}", this.width, this.height ) );
 		}
 
 		public virtual void show_debug()
 		{
-			var rotation = Quaternion.Euler( 90f, 0, 0 );
+			var rotation = Quaternion.Euler( 0, 0, 0 );
 			var position_w = get_world_position( width, 0 );
 			var position_h = get_world_position( 0, height );
 			var position_x_1 = get_world_position( width, height );
@@ -53,7 +59,7 @@ namespace tactic.grid.obj
 					debug_text[ x, y ] = helper.text._(
 						build_debug_text( x, y ), null,
 						get_world_position( x, y ) + new Vector3( size, 0, size ) * 0.5f,
-						(int) size,
+						size,
 						rotation, anchor:TextAnchor.MiddleCenter );
 
 					var position = get_world_position( x, y );
@@ -67,27 +73,29 @@ namespace tactic.grid.obj
 
 		public virtual string build_debug_text( int x, int y )
 		{
-			return string.Format( "{0}, {1} = {2}", x, y, grid[ x, y ] );
+			return string.Format( "{0}, {1} = {2}", x, y, grid_array[ x, y ] );
 		}
 
 		public virtual Vector3 get_world_position( int x, int y )
 		{
-			return new Vector3( x, 0, y ) * size + origin;
+			//return new Vector3( x, y, 0 ) * size + origin.position;
+			return new Vector3( x, y, 0 ) * size
+			+ ( origin.position - new Vector3( width * ( size / 2 ), height * ( size / 2 ), 0 ) );
 		}
 
 		public virtual void get_x_y_from_world( Vector3 vector, out int x, out int y )
 		{
-			x = Mathf.FloorToInt( ( vector.x - origin.x ) / size );
-			y = Mathf.FloorToInt( ( vector.z - origin.z ) / size );
+			x = Mathf.FloorToInt( ( vector.x - origin.position.x ) / size );
+			y = Mathf.FloorToInt( ( vector.z - origin.position.z ) / size );
 		}
 
 		public T this[ int x, int y ]
 		{
 			get {
-				return grid[ x, y ];
+				return grid_array[ x, y ];
 			}
 			set {
-				grid[ x, y ] = value;
+				grid_array[ x, y ] = value;
 				debug_text[ x, y ].text = value.ToString();
 			}
 		}

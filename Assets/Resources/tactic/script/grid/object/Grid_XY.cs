@@ -34,6 +34,7 @@ namespace tactic.grid.obj
 					debug_text[ x, y ] = helper.text._(
 						build_debug_text( x, y ), null,
 						get_world_position( x, y ) + new Vector3( size, -size, 0) * 0.5f,
+						(int)size,
 						rotation, anchor:TextAnchor.MiddleCenter );
 
 					var position = get_world_position( x, y );
