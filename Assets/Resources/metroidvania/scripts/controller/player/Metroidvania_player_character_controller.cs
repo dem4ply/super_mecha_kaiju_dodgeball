@@ -7,21 +7,14 @@ using metroidvania.controller.npc;
 
 namespace metroidvania.controller.player
 {
-	public class Metroidvania_player_controller : chibi.controller.Controller
+	public class Metroidvania_player_character_controller : Metroidvania_player_controller
 	{
-		public Controller_metroidvania_npc player;
 		public chibi.pomodoro.Pomodoro_obj jump_buffer_time =
 			new chibi.pomodoro.Pomodoro_obj( 0.25f );
 
 		protected Dictionary<string, string> buffer_actions;
 		protected Vector3 buffer_desire_direction;
 
-		public virtual Vector2 mouse_position
-		{
-			set {
-				player.mouse_position = value;
-			}
-		}
 
 		public override Vector3 desire_direction
 		{

@@ -7,7 +7,7 @@ using metroidvania.controller.npc;
 
 namespace metroidvania.controller.player
 {
-	public class Metroidvania_player_ui_controller : chibi.controller.Controller
+	public class Metroidvania_player_ui_controller : Metroidvania_player_controller
 	{
 		public metroidvania.grid.Grid_ui grid_ui;
 
@@ -16,6 +16,17 @@ namespace metroidvania.controller.player
 			base._init_cache();
 			if ( !grid_ui )
 				debug.error( "no esta asignado el grid ui" );
+		}
+
+		public override void action( string name, string e )
+		{
+			base.action( name, e );
+			switch ( name )
+			{
+				default:
+					debug_action( name, e );
+					break;
+			}
 		}
 	}
 }

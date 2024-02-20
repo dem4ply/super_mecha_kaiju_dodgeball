@@ -14,7 +14,7 @@ namespace metroidvania.joystick
 		#region public vars
 		public string key_map = "player 1";
 		public metroidvania.input.Metroidvania control;
-		public Metroidvania_player_controller controller;
+		public Metroidvania_player_character_controller controller;
 		public Metroidvania_player_ui_controller ui_controller;
 		public bool is_selectec_player = true;
 
@@ -26,7 +26,7 @@ namespace metroidvania.joystick
 		#endregion
 
 		#region public properties
-		public chibi.controller.Controller current_controller
+		public Metroidvania_player_controller current_controller
 		{
 			get{
 				if ( is_selectec_player )
@@ -101,8 +101,8 @@ namespace metroidvania.joystick
 			current_controller.speed = _desire_speed;
 
 			//controller.mouse_position = Mouse.current.position.ReadValue();
-			controller.mouse_position = helper.mouse.axis;
-			// current_controller.mouse_position = helper.mouse.axis;
+			//controller.mouse_position = helper.mouse.axis;
+			current_controller.mouse_position = helper.mouse.axis;
 		}
 
 		/// <summary>
@@ -110,8 +110,11 @@ namespace metroidvania.joystick
 		/// </summary>
 		protected override void _init_cache()
 		{
+			// no se puede hacer esto ahora porque el control esta separado del joystick
+			/*
 			if ( controller == null )
 				controller = GetComponent<Metroidvania_player_controller>();
+			*/
 			if ( !controller )
 				debug.error( "no se asigno el player controller" );
 
