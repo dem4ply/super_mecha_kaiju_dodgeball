@@ -63,7 +63,7 @@ namespace metroidvania.grid
 		{
 			int total_elements = grid.width * grid.height;
 			for( int i = 0; i < total_elements; ++i )
-			helper.instantiate.parent( prefab_cell_ui, grid_ui );
+			helper.instantiate.ui.parent( prefab_cell_ui, grid_ui.transform );
 		}
 
         public void OnPointerExit(PointerEventData eventData)
