@@ -449,7 +449,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117807589}
-  m_LocalRotation: {x: 1e-45, y: -0.7071068, z: 1e-45, w: 0.7071068}
+  m_LocalRotation: {x: 3.5085244e-22, y: -0.7071069, z: 1.1978857e-21, w: 0.70710677}
   m_LocalPosition: {x: 5, y: 2.137, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2009,6 +2009,37 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1873903729}
   m_SourcePrefab: {fileID: 100100000, guid: a6f690cad259ad53e997b2fa2517aa7a, type: 3}
+--- !u!1 &984560643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 984560644}
+  m_Layer: 0
+  m_Name: debug shit
+  m_TagString: Untagged
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &984560644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984560643}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 247.14473, y: 181.89775, z: -0.7742557}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &989282744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8062973146242012217, guid: cc759196f8f8d1d489cfcb3cb0da3856,
@@ -2165,7 +2196,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1312653374}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2849,7 +2880,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312653372}
-  m_LocalRotation: {x: 1e-45, y: -0.7071068, z: 1e-45, w: 0.7071068}
+  m_LocalRotation: {x: 3.5085244e-22, y: -0.7071069, z: 1.1978857e-21, w: 0.70710677}
   m_LocalPosition: {x: 5, y: 2.137, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4758,6 +4789,7 @@ MonoBehaviour:
   pool: {fileID: 0}
   is_block: 0
   player: {fileID: 1886938141}
+  main_camera: {fileID: 0}
   jump_buffer_time:
     frecuency: 0.25
     is_enable: 1
@@ -4792,7 +4824,10 @@ MonoBehaviour:
   debug_mode: 0
   pool: {fileID: 0}
   is_block: 0
+  player: {fileID: 1886938141}
+  main_camera: {fileID: 0}
   grid_ui: {fileID: 222118260}
+  debug_shit: {fileID: 984560644}
 --- !u!1 &1418543778742852752
 GameObject:
   m_ObjectHideFlags: 0
