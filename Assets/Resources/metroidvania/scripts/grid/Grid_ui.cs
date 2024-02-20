@@ -69,6 +69,7 @@ namespace metroidvania.grid
         public void OnPointerExit(PointerEventData eventData)
         {
             debug.log( "mouse salio del inventario" );
+			//helper.mouse.axis
         }
 
         public void OnPointerEnter(PointerEventData eventData)

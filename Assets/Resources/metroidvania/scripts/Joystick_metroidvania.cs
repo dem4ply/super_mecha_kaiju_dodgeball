@@ -4,6 +4,7 @@ using chibi.controller;
 using UnityEngine.InputSystem;
 using chibi.joystick;
 using metroidvania.controller.player;
+using UnityEditor;
 
 
 namespace metroidvania.joystick
@@ -14,6 +15,8 @@ namespace metroidvania.joystick
 		public string key_map = "player 1";
 		public metroidvania.input.Metroidvania control;
 		public Metroidvania_player_controller controller;
+		public Metroidvania_player_ui_controller ui_controller;
+		public bool is_selectec_player = true;
 
 		#endregion
 
@@ -23,6 +26,15 @@ namespace metroidvania.joystick
 		#endregion
 
 		#region public properties
+		public chibi.controller.Controller current_controller
+		{
+			get{
+				if ( is_selectec_player )
+					return controller;
+				else
+					return ui_controller;
+			}
+		}
 		#endregion
 
 		#region public functions
@@ -40,24 +52,28 @@ namespace metroidvania.joystick
 		public void on_horizontal_spawn( InputAction.CallbackContext context )
 		{
 			if ( context.started )
-				controller.action( "p1__bumper__left", chibi.joystick.events.down );
+				// controller.action( "p1__bumper__left", chibi.joystick.events.down );
+				current_controller.action( "p1__bumper__left", chibi.joystick.events.down );
 		}
 
 		public void on_vertical_spawn( InputAction.CallbackContext context )
 		{
 			if ( context.started )
-				controller.action( "p1__trigger__right", chibi.joystick.events.down );
+				// controller.action( "p1__trigger__right", chibi.joystick.events.down );
+				current_controller.action( "p1__trigger__right", chibi.joystick.events.down );
 		}
 
 		public void on_jump( InputAction.CallbackContext context )
 		{
 			if ( context.started )
 			{
-				controller.action( "jump", chibi.joystick.events.down );
+				// controller.action( "jump", chibi.joystick.events.down );
+				current_controller.action( "jump", chibi.joystick.events.down );
 			}
 			else if ( context.canceled )
 			{
-				controller.action( "jump", chibi.joystick.events.up );
+				//controller.action( "jump", chibi.joystick.events.up );
+				current_controller.action( "jump", chibi.joystick.events.up );
 			}
 		}
 
@@ -65,21 +81,28 @@ namespace metroidvania.joystick
 		{
 			if ( context.started )
 			{
-				controller.action( "fire", chibi.joystick.events.down );
+				//controller.action( "fire", chibi.joystick.events.down );
+				current_controller.action( "fire", chibi.joystick.events.down );
 			}
 			else if ( context.canceled )
 			{
-				controller.action( "fire", chibi.joystick.events.up );
+				//controller.action( "fire", chibi.joystick.events.up );
+				current_controller.action( "fire", chibi.joystick.events.up );
 			}
 		}
 
 		#region funciones protegdas
 		protected void Update()
 		{
-			controller.desire_direction = _desire_direction;
-			controller.speed = _desire_speed;
+			// controller.desire_direction = _desire_direction;
+			// controller.speed = _desire_speed;
 
-			controller.mouse_position = Mouse.current.position.ReadValue();
+			current_controller.desire_direction = _desire_direction;
+			current_controller.speed = _desire_speed;
+
+			//controller.mouse_position = Mouse.current.position.ReadValue();
+			controller.mouse_position = helper.mouse.axis;
+			// current_controller.mouse_position = helper.mouse.axis;
 		}
 
 		/// <summary>
@@ -89,6 +112,11 @@ namespace metroidvania.joystick
 		{
 			if ( controller == null )
 				controller = GetComponent<Metroidvania_player_controller>();
+			if ( !controller )
+				debug.error( "no se asigno el player controller" );
+
+			if ( !ui_controller )
+				debug.error( "no se asigno el player ui controller" );
 
 			control.Enable();
 			control.Player.Move.performed += on_move;
