@@ -1,4 +1,5 @@
 using System;
+using System.Xml;
 using helper;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -53,18 +54,23 @@ namespace metroidvania.grid
 			Debug.DrawLine( position_w, position_x_1, Color.white, 100f );
 			// linea horizontal final
 			Debug.DrawLine( position_h, position_y_1, Color.white, 100f );
+			helper.draw.sphere.debug(
+				origin.position, Color.black, 1f, 100f );
 			for ( int x = 0; x < width; ++x )
 				for ( int y = 0; y < height; ++y )
 				{
-					debug_text[ x, y ] = helper.text._(
-						build_debug_text( x, y ), null,
-						get_world_position( x, y ) + new Vector3( size, 0, size ) * 0.5f,
-						size,
-						rotation, anchor:TextAnchor.MiddleCenter );
-
 					var position = get_world_position( x, y );
 					position_x_1 = get_world_position( x + 1, y );
 					position_y_1 = get_world_position( x, y + 1 );
+
+					helper.draw.sphere.debug(
+						position, new Color( 50, x * 10, y * 10 ), 1f, 100f );
+					debug_text[ x, y ] = helper.text._(
+						build_debug_text( x, y ), null,
+						position + new Vector3( size, -size, 0 ) * 0.5f,
+						size,
+						rotation, anchor:TextAnchor.MiddleCenter );
+
 					Debug.DrawLine( position, position_x_1, Color.white, 100f );
 					Debug.DrawLine( position, position_y_1, Color.white, 100f );
 					//Debug.Log( string.Format( "x: {0}, y: {1}", x, y ) );
@@ -78,15 +84,20 @@ namespace metroidvania.grid
 
 		public virtual Vector3 get_world_position( int x, int y )
 		{
-			//return new Vector3( x, y, 0 ) * size + origin.position;
-			return new Vector3( x, y, 0 ) * size
-			+ ( origin.position - new Vector3( width * ( size / 2 ), height * ( size / 2 ), 0 ) );
+			return origin.position + new Vector3( x, -y, 0 ) * size;
 		}
 
 		public virtual void get_x_y_from_world( Vector3 vector, out int x, out int y )
 		{
 			x = Mathf.FloorToInt( ( vector.x - origin.position.x ) / size );
 			y = Mathf.FloorToInt( ( vector.z - origin.position.z ) / size );
+		}
+
+		public Vector2 get_x_y_from_world( Vector3 vector )
+		{
+			int x, y;
+			get_x_y_from_world( vector, out x, out y );
+			return new Vector2( x, y );
 		}
 
 		public T this[ int x, int y ]

@@ -1,10 +1,27 @@
-﻿using UnityEngine;
+﻿using helper.game_object;
+using UnityEngine;
 
 namespace chibi
 {
+
 	public class Chibi_ui : Chibi_behaviour
 	{
-		public virtual void hide()
+		protected RectTransform _rect_transform;
+
+		public RectTransform rect_transform
+		{
+			get {
+				return _rect_transform;
+			}
+		}
+
+        protected override void _init_cache()
+        {
+            base._init_cache();
+			_rect_transform = GetComponent< RectTransform >();
+        }
+
+        public virtual void hide()
 		{
 			gameObject.SetActive( false );
 		}

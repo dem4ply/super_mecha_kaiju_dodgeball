@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using platformer.controller.platform;
 using UnityEngine.InputSystem;
 using metroidvania.controller.npc;
+using helper;
 
 namespace metroidvania.controller.player
 {
@@ -46,19 +47,16 @@ namespace metroidvania.controller.player
 			}
 		}
 
-		protected Vector3 mouse_position_to_cell( Vector2 mouse_position )
+		protected Vector2 mouse_position_to_cell( Vector2 mouse_position )
 		{
-			var distancia = main_camera.transform.InverseTransformPoint( transform.position );
-			Vector3 mouse_3d = new Vector3( mouse_position.x, mouse_position.y, distancia.z );
-			Vector3 world_position = main_camera.ScreenToWorldPoint( mouse_3d );
+			float x = mouse_position.x - grid_ui.rect_transform.position.x;
+			float y = grid_ui.rect_transform.position.y - mouse_position.y;
+			Vector3 world_position = new Vector3( x, y, 0 );
 
-			debug_shit.position = world_position;
+			Vector2 cell_position = grid_ui.grid.get_x_y_from_world( world_position );
+			debug.log( cell_position );
 
-			int x, y;
-			grid_ui.grid.get_x_y_from_world( world_position, out x, out y );
-			debug.log( "x: {0}, {1}", x, y );
-
-			return world_position;
+			return cell_position;
 		}
 	}
 }

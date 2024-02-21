@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 namespace metroidvania.grid
 {
-	public class Grid_ui: chibi.Chibi_behaviour, IPointerEnterHandler, IPointerExitHandler
+	public class Grid_ui: chibi.Chibi_ui, IPointerEnterHandler, IPointerExitHandler
 	{
 		public Chibi_grid<int> grid;
 		public GridLayoutGroup grid_ui;
@@ -46,7 +46,7 @@ namespace metroidvania.grid
 			float width = grid.size * grid.width;
 			float height = grid.size * grid.height;
 			var rect = grid_ui.GetComponent< RectTransform >();
-			rect.sizeDelta = new Vector2( width, height );
+			//rect.sizeDelta = new Vector2( width, height );
 			var grid_layout = grid_ui.GetComponent< GridLayoutGroup >();
 
 			if ( grid_layout.constraint == GridLayoutGroup.Constraint.FixedColumnCount )
