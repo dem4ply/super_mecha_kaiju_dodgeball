@@ -54,7 +54,17 @@ namespace metroidvania.controller.player
 			}
 		}
 
-		public virtual void run_buffer_action()
+        public override Vector2 mouse_position {
+			get {
+				throw new System.NotImplementedException();
+			}
+
+			set {
+				player.mouse_position = value;
+			}
+		}
+
+        public virtual void run_buffer_action()
 		{
 			foreach ( var b in buffer_actions )
 				action( b.Key, b.Value, true );

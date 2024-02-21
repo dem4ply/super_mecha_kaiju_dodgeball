@@ -31,7 +31,7 @@ namespace metroidvania.grid
 			else
 			{
 				grid.init();
-				grid.origin = this.transform;
+				//grid.origin = this.transform;
 			}
 			if ( !grid_ui )
 				debug.error(

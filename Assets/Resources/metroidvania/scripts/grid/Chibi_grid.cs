@@ -17,6 +17,7 @@ namespace metroidvania.grid
 		public TextMesh[,] debug_text;
 
 		protected T[,] grid_array;
+		protected RectTransform rect_transform;
 
 		public Chibi_grid()
 		{
@@ -30,12 +31,14 @@ namespace metroidvania.grid
 
 			grid_array = new T[ this.width, this.height ];
 			debug_text = new TextMesh[ this.width, this.height ];
+			//rect_transform = origin.GetComponent<RectTransform>();
 		}
 
 		public void init()
 		{
 			grid_array = new T[ this.width, this.height ];
 			debug_text = new TextMesh[ this.width, this.height ];
+			rect_transform = origin.GetComponent<RectTransform>();
 		}
 
 		public void debug()
@@ -97,6 +100,22 @@ namespace metroidvania.grid
 		{
 			int x, y;
 			get_x_y_from_world( vector, out x, out y );
+			return new Vector2( x, y );
+		}
+
+		public virtual void get_x_y_from_ui( Vector3 vector, out int x, out int y )
+		{
+			float relative_grid_x = vector.x - rect_transform.position.x;
+			float relative_grid_y = rect_transform.position.y - vector.y;
+
+			x = Mathf.FloorToInt( relative_grid_x / size );
+			y = Mathf.FloorToInt( relative_grid_y / size );
+		}
+
+		public Vector2 get_x_y_from_ui( Vector3 vector )
+		{
+			int x, y;
+			get_x_y_from_ui( vector, out x, out y );
 			return new Vector2( x, y );
 		}
 
