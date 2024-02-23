@@ -22,7 +22,6 @@ namespace metroidvania.controller.player
 				return _mouse_axis;
 			}
 			set {
-				debug.log( "fuck" );
 				_mouse_axis = value;
 			}
 		}
@@ -50,24 +49,11 @@ namespace metroidvania.controller.player
 
 		protected void Update()
 		{
-			Vector3 mouse_ui_position = new Vector3( mouse_position.x, mouse_position.y, 0 );
-			debug.draw.sphere( grid_ui.rect_transform.position + mouse_ui_position, Color.red, 100f );
-			float x = mouse_position.x - grid_ui.rect_transform.position.x;
-			float y = grid_ui.rect_transform.position.y - mouse_position.y;
-
-			//debug.log( "{0}, {1}, {2} {3}", x, y, mouse_position, grid_ui.rect_transform.position );
 		}
 
 		protected Vector2 mouse_position_to_cell( Vector2 mouse_position )
 		{
-
-			float x = mouse_position.x - grid_ui.rect_transform.position.x;
-			float y = grid_ui.rect_transform.position.y - mouse_position.y;
-			Vector3 world_position = new Vector3( x, y, 0 );
-
 			Vector2 cell_position = grid_ui.grid.get_x_y_from_ui( mouse_position );
-			debug.log( cell_position );
-
 			return cell_position;
 		}
 	}
