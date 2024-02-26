@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace chibi
 {
@@ -67,6 +68,16 @@ namespace chibi
 		protected virtual void OnDisable()
 		{
 			_dispose_cache();
+		}
+
+		protected virtual IEnumerator late_init( float wait )
+		{
+			yield return new WaitForSeconds( wait );
+		}
+
+		protected virtual void start_one_second_late_init()
+		{
+			StartCoroutine( late_init( 1f ) );
 		}
 	}
 }

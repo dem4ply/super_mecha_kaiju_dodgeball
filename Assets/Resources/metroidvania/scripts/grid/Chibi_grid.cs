@@ -143,5 +143,73 @@ namespace metroidvania.grid
 				this[ x, y ] = value;
 			}
 		}
+
+		/// <summary>
+		/// busca un espacio vacio en el inventario del tamaño del rectangulo
+		/// <example>
+		/// For example:
+		/// <code>
+		/// </code>
+		/// los paremetgros x, y son el output
+		/// </example>
+		/// <param name="wifth">ancho del rectangulo a buscar</param>
+		/// <param name="height">alto del rectangulo a buscar</param>
+		/// </summary>
+		public void find_empty_space( int width, int height, out int x, out int y )
+		{
+			if ( width > this.width )
+				throw new ArgumentOutOfRangeException( "el width buscado es mayor que el width del grid" );
+			if ( height> this.height )
+				throw new ArgumentOutOfRangeException( "el height buscado es mayor que el height del grid" );
+			for( int i = 0; i < this.width; ++i )
+				for( int j = 0; j < this.height; ++j )
+				{
+					if ( is_empty_this_rectangle( i, j, width, height ) )
+					{
+						x = i;
+						y = j;
+						return;
+					}
+				}
+			x = -1;
+			y = -1;
+		}
+
+		/// <summary>
+		/// verifica si el rectiangulo esta desocupado en las cordenadas dadas
+		/// <example>
+		/// For example:
+		/// <code>
+		/// </code>
+		/// los paremetgros x, y son el output
+		/// </example>
+		/// <param name="x">posicion x donde  se busca</param>
+		/// <param name="y">posicion y donde se busca</param>
+		/// <param name="width">ancho del rectangulo a buscar</param>
+		/// <param name="height">alto del rectangulo a buscar</param>
+		/// </summary>
+		public bool is_empty_this_rectangle( int x, int y, int widht, int height )
+		{
+			bool result = true;
+			for( int w = x; w < x + width && result; ++w )
+				for( int h = y; h < y + height && result; ++h )
+				{
+					if( !position_is_empty( w, h ) )
+						result = false;
+				}
+			return result;
+		}
+
+		public bool position_is_empty( int x, int y )
+		{
+			object value = grid_array[ x, y ];
+			switch ( value )
+			{
+				case int i:
+					return i == 0;
+				default:
+					throw new NotImplementedException( string.Format( "no se implemento el tipo {0}", value.GetType().ToString() ) );
+			}
+		}
 	}
 }

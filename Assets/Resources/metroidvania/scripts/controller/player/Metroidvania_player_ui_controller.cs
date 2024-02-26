@@ -10,7 +10,7 @@ namespace metroidvania.controller.player
 {
 	public class Metroidvania_player_ui_controller : Metroidvania_player_controller
 	{
-		public metroidvania.grid.Grid_ui grid_ui;
+		public metroidvania.grid.ui.Grid_ui grid_ui;
 
 		public Transform debug_shit;
 

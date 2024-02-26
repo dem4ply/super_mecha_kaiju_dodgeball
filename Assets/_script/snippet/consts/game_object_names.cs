@@ -17,6 +17,13 @@
 					return "Main Camera";
 				}
 			}
+
+			public static string canvas
+			{
+				get {
+					return "Canvas";
+				}
+			}
 		}
 	}
 }

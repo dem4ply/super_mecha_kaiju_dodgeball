@@ -6,7 +6,8 @@ namespace helper.game_object
 	{
 		public static GameObject stuff()
 		{
-			var _stuff = GameObject.Find( consts.game_object_names.stuff );
+			// var _stuff = GameObject.Find( consts.game_object_names.stuff );
+			var _stuff = helper.game_object.Find._( consts.game_object_names.stuff );
 			if ( _stuff == null )
 				_stuff = new GameObject( consts.game_object_names.stuff );
 			return _stuff;

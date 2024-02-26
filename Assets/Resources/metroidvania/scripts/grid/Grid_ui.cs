@@ -6,13 +6,15 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-namespace metroidvania.grid
+namespace metroidvania.grid.ui
 {
 	public class Grid_ui: chibi.Chibi_ui, IPointerEnterHandler, IPointerExitHandler
 	{
 		public Chibi_grid<int> grid;
 		public GridLayoutGroup grid_ui;
 		public GameObject prefab_cell_ui;
+
+		public chibi.inventory.Inventory inventory;
 
         protected override void _init_cache()
         {
@@ -76,5 +78,27 @@ namespace metroidvania.grid
         {
             debug.log( "mouse entro al inventario" );
         }
+
+		public void add( metroidvania.inventory.item.Item_grid item )
+		{
+			debug.warning( "agregar al inventario" );
+			inventory.add( item );
+			foreach( var i in inventory.inventory.stacks )
+			debug.log( "{0}: {1} : {2}", i.item, i.amount, i.ToString() );
+			debug.warning( "agregar al grid" );
+			debug.log( "{0} * {1}", item.width, item.height );
+
+			GameObject canvas = helper.game_object.canvas.find_canvas();
+			var img = helper.game_object.canvas.add_img_canvas( canvas, item.image, item.name );
+			GameObject img_obj = img.gameObject;
+			var item_ui = img_obj.AddComponent< metroidvania.grid.item.Item_ui_grid >();
+			item_ui.item = item;
+
+			int x, y;
+			grid.find_empty_space( item.width, item.height, out x, out y );
+			debug.log( "el item cabe en {0}, {1}", x, y );
+
+			debug.log( item_ui );
+		}
     }
 }
