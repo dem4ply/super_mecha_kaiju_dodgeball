@@ -41,7 +41,7 @@ namespace metroidvania.grid
 			rect_transform = origin.GetComponent<RectTransform>();
 		}
 
-		public void debug()
+		public virtual void debug()
 		{
 			UnityEngine.Debug.Log( string.Format( "Grid shape: {0}, {1}", this.width, this.height ) );
 		}
@@ -223,6 +223,8 @@ namespace metroidvania.grid
 			{
 				case int i:
 					return i == 0;
+				case null:
+					return true;
 				default:
 					throw new NotImplementedException( string.Format( "no se implemento el tipo {0}", value.GetType().ToString() ) );
 			}

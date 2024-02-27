@@ -10,7 +10,7 @@ namespace metroidvania.grid.ui
 {
 	public class Grid_ui: chibi.Chibi_ui, IPointerEnterHandler, IPointerExitHandler
 	{
-		public Chibi_grid<int> grid;
+		public Chibi_grid_ui<metroidvania.inventory.item.Item_grid> grid;
 		public GridLayoutGroup grid_ui;
 		public GameObject prefab_cell_ui;
 
@@ -98,6 +98,9 @@ namespace metroidvania.grid.ui
 			grid.find_empty_space( item.width, item.height, out x, out y );
 			debug.log( "el item cabe en {0}, {1}", x, y );
 			item_ui.move_to_cell_grid( this, x, y );
+
+			Vector3 pos = grid.get_world_position( 0, 0 );
+			debug.log( " posicicion: {0}", pos );
 
 			debug.log( item_ui );
 		}
