@@ -47,8 +47,8 @@ namespace metroidvania.grid.ui
 		{
 			float width = grid.size * grid.width;
 			float height = grid.size * grid.height;
-			var rect = grid_ui.GetComponent< RectTransform >();
-			//rect.sizeDelta = new Vector2( width, height );
+			// var rect = grid_ui.GetComponent< RectTransform >();
+			// rect.sizeDelta = new Vector2( width, height );
 			var grid_layout = grid_ui.GetComponent< GridLayoutGroup >();
 
 			if ( grid_layout.constraint == GridLayoutGroup.Constraint.FixedColumnCount )
@@ -97,8 +97,17 @@ namespace metroidvania.grid.ui
 			int x, y;
 			grid.find_empty_space( item.width, item.height, out x, out y );
 			debug.log( "el item cabe en {0}, {1}", x, y );
+			item_ui.move_to_cell_grid( this, x, y );
 
 			debug.log( item_ui );
+		}
+
+		public void move_to_cell( int x, int y )
+		{
+			//Vector3 desire_position = get_world_position( x, y );
+			//Vector3 offset_to_center = new Vector3( size, -size, 0 );
+			//offset_to_center = offset_to_center * 0.5f;
+			//obj.transform.position = desire_position + offset_to_center;
 		}
     }
 }

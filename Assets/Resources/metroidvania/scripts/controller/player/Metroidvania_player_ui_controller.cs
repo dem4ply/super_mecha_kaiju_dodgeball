@@ -54,6 +54,7 @@ namespace metroidvania.controller.player
 		protected Vector2 mouse_position_to_cell( Vector2 mouse_position )
 		{
 			Vector2 cell_position = grid_ui.grid.get_x_y_from_ui( mouse_position );
+			debug.log( cell_position );
 			return cell_position;
 		}
 	}

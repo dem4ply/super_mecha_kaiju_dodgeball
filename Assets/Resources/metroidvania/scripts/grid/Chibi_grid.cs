@@ -103,6 +103,22 @@ namespace metroidvania.grid
 			return new Vector2( x, y );
 		}
 
+		public virtual void move_to_world_position( GameObject obj, int x, int y )
+		{
+			Vector3 desire_position = get_world_position( x, y );
+			Vector3 offset_to_center = new Vector3( size, -size, 0 );
+			offset_to_center = offset_to_center * 0.5f;
+			obj.transform.position = desire_position + offset_to_center;
+		}
+
+		public virtual void move_to_ui( GameObject obj, int x, int y )
+		{
+			Vector3 desire_position = get_world_position( x, y );
+			Vector3 offset_to_center = new Vector3( size, -size, 0 );
+			offset_to_center = offset_to_center * 0.5f;
+			obj.transform.position = desire_position + offset_to_center;
+		}
+
 		public virtual void get_x_y_from_ui( Vector3 vector, out int x, out int y )
 		{
 			float relative_grid_x = vector.x - rect_transform.position.x;
