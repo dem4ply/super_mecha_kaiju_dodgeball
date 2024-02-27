@@ -19,6 +19,14 @@ namespace metroidvania.grid
 		protected T[,] grid_array;
 		protected RectTransform rect_transform;
 
+		public virtual float offsect
+		{
+			get
+			{
+				return 1f;
+			}
+		}
+
 		public Chibi_grid()
 		{
 			grid_array = new T[ this.width, this.height ];
@@ -70,7 +78,8 @@ namespace metroidvania.grid
 						position, new Color( 50, x * 10, y * 10 ), 1f, 100f );
 					debug_text[ x, y ] = helper.text._(
 						build_debug_text( x, y ), null,
-						position + new Vector3( size, -size, 0 ) * 0.5f,
+						//position + new Vector3( size, -size, 0 ) * 0.5f,
+						get_world_position_center_cell( x, y ),
 						size,
 						rotation, anchor:TextAnchor.MiddleCenter );
 
@@ -85,9 +94,27 @@ namespace metroidvania.grid
 			return string.Format( "{0}, {1} = {2}", x, y, grid_array[ x, y ] );
 		}
 
+		/// <summary>
+		/// obtiene el vector de la esquina superior izquierda de la celda x, y
+		/// <param name="x">columna del grid</param>
+		/// <param name="y">fila del grid</param>
+		/// </summary>
 		public virtual Vector3 get_world_position( int x, int y )
 		{
 			return origin.position + new Vector3( x, -y, 0 ) * size;
+		}
+
+		/// <summary>
+		/// obtiene el vector del centro de la celda x, y
+		/// <param name="x">columna del grid</param>
+		/// <param name="y">fila del grid</param>
+		/// </summary>
+		public virtual Vector3 get_world_position_center_cell( int x, int y )
+		{
+			Vector3 upper_left_corner = get_world_position( x, y );
+			float offsect = this.offsect;
+			return upper_left_corner
+				+ ( new Vector3( size * offsect, -size * offsect, 0 ) * 0.5f );
 		}
 
 		public virtual void get_x_y_from_world( Vector3 vector, out int x, out int y )
