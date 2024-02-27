@@ -17,7 +17,7 @@ namespace school.alchemist.elements
 
 		protected Element_obj _element_obj;
 
-		public string name
+		public string name_symbol
 		{
 			get{ return element.name; }
 		}

@@ -9,7 +9,7 @@ namespace tactic.grid.ui
 	public class Grid_ui : chibi.Chibi_behaviour
 	{
 		public obj.Grid_XY<bool> grid;
-		public Camera camera;
+		public Camera _camera;
 		protected RectTransform _rect_transform;
 
 		protected override void _init_cache()

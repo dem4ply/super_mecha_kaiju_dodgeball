@@ -9,7 +9,7 @@ namespace tactic.grid
 	public class Grid : chibi.Chibi_behaviour
 	{
 		public obj.Grid<bool> grid;
-		public Camera camera;
+		public Camera _camera;
 
 		protected override void _init_cache()
 		{
@@ -27,8 +27,8 @@ namespace tactic.grid
 			{
 				Vector3 position_mouse = UnityEngine.InputSystem.Mouse.current.position.ReadValue();
 				var position = helper.camera.get_mouse_to_world_position(
-					position_mouse, camera );
-				var camera_ray = camera.ScreenPointToRay( position_mouse );
+					position_mouse, _camera );
+				var camera_ray = _camera.ScreenPointToRay( position_mouse );
 				var difference_camera_object = transform.position - camera_ray.origin;
 				var total_direction = (
 					camera_ray.direction * difference_camera_object.magnitude );
