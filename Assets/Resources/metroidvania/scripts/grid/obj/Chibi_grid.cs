@@ -155,7 +155,7 @@ namespace metroidvania.grid
 			y = Mathf.FloorToInt( relative_grid_y / size );
 		}
 
-		public Vector2 get_x_y_from_ui( Vector3 vector )
+		public virtual Vector2 get_x_y_from_ui( Vector3 vector )
 		{
 			int x, y;
 			get_x_y_from_ui( vector, out x, out y );

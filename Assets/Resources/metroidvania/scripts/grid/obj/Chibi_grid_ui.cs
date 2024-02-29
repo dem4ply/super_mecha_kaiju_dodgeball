@@ -34,5 +34,23 @@ namespace metroidvania.grid
 			//Debug.Log( string.Format( "scale factor {0}", offsect_ui ) );
 			return origin.position + new Vector3( x, -y, 0 ) * ( size * this.offsect );
         }
+
+		public override void get_x_y_from_ui( Vector3 vector, out int x, out int y )
+		{
+			float relative_grid_x = vector.x - rect_transform.position.x;
+			float relative_grid_y = rect_transform.position.y - vector.y;
+
+			float size_offsect = size * offsect;
+			x = Mathf.FloorToInt( relative_grid_x / size_offsect );
+			y = Mathf.FloorToInt( relative_grid_y / size_offsect );
+		}
+
+		public override void move_to_world_position( GameObject obj, int x, int y )
+		{
+			Vector3 desire_position = get_world_position( x, y );
+			Vector3 offset_to_center = get_world_position_center_cell( x, y );
+			//offset_to_center = offset_to_center * 0.5f;
+			obj.transform.position = offset_to_center;
+		}
 	}
 }

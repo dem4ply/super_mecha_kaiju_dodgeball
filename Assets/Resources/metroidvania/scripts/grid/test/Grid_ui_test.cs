@@ -34,7 +34,10 @@ namespace metroidvania.grid.ui
 
         public virtual void test_item()
 		{
-			grid.add( item_obj );
+			for( int i = 0; i < 9; ++i )
+			{
+				grid.add( item_obj );
+			}
 		}
     }
 }
