@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 namespace metroidvania.grid.item
 {
@@ -21,6 +22,12 @@ namespace metroidvania.grid.item
 
         protected override void _init_cache()
         {
+            start_one_second_late_init();
+        }
+
+        protected override IEnumerator late_init(float wait)
+        {
+            yield return base.late_init(wait);
 			if ( !item )
 				debug.error( "el item no fue asignado" );
         }

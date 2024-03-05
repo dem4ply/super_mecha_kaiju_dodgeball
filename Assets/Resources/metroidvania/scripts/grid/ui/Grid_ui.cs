@@ -83,10 +83,10 @@ namespace metroidvania.grid.ui
 		{
 			debug.warning( "agregar al inventario" );
 			inventory.add( item );
-			foreach( var i in inventory.inventory.stacks )
-			debug.log( "{0}: {1} : {2}", i.item, i.amount, i.ToString() );
+			// foreach( var i in inventory.inventory.stacks )
+			// debug.log( "{0}: {1} : {2}", i.item, i.amount, i.ToString() );
 			debug.warning( "agregar al grid" );
-			debug.log( "{0} * {1}", item.width, item.height );
+			debug.log( "agregar al grid: {0} * {1}", item.width, item.height );
 
 			GameObject canvas = helper.game_object.canvas.find_canvas();
 			var img = helper.game_object.canvas.add_img_canvas( canvas, item.image, item.name );
@@ -96,13 +96,24 @@ namespace metroidvania.grid.ui
 
 			int x, y;
 			grid.find_empty_space( item.width, item.height, out x, out y );
-			debug.log( "el item cabe en {0}, {1}", x, y );
-			item_ui.move_to_cell_grid( this, x, y );
+			if ( x == -1 && y == -1 )
+				debug.error( "el item no cabe {0}", item );
+			else
+			{
+				// debug.log( "el item cabe en {0}, {1}", x, y );
+				item_ui.move_to_cell_grid( this, x, y );
+				grid[ x, y, item.width, item.height ] = item;
+				for ( int i = 0; i < grid.width; ++i )
+					for ( int j = 0; j < grid.height; ++j )
+						if ( grid[ i, j ] != null )
+							debug.log( grid[ i, j  ] );
+						else
+							debug.log( "null" );
 
-			Vector3 pos = grid.get_world_position( 0, 0 );
-			debug.log( " posicicion: {0}", pos );
-
-			debug.log( item_ui );
+				Vector3 pos = grid.get_world_position( 0, 0 );
+				// debug.log( " posicicion: {0}", pos );
+				// debug.log( item_ui );
+			}
 		}
 
 		public void move_to_cell( int x, int y )

@@ -173,6 +173,15 @@ namespace metroidvania.grid
 			}
 		}
 
+		public T this[ int x, int y, int width, int height ]
+		{
+			set {
+				for( int i_x = x; i_x < width + x; ++i_x )
+					for( int i_y = y; i_y < height + y; ++i_y )
+						this[ i_x, i_y ] = value;
+			}
+		}
+
 		public T this[ Vector3 vector ]
 		{
 			get {
@@ -204,9 +213,10 @@ namespace metroidvania.grid
 				throw new ArgumentOutOfRangeException( "el width buscado es mayor que el width del grid" );
 			if ( height> this.height )
 				throw new ArgumentOutOfRangeException( "el height buscado es mayor que el height del grid" );
-			for( int i = 0; i < this.width; ++i )
-				for( int j = 0; j < this.height; ++j )
+			for( int j = 0; j < this.height; ++j )
+				for( int i = 0; i < this.width; ++i )
 				{
+					//helper.debug.obj_debug.info( "{0}, {1} : {2}, {3}", i, j, width, height );
 					if ( is_empty_this_rectangle( i, j, width, height ) )
 					{
 						x = i;
@@ -231,14 +241,15 @@ namespace metroidvania.grid
 		/// <param name="width">ancho del rectangulo a buscar</param>
 		/// <param name="height">alto del rectangulo a buscar</param>
 		/// </summary>
-		public bool is_empty_this_rectangle( int x, int y, int widht, int height )
+		public bool is_empty_this_rectangle( int x, int y, int width, int height )
 		{
 			bool result = true;
 			for( int w = x; w < x + width && result; ++w )
 				for( int h = y; h < y + height && result; ++h )
 				{
+					// helper.debug.obj_debug.info( "{0}, {1} : {2}, {3} {4}, {5}", w, h, x, y, width, height );
 					if( !position_is_empty( w, h ) )
-						result = false;
+						return false;
 				}
 			return result;
 		}
@@ -250,9 +261,15 @@ namespace metroidvania.grid
 			{
 				case int i:
 					return i == 0;
-				case null:
-					return true;
+				case metroidvania.inventory.item.Item_grid item:
+					if ( item != null )
+					{
+						return false;
+					}
+					return item == null;
 				default:
+					if ( value == null )
+						return true;
 					throw new NotImplementedException( string.Format( "no se implemento el tipo {0}", value.GetType().ToString() ) );
 			}
 		}
