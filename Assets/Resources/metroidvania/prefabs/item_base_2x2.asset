@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 920d0a1974aff3839ab538a25f24eb04, type: 3}
-  m_Name: item_base_2x1
+  m_Name: item_base_2x2
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 1d92eb5dcb81bff5096dde0d794b2498, type: 3}
+  image: {fileID: 21300000, guid: ea55cb81200987ec9b61130fd018efaf, type: 3}
   description: 
-  prefab: {fileID: 5629525016954585616, guid: 3151afa0db5192bf18ee8eac2b69d911, type: 3}
+  prefab: {fileID: 5629525016954585616, guid: e39123f40ad8a086bb5a82a0f6f40620, type: 3}
   max_stack_amount: 1
   height: 2
-  width: 1
+  width: 2

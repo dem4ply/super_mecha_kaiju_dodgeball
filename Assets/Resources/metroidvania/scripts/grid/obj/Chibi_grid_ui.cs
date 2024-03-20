@@ -47,8 +47,17 @@ namespace metroidvania.grid
 
 		public override void move_to_world_position( GameObject obj, int x, int y )
 		{
-			Vector3 desire_position = get_world_position( x, y );
+			//Vector3 desire_position = get_world_position( x, y );
 			Vector3 offset_to_center = get_world_position_center_cell( x, y );
+			//offset_to_center = offset_to_center * 0.5f;
+			obj.transform.position = offset_to_center;
+		}
+
+		public virtual void move_to_world_position(
+			GameObject obj, int x, int y, int width, int height )
+		{
+			//Vector3 desire_position = get_world_position( x, y );
+			Vector3 offset_to_center = get_world_position_center_cell( x, y, width, height );
 			//offset_to_center = offset_to_center * 0.5f;
 			obj.transform.position = offset_to_center;
 		}

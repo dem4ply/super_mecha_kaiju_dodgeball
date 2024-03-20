@@ -90,18 +90,27 @@ namespace metroidvania.grid.ui
 
 			GameObject canvas = helper.game_object.canvas.find_canvas();
 			var img = helper.game_object.canvas.add_img_canvas( canvas, item.image, item.name );
+			img.SetNativeSize();
 			GameObject img_obj = img.gameObject;
 			var item_ui = img_obj.AddComponent< metroidvania.grid.item.Item_ui_grid >();
 			item_ui.item = item;
 
 			int x, y;
-			grid.find_empty_space( item.width, item.height, out x, out y );
+			try
+			{
+				grid.find_empty_space( item.width, item.height, out x, out y );
+			}
+			catch ( ArgumentOutOfRangeException e )
+			{
+				debug.warning( "el item {0} no cabe en el inventario", item );
+				return;
+			}
 			if ( x == -1 && y == -1 )
 				debug.error( "el item no cabe {0}", item );
 			else
 			{
 				// debug.log( "el item cabe en {0}, {1}", x, y );
-				item_ui.move_to_cell_grid( this, x, y );
+				item_ui.move_to_cell_grid( this, x, y, item.width, item.height );
 				grid[ x, y, item.width, item.height ] = item;
 				for ( int i = 0; i < grid.width; ++i )
 					for ( int j = 0; j < grid.height; ++j )

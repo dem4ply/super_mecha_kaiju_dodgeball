@@ -734,6 +734,8 @@ MonoBehaviour:
   grid: {fileID: 222118260}
   test_item_prefab: {fileID: 0}
   item_obj: {fileID: 11400000, guid: 3574df1da07bd9072bb0b72cc6dcfa24, type: 2}
+  item_obj_2: {fileID: 11400000, guid: ccd93e94927497cf7b55d24bf41759c2, type: 2}
+  item_obj_4: {fileID: 11400000, guid: 90a8c410da589a2a4ad5a06493850cb4, type: 2}
 --- !u!4 &227193541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 334475895981934488, guid: a6f690cad259ad53e997b2fa2517aa7a,
