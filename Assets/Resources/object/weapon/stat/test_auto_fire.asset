@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4bd5ef3664ffa41ae9184cd5ec41bd, type: 3}
   m_Name: test_auto_fire
   m_EditorClassIdentifier: 
-  rate_fire: 1
+  rate_fire: 100
+  burst_amount: 1
