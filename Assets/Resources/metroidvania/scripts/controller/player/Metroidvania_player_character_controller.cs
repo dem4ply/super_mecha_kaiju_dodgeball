@@ -114,8 +114,12 @@ namespace metroidvania.controller.player
 					switch ( e )
 					{
 						case chibi.joystick.events.down:
+							//var bullet = player.gun.shot();
+							//bullet.motor.enabled = true;
+							player.gun.automatic_shot = true;
 							break;
 						case chibi.joystick.events.up:
+							player.gun.automatic_shot = false;
 							break;
 					}
 					break;
@@ -138,7 +142,7 @@ namespace metroidvania.controller.player
 			base.action( name, e );
 			switch ( name )
 			{
-				case "fire1":
+				case "fire":
 					action( name, e, true );
 					break;
 				case "jump":
