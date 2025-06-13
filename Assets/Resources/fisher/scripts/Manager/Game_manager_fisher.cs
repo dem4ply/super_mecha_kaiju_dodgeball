@@ -27,9 +27,16 @@ namespace fisher.game_manager
 			int width = 432; // or something else
 			int height = 768; // or something else
 			bool isFullScreen = false; // should be windowed to run in arbitrary resolution
-			int desiredFPS = 60; // or something else
+			uint desiredFPS = 60; // or something else
+			RefreshRate fps = new RefreshRate();
+			fps.numerator = desiredFPS;
+			fps.denominator = 1;
 
-			Screen.SetResolution( width, height, isFullScreen, desiredFPS );
+			//Screen.SetResolution( width, height, isFullScreen, desiredFPS );
+			if ( isFullScreen )
+				Screen.SetResolution( width, height, FullScreenMode.FullScreenWindow, fps );
+			else
+				Screen.SetResolution( width, height, FullScreenMode.Windowed, fps );
 		}
 
 

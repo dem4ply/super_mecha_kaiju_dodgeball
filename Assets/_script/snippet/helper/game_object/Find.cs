@@ -187,13 +187,15 @@ namespace helper
 
 			public static GameObject[] all( string name )
 			{
-				GameObject[] result = GameObject.FindObjectsOfType<GameObject>();
+				//GameObject[] result = GameObject.FindObjectsOfType<GameObject>();
+				GameObject[] result = GameObject.FindObjectsByType<GameObject>( FindObjectsSortMode.None );
 				return result.Where( obj => obj.name == name ).ToArray();
 			}
 
 			public static GameObject[] all_regex( string regex )
 			{
-				GameObject[] result = GameObject.FindObjectsOfType<GameObject>();
+				//GameObject[] result = GameObject.FindObjectsOfType<GameObject>();
+				GameObject[] result = GameObject.FindObjectsByType<GameObject>( FindObjectsSortMode.None );
 				var r = new Regex( regex, RegexOptions.Compiled );
 				return result.Where( obj => r.IsMatch( obj.name ) ).ToArray();
 			}

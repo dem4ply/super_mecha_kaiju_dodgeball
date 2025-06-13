@@ -6,7 +6,7 @@ namespace helper.game_object
 	{
 		public static void scene()
 		{
-			var objs = GameObject.FindObjectsOfType<GameObject>();
+			var objs = GameObject.FindObjectsByType<GameObject>( FindObjectsSortMode.None );
 			foreach ( var obj in objs )
 				if ( obj.name != "New Game Object" )
 					GameObject.Destroy( obj );
