@@ -270,7 +270,7 @@ namespace chibi.motor.npc
 			if ( should_finish_jump( velocity_vector ) )
 				end_jump();
 
-			ridgetbody.velocity = velocity_vector;
+			ridgetbody.linearVelocity = velocity_vector;
 			// debug.draw.arrow( velocity_vector, Color.magenta, duration:1f );
 
 			update_animator();
@@ -477,8 +477,8 @@ namespace chibi.motor.npc
 
 		protected virtual void update_animator()
 		{
-			animator.speed = ridgetbody.velocity.z;
-			animator.vertical_speed = ridgetbody.velocity.y;
+			animator.speed = ridgetbody.linearVelocity.z;
+			animator.vertical_speed = ridgetbody.linearVelocity.y;
 			animator.is_grounded = is_grounded || is_in_slope;
 			if ( is_not_grounded )
 			{

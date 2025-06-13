@@ -8,7 +8,7 @@ namespace fisher.motor.weapons.gun.bullet
 		{
 			base.update_motion();
 			transform.LookAt(
-				transform.position + ridgetbody.velocity );
+				transform.position + ridgetbody.linearVelocity );
 		}
 	}
 }

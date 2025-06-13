@@ -15,14 +15,14 @@ namespace weapon
 			public float current_speed
 			{
 				get {
-					return _rigidbody.velocity.magnitude;
+					return _rigidbody.linearVelocity.magnitude;
 				}
 			}
 
 			public Vector3 direction
 			{
 				get {
-					return _rigidbody.velocity.normalized;
+					return _rigidbody.linearVelocity.normalized;
 				}
 			}
 
@@ -34,7 +34,7 @@ namespace weapon
 			public void shot( Vector3 direction )
 			{
 				Vector3 velocity = direction * max_speed;
-				_rigidbody.velocity = velocity;
+				_rigidbody.linearVelocity = velocity;
 			}
 
 			protected override void _init_cache()

@@ -14,7 +14,7 @@ namespace chibi.motor
 		public override Vector3 velocity
 		{
 			get {
-				return ridgetbody.velocity;
+				return ridgetbody.linearVelocity;
 			}
 		}
 
@@ -31,7 +31,7 @@ namespace chibi.motor
 			Vector3 velocity_vector = desire_velocity;
 			process_motion( ref velocity_vector );
 
-			ridgetbody.velocity = velocity_vector;
+			ridgetbody.linearVelocity = velocity_vector;
 			current_speed = velocity_vector;
 		}
 

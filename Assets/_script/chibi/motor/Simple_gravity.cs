@@ -12,7 +12,7 @@ namespace chibi.motor
 		public Vector3 velocity
 		{
 			get {
-				return ridgetbody.velocity;
+				return ridgetbody.linearVelocity;
 			}
 		}
 
@@ -34,7 +34,7 @@ namespace chibi.motor
 
 		protected virtual void FixedUpdate()
 		{
-			ridgetbody.velocity += gravity * Time.deltaTime;
+			ridgetbody.linearVelocity += gravity * Time.deltaTime;
 		}
 	}
 }

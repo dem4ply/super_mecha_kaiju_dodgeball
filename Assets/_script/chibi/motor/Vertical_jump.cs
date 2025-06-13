@@ -21,7 +21,7 @@ namespace chibi.motor
 		public Vector3 velocity
 		{
 			get {
-				return ridgetbody.velocity;
+				return ridgetbody.linearVelocity;
 			}
 		}
 
@@ -71,9 +71,9 @@ namespace chibi.motor
 			debug.error( "se deberia de elimnar esto" );
 			if ( want_to_jump && false )
 			{
-				ridgetbody.velocity = new Vector3(
-					ridgetbody.velocity.x, desire_velocity,
-					ridgetbody.velocity.z );
+				ridgetbody.linearVelocity = new Vector3(
+					ridgetbody.linearVelocity.x, desire_velocity,
+					ridgetbody.linearVelocity.z );
 				want_to_jump = false;
 			}
 		}
