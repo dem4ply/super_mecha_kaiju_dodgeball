@@ -16,6 +16,7 @@ namespace metroidvania.grid.ui
 		public metroidvania.inventory.item.Item_grid item_obj;
 		public metroidvania.inventory.item.Item_grid item_obj_2;
 		public metroidvania.inventory.item.Item_grid item_obj_4;
+		public bool add_items = true;
 
         protected override void _init_cache()
         {
@@ -30,7 +31,8 @@ namespace metroidvania.grid.ui
 		protected override IEnumerator late_init( float wait )
 		{
 			yield return base.late_init( wait );
-			test_item();
+			if ( this.add_items )
+				test_item();
 		}
 
 

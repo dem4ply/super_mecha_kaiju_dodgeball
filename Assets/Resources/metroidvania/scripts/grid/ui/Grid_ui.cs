@@ -65,7 +65,7 @@ namespace metroidvania.grid.ui
 		{
 			int total_elements = grid.width * grid.height;
 			for( int i = 0; i < total_elements; ++i )
-			helper.instantiate.ui.parent( prefab_cell_ui, grid_ui.transform );
+				helper.instantiate.ui.parent( prefab_cell_ui, grid_ui.transform );
 		}
 
         public void OnPointerExit(PointerEventData eventData)
@@ -112,12 +112,16 @@ namespace metroidvania.grid.ui
 				// debug.log( "el item cabe en {0}, {1}", x, y );
 				item_ui.move_to_cell_grid( this, x, y, item.width, item.height );
 				grid[ x, y, item.width, item.height ] = item;
+				/*
+				// Esta cosa es para debugear que hay en cada celda
+				// TODO: eliminar
 				for ( int i = 0; i < grid.width; ++i )
 					for ( int j = 0; j < grid.height; ++j )
 						if ( grid[ i, j ] != null )
 							debug.log( grid[ i, j  ] );
 						else
 							debug.log( "null" );
+				*/
 
 				Vector3 pos = grid.get_world_position( 0, 0 );
 				// debug.log( " posicicion: {0}", pos );

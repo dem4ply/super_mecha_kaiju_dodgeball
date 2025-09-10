@@ -29,9 +29,17 @@ namespace metroidvania.grid
 			}
 		}
 
+        /// <summary>
+		/// esta reimplementacion reescala los valores usando
+		/// el componente canvas scaler de unity se encuentra
+		/// en el inspector
+		/// </summary>
+		/// <param name="x">columna del grid</param>
+		/// <param name="y">fila del grid</param>
+		/// <returns>Vector3 con la posicion del mundo de la esquina de la celda</returns>
         public override Vector3 get_world_position(int x, int y)
         {
-			//Debug.Log( string.Format( "scale factor {0}", offsect_ui ) );
+			// Debug.Log( string.Format( "scale factor {0}", this.offsect ) );
 			return origin.position + new Vector3( x, -y, 0 ) * ( size * this.offsect );
         }
 
