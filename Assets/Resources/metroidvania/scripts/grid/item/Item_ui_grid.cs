@@ -13,11 +13,20 @@ namespace metroidvania.grid.item
 	{
 		public chibi.inventory.item.Item item;
 
-        public void move_to_cell_grid( metroidvania.grid.ui.Grid_ui grid, int x, int y )
+        public void move_to_cell_grid(
+            metroidvania.grid.ui.Grid_ui grid, int x, int y )
         {
             debug.log( "mover a {0} en la posiscion {1} {2}", grid, x, y );
             // Vector3 final = grid.grid.get_world_position( x, y );
             grid.grid.move_to_world_position( this.gameObject, x, y );
+        }
+
+        public void move_to_cell_grid(
+            metroidvania.grid.ui.Grid_ui grid,
+            int x, int y,
+            int width, int height )
+        {
+            grid.grid.move_to_world_position( this.gameObject, x, y, width, height );
         }
 
         protected override void _init_cache()

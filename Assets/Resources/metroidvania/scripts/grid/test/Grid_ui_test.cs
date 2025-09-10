@@ -14,6 +14,8 @@ namespace metroidvania.grid.ui
 		public Grid_ui grid;
 		public chibi.inventory.Item test_item_prefab;
 		public metroidvania.inventory.item.Item_grid item_obj;
+		public metroidvania.inventory.item.Item_grid item_obj_2;
+		public metroidvania.inventory.item.Item_grid item_obj_4;
 
         protected override void _init_cache()
         {
@@ -34,10 +36,9 @@ namespace metroidvania.grid.ui
 
         public virtual void test_item()
 		{
-			for( int i = 0; i < 9; ++i )
-			{
-				grid.add( item_obj );
-			}
+			grid.add( item_obj_2 );
+			grid.add( item_obj_4 );
+			grid.add( item_obj );
 		}
     }
 }
