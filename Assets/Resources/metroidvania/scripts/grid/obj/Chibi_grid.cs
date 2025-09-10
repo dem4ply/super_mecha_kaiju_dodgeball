@@ -42,7 +42,7 @@ namespace metroidvania.grid
 			//rect_transform = origin.GetComponent<RectTransform>();
 		}
 
-		public void init()
+		public virtual void init()
 		{
 			grid_array = new T[ this.width, this.height ];
 			debug_text = new TextMesh[ this.width, this.height ];

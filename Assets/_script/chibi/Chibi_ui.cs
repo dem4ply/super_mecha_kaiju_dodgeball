@@ -6,6 +6,7 @@ namespace chibi
 
 	public class Chibi_ui : Chibi_behaviour
 	{
+		public bool should_prepare_rect = false;
 		protected RectTransform _rect_transform;
 
 		public RectTransform rect_transform
@@ -19,7 +20,13 @@ namespace chibi
         {
             base._init_cache();
 			_rect_transform = GetComponent< RectTransform >();
+			if ( should_prepare_rect )
+				prepare_rect();
         }
+
+		protected virtual void prepare_rect()
+		{
+		}
 
         public virtual void hide()
 		{
