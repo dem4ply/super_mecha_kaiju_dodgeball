@@ -20,11 +20,17 @@ namespace metroidvania.grid
 		{
 			get
 			{
-				CanvasScaler scaler = helper.game_object.canvas.find_canvas().GetComponent<CanvasScaler>();
+				//TODO: optimizar esta mierda
+				CanvasScaler scaler =
+					helper.game_object.canvas.find_canvas()
+					.GetComponent<CanvasScaler>();
 				float refecence_width = scaler.referenceResolution.x;
 				float refecence_height = scaler.referenceResolution.y;
 				float match = scaler.matchWidthOrHeight;
-				float offect = ( Screen.width / refecence_width ) * ( 1 - match ) + ( Screen.height / refecence_height ) * match;
+				float ratio_width = Screen.width / refecence_width;
+				float ratio_height = Screen.height / refecence_height;
+
+				float offect =  ratio_width * ( 1 - match ) + ratio_height * match;
 				return offect;
 			}
 		}
@@ -37,7 +43,7 @@ namespace metroidvania.grid
 		/// <param name="x">columna del grid</param>
 		/// <param name="y">fila del grid</param>
 		/// <returns>Vector3 con la posicion del mundo de la esquina de la celda</returns>
-        public override Vector3 get_world_position(int x, int y)
+        public override Vector3 get_world_position( int x, int y )
         {
 			// Debug.Log( string.Format( "scale factor {0}", this.offsect ) );
 			return origin.position + new Vector3( x, -y, 0 ) * ( size * this.offsect );
