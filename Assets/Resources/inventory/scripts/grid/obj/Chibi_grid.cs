@@ -192,7 +192,8 @@ namespace inventory.grid
 			}
 			set {
 				grid_array[ x, y ] = value;
-				debug_text[ x, y ].text = value.ToString();
+				if ( debug_text[ x, y ] )
+					debug_text[ x, y ].text = value.ToString();
 			}
 		}
 
@@ -284,7 +285,7 @@ namespace inventory.grid
 			{
 				case int i:
 					return i == 0;
-				case metroidvania.inventory.item.Item_grid item:
+				case inventory.item.Item_grid item:
 					if ( item != null )
 					{
 						return false;

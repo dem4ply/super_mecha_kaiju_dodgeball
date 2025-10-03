@@ -14,8 +14,10 @@ namespace inventory.ui.grid
 		public inventory.grid.Chibi_grid_ui<inventory.item.Item_grid> grid;
 		public GridLayoutGroup grid_ui;
 		public GameObject prefab_cell_ui;
+		public GameObject canvas;
 
 		public chibi.inventory.Inventory inventory;
+		public GameObject item_ui_prefab_base;
 
 		public bool show_init_debug = true;
 
@@ -49,6 +51,19 @@ namespace inventory.ui.grid
 				}
 				grid.init();
 				//grid.origin = this.transform;
+			}
+			if ( !canvas )
+			{
+				debug.warning(
+					"no se asigno el canvas al grid_ui "
+					+ "se usara la busqueda del canvas" );
+				canvas = helper.game_object.canvas.find_canvas();
+			}
+			if ( !item_ui_prefab_base )
+			{
+				debug.error(
+					"no se asigno el item ui prefab base "
+					+ "sin el no puede generar items en el grid" );
 			}
 			prepare_ui_grid();
 			if ( this.show_init_debug )
@@ -107,12 +122,15 @@ namespace inventory.ui.grid
 			debug.warning( "agregar al grid" );
 			debug.log( "agregar al grid: {0} * {1}", item.width, item.height );
 
-			GameObject canvas = helper.game_object.canvas.find_canvas();
-			var img = helper.game_object.canvas.add_img_canvas( canvas, item.image, item.name );
-			img.SetNativeSize();
-			GameObject img_obj = img.gameObject;
-			var item_ui = img_obj.AddComponent< inventory.ui.grid.item.Item_ui_grid >();
-			item_ui.item = item;
+			// GameObject canvas = helper.game_object.canvas.find_canvas();
+
+			var item_obj = this.create_new_item_ui( item );
+			var item_ui = item_obj.GetComponent< inventory.ui.grid.item.Item_ui_grid >();
+			// var img = helper.game_object.canvas.add_img_canvas( canvas, item.image, item.name );
+			// img.SetNativeSize();
+			// GameObject img_obj = img.gameObject;
+			// var item_ui = img_obj.AddComponent< inventory.ui.grid.item.Item_ui_grid >();
+			// item_ui.item = item;
 
 			int x, y;
 			try
@@ -134,6 +152,37 @@ namespace inventory.ui.grid
 
 				Vector3 pos = grid.get_world_position( 0, 0 );
 			}
+		}
+
+		public GameObject create_new_item_ui( inventory.item.Item_grid item )
+		{
+			if ( !item_ui_prefab_base )
+				return scrach_create_new_item_ui( item );
+			GameObject img_obj = helper.instantiate.parent( item_ui_prefab_base, canvas );
+
+			var item_ui = img_obj.GetComponent<
+				inventory.ui.grid.item.Item_ui_grid >();
+			if ( !item_ui )
+			{
+				debug.error(
+					"item_ui_prefab_base no tiene el "
+					+ "componente item_ui_grid" );
+			}
+			else
+			{
+				item_ui.item = item;
+			}
+			return img_obj;
+		}
+
+		public GameObject scrach_create_new_item_ui( inventory.item.Item_grid item )
+		{
+			var img = helper.game_object.canvas.add_img_canvas( canvas, item.image, item.name );
+			img.SetNativeSize();
+			GameObject img_obj = img.gameObject;
+			var item_ui = img_obj.AddComponent< inventory.ui.grid.item.Item_ui_grid >();
+			item_ui.item = item;
+			return img_obj;
 		}
 
 		public void move_to_cell( int x, int y )

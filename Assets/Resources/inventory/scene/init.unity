@@ -359,8 +359,9 @@ GameObject:
   - component: {fileID: 612421719}
   - component: {fileID: 612421718}
   - component: {fileID: 612421717}
+  - component: {fileID: 612421720}
   m_Layer: 5
-  m_Name: Button
+  m_Name: 1x1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -429,7 +430,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 612421718}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 612421720}
+        m_TargetAssemblyTypeName: inventory.ui.grid.test_helper.Helper_spawn_item,
+          Assembly-CSharp
+        m_MethodName: add_item
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &612421718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,12 +482,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612421715}
   m_CullTransparentMesh: 1
+--- !u!114 &612421720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612421715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff255bbf300d6bb7ba7bed2115e137e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_mode: 0
+  pool: {fileID: 0}
+  should_prepare_rect: 0
+  item: {fileID: 0}
+  item_ui: {fileID: 0}
+  item_obj: {fileID: 11400000, guid: 3b5a03583ce0ea4afa606945cb951c93, type: 2}
+  inventory_grid: {fileID: 644436212}
 --- !u!224 &644436211 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5629932068738336494, guid: 0b5fed16c084ccfc3a1c5c7906bc4b38,
     type: 3}
   m_PrefabInstance: {fileID: 6374063129677334848}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &644436212 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4119215008424822608, guid: 0b5fed16c084ccfc3a1c5c7906bc4b38,
+    type: 3}
+  m_PrefabInstance: {fileID: 6374063129677334848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fa846e8d676dcf0b2a2f6d9e70eb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1030011900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,9 +1342,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4119215008424822608, guid: 0b5fed16c084ccfc3a1c5c7906bc4b38,
         type: 3}
+      propertyPath: grid.size
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119215008424822608, guid: 0b5fed16c084ccfc3a1c5c7906bc4b38,
+        type: 3}
       propertyPath: inventory
       value: 
       objectReference: {fileID: 1288058732}
+    - target: {fileID: 4119215008424822608, guid: 0b5fed16c084ccfc3a1c5c7906bc4b38,
+        type: 3}
+      propertyPath: show_init_debug
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119215008424822608, guid: 0b5fed16c084ccfc3a1c5c7906bc4b38,
+        type: 3}
+      propertyPath: item_ui_prefab_base
+      value: 
+      objectReference: {fileID: 2755285993789205546, guid: 646f054e852db2cbe8b142139e11b492,
+        type: 3}
     - target: {fileID: 5629932068738336494, guid: 0b5fed16c084ccfc3a1c5c7906bc4b38,
         type: 3}
       propertyPath: m_Pivot.x
