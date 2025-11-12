@@ -1,5 +1,6 @@
 ﻿using helper.game_object;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace chibi
 {
@@ -13,6 +14,34 @@ namespace chibi
 		{
 			get {
 				return _rect_transform;
+			}
+		}
+
+		public GameObject canvas
+		{
+			get {
+				return helper.game_object.canvas.find_canvas();
+			}
+		}
+
+		public CanvasScaler scaler
+		{
+			get {
+				 return canvas.GetComponent<CanvasScaler>();
+			}
+		}
+
+		public Vector2 ratio_scaler
+		{
+			get {
+				// TODO: optimizar esta mierda
+				// TODO: eliminar duplicacion en Assets/Resources/inventory/scripts/grid/obj/Chibi_grid_ui.cs
+				float refecence_width = scaler.referenceResolution.x;
+				float refecence_height = scaler.referenceResolution.y;
+				float match = scaler.matchWidthOrHeight;
+				float ratio_width = Screen.width / refecence_width;
+				float ratio_height = Screen.height / refecence_height;
+				return new Vector2( ratio_width, ratio_height );
 			}
 		}
 
