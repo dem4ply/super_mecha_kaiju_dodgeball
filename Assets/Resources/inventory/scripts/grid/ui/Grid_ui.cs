@@ -156,9 +156,10 @@ namespace inventory.ui.grid
 
 		public GameObject create_new_item_ui( inventory.item.Item_grid item )
 		{
+			// no prefab base
 			if ( !item_ui_prefab_base )
 				return scrach_create_new_item_ui( item );
-			GameObject img_obj = helper.instantiate.parent( item_ui_prefab_base, canvas );
+			GameObject img_obj = helper.instantiate.ui.parent( item_ui_prefab_base, canvas );
 
 			var item_ui = img_obj.GetComponent<
 				inventory.ui.grid.item.Item_ui_grid >();
