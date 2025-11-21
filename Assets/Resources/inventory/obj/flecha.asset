@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11a0b40730e151f7967889c7a55dbe8, type: 3}
+  m_Name: flecha
+  m_EditorClassIdentifier: 
+  image: {fileID: -170052732479614541, guid: c26167b900f7db488abfad692a2d55cb, type: 3}
+  description: item base
+  prefab: {fileID: 5629525016954585616, guid: 83de3784a6589890cab6a95143379fe4, type: 3}
+  max_stack_amount: 1
+  height: 2
+  width: 1
