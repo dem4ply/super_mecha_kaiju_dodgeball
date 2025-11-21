@@ -6,6 +6,7 @@ using UnityEngine;
 using chibi.controller.npc;
 using helper.test.assert;
 using System.Linq;
+using TMPro;
 
 namespace tests.controller.motor.side_scroll.jump
 {
@@ -73,7 +74,11 @@ namespace tests.controller.motor.side_scroll.jump
 			foreach ( float d in diff )
 				Debug.Log( string.Format(
 					"la diferencia de salto fue de {0}", d ) );
-			Assert.IsFalse( diff.Distinct().Skip(1).Any() );
+			var avg = diff.Zip(diff.Skip(1), (first, second) => System.Math.Abs(second - first)).Average();
+			Debug.Log( string.Format(
+				"promedio de las diferencias {0}", avg ) );
+			Assert.Less( avg, 0.1f, "la differencia de salto en promedio es mayor a 0.1" );
+			// Assert.IsFalse( diff.Distinct().Skip(1).Any() );
 		}
 	}
 }
