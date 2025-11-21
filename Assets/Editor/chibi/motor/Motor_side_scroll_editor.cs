@@ -97,7 +97,7 @@ namespace chibi.editor.motor.npc
 			if ( max_jump_heigh != motor.max_jump_heigh )
 			{
 				motor.max_jump_heigh = max_jump_heigh;
-				Undo.RecordObject( motor, "change max jummp heigh" );
+				Undo.RecordObject( motor, "change max jump heigh" );
 			}
 
 			var min_jump_heigh = EditorGUILayout.FloatField(
@@ -105,7 +105,7 @@ namespace chibi.editor.motor.npc
 			if ( min_jump_heigh != motor.min_jump_heigh )
 			{
 				motor.min_jump_heigh = min_jump_heigh;
-				Undo.RecordObject( motor, "change min jmmp heigh" );
+				Undo.RecordObject( motor, "change min jump heigh" );
 			}
 
 			var wall_climp_jump_heigh = EditorGUILayout.FloatField(

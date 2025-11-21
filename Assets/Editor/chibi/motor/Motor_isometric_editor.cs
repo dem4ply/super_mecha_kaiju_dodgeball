@@ -17,18 +17,18 @@ namespace chibi.editor.motor.npc
 
 		public override void OnInspectorGUI()
 		{
-			EditorGUI.BeginChangeCheck();
 			is_going_to_draw_gravity = false;
 			base.OnInspectorGUI();
+			EditorGUI.BeginChangeCheck();
 			Motor_isometric motor = ( Motor_isometric )target;
 
 			draw_jump_control( motor );
-			serializedObject.Update();
 			if ( EditorGUI.EndChangeCheck() )
 			{
 				EditorUtility.SetDirty( motor );
+				serializedObject.Update();
+				serializedObject.ApplyModifiedProperties();
 			}
-			serializedObject.ApplyModifiedProperties();
 		}
 
 		protected override void draw_gravity( Motor motor_old )
@@ -36,6 +36,7 @@ namespace chibi.editor.motor.npc
 			Motor_isometric motor = ( Motor_isometric )motor_old;
 			var old_width = EditorGUIUtility.labelWidth;
 			EditorGUIUtility.labelWidth = 70f;
+
 			EditorGUILayout.BeginHorizontal();
 			EditorGUILayout.LabelField( "gravity:", motor.gravity.ToString() );
 			EditorGUILayout.LabelField(
@@ -43,6 +44,7 @@ namespace chibi.editor.motor.npc
 			EditorGUILayout.LabelField(
 				"min jump:", motor.min_jump_heigh.ToString() );
 			EditorGUILayout.EndHorizontal();
+
 			EditorGUIUtility.labelWidth = old_width;
 		}
 
@@ -53,10 +55,21 @@ namespace chibi.editor.motor.npc
 			draw_gravity( motor );
 
 			EditorGUILayout.BeginHorizontal();
-			motor.max_jump_heigh = EditorGUILayout.FloatField(
+			var max_jump_heigh = EditorGUILayout.FloatField(
 				"max jump height", motor.max_jump_heigh );
-			motor.min_jump_heigh = EditorGUILayout.FloatField(
+			if ( max_jump_heigh != motor.max_jump_heigh )
+			{
+				Undo.RecordObject( motor, "change max jump heigh" );
+				motor.max_jump_heigh = max_jump_heigh;
+			}
+
+			var min_jump_heigh = EditorGUILayout.FloatField(
 				"min jump height", motor.min_jump_heigh );
+			if ( min_jump_heigh != motor.min_jump_heigh )
+			{
+				Undo.RecordObject( motor, "change min jump heigh" );
+				motor.min_jump_heigh = min_jump_heigh;
+			}
 			EditorGUILayout.EndHorizontal();
 		}
 
