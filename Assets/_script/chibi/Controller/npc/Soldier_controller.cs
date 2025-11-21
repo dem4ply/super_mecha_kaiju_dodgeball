@@ -2,6 +2,7 @@
 using UnityEngine;
 using chibi.controller.weapon.gun.bullet;
 using chibi.rol_sheet;
+using Unity.Mathematics;
 
 namespace chibi.controller.npc
 {
@@ -59,6 +60,7 @@ namespace chibi.controller.npc
 			{
 				turrent.owner = rol;
 				is_using_turrent = true;
+				transform.position = hold_turrent_position.position;
 			}
 		}
 
@@ -78,6 +80,8 @@ namespace chibi.controller.npc
 				Debug.LogError( string.Format(
 					"[soldier controller] no encontro un 'Rol_sheet' en {0}",
 					helper.game_object.name.full( this ) ) );
+			// if ( !hold_turrent_position )
+				// debug.error( "no tiene asignado el hold_turrent_position" );
 			load_actuator_controller();
 		}
 

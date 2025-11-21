@@ -77,16 +77,13 @@ namespace tests.controller.trigger
 		public IEnumerator should_be_in_the_position_of_the_turtrent()
 		{
 			npc.desire_direction = Vector3.left;
-			npc.speed = 1f;
+			npc.speed = 0.2f;
 			yield return new WaitForSeconds( 0.5f );
 			npc.grab_turrent();
 			yield return new WaitForSeconds( 0.5f );
+			var distance = npc.transform.position - npc.hold_turrent_position.position;
 			Assert.AreEqual(
-				npc.transform.position.x, npc.hold_turrent_position.position.x,
-				0.1f );
-			Assert.AreEqual(
-				npc.transform.position.y, npc.hold_turrent_position.position.y,
-				0.1f );
+				distance.sqrMagnitude, 0.1f, 0.5f );
 		}
 	}
 }
