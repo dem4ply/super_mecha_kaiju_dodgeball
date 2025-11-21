@@ -27,16 +27,39 @@ namespace chibi.inventory
 			}
 			if ( item.item.is_stackable )
 			{
-				throw new System.NotImplementedException();
+				//debug.error( "se intenta agregar {0} con amount {1}", item, amount );
+				if ( amount < 0 )
+					amount = 1;
+
+				foreach( Item current in list_items )
+				{
+					while ( current.is_not_stack_full && amount > 0 )
+					{
+						++current.amount;
+						--amount;
+					}
+				}
+				if ( amount > 0 )
+				{
+					inventory.add( item.item, 1 );
+					list_items.Add( item );
+					add_single_item( item );
+					--amount;
+					if ( amount > 0 )
+						this.add( item, amount );
+				}
 			}
-			if ( amount < 0 )
+			else if ( amount < 0 )
 			{
 				inventory.add( item.item, 1 );
 				list_items.Add( item );
 				add_single_item( item );
 			}
 			else
+			{
+				//debug.error( "se intenta agregar {0} con amount {1}", item, amount );
 				throw new System.NotImplementedException();
+			}
 		}
 
 		protected virtual Item clone_item( Item item )

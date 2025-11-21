@@ -8,6 +8,22 @@ namespace chibi.inventory
 		public item.Item item;
 		public int amount = 1;
 
+		public bool is_stack_full
+		{
+			get
+			{
+				return amount >= item.max_stack_amount;
+			}
+		}
+
+		public bool is_not_stack_full
+		{
+			get
+			{
+				return !is_stack_full;
+			}
+		}
+
 		public void send_to_pool()
 		{
 			throw new System.NotImplementedException();

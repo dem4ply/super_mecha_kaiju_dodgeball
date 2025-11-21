@@ -88,6 +88,7 @@ namespace tests.inventory
 			yield return new WaitForSeconds( 0.1f );
 			Item item = puerros[ 0 ];
 			Assert.AreEqual( inventory.items.Count, 0 );
+			helper.debug.obj_debug.info( "agregando puerro" );
 			inventory.add( puerros[0] );
 			inventory.add( dangos[1] );
 			Assert.AreEqual( inventory.items.Count, 2 );

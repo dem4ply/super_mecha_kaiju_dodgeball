@@ -15,4 +15,4 @@ MonoBehaviour:
   image: {fileID: 21300032, guid: 24a8582ceef60e94589b1649e0955f52, type: 3}
   description: es un item de prueba un puerro
   prefab: {fileID: 6789975804136253545, guid: 0502f65983b1d174fa269ee94212e344, type: 3}
-  max_stack_amount: 5
+  max_stack_amount: 1
