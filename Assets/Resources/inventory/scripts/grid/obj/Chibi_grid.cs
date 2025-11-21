@@ -228,14 +228,14 @@ namespace inventory.grid
 		/// </code>
 		/// los paremetgros x, y son el output
 		/// </example>
-		/// <param name="wifth">ancho del rectangulo a buscar</param>
+		/// <param name="width">ancho del rectangulo a buscar</param>
 		/// <param name="height">alto del rectangulo a buscar</param>
 		/// </summary>
 		public void find_empty_space( int width, int height, out int x, out int y )
 		{
 			if ( width > this.width )
 				throw new ArgumentOutOfRangeException( "el width buscado es mayor que el width del grid" );
-			if ( height> this.height )
+			if ( height > this.height )
 				throw new ArgumentOutOfRangeException( "el height buscado es mayor que el height del grid" );
 			for( int j = 0; j < this.height; ++j )
 				for( int i = 0; i < this.width; ++i )
@@ -268,6 +268,11 @@ namespace inventory.grid
 		public bool is_empty_this_rectangle( int x, int y, int width, int height )
 		{
 			bool result = true;
+			if ( x + width > this.width )
+				return false;
+			if ( y + height > this.height )
+				return false;
+
 			for( int w = x; w < x + width && result; ++w )
 				for( int h = y; h < y + height && result; ++h )
 				{
@@ -280,6 +285,7 @@ namespace inventory.grid
 
 		public bool position_is_empty( int x, int y )
 		{
+			// UnityEngine.Debug.Log( string.Format( "position_is_empty {0}, {1} of {2} {3}", x, y, this.width, this.height ) );
 			object value = grid_array[ x, y ];
 			switch ( value )
 			{
