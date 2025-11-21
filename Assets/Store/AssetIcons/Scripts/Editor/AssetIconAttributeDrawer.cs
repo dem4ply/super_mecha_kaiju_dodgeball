@@ -12,7 +12,8 @@ namespace AssetIcons.Editors
 	{
 		public override float GetPropertyHeight (SerializedProperty property, GUIContent label)
 		{
-			return EditorGUIUtility.singleLineHeight;
+			return EditorGUIUtility.singleLineHeight * 6;
+			//return base.GetPropertyHeight( property, label );
 		}
 
 		public override void OnGUI (Rect position, SerializedProperty property, GUIContent label)
