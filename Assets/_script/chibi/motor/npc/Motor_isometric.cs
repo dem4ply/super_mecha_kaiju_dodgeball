@@ -7,8 +7,11 @@ namespace chibi.motor.npc
 	public class Motor_isometric : Motor_physical
 	{
 		#region variables de jump
+		[SerializeField]
 		protected float _max_jump_heigh = 4f;
+		[SerializeField]
 		protected float _min_jump_heigh = 1f;
+		[SerializeField]
 		protected float _jump_time = 0.4f;
 
 		protected float _max_jump_velocity;
@@ -140,7 +143,7 @@ namespace chibi.motor.npc
 			velocity_vector.y += ( gravity * Time.deltaTime );
 		}
 
-		protected virtual void _process_jump(ref Vector3 speed_vector)
+		protected virtual void _process_jump( ref Vector3 speed_vector )
 		{
 			if ( try_to_jump_the_next_update )
 			{
@@ -148,6 +151,7 @@ namespace chibi.motor.npc
 				{
 					speed_vector.y = _max_jump_velocity;
 				}
+				try_to_jump_the_next_update = false;
 			}
 			else if ( speed_vector.y > _min_jump_velocity )
 				speed_vector.y = _min_jump_velocity;
@@ -179,10 +183,12 @@ namespace chibi.motor.npc
 
 		public void start_jump()
 		{
+			try_to_jump_the_next_update = true;
 		}
 
 		public void end_jump()
 		{
+			try_to_jump_the_next_update = false;
 		}
 	}
 }

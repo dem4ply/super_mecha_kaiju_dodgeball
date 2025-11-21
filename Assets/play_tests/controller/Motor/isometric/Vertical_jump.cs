@@ -6,6 +6,7 @@ using UnityEngine;
 using chibi.controller.npc;
 using helper.test.assert;
 using System.Linq;
+using chibi.motor.npc;
 
 namespace tests.controller.motor.isometric.jump
 {
@@ -41,6 +42,10 @@ namespace tests.controller.motor.isometric.jump
 		public IEnumerator when_jump_shoult_touch_the_first_jump_assert()
 		{
 			yield return new WaitForSeconds( 2 );
+			Motor_isometric motor = ( Motor_isometric )controller.motor;
+			Assert.IsTrue(
+				motor.is_grounded,
+				"la colicion del motor no esta en el piso para poder saltar" );
 			controller.jump();
 			yield return new WaitForSeconds( 1 );
 			jump.assert_collision_enter( controller.gameObject );
