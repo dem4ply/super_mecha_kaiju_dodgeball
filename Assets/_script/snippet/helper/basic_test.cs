@@ -24,6 +24,13 @@ namespace helper.tests
 			get { throw new NotImplementedException(); }
 		}
 
+		public virtual YieldInstruction min_wait
+		{
+			get {
+				return new WaitForSeconds( 0.1f );
+			}
+		}
+
 		[SetUp]
 		public virtual void Instanciate_scenary()
 		{
