@@ -24,6 +24,10 @@ namespace inventory.ui.grid
         protected override void _init_cache()
         {
             base._init_cache();
+			if ( !inventory )
+			{
+				debug.error( "no esta asignado inventory" );
+			}
 			prepare_rect();
 			if ( !grid_ui )
 				debug.error(

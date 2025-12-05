@@ -10,6 +10,20 @@ namespace chibi.inventory
 		public chibi.inventory.obj.Inventory inventory;
 		public Dictionary<item.Item, List<Item>> items;
 
+		public bool is_empty
+		{
+			get {
+				return items.Count == 0;
+			}
+		}
+
+		public bool is_not_empty
+		{
+			get {
+				return items.Count > 0;
+			}
+		}
+
 		public void add( item.Item item )
 		{
 			//throw new System.NotImplementedException();
