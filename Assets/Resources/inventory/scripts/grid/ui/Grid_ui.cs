@@ -164,6 +164,13 @@ namespace inventory.ui.grid
 			if ( !item_ui_prefab_base )
 				return scrach_create_new_item_ui( item );
 			GameObject img_obj = helper.instantiate.ui.parent( item_ui_prefab_base, canvas );
+            Image image = img_obj.gameObject.GetComponent< Image >();
+			if ( !image )
+			{
+				debug.error( "el prefab item_ui_prefab_base no tine imagen" );
+			}
+			else
+				image.sprite = item.image;
 
 			var item_ui = img_obj.GetComponent<
 				inventory.ui.grid.item.Item_ui_grid >();
