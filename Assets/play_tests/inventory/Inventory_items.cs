@@ -11,7 +11,7 @@ namespace tests.inventory.grid.ui
 	public class Inventory_items : helper.tests.Scene_test
 	{
         Grid_ui grid_ui;
-		Item_grid arco;
+		Item_grid arco, baston, rabano;
 
 		public override string scene_dir
 		{
@@ -28,7 +28,11 @@ namespace tests.inventory.grid.ui
 			grid_ui = helper.game_object.Find._< Grid_ui >(
 				scene, "Inventory" );
             string arco_path = "inventory/tests/items/arco";
+            string baston_path = "inventory/tests/items/baston";
+            string rabano_path = "inventory/tests/items/rabano";
 			arco = this.load_script_object<Item_grid>( arco_path );
+			baston = this.load_script_object<Item_grid>( baston_path );
+			rabano = this.load_script_object<Item_grid>( rabano_path );
 		}
 
 		[UnityTest]
@@ -45,6 +49,26 @@ namespace tests.inventory.grid.ui
 			yield return min_wait;
 			Assert.True( grid_ui.inventory.is_empty );
 			grid_ui.add( arco );
+			Assert.True( grid_ui.inventory.is_not_empty );
+			yield return wait_second;
+		}
+
+		[UnityTest]
+		public IEnumerator add_baston_should_add_item_into_grid()
+		{
+			yield return min_wait;
+			Assert.True( grid_ui.inventory.is_empty );
+			grid_ui.add( baston );
+			Assert.True( grid_ui.inventory.is_not_empty );
+			yield return wait_second;
+		}
+
+		[UnityTest]
+		public IEnumerator add_rabano_should_add_item_into_grid()
+		{
+			yield return min_wait;
+			Assert.True( grid_ui.inventory.is_empty );
+			grid_ui.add( rabano );
 			Assert.True( grid_ui.inventory.is_not_empty );
 			yield return wait_second;
 		}
