@@ -1,5 +1,5 @@
 using System;
-using helper;
+using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,11 +19,20 @@ namespace inventory.ui.grid
 		public chibi.inventory.Inventory inventory;
 		public GameObject item_ui_prefab_base;
 
+		public Dictionary<inventory.item.Item_grid, List<item.Item_ui_grid>> items;
+
 		public bool show_init_debug = true;
 
         protected override void _init_cache()
         {
             base._init_cache();
+			if ( items == null )
+			{
+				debug.warning(
+					"la lista de items inicia como nula revisar si "
+					+ "hay perdida de concistencia del inventario" );
+				items = new Dictionary<inventory.item.Item_grid, List<item.Item_ui_grid>>();
+			}
 			if ( !inventory )
 			{
 				debug.error( "no esta asignado inventory" );
@@ -129,7 +138,9 @@ namespace inventory.ui.grid
 			// GameObject canvas = helper.game_object.canvas.find_canvas();
 
 			var item_obj = this.create_new_item_ui( item );
-			var item_ui = item_obj.GetComponent< inventory.ui.grid.item.Item_ui_grid >();
+			item.Item_ui_grid item_ui =
+				item_obj.GetComponent< inventory.ui.grid.item.Item_ui_grid >();
+			add_item_ui_to_list( item_ui );
 			// var img = helper.game_object.canvas.add_img_canvas( canvas, item.image, item.name );
 			// img.SetNativeSize();
 			// GameObject img_obj = img.gameObject;
@@ -164,6 +175,7 @@ namespace inventory.ui.grid
 			if ( !item_ui_prefab_base )
 				return scrach_create_new_item_ui( item );
 			GameObject img_obj = helper.instantiate.ui.parent( item_ui_prefab_base, canvas );
+			img_obj.name = string.Format( "item {0}", item.name );
             Image image = img_obj.gameObject.GetComponent< Image >();
 			if ( !image )
 			{
@@ -203,6 +215,42 @@ namespace inventory.ui.grid
 			//Vector3 offset_to_center = new Vector3( size, -size, 0 );
 			//offset_to_center = offset_to_center * 0.5f;
 			//obj.transform.position = desire_position + offset_to_center;
+		}
+
+		/// <summary>
+		/// agrega un item ui grid instanciado a la lista dicionario de items
+		/// </summary>
+		/// <param name="item">item nuevo a agregar</param>
+		public void add_item_ui_to_list( item.Item_ui_grid item )
+		{
+			List<item.Item_ui_grid> list_items;
+			if ( !items.TryGetValue( item.item, out list_items ) )
+			{
+				list_items = new List<item.Item_ui_grid>();
+				items.Add( item.item, list_items );
+			}
+			list_items.Add( item );
+		}
+
+		/// <summary>
+		/// regresa la lista de items que tiene este invenrario
+		/// </summary>
+		/// <param name="item">item a buscar o filtrar</param>
+		/// <returns></returns>
+		public List<item.Item_ui_grid> this[ inventory.item.Item_grid item ]
+		{
+			get
+			{
+				List<item.Item_ui_grid> list_items;
+				debug.info( items.Count );
+				debug.info( items.Keys );
+				if ( !items.TryGetValue( item, out list_items ) )
+				{
+					throw new NotImplementedException(
+						"no esta implemntado si no encuentra el item en la lista" );
+				}
+				return list_items;
+			}
 		}
     }
 }

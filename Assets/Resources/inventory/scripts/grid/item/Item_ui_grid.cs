@@ -6,12 +6,14 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System.Collections;
+using inventory.item;
 
 namespace inventory.ui.grid.item
 {
 	public class Item_ui_grid: chibi.Chibi_ui, IPointerEnterHandler, IPointerExitHandler
 	{
-		public chibi.inventory.item.Item item;
+		//public chibi.inventory.item.Item item;
+		public Item_grid item;
 
         public void move_to_cell_grid(
             inventory.ui.grid.Grid_ui grid, int x, int y )
