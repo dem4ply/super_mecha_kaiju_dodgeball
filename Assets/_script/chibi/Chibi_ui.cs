@@ -1,5 +1,6 @@
 ﻿using helper.game_object;
 using UnityEngine;
+using UnityEngine.Purchasing;
 using UnityEngine.UI;
 
 namespace chibi
@@ -7,8 +8,10 @@ namespace chibi
 
 	public class Chibi_ui : Chibi_behaviour
 	{
+		public helper.ui.UI ui;
 		public bool should_prepare_rect = false;
 		protected RectTransform _rect_transform;
+
 
 		public RectTransform rect_transform
 		{
@@ -48,6 +51,7 @@ namespace chibi
         protected override void _init_cache()
         {
             base._init_cache();
+			ui = new helper.ui.UI( this );
 			_rect_transform = GetComponent< RectTransform >();
 			if ( should_prepare_rect )
 				prepare_rect();
@@ -70,6 +74,23 @@ namespace chibi
 		public virtual void toggle()
 		{
 			gameObject.SetActive( !gameObject.activeSelf );
+		}
+
+		protected override void Awake()
+		{
+			base.Awake();
+			ui = new helper.ui.UI( this );
+			//_init_cache();
+		}
+
+		protected override void Start() {
+			base.Start();
+			ui = new helper.ui.UI( this );
+		}
+
+		protected override void _dispose_cache() {
+			base._dispose_cache();
+			ui = null;
 		}
 	}
 }
