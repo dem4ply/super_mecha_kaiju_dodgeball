@@ -10,7 +10,7 @@ using inventory.item;
 
 namespace inventory.ui.grid.item
 {
-	public class Item_ui_grid: chibi.Chibi_ui, IPointerEnterHandler, IPointerExitHandler
+	public class Item_ui_grid: chibi.Chibi_ui, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IDragHandler
 	{
 		//public chibi.inventory.item.Item item;
 		public Item_grid item;
@@ -43,14 +43,28 @@ namespace inventory.ui.grid.item
 				debug.error( "el item no fue asignado" );
         }
 
-        public void OnPointerExit(PointerEventData eventData)
+        public void OnPointerExit( PointerEventData eventData )
         {
             debug.log( "mouse salio del item ui {0}", this.name );
         }
 
-        public void OnPointerEnter(PointerEventData eventData)
+        public void OnPointerEnter( PointerEventData eventData )
         {
             debug.log( "mouse entro al item ui {0}", this.name );
+        }
+
+        public void OnPointerClick( PointerEventData eventData )
+        {
+			debug.log( "click en el item, cordenadas de mouse {0}", helper.mouse.axis );
+			int x = 0, y = 0;
+			Vector2 mouse_axis = helper.mouse.axis;
+			// grid.get_x_y_from_ui( mouse_axis, out x, out y );
+			// debug.log( "click fue en las celdas {0}, {1}", x, y );
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+			debug.log( "arrastrando el item {0}, cordenadas de mouse {1}", this.name, helper.mouse.axis );
         }
     }
 }

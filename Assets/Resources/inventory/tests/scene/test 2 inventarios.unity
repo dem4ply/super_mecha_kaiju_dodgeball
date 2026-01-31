@@ -157,6 +157,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 538496840295664489, guid: 3f1beaebb64984d4a95971c31e710ede,
+        type: 3}
+      propertyPath: m_Name
+      value: Inventory player
+      objectReference: {fileID: 0}
     - target: {fileID: 1137137221128308685, guid: 3f1beaebb64984d4a95971c31e710ede,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -622,7 +627,7 @@ PrefabInstance:
     - target: {fileID: 3693819347620343354, guid: 0b5fed16c084ccfc3a1c5c7906bc4b38,
         type: 3}
       propertyPath: m_Name
-      value: Inventory
+      value: Inventory secondary
       objectReference: {fileID: 0}
     - target: {fileID: 4119215008424822608, guid: 0b5fed16c084ccfc3a1c5c7906bc4b38,
         type: 3}

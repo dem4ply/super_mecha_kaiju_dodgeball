@@ -9,7 +9,7 @@ using UnityEngine.Rendering.Universal;
 
 namespace inventory.ui.grid
 {
-	public class Grid_ui: chibi.Chibi_ui, IPointerEnterHandler, IPointerExitHandler
+	public class Grid_ui: chibi.Chibi_ui, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 	{
 		public inventory.grid.Chibi_grid_ui<inventory.item.Item_grid> grid;
 		public GridLayoutGroup grid_ui;
@@ -117,14 +117,23 @@ namespace inventory.ui.grid
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            debug.log( "mouse salio del inventario" );
+            debug.log( "mouse salio del inventario ( {0} )", this.name );
 			//helper.mouse.axis
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            debug.log( "mouse entro al inventario" );
+            debug.log( "mouse entro al inventario ( {0} )", this.name );
         }
+
+		public void OnPointerClick(PointerEventData pointerEventData)
+		{
+			debug.log( "click en el inventario {0}", helper.mouse.axis );
+			int x = 0, y = 0;
+			Vector2 mouse_axis = helper.mouse.axis;
+			grid.get_x_y_from_ui( mouse_axis, out x, out y );
+			debug.log( "click fue en las celdas {0}, {1}", x, y );
+		}
 
 		public void add( inventory.item.Item_grid item )
 		{
