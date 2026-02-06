@@ -92,5 +92,11 @@ namespace chibi
 			base._dispose_cache();
 			ui = null;
 		}
+
+		public Chibi_ui clone()
+		{
+			var result = helper.instantiate.ui.parent( this, this.canvas );
+			return result;
+		}
 	}
 }
