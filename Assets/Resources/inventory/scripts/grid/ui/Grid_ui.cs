@@ -14,7 +14,6 @@ namespace inventory.ui.grid
 		public inventory.grid.Chibi_grid_ui<inventory.item.Item_grid> grid;
 		public GridLayoutGroup grid_ui;
 		public GameObject prefab_cell_ui;
-		public GameObject canvas;
 
 		public chibi.inventory.Inventory inventory;
 		public GameObject item_ui_prefab_base;
@@ -64,13 +63,6 @@ namespace inventory.ui.grid
 				}
 				grid.init();
 				//grid.origin = this.transform;
-			}
-			if ( !canvas )
-			{
-				debug.warning(
-					"no se asigno el canvas al grid_ui "
-					+ "se usara la busqueda del canvas" );
-				canvas = helper.game_object.canvas.find_canvas();
 			}
 			if ( !item_ui_prefab_base )
 			{
@@ -161,7 +153,7 @@ namespace inventory.ui.grid
 			{
 				grid.find_empty_space( item.width, item.height, out x, out y );
 			}
-			catch ( ArgumentOutOfRangeException e )
+			catch ( ArgumentOutOfRangeException )
 			{
 				debug.warning( "el item {0} no cabe en el inventario", item );
 				return;
@@ -183,7 +175,7 @@ namespace inventory.ui.grid
 			// no prefab base
 			if ( !item_ui_prefab_base )
 				return scrach_create_new_item_ui( item );
-			GameObject img_obj = helper.instantiate.ui.parent( item_ui_prefab_base, canvas );
+			GameObject img_obj = helper.instantiate.ui.parent( item_ui_prefab_base, this.canvas );
 			img_obj.name = string.Format( "item {0}", item.name );
             Image image = img_obj.gameObject.GetComponent< Image >();
 			if ( !image )
@@ -210,7 +202,7 @@ namespace inventory.ui.grid
 
 		public GameObject scrach_create_new_item_ui( inventory.item.Item_grid item )
 		{
-			var img = helper.game_object.canvas.add_img_canvas( canvas, item.image, item.name );
+			var img = helper.game_object.canvas.add_img_canvas( this.canvas, item.image, item.name );
 			img.SetNativeSize();
 			GameObject img_obj = img.gameObject;
 			var item_ui = img_obj.AddComponent< inventory.ui.grid.item.Item_ui_grid >();
