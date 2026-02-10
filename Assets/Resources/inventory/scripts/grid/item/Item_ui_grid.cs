@@ -80,22 +80,32 @@ namespace inventory.ui.grid.item
 
 		public void OnDrag(PointerEventData eventData)
 		{
-			debug.log( "arrastrando el item {0}, cordenadas de mouse {1}", this.name, helper.mouse.axis );
+			debug.log(
+				"arrastrando el item {0}, cordenadas de mouse {1}",
+				this.name, helper.mouse.axis );
 			move_drag_item();
 		}
 
 		public void OnBeginDrag(PointerEventData eventData)
 		{
-			debug.log( "inicio del arrastrado del item {0}, cordenadas de mouse {1}", this.name, helper.mouse.axis );
+			debug.log(
+				"inicio del arrastrado del item {0}, cordenadas de mouse {1}",
+				this.name, helper.mouse.axis );
 			start_drag_item();
 		}
 
 		public void OnEndDrag(PointerEventData eventData)
 		{
-			debug.log( "termina del arrastrado del item {0}, cordenadas de mouse {1}", this.name, helper.mouse.axis );
+			debug.log(
+				"termina del arrastrado del item {0}, cordenadas de mouse {1}",
+				this.name, helper.mouse.axis );
 			end_drag_item();
 		}
 
+		/// <summary>
+		/// inicia el drag item, cambia la transparencia
+		/// y pone el drag en la misma posicion que el item
+		/// </summary>
 		public void start_drag_item()
 		{
 			if( _drag_item )
@@ -113,11 +123,27 @@ namespace inventory.ui.grid.item
 			recicle_drag_item();
 		}
 
-		public void move_drag_item()
+		/// <summary>
+		/// mueve el drag item a la posicion
+		/// </summary>
+		/// <param name="position"></param>
+		public void move_drag_item( Vector3 position )
 		{
-			_drag_item.rect_transform.position = helper.mouse.axis;
+			_drag_item.rect_transform.position = position;
 		}
 
+		/// <summary>
+		/// mueve el drag item a la pocion del mouse,
+		/// deberia ser el default de OnDrag
+		/// </summary>
+		public void move_drag_item()
+		{
+			move_drag_item( helper.mouse.axis );
+		}
+
+		/// <summary>
+		/// recicla el drag item
+		/// </summary>
 		protected void recicle_drag_item()
 		{
 			debug.log( "reciclando _drag_item" );
