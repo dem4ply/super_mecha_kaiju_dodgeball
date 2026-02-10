@@ -48,20 +48,21 @@ namespace chibi
 			}
 		}
 
-        protected override void _init_cache()
-        {
-            base._init_cache();
+		protected override void _init_cache()
+		{
+			base._init_cache();
+			// debug.log( "ui init cache" );
 			ui = new helper.ui.UI( this );
 			_rect_transform = GetComponent< RectTransform >();
 			if ( should_prepare_rect )
 				prepare_rect();
-        }
+		}
 
 		protected virtual void prepare_rect()
 		{
 		}
 
-        public virtual void hide()
+		public virtual void hide()
 		{
 			gameObject.SetActive( false );
 		}

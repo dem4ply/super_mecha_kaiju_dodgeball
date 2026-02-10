@@ -18,6 +18,14 @@ namespace inventory.ui.grid.item
 
 		protected Item_ui_grid _drag_item;
 
+		public Item_ui_grid drag_item
+		{
+			get
+			{
+				return _drag_item;
+			}
+		}
+
 		public void move_to_cell_grid(
 			inventory.ui.grid.Grid_ui grid, int x, int y )
 		{
@@ -34,12 +42,7 @@ namespace inventory.ui.grid.item
 
 		protected override void _init_cache()
 		{
-			start_one_second_late_init();
-		}
-
-		protected override IEnumerator late_init(float wait)
-		{
-			yield return base.late_init( wait );
+			base._init_cache();
 			if ( !item )
 				debug.error( "el item no fue asignado" );
 			if( _drag_item )
@@ -47,6 +50,13 @@ namespace inventory.ui.grid.item
 				debug.warning( "la variable _drag_item esta asignada en el init" );
 				recicle_drag_item();
 			}
+			start_one_second_late_init();
+		}
+
+		protected override IEnumerator late_init(float wait)
+		{
+			yield return base.late_init( wait );
+			// base._init_cache();
 		}
 
 		public void OnPointerExit( PointerEventData eventData )
@@ -71,6 +81,7 @@ namespace inventory.ui.grid.item
 		public void OnDrag(PointerEventData eventData)
 		{
 			debug.log( "arrastrando el item {0}, cordenadas de mouse {1}", this.name, helper.mouse.axis );
+			move_drag_item();
 		}
 
 		public void OnBeginDrag(PointerEventData eventData)
@@ -82,6 +93,7 @@ namespace inventory.ui.grid.item
 		public void OnEndDrag(PointerEventData eventData)
 		{
 			debug.log( "termina del arrastrado del item {0}, cordenadas de mouse {1}", this.name, helper.mouse.axis );
+			end_drag_item();
 		}
 
 		public void start_drag_item()
@@ -92,16 +104,18 @@ namespace inventory.ui.grid.item
 				recicle_drag_item();
 			}
 			_drag_item = this.clone().GetComponent<Item_ui_grid>();
+			_drag_item.rect_transform.position = this.rect_transform.position;
+			_drag_item.ui.image.transparency = 0.5f;
 		}
 
-		public void start_drag_item()
+		public void end_drag_item()
 		{
-			if( _drag_item )
-			{
-				debug.warning( "la variable _drag_item esta asignada en el start drag" );
-				recicle_drag_item();
-			}
-			_drag_item = this.clone().GetComponent<Item_ui_grid>();
+			recicle_drag_item();
+		}
+
+		public void move_drag_item()
+		{
+			_drag_item.rect_transform.position = helper.mouse.axis;
 		}
 
 		protected void recicle_drag_item()

@@ -36,7 +36,7 @@ namespace inventory.grid
 			}
 		}
 
-        /// <summary>
+		/// <summary>
 		/// esta reimplementacion reescala los valores usando
 		/// el componente canvas scaler de unity se encuentra
 		/// en el inspector
@@ -44,12 +44,18 @@ namespace inventory.grid
 		/// <param name="x">columna del grid</param>
 		/// <param name="y">fila del grid</param>
 		/// <returns>Vector3 con la posicion del mundo de la esquina de la celda</returns>
-        public override Vector3 get_world_position( int x, int y )
-        {
+		public override Vector3 get_world_position( int x, int y )
+		{
 			// Debug.Log( string.Format( "scale factor {0}", this.offsect ) );
 			return origin.position + new Vector3( x, -y, 0 ) * ( size * this.offsect );
-        }
+		}
 
+		/// <summary>
+		/// obtiene el x y y de un vector3 calculando el offsect del scaler de unity
+		/// </summary>
+		/// <param name="vector"></param>
+		/// <param name="x"></param>
+		/// <param name="y"></param>
 		public override void get_x_y_from_ui( Vector3 vector, out int x, out int y )
 		{
 			float relative_grid_x = vector.x - rect_transform.position.x;
@@ -68,6 +74,14 @@ namespace inventory.grid
 			obj.transform.position = offset_to_center;
 		}
 
+		/// <summary>
+		/// mueve el obj a la posicion del mundo del grid usando get_world_position_center_cell
+		/// </summary>
+		/// <param name="obj"></param>
+		/// <param name="x"></param>
+		/// <param name="y"></param>
+		/// <param name="width"></param>
+		/// <param name="height"></param>
 		public virtual void move_to_world_position(
 			GameObject obj, int x, int y, int width, int height )
 		{

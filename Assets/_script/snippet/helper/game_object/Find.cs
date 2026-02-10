@@ -199,6 +199,41 @@ namespace helper
 				var r = new Regex( regex, RegexOptions.Compiled );
 				return result.Where( obj => r.IsMatch( obj.name ) ).ToArray();
 			}
+
+			public static class Clone
+			{
+
+				public static string add_clone_name( GameObject obj )
+				{
+					string result = string.Format( "{0}(Clone)", obj.name );
+					return result;
+				}
+
+				/// <summary>
+				/// busca el origin clone de las instancias en el obj
+				/// </summary>
+				/// <param name="obj">donde buscara</param>
+				/// <param name="origin">game object que sirve de referencia</param>
+				/// <returns></returns>
+				public static GameObject _( GameObject obj, GameObject origin )
+				{
+					var clone_name = add_clone_name( origin );
+					GameObject result = helper.game_object.Find._( obj, clone_name );
+					if ( result != null )
+						return result;
+					return null;
+				}
+
+				public static T _<T>( GameObject obj, GameObject origin )
+					where T : MonoBehaviour
+				{
+					GameObject result = _( obj, origin );
+					if ( result != null )
+						return result.GetComponent<T>();
+					return null;
+				}
+
+			}
 		}
 	}
 }

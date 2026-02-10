@@ -22,9 +22,9 @@ namespace inventory.ui.grid
 
 		public bool show_init_debug = true;
 
-        protected override void _init_cache()
-        {
-            base._init_cache();
+		protected override void _init_cache()
+		{
+			base._init_cache();
 			if ( items == null )
 			{
 				debug.warning(
@@ -73,7 +73,7 @@ namespace inventory.ui.grid
 			prepare_ui_grid();
 			if ( this.show_init_debug )
 				grid.show_debug();
-        }
+		}
 
 		protected void prepare_ui_grid()
 		{
@@ -107,16 +107,16 @@ namespace inventory.ui.grid
 				helper.instantiate.ui.parent( prefab_cell_ui, grid_ui.transform );
 		}
 
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            debug.log( "mouse salio del inventario ( {0} )", this.name );
+		public void OnPointerExit(PointerEventData eventData)
+		{
+			debug.log( "mouse salio del inventario ( {0} )", this.name );
 			//helper.mouse.axis
-        }
+		}
 
-        public void OnPointerEnter(PointerEventData eventData)
-        {
-            debug.log( "mouse entro al inventario ( {0} )", this.name );
-        }
+		public void OnPointerEnter(PointerEventData eventData)
+		{
+			debug.log( "mouse entro al inventario ( {0} )", this.name );
+		}
 
 		public void OnPointerClick(PointerEventData pointerEventData)
 		{
