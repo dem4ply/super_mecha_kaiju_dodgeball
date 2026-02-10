@@ -132,5 +132,43 @@ namespace tests.inventory.grid.ui
 				new Vector3( 300, 100 )
 			);
 		}
+
+		[UnityTest]
+		public IEnumerator navegation_move_to_cell()
+		{
+			yield return min_wait;
+			Item_grid item_to_use = rabano;
+			var obj = add_item( item_to_use );
+			start_drag( obj );
+			yield return min_wait;
+			var drag_item = obj.drag_item;
+			Vector3 move_vector = grid_ui.grid.get_world_position_center_cell( 2, 2 );
+			move_drag( drag_item, move_vector.x, move_vector.y );
+			yield return min_wait;
+
+			yield return new WaitForSeconds( 10.1f );
+			helper.test.assert.vector3.similar(
+				drag_item.rect_transform.position,
+				move_vector
+			);
+		}
+
+		[UnityTest]
+		public IEnumerator navegation_move_to_all_cells()
+		{
+			yield return min_wait;
+			Item_grid item_to_use = rabano;
+			var obj = add_item( item_to_use );
+			start_drag( obj );
+			yield return min_wait;
+			var drag_item = obj.drag_item;
+			for ( int x = 0; x < grid_ui.grid.width; ++x )
+				for ( int y = 0; y < grid_ui.grid.height; ++y )
+				{
+					Vector3 move_vector = grid_ui.grid.get_world_position_center_cell( x, y );
+					move_drag( drag_item, move_vector.x, move_vector.y );
+					yield return new WaitForSeconds( 1f );
+				}
+		}
 	}
 }
