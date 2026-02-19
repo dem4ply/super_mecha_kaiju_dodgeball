@@ -1,6 +1,5 @@
 ﻿using helper.game_object;
 using UnityEngine;
-using UnityEngine.Purchasing;
 using UnityEngine.UI;
 
 namespace chibi

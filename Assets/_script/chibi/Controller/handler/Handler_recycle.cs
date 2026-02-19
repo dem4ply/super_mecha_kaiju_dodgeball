@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using danmaku.controller.npc;
 
 namespace chibi.controller.handler
 {
