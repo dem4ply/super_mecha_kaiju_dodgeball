@@ -25,6 +25,7 @@ namespace chibi.motor.npc
 		}
 
 		protected bool try_to_jump_the_next_update = false;
+		protected bool want_to_stop_jump = false;
 		#endregion
 
 		#region propiedades de salto
@@ -126,6 +127,8 @@ namespace chibi.motor.npc
 
 			//_process_jump( ref velocity_vector );
 			//_proccess_gravity( ref velocity_vector );
+			if ( should_finish_jump( velocity_vector ) )
+				end_jump();
 
 			ridgetbody.linearVelocity = velocity_vector;
 		}
@@ -151,7 +154,6 @@ namespace chibi.motor.npc
 				{
 					speed_vector.y = _max_jump_velocity;
 				}
-				try_to_jump_the_next_update = false;
 			}
 			else if ( speed_vector.y > _min_jump_velocity )
 				speed_vector.y = _min_jump_velocity;
@@ -189,6 +191,17 @@ namespace chibi.motor.npc
 		public void end_jump()
 		{
 			try_to_jump_the_next_update = false;
+			want_to_stop_jump = true;
+		}
+
+		/// <summary>
+		/// define si el salto puede terminar revisando si la velocidad y es menor a 0.01
+		/// </summary>
+		/// <param name="velocity_vector"></param>
+		/// <returns></returns>
+		public virtual bool should_finish_jump( Vector3 velocity_vector )
+		{
+			return try_to_jump_the_next_update && velocity_vector.y < 0.01;
 		}
 	}
 }

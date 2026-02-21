@@ -10,7 +10,7 @@ using chibi.motor;
 
 namespace chibi.editor.motor.npc
 {
-	[CustomEditor( typeof( Motor_side_scroll ) )]
+	[CustomEditor( typeof( Motor_side_scroll ), true )]
 	public class Motor_side_scroll_editor : Motor_editor
 	{
 		public static bool show_jump_forces = false;
