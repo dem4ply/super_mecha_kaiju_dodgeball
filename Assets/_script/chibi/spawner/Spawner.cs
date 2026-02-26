@@ -1,35 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 namespace chibi.spawner
 {
 	public class Spawner : chibi.Chibi_behaviour
 	{
-		public List<GameObject> objects;
-		public bool is_continuos = false;
-		public int object_index = 0;
-
 		public virtual GameObject spawn()
 		{
-			var result = _instance( next() );
-			return result;
+			throw new NotImplementedException("funcion spawn no implementada");
 		}
 
-		protected virtual GameObject next()
+		/// <summary>
+		/// funcion para spawnerar usando los eventos de unity
+		/// </summary>
+		public virtual void simple_spawn()
 		{
-			var result = objects[ object_index++ ];
-			object_index %= objects.Count;
-			return result;
-		}
-
-		protected virtual GameObject _instance( GameObject obj )
-		{
-			return helper.instantiate._( obj, transform.position );
-		}
-
-		protected virtual GameObject _instance( GameObject obj, Vector3 position )
-		{
-			return helper.instantiate._( obj, position );
+			spawn();
 		}
 	}
 }

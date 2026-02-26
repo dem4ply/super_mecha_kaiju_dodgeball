@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4169457950571828445}
-  - component: {fileID: 3901512787425994854}
+  - component: {fileID: 8753522170567786629}
   m_Layer: 0
   m_Name: spawner
   m_TagString: Untagged
@@ -24,14 +24,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7358353628398500201}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.00056648254, y: 3.8154855, z: -0.11107969}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3901512787425994854
+--- !u!114 &8753522170567786629
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,11 +41,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7358353628398500201}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e8479c245abed4694a179b58ecef57, type: 3}
+  m_Script: {fileID: 11500000, guid: eeefde0781992ac15aaf91932ae77e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   debug_mode: 0
-  objects: []
+  pool: {fileID: 0}
+  objects:
+  - {fileID: 6125020137342705234, guid: b879798072eb2094f896b1edb5d452c1, type: 3}
   is_continuos: 0
   frequency: 1
   object_index: 0

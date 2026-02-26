@@ -4,18 +4,21 @@ namespace chibi.spawner
 {
 	public class Spawner_pool : Spawner
 	{
-		// public chibi.pool.Pool_behaviour pool;
+		public chibi.pool.Pool_behaviour pool_spawner;
 
-		protected override GameObject _instance( GameObject obj )
+		public override GameObject spawn()
 		{
-			return pool.pop();
+			var obj = pool_spawner.pop();
+			obj.transform.position = transform.position;
+			obj.SetActive( true );
+			return obj;
 		}
 
 		protected override void _init_cache()
 		{
 			base._init_cache();
-			if ( !pool )
-				debug.error( "el spawner no tiene un pool" );
+			if ( !pool_spawner )
+				debug.error( "no esta asignado el pool_spawner" );
 		}
 	}
 }

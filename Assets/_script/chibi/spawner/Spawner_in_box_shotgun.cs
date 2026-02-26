@@ -3,7 +3,7 @@
 namespace chibi.spawner
 {
 	[ RequireComponent( typeof( BoxCollider ) ) ]
-	public class Spawner_in_box_shotgun : Spawner
+	public class Spawner_in_box_shotgun : Spawner_prefab
 	{
 		protected BoxCollider box_collider;
 

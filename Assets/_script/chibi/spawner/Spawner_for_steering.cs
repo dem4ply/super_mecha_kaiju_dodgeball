@@ -2,7 +2,7 @@
 
 namespace chibi.spawner
 {
-	public class Spawner_for_steering : Spawner
+	public class Spawner_for_steering : Spawner_prefab
 	{
 		public Transform target;
 

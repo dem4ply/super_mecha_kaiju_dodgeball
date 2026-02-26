@@ -9,12 +9,11 @@ namespace chibi.spawner.invoker
 		protected override void _init_cache()
 		{
 			base._init_cache();
-			if ( target == null )
+			if ( !target )
 				target = GetComponent<Spawner>();
-			if ( target == null )
-				Debug.LogWarning( string.Format(
-					"the gameobject '{0}' no tiene taget se esperaba" +
-					" un Spwan_point", helper.game_object.name.full( this ) ) );
+			if ( !target )
+				debug.warning(
+					"no tiene taget se esperaba un Spwan_point" );
 		}
 	}
 }
