@@ -20,6 +20,13 @@ namespace chibi.damage
 				}
 			}
 
+			public virtual bool is_not_dead
+			{
+				get {
+					return !is_dead;
+				}
+			}
+
 			protected virtual void OnTriggerEnter( Collider other )
 			{
 				if ( helper.consts.tags.damage == other.tag )
@@ -59,10 +66,14 @@ namespace chibi.damage
 				{
 					if ( damage.owner.sheet && damage.owner.sheet.faction
 							&& rol.sheet )
+					{
 						return damage.owner.sheet.faction == rol.sheet.faction;
+					}
 
 					if ( rol )
+					{
 						return damage.owner == rol;
+					}
 				}
 				return false;
 			}
@@ -71,8 +82,6 @@ namespace chibi.damage
 			{
 				if ( damage == null )
 				{
-					Debug.LogError(
-						"[hp engine] el gameobject de danno no tiene el damage" );
 					return;
 				}
 				if ( is_my_damage( damage ) )
@@ -118,6 +127,20 @@ namespace chibi.damage
 					debug.log(
 						"murio, {0}",
 						helper.game_object.name.full( this ) );
+				}
+			}
+
+			public virtual void resurect()
+			{
+				if ( is_dead )
+				{
+					// debug.log( "el personaje esta siendo revivido" );
+					stat.current = stat.max;
+				}
+				else
+				{
+					debug.warning(
+						"el personaje no esta muerto para poder revivirlo" );
 				}
 			}
 		}

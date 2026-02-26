@@ -900,5 +900,10 @@ namespace chibi.motor.npc
 		{
 			return desire_direction.z > 0.01 || desire_direction.z < -0.01;
 		}
+
+		public virtual void on_died()
+		{
+			debug.info( "murio, se tiene que sobreescribir esta funcion para reciclar al npc" );
+		}
 	}
 }

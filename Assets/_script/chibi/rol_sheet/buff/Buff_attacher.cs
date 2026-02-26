@@ -3,7 +3,7 @@
 
 namespace chibi.rol_sheet.buff
 {
-	[ SerializeField ]
+	[ System.Serializable ]
 	public class Buff_attacher
 	{
 		[ SerializeField ]

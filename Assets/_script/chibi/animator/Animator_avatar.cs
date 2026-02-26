@@ -18,11 +18,9 @@ namespace chibi.animator.avatar
 		public Transform transform_avatar;
 
 		[SerializeField]
-		[HideInInspector]
 		protected Emotions _emotion = Emotions.normal;
 
 		#region Var public
-		[SerializeField]
 		public Emotions emotion
 		{
 			get {

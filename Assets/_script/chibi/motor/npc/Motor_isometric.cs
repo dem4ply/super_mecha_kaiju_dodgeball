@@ -175,7 +175,7 @@ namespace chibi.motor.npc
 
 		public virtual void on_died()
 		{
-			debug.info( "murio" );
+			debug.info( "murio, se tiene que sobreescribir esta funcion para reciclar al npc" );
 		}
 
 		public virtual void on_end_died()
