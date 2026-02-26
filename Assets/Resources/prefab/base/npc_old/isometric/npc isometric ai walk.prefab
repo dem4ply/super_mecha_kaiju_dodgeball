@@ -245,7 +245,7 @@ PrefabInstance:
     - target: {fileID: 5578308301545764686, guid: 3709efad636edb7438abdb06a0d1b989,
         type: 3}
       propertyPath: _max_jump_heigh
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5578308301545764686, guid: 3709efad636edb7438abdb06a0d1b989,
         type: 3}

@@ -7,7 +7,6 @@ namespace chibi.spawner
 	{
 		public List<GameObject> objects;
 		public bool is_continuos = false;
-		public float frequency = 1f;
 		public int object_index = 0;
 
 		public virtual GameObject spawn()
